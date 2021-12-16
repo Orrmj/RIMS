@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
 
-from .view_crossing_form import WindowCrossingForm
+from .view_crossing_form import ViewCrossingForm
 
 class MainView(qtw.QWidget):
     def __init__(self):
@@ -34,7 +34,7 @@ class MainView(qtw.QWidget):
 
     @qtc.pyqtSlot()
     def onChange(self):
-        self.formwindow = WindowCrossingForm()
+        self.formwindow = ViewCrossingForm()
         #self.formwindow.submitted.connect(self.label.setText)
         self.formwindow.submitted[str].connect(self.onSubmittedStr)
         self.formwindow.submitted[int, str].connect(self.onSubmittedIntStr)

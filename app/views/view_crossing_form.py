@@ -5,7 +5,7 @@ from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
 
 
-class WindowCrossingForm(qtw.QWidget):
+class ViewCrossingForm(qtw.QWidget):
 
     submitted = qtc.pyqtSignal([str], [int, str])
 
