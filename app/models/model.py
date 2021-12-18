@@ -55,7 +55,9 @@ class Model(QObject):
     input_general_info_rail_max_railway_operating_speed_freight_changed = pyqtSignal(int) 
     input_general_info_rail_max_railway_operating_speed_passenger_changed = pyqtSignal(int)  
     input_general_info_rail_no_trains_per_day_freight_changed = pyqtSignal(int)  
-    input_general_info_rail_no_trains_per_day_passengers_changed = pyqtSignal(int)  
+    input_general_info_rail_no_trains_per_day_passengers_changed = pyqtSignal(int)
+    input_general_info_rail_no_tracks_main_changed = pyqtSignal(int)
+    input_general_info_rail_no_tracks_other_changed = pyqtSignal(int)
     input_general_info_rail_railway_design_speed_changed = pyqtSignal(int)  
     input_general_info_road_aadt_current_changed = pyqtSignal(int)  
     input_general_info_road_aadt_forecast_changed = pyqtSignal(int)  
@@ -490,48 +492,6 @@ class Model(QObject):
     input_areas_without_train_whistling_lookup_gcs_9_2_changed = pyqtSignal(str)
     input_areas_without_train_whistling_requirements_observe_table_D1_changed = pyqtSignal(str)
 
-    '''
-    @property
-    def users(self):
-        return self._users
-
-
-    def add_user(self, value):
-        self._users.append(value)
-        self.users_changed.emit(self._users)
-
-    def delete_user(self, value):
-        del self._users[value]
-        self.users_changed.emit(self._users)
-
-    @property
-    def amount(self):
-        return self._amount
-
-    @amount.setter
-    def amount(self, value):
-        self._amount = value
-        self.amount_changed.emit(value)
-
-    @property
-    def even_odd(self):
-        return self._even_odd
-
-    @even_odd.setter
-    def even_odd(self, value):
-        self._even_odd = value
-        self.even_odd_changed.emit(value)
-
-    @property
-    def enable_reset(self):
-        return self._enable_reset
-
-    @enable_reset.setter
-    def enable_reset(self, value):
-        self._enable_reset = value
-        self.enable_reset_changed.emit(value)
-    '''
-
     # INSPECTION DETAILS
     #Group TextBoxes
     #input_inspection_details_assessment_team = None
@@ -674,6 +634,26 @@ class Model(QObject):
     def input_general_info_rail_no_trains_per_day_passengers(self, value):
         self._input_general_info_rail_no_trains_per_day_passengers = value
         self.input_general_info_rail_no_trains_per_day_passengers_changed.emit(value)
+
+    #input_general_info_rail_no_tracks_main
+    @property
+    def input_general_info_rail_no_tracks_main(self):
+        return self.input_general_info_rail_no_tracks_main
+
+    @input_general_info_rail_no_tracks_main.setter
+    def input_general_info_rail_no_tracks_main(self, value):
+        self._input_general_info_rail_no_tracks_main = value
+        self.input_general_info_rail_no_tracks_main_changed.emit(value)
+
+    #input_general_info_rail_no_tracks_other
+    @property
+    def input_general_info_rail_no_tracks_other(self):
+        return self.input_general_info_rail_no_tracks_other
+
+    @input_general_info_rail_no_tracks_other.setter
+    def input_general_info_rail_no_tracks_other(self, value):
+        self._input_general_info_rail_no_tracks_other = value
+        self.input_general_info_rail_no_tracks_other_changed.emit(value)
 
     #input_general_info_rail_railway_design_speed
     @property
@@ -1804,15 +1784,95 @@ class Model(QObject):
     #input_aawd_road_aawd_sufficient_activation_time_s_or_w_approach = None
 
     #Group Labels
-    input_aawd_calculate_advance_activation_time_design_n_or_e_approach = pyqtSignal(float)
-    input_aawd_calculate_advance_activation_time_design_s_or_w_approach = pyqtSignal(float)
-    input_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended = pyqtSignal(float)
-    input_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended = pyqtSignal(float)
-    input_aawd_warrant_gcr_lookup_road_classification = pyqtSignal(str)
-    input_aawd_warrant_gcr_observe_environmental_condition = pyqtSignal(str)
-    input_aawd_warrant_gcr_observe_sightline_obstruction = pyqtSignal(str)
-    input_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr = pyqtSignal(str)
-    input_aawd_warrant_mutcd_lookup_significant_road_downgrade = pyqtSignal(str)
+    #input_aawd_calculate_advance_activation_time_design_n_or_e_approach
+    @property
+    def input_aawd_calculate_advance_activation_time_design_n_or_e_approach(self):
+        return self.input_aawd_calculate_advance_activation_time_design_n_or_e_approach
+
+    @input_aawd_calculate_advance_activation_time_design_n_or_e_approach.setter
+    def input_aawd_calculate_advance_activation_time_design_n_or_e_approach(self, value):
+        self._input_aawd_calculate_advance_activation_time_design_n_or_e_approach = value
+        self.input_aawd_calculate_advance_activation_time_design_n_or_e_approach_changed.emit(value)
+
+    #input_aawd_calculate_advance_activation_time_design_s_or_w_approach
+    @property
+    def input_aawd_calculate_advance_activation_time_design_s_or_w_approach(self):
+        return self.input_aawd_calculate_advance_activation_time_design_s_or_w_approach
+
+    @input_aawd_calculate_advance_activation_time_design_s_or_w_approach.setter
+    def input_aawd_calculate_advance_activation_time_design_s_or_w_approach(self, value):
+        self._input_aawd_calculate_advance_activation_time_design_s_or_w_approach = value
+        self.input_aawd_calculate_advance_activation_time_design_s_or_w_approach_changed.emit(value)
+
+    #input_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended
+    @property
+    def input_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended(self):
+        return self.input_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended
+
+    @input_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended.setter
+    def input_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended(self, value):
+        self._input_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended = value
+        self.input_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended_changed.emit(value)
+
+    #input_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended
+    @property
+    def input_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended(self):
+        return self.input_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended
+
+    @input_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended.setter
+    def input_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended(self, value):
+        self._input_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended = value
+        self.input_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended_changed.emit(value)
+
+    #input_aawd_warrant_gcr_lookup_road_classification
+    @property
+    def input_aawd_warrant_gcr_lookup_road_classification(self):
+        return self.input_aawd_warrant_gcr_lookup_road_classification
+
+    @input_aawd_warrant_gcr_lookup_road_classification.setter
+    def input_aawd_warrant_gcr_lookup_road_classification(self, value):
+        self._input_aawd_warrant_gcr_lookup_road_classification = value
+        self.input_aawd_warrant_gcr_lookup_road_classification_changed.emit(value)
+
+    #input_aawd_warrant_gcr_observe_environmental_condition
+    @property
+    def input_aawd_warrant_gcr_observe_environmental_condition(self):
+        return self.input_aawd_warrant_gcr_observe_environmental_condition
+
+    @input_aawd_warrant_gcr_observe_environmental_condition.setter
+    def input_aawd_warrant_gcr_observe_environmental_condition(self, value):
+        self._input_aawd_warrant_gcr_observe_environmental_condition = value
+        self.input_aawd_warrant_gcr_observe_environmental_condition_changed.emit(value)
+
+    #input_aawd_warrant_gcr_observe_sightline_obstruction
+    @property
+    def input_aawd_warrant_gcr_observe_sightline_obstruction(self):
+        return self.input_aawd_warrant_gcr_observe_sightline_obstruction
+
+    @input_aawd_warrant_gcr_observe_sightline_obstruction.setter
+    def input_aawd_warrant_gcr_observe_sightline_obstruction(self, value):
+        self._input_aawd_warrant_gcr_observe_sightline_obstruction = value
+        self.input_aawd_warrant_gcr_observe_sightline_obstruction_changed.emit(value)
+
+    #input_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr
+    @property
+    def input_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr(self):
+        return self.input_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr
+
+    @input_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr.setter
+    def input_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr(self, value):
+        self._input_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr = value
+        self.input_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr_changed.emit(value)
+
+    #input_aawd_warrant_mutcd_lookup_significant_road_downgrade
+    @property
+    def input_aawd_warrant_mutcd_lookup_significant_road_downgrade(self):
+        return self.input_aawd_warrant_mutcd_lookup_significant_road_downgrade
+
+    @input_aawd_warrant_mutcd_lookup_significant_road_downgrade.setter
+    def input_aawd_warrant_mutcd_lookup_significant_road_downgrade(self, value):
+        self._input_aawd_warrant_mutcd_lookup_significant_road_downgrade = value
+        self.input_aawd_warrant_mutcd_lookup_significant_road_downgrade_changed.emit(value)
 
     # INTERCONNECTION OF TRAFFIC SIGNALS (GCS SECTION 19)
     #Group TextEdits
@@ -1836,8 +1896,25 @@ class Model(QObject):
     #input_preemption_of_traffic_signals_road_date_Last_preemption_check = None
 
     #Group Labels
-    input_preemption_of_traffic_signals_lookup_proximity_condition = pyqtSignal(str)
-    input_preemption_of_traffic_signals_lookup_required = pyqtSignal(str)
+    #input_preemption_of_traffic_signals_lookup_proximity_condition
+    @property
+    def input_preemption_of_traffic_signals_lookup_proximity_condition(self):
+        return self.input_preemption_of_traffic_signals_lookup_proximity_condition
+
+    @input_preemption_of_traffic_signals_lookup_proximity_condition.setter
+    def input_preemption_of_traffic_signals_lookup_proximity_condition(self, value):
+        self._input_preemption_of_traffic_signals_lookup_proximity_condition = value
+        self.input_preemption_of_traffic_signals_lookup_proximity_condition_changed.emit(value)
+
+    #input_preemption_of_traffic_signals_lookup_required
+    @property
+    def input_preemption_of_traffic_signals_lookup_required(self):
+        return self.input_preemption_of_traffic_signals_lookup_required
+
+    @input_preemption_of_traffic_signals_lookup_required.setter
+    def input_preemption_of_traffic_signals_lookup_required(self, value):
+        self._input_preemption_of_traffic_signals_lookup_required = value
+        self.input_preemption_of_traffic_signals_lookup_required_changed.emit(value)
 
     # WHISTLE CESSATION (GCS SECTION Appendix D)
     #Group TextEdits
@@ -1850,9 +1927,35 @@ class Model(QObject):
     #input_areas_without_train_whistling_rail_anti_whistling_zone_24_hrs = None
 
     #Group Labels
-    input_areas_without_train_whistling_lookup_gcs_12_to_16 = pyqtSignal(str)
-    input_areas_without_train_whistling_lookup_gcs_9_2 = pyqtSignal(str)
-    input_areas_without_train_whistling_requirements_observe_table_D1 = pyqtSignal(str)
+    #input_areas_without_train_whistling_lookup_gcs_12_to_16
+    @property
+    def input_areas_without_train_whistling_lookup_gcs_12_to_16(self):
+        return self.input_areas_without_train_whistling_lookup_gcs_12_to_16
+
+    @input_areas_without_train_whistling_lookup_gcs_12_to_16.setter
+    def input_areas_without_train_whistling_lookup_gcs_12_to_16(self, value):
+        self._input_areas_without_train_whistling_lookup_gcs_12_to_16 = value
+        self.input_areas_without_train_whistling_lookup_gcs_12_to_16_changed.emit(value)
+
+    #input_areas_without_train_whistling_lookup_gcs_9_2
+    @property
+    def input_areas_without_train_whistling_lookup_gcs_9_2(self):
+        return self.input_areas_without_train_whistling_lookup_gcs_9_2
+
+    @input_areas_without_train_whistling_lookup_gcs_9_2.setter
+    def input_areas_without_train_whistling_lookup_gcs_9_2(self, value):
+        self._input_areas_without_train_whistling_lookup_gcs_9_2 = value
+        self.input_areas_without_train_whistling_lookup_gcs_9_2_changed.emit(value)
+
+    #input_areas_without_train_whistling_requirements_observe_table_D1
+    @property
+    def input_areas_without_train_whistling_requirements_observe_table_D1(self):
+        return self.input_areas_without_train_whistling_requirements_observe_table_D1
+
+    @input_areas_without_train_whistling_requirements_observe_table_D1.setter
+    def input_areas_without_train_whistling_requirements_observe_table_D1(self, value):
+        self._input_areas_without_train_whistling_requirements_observe_table_D1 = value
+        self.input_areas_without_train_whistling_requirements_observe_table_D1_changed.emit(value)
 
     def __init__(self):
         super().__init__()
@@ -1909,7 +2012,9 @@ class Model(QObject):
         self._input_general_info_rail_max_railway_operating_speed_freight = None 
         self._input_general_info_rail_max_railway_operating_speed_passenger = None 
         self._input_general_info_rail_no_trains_per_day_freight = None 
-        self._input_general_info_rail_no_trains_per_day_passengers = None 
+        self._input_general_info_rail_no_trains_per_day_passengers = None
+        self._input_general_info_rail_no_tracks_main = None
+        self._input_general_info_rail_no_tracks_other = None
         self._input_general_info_rail_railway_design_speed = None 
         self._input_general_info_road_aadt_current = None 
         self._input_general_info_road_aadt_forecast = None 
