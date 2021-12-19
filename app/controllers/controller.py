@@ -18,15 +18,17 @@ class Controller(QObject):
     
     #Group LineEdits
     #input_inspection_details_crossing_location = None 
-    #input_inspection_details_latitude = None 
     #input_inspection_details_location_number = None 
-    #input_inspection_details_longitude = None 
     #input_inspection_details_municipality = None 
     #input_inspection_details_road_name = None 
     #input_inspection_details_road_number = None 
-    #input_inspection_details_spur_mile = None 
     #input_inspection_details_spur_name = None 
-    #input_inspection_details_subdivision_mile = None 
+
+    #Group DoubleSpinBox
+    #input_inspection_details_latitude = None 
+    #input_inspection_details_longitude = None 
+    #input_inspection_details_spur_mile = None 
+    #input_inspection_details_subdivision_mile = None
 
     #Group ComboBoxes
     #input_inspection_details_gcws_type
@@ -50,7 +52,7 @@ class Controller(QObject):
     #Group TextEdits
     #input_collision_history_comments = None
 
-    #Group LineEdits
+    #Group SpinBox
     #input_collision_history_fatal_injury 
     @pyqtSlot(int)
     def change_input_collision_history_fatal_injury(self, value):
@@ -72,7 +74,7 @@ class Controller(QObject):
     #Group Labels
     #TODO input_collision_history_total_5_year_period
     @pyqtSlot(int)
-    def input_collision_history_total_5_year_period(self):
+    def change_input_collision_history_total_5_year_period(self):
         return self.input_collision_history_total_5_year_period
 
     # GENERAL INFORMATION
@@ -81,7 +83,9 @@ class Controller(QObject):
 
     #Group LineEdits
     #input_general_info_observe_special_buildings = None 
+    #input_general_info_road_other_users = None 
 
+    #Group SpinBox
     #input_general_info_rail_max_railway_operating_speed_freight
     @pyqtSlot(int)
     def change_input_general_info_rail_max_railway_operating_speed_freight(self, value):
@@ -146,7 +150,6 @@ class Controller(QObject):
     def change_input_general_info_road_no_traffic_lanes_southbound_or_westbound(self, value):
         self._model.input_general_info_road_no_traffic_lanes_southbound_or_westbound = value
 
-    #input_general_info_road_other_users = None 
     #input_general_info_road_other_users_daily_users = None 
     #input_general_info_road_pedestrians_per_day = None 
 
@@ -197,7 +200,7 @@ class Controller(QObject):
     #Group TextEdits
     #input_design_comments = None
 
-    #Group LineEdits
+    #Group DoubleSpinBox
     #input_design_measure_adjacent_track_clearance_distance
     @pyqtSlot(float)
     def change_input_design_measure_adjacent_track_clearance_distance(self, value):
@@ -297,7 +300,7 @@ class Controller(QObject):
     #Group TextEdits
     #input_location_of_grade_crossing_comments = None
 
-    #Group LineEdits
+    #Group DoubleSpinBox
     #input_location_of_grade_crossing_nearest_intersection_other_n_or_e_approach = None 
     #input_location_of_grade_crossing_nearest_intersection_other_s_of_w_approach = None 
     
@@ -330,7 +333,7 @@ class Controller(QObject):
     #Group TextEdits
     #input_grade_crossing_surface_comments = None
 
-    #Group LineEdits
+    #Group DoubleSpinBox
     #input_grade_crossing_surface_measure_crossing_surface_extension_n_or_e_approach = None 
     #input_grade_crossing_surface_measure_crossing_surface_extension_s_or_w_approach = None 
     #input_grade_crossing_surface_measure_crossing_surface_width = None 
@@ -365,7 +368,10 @@ class Controller(QObject):
     #Group TextEdits 
     #input_road_geometry_comments = None
 
-    #Group LineEdits
+    #Group SpinBox
+    #input_road_geometry_road_crossing_angle = None
+
+    #Group DoubleSpinBox
     #input_road_geometry_measure_railway_cross_slope
     @pyqtSlot(float)
     def change_input_road_geometry_measure_railway_cross_slope(self, value):
@@ -394,9 +400,7 @@ class Controller(QObject):
     #input_road_geometry_rail_superelevation_s_or_w_approach
     @pyqtSlot(float)
     def change_input_road_geometry_rail_superelevation_s_or_w_approach(self, value):
-        self._model.input_road_geometry_rail_superelevation_s_or_w_approach = value
-        
-    #input_road_geometry_road_crossing_angle = None 
+        self._model.input_road_geometry_rail_superelevation_s_or_w_approach = value 
     
     #input_road_geometry_road_general_approach_grade_n_or_e_approach
     @pyqtSlot(float)
@@ -425,7 +429,7 @@ class Controller(QObject):
     #Group TextEdits
     #input_sightlines_comments = None
     
-    #Group LineEdits
+    #Group DoubleSpinBox
     #input_sightlines_measure_dssd_actual_n_or_e_approach_left = None 
     #input_sightlines_measure_dssd_actual_n_or_e_approach_right = None 
     #input_sightlines_measure_dssd_actual_s_or_w_approach_left = None 
@@ -492,7 +496,7 @@ class Controller(QObject):
     #DELETE input_signs_and_markings_stop_comments = None
     #DELETE input_signs_and_markings_stop_sign_ahead_comments = None
 
-    #Group LineEdits
+    #Group DoubleSpinBox
     #input_signs_and_markings_railway_crossing_ahead_n_or_e_approach_distance_from_rail = None 
     #input_signs_and_markings_railway_crossing_ahead_n_or_e_approach_distance_from_road = None 
     #input_signs_and_markings_railway_crossing_ahead_n_or_e_approach_height = None 
@@ -671,7 +675,7 @@ class Controller(QObject):
     #Group TextEdits
     #input_gcws_comments = None
         
-    #Group LineEdits
+    #Group DoubleSpinBox
     #input_gcws_measure_warning_device_n_or_e_approach_distance_from_rail = None 
     #input_gcws_measure_warning_device_n_or_e_approach_distance_from_road = None 
     #input_gcws_measure_warning_device_n_or_e_approach_distance_top_of_foundation = None 
@@ -749,7 +753,7 @@ class Controller(QObject):
     #Group TextEdits
     #input_light_units_comments = None
 
-    #Group LineEdits
+    #Group DoubleSpinBox
     #input_light_units_measure_cantilevers_n_or_e_approach_distance_from_rail = None 
     #input_light_units_measure_cantilevers_n_or_e_approach_distance_from_road = None 
     #input_light_units_measure_cantilevers_n_or_e_approach_dl = None 
@@ -779,7 +783,7 @@ class Controller(QObject):
     #Group TextEdits
     #input_gates_gcws_comments = None
 
-    #Group LineEdits
+    #Group DoubleSpinBox
     #input_gates_gcws_measure_distance_between_gate_end_and_road_cl_n_or_e_approach = None 
     #input_gates_gcws_measure_distance_between_gate_end_and_road_cl_s_or_w_approach = None 
     #input_gates_gcws_measure_gate_ascent_time = None 
@@ -816,7 +820,7 @@ class Controller(QObject):
     #Group Text Edits
     #input_aawd_comments = None
 
-    #Group LineEdits
+    #Group DoubleSpinBox
     #input_aawd_measure_distance_sign_and_stop_n_or_e_approach_actual = None 
     #input_aawd_measure_distance_sign_and_stop_s_or_w_approach_actual = None 
 
@@ -876,7 +880,7 @@ class Controller(QObject):
     #Group TextEdits
     #input_preemption_of_traffic_signals_comments = None
 
-    #Group LineEdits
+    #Group DoubleSpinBox
     #input_preemption_of_traffic_signals_road_preemption_warning_time_actual = None 
     #input_preemption_of_traffic_signals_road_preemption_warning_time_design = None 
 

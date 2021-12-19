@@ -26,10 +26,509 @@ class ViewCrossingForm(qtw.QWidget):
 
         # connect ui-widget to controller
         # if ui changes, it sends a signal to an slot on which we connect a controller class.
-        # therefore we can recive the signal in the controller
+        # therefore we can receive the signal in the controller
+        '''
         self.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self._controller.change_input_general_info_rail_no_tracks_main)
         self.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self._controller.change_input_general_info_rail_no_tracks_other)
-         
+        '''
+
+        # INSPECTION DETAILS
+        #Group TextBoxes
+        #input_inspection_details_assessment_team = None
+        
+        #Group DatePicker
+        #input_inspection_details_date_assessment = None
+        
+        #Group LineEdits
+        #input_inspection_details_crossing_location = None 
+        #input_inspection_details_location_number = None 
+        #input_inspection_details_municipality = None 
+        #input_inspection_details_road_name = None 
+        #input_inspection_details_road_number = None 
+        #input_inspection_details_spur_name = None 
+
+        #Group DoubleSpinBox
+        #input_inspection_details_latitude = None 
+        #input_inspection_details_longitude = None 
+        #input_inspection_details_spur_mile = None 
+        #input_inspection_details_subdivision_mile = None
+
+        #Group ComboBoxes
+        self.comboBox_inspection_details_gcws_type.valueChanged.connect(self._controller.change_input_inspection_details_gcws_type)
+        self.comboBox_inspection_details_grade_crossing_type.valueChanged.connect(self._controller.change_input_inspection_details_grade_crossing_type)
+        #input_inspection_details_province = None
+        #input_inspection_details_railway_authority = None
+        #input_inspection_details_reason_for_assessment = None
+        #input_inspection_details_road_authority = None
+        #input_inspection_details_subdivision_name = None
+        #input_inspection_details_track_type = None
+
+        # COLLISION HISTORY (5 YEAR PERIOD)
+        #Group TextEdits
+        #input_collision_history_comments = None
+
+        #Group SpinBox
+        self.spinBox_collision_history_fatal_injury.valueChanged.connect(self._controller.change_input_collision_history_fatal_injury)
+        #input_collision_history_fatalities = None 
+        #input_collision_history_personal_injuries = None
+        self.spinBox_collision_history_personal_injury.valueChanged.connect(self._controller.change_input_collision_history_personal_injury)
+        self.spinBox_collision_history_property_damage.valueChanged.connect(self._controller.change_input_collision_history_property_damage)
+
+        #Group Labels
+        self.label_collision_history_total_5_year_period.valueChanged.connect(self._controller.change_input_collision_history_total_5_year_period)
+        
+        # GENERAL INFORMATION
+        #Group TextEdits
+        #input_general_info_comments = None
+
+        #Group LineEdits
+        #input_general_info_observe_special_buildings = None 
+        #input_general_info_road_other_users = None 
+
+        #Group SpinBox
+        self.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self._controller.change_input_general_info_rail_max_railway_operating_speed_freight)     
+        self.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self._controller.change_input_general_info_rail_max_railway_operating_speed_passenger)
+        self.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self._controller.change_input_general_info_rail_no_trains_per_day_freight)
+        self.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self._controller.change_input_general_info_rail_no_trains_per_day_passengers)
+        self.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self._controller.change_input_general_info_rail_no_tracks_main)
+        self.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self._controller.change_input_general_info_rail_no_tracks_other)
+        self.spinBox_general_info_rail_railway_design_speed.valueChanged.connect(self._controller.change_input_general_info_rail_railway_design_speed)
+        self.spinBox_general_info_road_aadt_current.valueChanged.connect(self._controller.change_input_general_info_road_aadt_current)
+        self.spinBox_general_info_road_aadt_forecast.valueChanged.connect(self._controller.change_input_general_info_road_aadt_forecast)
+        #input_general_info_road_aadt_year_current = None 
+        #input_general_info_road_aadt_year_forecasted = None 
+        #input_general_info_road_cyclist_per_day = None
+        self.spinBox_general_info_road_no_traffic_lanes_bidirectional.valueChanged.connect(self._controller.change_input_general_info_road_no_traffic_lanes_bidirectional)
+        self.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound.valueChanged.connect(self._controller.change_input_general_info_road_no_traffic_lanes_northbound_or_eastbound)
+        self.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound.valueChanged.connect(self._controller.change_input_general_info_road_no_traffic_lanes_southbound_or_westbound)
+        #input_general_info_road_other_users_daily_users = None 
+        #input_general_info_road_pedestrians_per_day = None 
+        self.spinBox_general_info_road_speed_design.valueChanged.connect(self._controller.change_input_general_info_road_speed_design)
+        #input_general_info_road_speed_posted = None 
+
+        #Group ComboBoxes
+        #input_general_info_observe_roadway_illumination = None
+        #input_general_info_observe_surrounding_land_use = None
+        #input_general_info_rail_train_switching = None        
+        #input_general_info_road_assistive_pedestrian_devices = None
+        self.comboBox_general_info_road_classification.valueChanged.connect(self._controller.change_input_general_info_road_classification)
+        #input_general_info_road_dangerous_goods_route = None
+        #input_general_info_road_school_bus_route = None
+        #input_general_info_road_seasonal_volume_fluctuations = None
+        self.comboBox_general_info_road_sidewalks.valueChanged.connect(self._controller.change_input_general_info_road_sidewalks)
+
+        #Group Labels
+        self.label_general_info_rail_no_tracks_total.valueChanged.connect(self._controller.change_input_general_info_rail_no_tracks_total)
+        self.label_general_info_rail_no_trains_per_day_total.valueChanged.connect(self._controller.change_input_general_info_rail_no_trains_per_day_total)
+        self.label_general_info_road_no_traffic_lanes_total.valueChanged.connect(self._controller.change_input_general_info_road_no_traffic_lanes_total)
+        
+        # DESIGN CONSIDERATIONS (GCS SECTION 10)
+        #Group TextEdits
+        #input_design_comments = None
+
+        #Group DoubleSpinBox
+        self.doubleSpinBox_design_measure_adjacent_track_clearance_distance.valueChanged.connect(self._controller.change_input_design_measure_adjacent_track_clearance_distance)
+        self.doubleSpinBox_design_measure_adjacent_track_separation_distance.valueChanged.connect(self._controller.change_input_design_measure_adjacent_track_separation_distance)
+        self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self._controller.change_input_design_measure_clearance_distance_pedestrian)
+        self.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self._controller.change_input_design_measure_clearance_distance_vehicle)
+        self.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self._controller.change_input_design_road_max_approach_grade_within_s)
+
+        #Group ComboBoxes
+        #input_design_observe_field_acceleration_times_exceed_td = None
+        self.comboBox_design_road_design_vehicle_type.valueChanged.connect(self._controller.change_input_design_road_design_vehicle_type)
+        
+        #Group Labels
+        self.label_design_calculate_adjacent_track_clearance_time.valueChanged.connect(self._controller.change_input_design_calculate_adjacent_track_clearance_time)
+        self.label_design_calculate_clearance_time_crossing_pedestrian_design_check.valueChanged.connect(self._controller.change_input_design_calculate_clearance_time_crossing_pedestrian_design_check)
+        self.label_design_calculate_clearance_time_crossing_vehicle_design_check.valueChanged.connect(self._controller.change_input_design_calculate_clearance_time_crossing_vehicle_design_check)
+        self.label_design_calculate_clearance_time_gate_arm_ssd.valueChanged.connect(self._controller.change_input_design_calculate_clearance_time_gate_arm_ssd)
+        self.label_design_calculate_clearance_time_gate_arm_stop.valueChanged.connect(self._controller.change_input_design_calculate_clearance_time_gate_arm_stop)
+        self.label_design_calculate_vehicle_travel_distance.valueChanged.connect(self._controller.change_input_design_calculate_vehicle_travel_distance)
+        self.label_design_input_reaction_time.valueChanged.connect(self._controller.change_input_design_input_reaction_time)
+        self.label_design_lookup_design_vehicle_class.valueChanged.connect(self._controller.change_input_design_lookup_design_vehicle_class)
+        self.label_design_lookup_design_vehicle_length.valueChanged.connect(self._controller.change_input_design_lookup_design_vehicle_length)
+        self.label_design_lookup_grade_adjustment_factor.valueChanged.connect(self._controller.change_input_design_lookup_grade_adjustment_factor)
+        self.label_design_lookup_vehicle_departure_time_crossing.valueChanged.connect(self._controller.change_input_design_lookup_vehicle_departure_time_crossing)
+        self.label_design_lookup_vehicle_departure_time_gate_arm_clearance.valueChanged.connect(self._controller.change_input_design_lookup_vehicle_departure_time_gate_arm_clearance)
+
+        # LOCATION OF GRADE CROSSING (GCS SECTION 11)
+        #Group TextEdits
+        #input_location_of_grade_crossing_comments = None
+
+        #Group DoubleSpinBox
+        #input_location_of_grade_crossing_nearest_intersection_other_n_or_e_approach = None 
+        #input_location_of_grade_crossing_nearest_intersection_other_s_of_w_approach = None 
+        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self._controller.change_input_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach)
+        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_of_w_approach.valueChanged.connect(self._controller.change_input_location_of_grade_crossing_nearest_intersection_signalized_s_of_w_approach)
+        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self._controller.change_input_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach)
+        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_of_w_approach.valueChanged.connect(self._controller.change_input_location_of_grade_crossing_nearest_intersection_stop_s_of_w_approach)
+
+        #group ComboBoxes
+        #input_location_of_grade_crossing_observe_nearby_pedestrian_crosswalk = None
+        #input_location_of_grade_crossing_queue_condition = None
+        #input_location_of_grade_crossing_visibility_of_warning_lights = None
+        
+        # GRADE CROSSING SURFACE (GCS SECTION 5)
+        #Group TextEdits
+        #input_grade_crossing_surface_comments = None
+
+        #Group DoubleSpinBox
+        #input_grade_crossing_surface_measure_crossing_surface_extension_n_or_e_approach = None 
+        #input_grade_crossing_surface_measure_crossing_surface_extension_s_or_w_approach = None 
+        #input_grade_crossing_surface_measure_crossing_surface_width = None 
+        #input_grade_crossing_surface_measure_distance_between_signal_mast_and_sidewalk_n_or_e_approach = None 
+        #input_grade_crossing_surface_measure_distance_between_signal_mast_and_sidewalk_s_or_w_approach = None 
+        #input_grade_crossing_surface_measure_distance_between_travel_lane_and_sidewalk_n_or_e_approach = None 
+        #input_grade_crossing_surface_measure_distance_between_travel_lane_and_sidewalk_s_or_w_approach = None 
+        #input_grade_crossing_surface_measure_elevation_top_of_rail_above_road_surface = None 
+        #input_grade_crossing_surface_measure_elevation_top_of_rail_below_road_surface = None 
+        #input_grade_crossing_surface_measure_flangeway_depth = None 
+        #input_grade_crossing_surface_measure_flangeway_width = None 
+        #input_grade_crossing_surface_measure_road_surface_median_width = None 
+        #input_grade_crossing_surface_measure_road_surface_shoulder_n_or_e_approach = None 
+        #input_grade_crossing_surface_measure_road_surface_shoulder_s_or_w_approach = None 
+        #input_grade_crossing_surface_measure_road_surface_travel_lanes_width_n_or_e_approach = None 
+        #input_grade_crossing_surface_measure_road_surface_travel_lanes_width_s_or_w_approach = None 
+        #input_grade_crossing_surface_measure_side_grinding_depth = None 
+        #input_grade_crossing_surface_measure_side_grinding_width = None 
+        #input_grade_crossing_surface_measure_sidewalk_extension_n_or_e_approach = None 
+        #input_grade_crossing_surface_measure_sidewalk_extension_s_or_w_approach = None 
+        #input_grade_crossing_surface_measure_sidewalk_width_n_or_e_approach = None 
+        #input_grade_crossing_surface_measure_sidewalk_width_s_or_w_approach = None 
+
+        #Group ComboBoxes
+        #input_grade_crossing_surface_observe_crossing_smoothness = None
+        #input_grade_crossing_surface_observe_crossing_surface_condition = None
+        #input_grade_crossing_surface_observe_material = None
+        #input_grade_crossing_surface_observe_road_approach_surface_condition = None
+        #input_grade_crossing_surface_observe_road_approach_surface_type = None
+
+        # ROAD GEOMETRY (GCS SECTION 6)
+        #Group TextEdits 
+        #input_road_geometry_comments = None
+
+        #Group SpinBox
+        #input_road_geometry_road_crossing_angle = None
+
+        #Group DoubleSpinBox
+        self.doubleSpinBox_road_geometry_measure_railway_cross_slope.valueChanged.connect(self._controller.change_input_road_geometry_measure_railway_cross_slope)   
+        #input_road_geometry_measure_slope_between_8m_and_18m_nearest_rail_n_or_e_approach = None 
+        #input_road_geometry_measure_slope_between_8m_and_18m_nearest_rail_s_or_w_approach = None 
+        #input_road_geometry_measure_slope_within_5m_nearest_rail_at_sidewalk_n_or_e_approach = None 
+        #input_road_geometry_measure_slope_within_5m_nearest_rail_at_sidewalk_s_or_w_approach = None 
+        self.doubleSpinBox_road_geometry_measure_slope_within_8m_nearest_rail_n_or_e_approach.valueChanged.connect(self._controller.change_input_road_geometry_measure_slope_within_8m_nearest_rail_n_or_e_approach)
+        self.doubleSpinBox_road_geometry_measure_slope_within_8m_nearest_rail_s_or_w_approach.valueChanged.connect(self._controller.change_input_road_geometry_measure_slope_within_8m_nearest_rail_s_or_w_approach)
+        self.doubleSpinBox_road_geometry_rail_superelevation_n_or_e_approach.valueChanged.connect(self._controller.change_input_road_geometry_rail_superelevation_n_or_e_approach)
+        self.doubleSpinBox_road_geometry_rail_superelevation_s_or_w_approach.valueChanged.connect(self._controller.change_input_road_geometry_rail_superelevation_s_or_w_approach)
+        self.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.valueChanged.connect(self._controller.change_input_road_geometry_road_general_approach_grade_n_or_e_approach)
+        self.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.valueChanged.connect(self._controller.change_input_road_geometry_road_general_approach_grade_s_or_w_approach)
+
+        #Group ComboBoxes
+        #input_road_geometry_observe_lane_width_crossing_vs_approach_n_or_e_approach = None
+        #input_road_geometry_observe_lane_width_crossing_vs_approach_s_or_w_approach = None
+        #input_road_geometry_observe_low_bed_truck_condition = None
+        #input_road_geometry_observe_smooth_alignment_within_ssd_n_or_e_approach = None
+        #input_road_geometry_observe_smooth_alignment_within_ssd_s_or_w_approach = None
+        
+        #Group Labels
+        self.label_road_geometry_lookup_gradient_difference.valueChanged.connect(self._controller.change_input_road_geometry_lookup_gradient_difference)
+        
+        # SIGHTLINES (GCS SECTION 7)
+        #Group TextEdits
+        #input_sightlines_comments = None
+        
+        #Group DoubleSpinBox
+        #input_sightlines_measure_dssd_actual_n_or_e_approach_left = None 
+        #input_sightlines_measure_dssd_actual_n_or_e_approach_right = None 
+        #input_sightlines_measure_dssd_actual_s_or_w_approach_left = None 
+        #input_sightlines_measure_dssd_actual_s_or_w_approach_right = None 
+        #input_sightlines_measure_dstopped_actual_n_or_e_approach_driver_left = None 
+        #input_sightlines_measure_dstopped_actual_n_or_e_approach_driver_right = None 
+        #input_sightlines_measure_dstopped_actual_s_or_w_approach_driver_left = None 
+        #input_sightlines_measure_dstopped_actual_s_or_w_approach_driver_right = None 
+        #input_sightlines_measure_ssd_actual_n_or_e_approach = None 
+        #input_sightlines_measure_ssd_actual_s_or_w_approach = None 
+
+        #Group ComboBoxes
+        #input_sightlines_observe_sightline_obstructions = None
+
+        #Group Labels
+        self.label_sightlines_calculate_dssd_vehicle_min_ft.valueChanged.connect(self._controller.change_input_sightlines_calculate_dssd_vehicle_min_ft)
+        self.label_sightlines_calculate_dssd_vehicle_min_m.valueChanged.connect(self._controller.change_input_sightlines_calculate_dssd_vehicle_min_m)
+        self.label_sightlines_calculate_dstopped_pedestrian_min_ft.valueChanged.connect(self._controller.change_input_sightlines_calculate_dstopped_pedestrian_min_ft)
+        self.label_sightlines_calculate_dstopped_pedestrian_min_m.valueChanged.connect(self._controller.change_input_sightlines_calculate_dstopped_pedestrian_min_m)
+        self.label_sightlines_calculate_dstopped_vehicle_min_ft.valueChanged.connect(self._controller.change_input_sightlines_calculate_dstopped_vehicle_min_ft)
+        self.label_sightlines_calculate_dstopped_vehicle_min_m.valueChanged.connect(self._controller.change_input_sightlines_calculate_dstopped_vehicle_min_m)
+        self.label_sightlines_lookup_ssd_minimum_n_or_e_approach.valueChanged.connect(self._controller.change_input_sightlines_lookup_ssd_minimum_n_or_e_approach)
+        self.label_sightlines_lookup_ssd_minimum_s_or_w_approach.valueChanged.connect(self._controller.change_input_sightlines_lookup_ssd_minimum_s_or_w_approach)
+
+        # SIGNS AND PAVEMENT MARKINGS (GCS SECTION 8)
+        #Group TextEdits
+        #DELETE input_signs_and_markings_advisory_speed_comments = None
+        #DELETE input_signs_and_markings_comments = None
+        #DELETE input_signs_and_markings_emergency_notification_comments = None
+        #DELETE input_signs_and_markings_number_of_tracks_comments = None
+        #DELETE input_signs_and_markings_railway_crossing_ahead_comments = None
+        #DELETE input_signs_and_markings_railway_crossing_comments = None
+        #DELETE input_signs_and_markings_stop_comments = None
+        #DELETE input_signs_and_markings_stop_sign_ahead_comments = None
+
+        #Group DoubleSpinBox
+        #input_signs_and_markings_railway_crossing_ahead_n_or_e_approach_distance_from_rail = None 
+        #input_signs_and_markings_railway_crossing_ahead_n_or_e_approach_distance_from_road = None 
+        #input_signs_and_markings_railway_crossing_ahead_n_or_e_approach_height = None 
+        #input_signs_and_markings_railway_crossing_ahead_s_or_w_approach_distance_from_rail = None 
+        #input_signs_and_markings_railway_crossing_ahead_s_or_w_approach_distance_from_road = None 
+        #input_signs_and_markings_railway_crossing_ahead_s_or_w_approach_height = None 
+        #input_signs_and_markings_stop_n_or_e_approach_height = None 
+        #input_signs_and_markings_stop_n_or_e_approach_location_from_rail = None 
+        #input_signs_and_markings_stop_n_or_e_approach_location_from_road = None 
+        #input_signs_and_markings_stop_s_or_w_approach_height = None 
+        #input_signs_and_markings_stop_s_or_w_approach_location_from_rail = None 
+        #input_signs_and_markings_stop_s_or_w_approach_location_from_road = None 
+        #input_signs_and_markings_stop_sign_ahead_n_or_e_approach_height = None 
+        #input_signs_and_markings_stop_sign_ahead_n_or_e_approach_location_from_rail = None 
+        #input_signs_and_markings_stop_sign_ahead_n_or_e_approach_location_from_road = None 
+        #input_signs_and_markings_stop_sign_ahead_s_or_w_approach_height = None 
+        #input_signs_and_markings_stop_sign_ahead_s_or_w_approach_location_from_rail = None 
+        #input_signs_and_markings_stop_sign_ahead_s_or_w_approach_location_from_road = None 
+
+        #Group ComboBoxes
+        #input_signs_and_markings_advisory_speed_n_or_e_approach_present = None
+        #input_signs_and_markings_advisory_speed_n_or_e_approach_with_wa_18_20 = None
+        #input_signs_and_markings_advisory_speed_s_or_w_approach_present = None
+        #input_signs_and_markings_advisory_speed_s_or_w_approach_with_wa_18_20 = None
+        #input_signs_and_markings_dividing_lines_present = None
+        #input_signs_and_markings_emergency_notification_n_or_e_approach_condition = None
+        #input_signs_and_markings_emergency_notification_n_or_e_approach_legible = None
+        #input_signs_and_markings_emergency_Notification_n_or_e_approach_orientation = None
+        #input_signs_and_markings_emergency_notification_n_or_e_approach_present = None
+        #input_signs_and_markings_emergency_notification_s_or_w_approach_condition = None
+        #input_signs_and_markings_emergency_notification_s_or_w_approach_legible = None
+        #input_signs_and_markings_emergency_notification_s_or_w_approach_orientation = None
+        #input_signs_and_markings_emergency_notification_s_or_w_approach_present = None
+        #input_signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_1b = None
+        #input_signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_3c = None
+        #input_signs_and_markings_number_of_tracks_n_or_e_approach_present = None
+        #input_signs_and_markings_number_of_tracks_s_or_w_approach_per_fig_8_1b = None
+        #input_signs_and_markings_number_of_tracks_s_or_w_approach_per_fig_8_3c = None
+        #input_signs_and_markings_number_of_tracks_s_or_w_approach_present = None
+        #input_signs_and_markings_per_mutcd = None
+        #input_signs_and_markings_posted_speed_n_or_e_approach_present = None
+        #input_signs_and_markings_posted_speed_s_or_w_approach_present = None
+        #input_signs_and_markings_railway_crossing_ahead_n_or_e_approach_orientation = None
+        #input_signs_and_markings_railway_crossing_ahead_n_or_e_approach_present = None
+        #input_signs_and_markings_railway_crossing_ahead_s_or_w_approach_orientation = None
+        #input_signs_and_markings_railway_crossing_ahead_s_or_w_approach_present = None
+        #input_signs_and_markings_railway_crossing_n_or_e_approach_per_fig_8_1a = None
+        #input_signs_and_markings_railway_crossing_n_or_e_approach_present = None
+        #input_signs_and_markings_railway_crossing_s_or_w_approach_per_fig_8_1a = None
+        #input_signs_and_markings_railway_crossing_s_or_w_approach_present = None
+        #input_signs_and_markings_sidewalks_present = None
+        #input_signs_and_markings_stop_n_or_e_approach_per_fig_8_4 = None
+        #input_signs_and_markings_stop_n_or_e_approach_present = None
+        #input_signs_and_markings_stop_n_or_e_approach_same_post = None
+        #input_signs_and_markings_stop_s_or_w_approach_per_fig_8_4 = None
+        #input_signs_and_markings_stop_s_or_w_approach_present = None
+        #input_signs_and_markings_stop_s_or_w_approach_same_post = None
+        #input_signs_and_markings_stop_sign_ahead_n_or_e_approach_present = None
+        #input_signs_and_markings_stop_sign_ahead_s_or_w_approach_present = None
+
+        # GRADE CROSSING WARNING SYSTEM WARRANTS (GCS SECTION 9)
+        #Group TextEdits
+        #input_gcws_warrants_comments = None
+
+        # Group Labels
+        self.label_gcws_warrant_private_9_3.valueChanged.connect(self._controller.change_input_gcws_warrant_private_9_3)
+        self.label_gcws_warrant_private_9_3_1.valueChanged.connect(self._controller.change_input_gcws_warrant_private_9_3_1)
+        self.label_gcws_warrant_private_9_3_2_a.valueChanged.connect(self._controller.change_input_gcws_warrant_private_9_3_2_a)
+        self.label_gcws_warrant_private_9_3_2_b.valueChanged.connect(self._controller.change_input_gcws_warrant_private_9_3_2_b)
+        self.label_gcws_warrant_private_9_3_2_c.valueChanged.connect(self._controller.change_input_gcws_warrant_private_9_3_2_c)
+        self.label_gcws_warrant_public_9_1.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1)
+        self.label_gcws_warrant_public_9_1_a.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_a)
+        self.label_gcws_warrant_public_9_1_b.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_b)
+        self.label_gcws_warrant_public_9_1_c.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_c)
+        self.label_gcws_warrant_public_9_1_d_i.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_d_i)
+        self.label_gcws_warrant_public_9_1_d_ii.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_d_ii)
+        self.label_gcws_warrant_public_9_1_d_iii.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_d_iii)
+        self.label_gcws_warrant_sidewalk_9_5.valueChanged.connect(self._controller.change_input_gcws_warrant_sidewalk_9_5)
+        self.label_gates_gcws_warrant_private_9_4_1_a.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_private_9_4_1_a)
+        self.label_gates_gcws_warrant_private_9_4_1_b.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_private_9_4_1_b)
+        self.label_gates_gcws_warrant_private_9_4_1_c.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_private_9_4_1_c)
+        self.label_gates_gcws_warrant_public_9_2_1_a.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_public_9_2_1_a)
+        self.label_gates_gcws_warrant_public_9_2_1_b.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_public_9_2_1_b)
+        self.label_gates_gcws_warrant_public_9_2_1_c.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_public_9_2_1_c)
+        self.label_gates_gcws_warrant_public_9_2_1_d.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_public_9_2_1_d)
+        self.label_gates_gcws_warrant_public_9_2_1_e.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_public_9_2_1_e)
+        self.label_gates_gcws_warrant_sidewalk_9_6.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_sidewalk_9_6)
+
+        # GRADE CROSSING WARNING SYSTEMS (GCS SECTION 12-16)
+        #Group TextEdits
+        #input_gcws_comments = None
+            
+        #Group DoubleSpinBox
+        #input_gcws_measure_warning_device_n_or_e_approach_distance_from_rail = None 
+        #input_gcws_measure_warning_device_n_or_e_approach_distance_from_road = None 
+        #input_gcws_measure_warning_device_n_or_e_approach_distance_top_of_foundation = None 
+        #input_gcws_measure_warning_device_n_or_e_approach_slope_from_foundation = None 
+        #input_gcws_measure_warning_device_s_or_w_approach_distance_from_rail = None 
+        #input_gcws_measure_warning_device_s_or_w_approach_distance_from_road = None 
+        #input_gcws_measure_warning_device_s_or_w_approach_distance_top_of_foundation = None 
+        #input_gcws_measure_warning_device_s_or_w_approach_slope_from_foundation = None 
+        #input_gcws_rail_crossing_warning_time_actual = None 
+
+        #Group ComboBox
+        #input_gcws_observe_bell_if_sidewalk = None
+        #input_gcws_observe_bells_condition = None
+        #input_gcws_observe_bells_n_or_e_approach = None
+        #input_gcws_observe_bells_s_or_w_approach = None
+        #input_gcws_observe_cantilever_lights_condition = None
+        #input_gcws_observe_cantilever_lights_n_or_e_approach = None
+        #input_gcws_observe_cantilever_lights_s_or_w_approach = None
+        #input_gcws_observe_gates_condition = None
+        #input_gcws_observe_gates_n_or_e_approach = None
+        #input_gcws_observe_gates_s_or_w_approach = None
+        #input_gcws_observe_gcws_limited_use_with_walk_light_assembly = None
+        #input_gcws_observe_gcws_limited_use_without_walk_light_assembly = None
+        #input_gcws_observe_light_units_condition = None
+        #input_gcws_observe_light_units_n_or_e_approach = None
+        #input_gcws_observe_light_units_s_or_w_approach = None
+        #input_gcws_observe_warning_time_consistency = None   
+        #input_gcws_observe_warning_time_consistency_reduced_speed = None
+        #input_gcws_rail_cut_out_circuit_requirements = None
+        #input_gcws_rail_directional_stick_circuit_requirements = None
+        #input_gcws_rail_self_diagnostic = None
+
+        #Group Labels
+        self.label_gcws_rail_design_approach_warning_time.valueChanged.connect(self._controller.change_input_gcws_rail_design_approach_warning_time)
+        self.label_gcws_rail_design_warning_time_adjacent_crossing.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_adjacent_crossing)
+        self.label_gcws_rail_design_warning_time_clearance_distance.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_clearance_distance)
+        self.label_gcws_rail_design_warning_time_departure_time_pedestrian.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_departure_time_pedestrian)
+        self.label_gcws_rail_design_warning_time_departure_time_vehicle.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_departure_time_vehicle)
+        self.label_gcws_rail_design_warning_time_gate_arm_clearance.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_gate_arm_clearance)
+        self.label_gcws_rail_design_warning_time_preemption.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_preemption)
+        self.label_gcws_rail_design_warning_time_ssd.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_ssd)
+ 
+        # FLASHING LIGHT UNITS (GCS SECTION 13 & 14)
+        #Group TextEdits
+        #input_light_units_comments = None
+
+        #Group DoubleSpinBox
+        #input_light_units_measure_cantilevers_n_or_e_approach_distance_from_rail = None 
+        #input_light_units_measure_cantilevers_n_or_e_approach_distance_from_road = None 
+        #input_light_units_measure_cantilevers_n_or_e_approach_dl = None 
+        #input_light_units_measure_cantilevers_n_or_e_approach_dr = None 
+        #input_light_units_measure_cantilevers_n_or_e_approach_height = None 
+        #input_light_units_measure_cantilevers_s_or_w_approach_distance_from_rail = None 
+        #input_light_units_measure_cantilevers_s_or_w_approach_distance_from_road = None 
+        #input_light_units_measure_cantilevers_s_or_w_approach_dl = None 
+        #input_light_units_measure_cantilevers_s_or_w_approach_dr = None 
+        #input_light_units_measure_cantilevers_s_or_w_approach_height = None 
+        #input_light_units_measure_n_or_e_approach_height = None 
+        #input_light_units_measure_s_or_w_approach_height = None 
+
+        #Group ComboBoxes
+        #input_light_units_observe_cantilevers_per_fig_12_3 = None
+        #input_light_units_observe_per_fig_12_1 = None
+        #input_light_units_observe_sidewalks_n_or_e_approach = None
+        #input_light_units_observe_sidewalks_s_or_w_approach = None
+        #input_light_units_observe_supplemental_lights_n_or_e_approach = None
+        #input_light_units_observe_supplemental_lights_s_or_w_approach = None
+        #input_light_units_observe_visibility_back_lights_n_or_e_approach = None
+        #input_light_units_observe_visibility_back_lights_s_or_w_approach = None
+        #input_light_units_observe_visibility_front_lights_n_or_e_approach = None
+        #input_light_units_observe_visibility_front_lights_s_or_w_approach = None
+
+        # GATES FOR GRADE CROSSING WARNING SYSTEMS (GCS SECTION 10, 12, 15)
+        #Group TextEdits
+        #input_gates_gcws_comments = None
+
+        #Group DoubleSpinBox
+        #input_gates_gcws_measure_distance_between_gate_end_and_road_cl_n_or_e_approach = None 
+        #input_gates_gcws_measure_distance_between_gate_end_and_road_cl_s_or_w_approach = None 
+        #input_gates_gcws_measure_gate_ascent_time = None 
+        #input_gates_gcws_measure_gate_descent_time = None 
+        #input_gates_gcws_rail_gate_arm_delay_time_design = None 
+        self.doubleSpinBox_gates_gcws_rail_gate_arm_descent_time_design.valueChanged.connect(self._controller.change_input_gates_gcws_rail_gate_arm_descent_time_design)
+        #input_gates_gcws_rail_inner_gate_arm_delay_time_design = None 
+
+        #Group Labels
+        self.label_gates_gcws_calculate_gate_arm_clearance_time_recommended.valueChanged.connect(self._controller.change_input_gates_gcws_calculate_gate_arm_clearance_time_recommended)
+        self.label_gates_gcws_calculate_inner_gate_arm_delay_time_recommended.valueChanged.connect(self._controller.change_input_gates_gcws_calculate_inner_gate_arm_delay_time_recommended)
+
+        #Group ComboBoxes
+        #input_gates_gcws_observe_gate_arm_rest = None
+        #input_gates_gcws_observe_gate_ascent_time = None
+        #input_gates_gcws_observe_gate_descent_time = None
+        #input_gates_gcws_observe_gate_strips_n_or_e_approach = None
+        #input_gates_gcws_observe_gate_strips_s_or_w_approach = None
+        #input_gates_gcws_observe_per_fig_12_2 = None
+
+        # PREPARE TO STOP AT RAILWAY CROSSING SIGN (GCS SECTION 18)
+        #Group Text Edits
+        #input_aawd_comments = None
+
+        #Group DoubleSpinBox
+        #input_aawd_measure_distance_sign_and_stop_n_or_e_approach_actual = None 
+        #input_aawd_measure_distance_sign_and_stop_s_or_w_approach_actual = None 
+
+        #Group ComboBoxes
+        #input_aawd_observe_present_n_or_e_approach = None
+        #input_aawd_observe_present_s_or_w_approach = None
+        #input_aawd_road_aawd_sufficient_activation_time_n_or_e_approach = None
+        #input_aawd_road_aawd_sufficient_activation_time_s_or_w_approach = None
+
+        #Group Labels
+        self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach.valueChanged.connect(self._controller.change_input_aawd_calculate_advance_activation_time_design_n_or_e_approach)
+        self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach.valueChanged.connect(self._controller.change_input_aawd_calculate_advance_activation_time_design_s_or_w_approach)
+        self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended.valueChanged.connect(self._controller.change_input_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended)
+        self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended.valueChanged.connect(self._controller.change_input_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended)
+        self.label_aawd_warrant_gcr_lookup_road_classification.valueChanged.connect(self._controller.change_input_aawd_warrant_gcr_lookup_road_classification)
+        self.label_aawd_warrant_gcr_observe_environmental_condition.valueChanged.connect(self._controller.change_input_aawd_warrant_gcr_observe_environmental_condition)
+        self.label_aawd_warrant_gcr_observe_sightline_obstruction.valueChanged.connect(self._controller.change_input_aawd_warrant_gcr_observe_sightline_obstruction)
+        self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr.valueChanged.connect(self._controller.change_input_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr)
+        self.label_aawd_warrant_mutcd_lookup_significant_road_downgrade.valueChanged.connect(self._controller.change_input_aawd_warrant_mutcd_lookup_significant_road_downgrade)
+
+        # INTERCONNECTION OF TRAFFIC SIGNALS (GCS SECTION 19)
+        #Group TextEdits
+        #input_preemption_of_traffic_signals_comments = None
+
+        #Group DoubleSpinBox
+        #input_preemption_of_traffic_signals_road_preemption_warning_time_actual = None 
+        #input_preemption_of_traffic_signals_road_preemption_warning_time_design = None 
+
+        #Group CombBoxes
+        #input_preemption_of_traffic_signals_observe_consideration_of_Longer_vehicles = None
+        #input_preemption_of_traffic_signals_observe_known_queuing_issues = None
+        #input_preemption_of_traffic_signals_observe_pedestrian_accommodation = None
+        #input_preemption_of_traffic_signals_observe_queuing_condition = None
+        #input_preemption_of_traffic_signals_observe_supplemental_signage = None
+        #input_preemption_of_traffic_signals_observe_traffic_clearance_time_adequate = None
+        #input_preemption_of_traffic_signals_observe_unintended_queuing_by_traffic_signals = None
+        #input_preemption_of_traffic_signals_road_or_rail_crossing_preemption_type = None
+
+        #Group DatePicker
+        #input_preemption_of_traffic_signals_road_date_Last_preemption_check = None
+
+        #Group Labels
+        self.label_preemption_of_traffic_signals_lookup_proximity_condition.valueChanged.connect(self._controller.change_input_preemption_of_traffic_signals_lookup_proximity_condition)
+        self.label_preemption_of_traffic_signals_lookup_required.valueChanged.connect(self._controller.change_input_preemption_of_traffic_signals_lookup_required)
+
+        # WHISTLE CESSATION (GCS SECTION Appendix D)
+        #Group TextEdits
+        #input_areas_without_train_whistling_comments = None
+
+        #Group ComboBoxes
+        #input_areas_without_train_whistling_observe_for_stop_and_proceed = None
+        #input_areas_without_train_whistling_observe_tresNoneing_area = None
+        #input_areas_without_train_whistling_rail_anti_whistling_zone = None
+        #input_areas_without_train_whistling_rail_anti_whistling_zone_24_hrs = None
+
+        #Group Labels
+        self.label_areas_without_train_whistling_lookup_gcs_12_to_16.valueChanged.connect(self._controller.change_input_areas_without_train_whistling_lookup_gcs_12_to_16)
+        self.label_areas_without_train_whistling_lookup_gcs_9_2.valueChanged.connect(self._controller.change_input_areas_without_train_whistling_lookup_gcs_9_2)
+        self.label_areas_without_train_whistling_requirements_observe_table_D1.valueChanged.connect(self._controller.change_input_areas_without_train_whistling_requirements_observe_table_D1)
+
         ##############################
         # LSITEN MODEL EVENT SIGNALS #
         ##############################
@@ -732,31 +1231,31 @@ class ViewCrossingForm(qtw.QWidget):
     #Group Labels
     @qtc.pyqtSlot(float)
     def on_input_design_calculate_adjacent_track_clearance_time_changed(self, value):
-        self.label_design_calculate_adjacent_track_clearance_time.setText(value)
+        self.label_design_calculate_adjacent_track_clearance_time.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_design_calculate_clearance_time_crossing_pedestrian_design_check_changed(self, value):
-        self.label_design_calculate_clearance_time_crossing_pedestrian_design_check.setText(value)
+        self.label_design_calculate_clearance_time_crossing_pedestrian_design_check.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_design_calculate_clearance_time_crossing_vehicle_design_check_changed(self, value):
-        self.label_design_calculate_clearance_time_crossing_vehicle_design_check.setText(value)
+        self.label_design_calculate_clearance_time_crossing_vehicle_design_check.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_design_calculate_clearance_time_gate_arm_ssd_changed(self, value):
-        self.label_design_calculate_clearance_time_gate_arm_ssd.setText(value)
+        self.label_design_calculate_clearance_time_gate_arm_ssd.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_design_calculate_clearance_time_gate_arm_stop_changed(self, value):
-        self.label_design_calculate_clearance_time_gate_arm_stop.setText(value)
+        self.label_design_calculate_clearance_time_gate_arm_stop.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_design_calculate_vehicle_travel_distance_changed(self, value):
-        self.label_design_calculate_vehicle_travel_distance.setText(value)
+        self.label_design_calculate_vehicle_travel_distance.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_design_input_reaction_time_changed(self, value):
-        self.label_design_input_reaction_time.setText(value)
+        self.label_design_input_reaction_time.setNum(value)
 
     @qtc.pyqtSlot(str)
     def on_input_design_lookup_design_vehicle_class_changed(self, value):
@@ -764,19 +1263,19 @@ class ViewCrossingForm(qtw.QWidget):
 
     @qtc.pyqtSlot(float)
     def on_input_design_lookup_design_vehicle_length_changed(self, value):
-        self.label_design_lookup_design_vehicle_length.setText(value)
+        self.label_design_lookup_design_vehicle_length.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_design_lookup_grade_adjustment_factor_changed(self, value):
-        self.label_design_lookup_grade_adjustment_factor.setText(value)
+        self.label_design_lookup_grade_adjustment_factor.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_design_lookup_vehicle_departure_time_crossing_changed(self, value):
-        self.label_design_lookup_vehicle_departure_time_crossing.setText(value)
+        self.label_design_lookup_vehicle_departure_time_crossing.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_design_lookup_vehicle_departure_time_gate_arm_clearance_changed(self, value):
-        self.label_design_lookup_vehicle_departure_time_gate_arm_clearance.setText(value)
+        self.label_design_lookup_vehicle_departure_time_gate_arm_clearance.setNum(value)
     
     # LOCATION OF GRADE CROSSING (GCS SECTION 11)
     #Group TextEdits
@@ -892,7 +1391,7 @@ class ViewCrossingForm(qtw.QWidget):
     #Group Labels
     @qtc.pyqtSlot(float)
     def on_input_road_geometry_lookup_gradient_difference_changed(self, value):
-        self.label_road_geometry_lookup_gradient_difference.setText(value)
+        self.label_road_geometry_lookup_gradient_difference.setNum(value)
     
     # SIGHTLINES (GCS SECTION 7)
     #Group TextEdits
@@ -916,35 +1415,35 @@ class ViewCrossingForm(qtw.QWidget):
     #Group Labels
     @qtc.pyqtSlot(float)
     def on_input_sightlines_calculate_dssd_vehicle_min_ft_changed(self, value):
-        self.label_sightlines_calculate_dssd_vehicle_min_ft.setText(value)
+        self.label_sightlines_calculate_dssd_vehicle_min_ft.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_sightlines_calculate_dssd_vehicle_min_m_changed(self, value):
-        self.label_sightlines_calculate_dssd_vehicle_min_m.setText(value)
+        self.label_sightlines_calculate_dssd_vehicle_min_m.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_sightlines_calculate_dstopped_pedestrian_min_ft_changed(self, value):
-        self.label_sightlines_calculate_dstopped_pedestrian_min_ft.setText(value)
+        self.label_sightlines_calculate_dstopped_pedestrian_min_ft.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_sightlines_calculate_dstopped_pedestrian_min_m_changed(self, value):
-        self.label_sightlines_calculate_dstopped_pedestrian_min_m.setText(value)
+        self.label_sightlines_calculate_dstopped_pedestrian_min_m.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_sightlines_calculate_dstopped_vehicle_min_ft_changed(self, value):
-        self.label_sightlines_calculate_dstopped_vehicle_min_ft.setText(value)
+        self.label_sightlines_calculate_dstopped_vehicle_min_ft.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_sightlines_calculate_dstopped_vehicle_min_m_changed(self, value):
-        self.label_sightlines_calculate_dstopped_vehicle_min_m.setText(value)
+        self.label_sightlines_calculate_dstopped_vehicle_min_m.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_sightlines_lookup_ssd_minimum_n_or_e_approach_changed(self, value):
-        self.label_sightlines_lookup_ssd_minimum_n_or_e_approach.setText(value)
+        self.label_sightlines_lookup_ssd_minimum_n_or_e_approach.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_sightlines_lookup_ssd_minimum_s_or_w_approach_changed(self, value):
-        self.label_sightlines_lookup_ssd_minimum_s_or_w_approach.setText(value)
+        self.label_sightlines_lookup_ssd_minimum_s_or_w_approach.setNum(value)
 
     # SIGNS AND PAVEMENT MARKINGS (GCS SECTION 8)
     #Group TextEdits
@@ -1150,35 +1649,35 @@ class ViewCrossingForm(qtw.QWidget):
     #Group Labels
     @qtc.pyqtSlot(float)
     def on_input_gcws_rail_design_approach_warning_time_changed(self, value):
-        self.label_gcws_rail_design_approach_warning_time.setText(value)
+        self.label_gcws_rail_design_approach_warning_time.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_gcws_rail_design_warning_time_adjacent_crossing_changed(self, value):
-        self.label_gcws_rail_design_warning_time_adjacent_crossing.setText(value)
+        self.label_gcws_rail_design_warning_time_adjacent_crossing.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_gcws_rail_design_warning_time_clearance_distance_changed(self, value):
-        self.label_gcws_rail_design_warning_time_clearance_distance.setText(value)
+        self.label_gcws_rail_design_warning_time_clearance_distance.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_gcws_rail_design_warning_time_departure_time_pedestrian_changed(self, value):
-        self.label_gcws_rail_design_warning_time_departure_time_pedestrian.setText(value)
+        self.label_gcws_rail_design_warning_time_departure_time_pedestrian.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_gcws_rail_design_warning_time_departure_time_vehicle_changed(self, value):
-        self.label_gcws_rail_design_warning_time_departure_time_vehicle.setText(value)
+        self.label_gcws_rail_design_warning_time_departure_time_vehicle.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_gcws_rail_design_warning_time_gate_arm_clearance_changed(self, value):
-        self.label_gcws_rail_design_warning_time_gate_arm_clearance.setText(value)
+        self.label_gcws_rail_design_warning_time_gate_arm_clearance.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_gcws_rail_design_warning_time_preemption_changed(self, value):
-        self.label_gcws_rail_design_warning_time_preemption.setText(value)
+        self.label_gcws_rail_design_warning_time_preemption.setNum(value)
         
     @qtc.pyqtSlot(float)
     def on_input_gcws_rail_design_warning_time_ssd_changed(self, value):
-        self.label_gcws_rail_design_warning_time_ssd.setText(value)
+        self.label_gcws_rail_design_warning_time_ssd.setNum(value)
 
     # FLASHING LIGHT UNITS (GCS SECTION 13 & 14)
     #Group TextEdits
@@ -1232,11 +1731,11 @@ class ViewCrossingForm(qtw.QWidget):
     #Group Labels
     @qtc.pyqtSlot(float)
     def on_input_gates_gcws_calculate_gate_arm_clearance_time_recommended_changed(self, value):
-        self.label_gates_gcws_calculate_gate_arm_clearance_time_recommended.setText(value)
+        self.label_gates_gcws_calculate_gate_arm_clearance_time_recommended.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_gates_gcws_calculate_inner_gate_arm_delay_time_recommended_changed(self, value):
-        self.label_gates_gcws_calculate_inner_gate_arm_delay_time_recommended.setText(value)
+        self.label_gates_gcws_calculate_inner_gate_arm_delay_time_recommended.setNum(value)
 
     #Group ComboBoxes
     #input_gates_gcws_observe_gate_arm_rest_changed = None
@@ -1263,19 +1762,19 @@ class ViewCrossingForm(qtw.QWidget):
     #Group Labels
     @qtc.pyqtSlot(float)
     def on_input_aawd_calculate_advance_activation_time_design_n_or_e_approach_changed(self, value):
-        self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach.setText(value)
+        self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_aawd_calculate_advance_activation_time_design_s_or_w_approach_changed(self, value):
-        self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach.setText(value)
+        self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended_changed(self, value):
-        self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended.setText(value)
+        self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended.setNum(value)
 
     @qtc.pyqtSlot(float)
     def on_input_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended_changed(self, value):
-        self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended.setText(value)
+        self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended.setNum(value)
 
     @qtc.pyqtSlot(str)
     def on_input_aawd_warrant_gcr_lookup_road_classification_changed(self, value):
