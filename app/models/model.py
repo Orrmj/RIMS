@@ -112,7 +112,7 @@ class Model(QObject):
     input_design_calculate_clearance_time_gate_arm_stop_changed = pyqtSignal(float)
     input_design_calculate_vehicle_travel_distance_changed = pyqtSignal(float)
     input_design_input_reaction_time_changed = pyqtSignal(float)
-    input_design_lookup_design_vehicle_class_changed = pyqtSignal(list)
+    input_design_lookup_design_vehicle_class_changed = pyqtSignal(str)
     input_design_lookup_design_vehicle_length_changed = pyqtSignal(float)
     input_design_lookup_grade_adjustment_factor_changed = pyqtSignal(float)
     input_design_lookup_vehicle_departure_time_crossing_changed = pyqtSignal(float)
@@ -125,10 +125,10 @@ class Model(QObject):
     #Group LineEdits
     #input_location_of_grade_crossing_nearest_intersection_other_n_or_e_approach_changed = None 
     #input_location_of_grade_crossing_nearest_intersection_other_s_of_w_approach_changed = None 
-    input_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach_changed = pyqtSignal(list) 
-    input_location_of_grade_crossing_nearest_intersection_signalized_s_of_w_approach_changed = pyqtSignal(list)  
-    input_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach_changed = pyqtSignal(list)  
-    input_location_of_grade_crossing_nearest_intersection_stop_s_of_w_approach_changed = pyqtSignal(list)  
+    input_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach_changed = pyqtSignal(float) 
+    input_location_of_grade_crossing_nearest_intersection_signalized_s_of_w_approach_changed = pyqtSignal(float)  
+    input_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach_changed = pyqtSignal(float)  
+    input_location_of_grade_crossing_nearest_intersection_stop_s_of_w_approach_changed = pyqtSignal(float)  
 
     #group ComboBoxes
     #input_location_of_grade_crossing_observe_nearby_pedestrian_crosswalk_changed = None
