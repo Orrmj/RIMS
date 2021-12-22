@@ -69,13 +69,17 @@ class Controller(QObject):
     #input_collision_history_property_damage
     @pyqtSlot(int)
     def change_input_collision_history_property_damage(self, value):
-        self._model.input_collision_history_pyqtSlot_damage = value
+        self._model.input_collision_history_property_damage = value
 
     #Group Labels
     #TODO input_collision_history_total_5_year_period
     @pyqtSlot(int)
     def change_input_collision_history_total_5_year_period(self):
-        return self.input_collision_history_total_5_year_period
+        change_input_collision_history_fatal_injury = self._model.input_collision_history_fatal_injury
+        input_collision_history_personal_injury = self._model.input_collision_history_personal_injury
+        input_collision_history_property_damage = self._model.input_collision_history_property_damage
+        input_collision_history_total_5_year_period = sum(change_input_collision_history_fatal_injury,input_collision_history_personal_injury, input_collision_history_property_damage)
+        self.input_collision_history_total_5_year_period = input_collision_history_total_5_year_period
 
     # GENERAL INFORMATION
     #Group TextEdits

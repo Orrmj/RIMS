@@ -27,11 +27,7 @@ class ViewCrossingForm(qtw.QWidget):
         # connect ui-widget to controller
         # if ui changes, it sends a signal to an slot on which we connect a controller class.
         # therefore we can receive the signal in the controller
-        '''
-        self.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self._controller.change_input_general_info_rail_no_tracks_main)
-        self.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self._controller.change_input_general_info_rail_no_tracks_other)
-        '''
-
+        
         # INSPECTION DETAILS
         #Group TextBoxes
         #input_inspection_details_assessment_team = None
@@ -54,8 +50,8 @@ class ViewCrossingForm(qtw.QWidget):
         #input_inspection_details_subdivision_mile = None
 
         #Group ComboBoxes
-        self.comboBox_inspection_details_gcws_type.valueChanged.connect(self._controller.change_input_inspection_details_gcws_type)
-        self.comboBox_inspection_details_grade_crossing_type.valueChanged.connect(self._controller.change_input_inspection_details_grade_crossing_type)
+        self.comboBox_inspection_details_gcws_type.activated[str].connect(self._controller.change_input_inspection_details_gcws_type)
+        self.comboBox_inspection_details_grade_crossing_type.activated[str].connect(self._controller.change_input_inspection_details_grade_crossing_type)
         #input_inspection_details_province = None
         #input_inspection_details_railway_authority = None
         #input_inspection_details_reason_for_assessment = None
@@ -75,7 +71,7 @@ class ViewCrossingForm(qtw.QWidget):
         self.spinBox_collision_history_property_damage.valueChanged.connect(self._controller.change_input_collision_history_property_damage)
 
         #Group Labels
-        self.label_collision_history_total_5_year_period.valueChanged.connect(self._controller.change_input_collision_history_total_5_year_period)
+        #self.label_collision_history_total_5_year_period.valueChanged.connect(self._controller.change_input_collision_history_total_5_year_period)
         
         # GENERAL INFORMATION
         #Group TextEdits
@@ -111,16 +107,16 @@ class ViewCrossingForm(qtw.QWidget):
         #input_general_info_observe_surrounding_land_use = None
         #input_general_info_rail_train_switching = None        
         #input_general_info_road_assistive_pedestrian_devices = None
-        self.comboBox_general_info_road_classification.valueChanged.connect(self._controller.change_input_general_info_road_classification)
+        #TODO self.comboBox_general_info_road_classification.activated[list].connect(self._controller.change_input_general_info_road_classification)
         #input_general_info_road_dangerous_goods_route = None
         #input_general_info_road_school_bus_route = None
         #input_general_info_road_seasonal_volume_fluctuations = None
-        self.comboBox_general_info_road_sidewalks.valueChanged.connect(self._controller.change_input_general_info_road_sidewalks)
+        #TODO self.comboBox_general_info_road_sidewalks.activated[list].connect(self._controller.change_input_general_info_road_sidewalks)
 
         #Group Labels
-        self.label_general_info_rail_no_tracks_total.valueChanged.connect(self._controller.change_input_general_info_rail_no_tracks_total)
-        self.label_general_info_rail_no_trains_per_day_total.valueChanged.connect(self._controller.change_input_general_info_rail_no_trains_per_day_total)
-        self.label_general_info_road_no_traffic_lanes_total.valueChanged.connect(self._controller.change_input_general_info_road_no_traffic_lanes_total)
+        #self.label_general_info_rail_no_tracks_total.valueChanged.connect(self._controller.change_input_general_info_rail_no_tracks_total)
+        #self.label_general_info_rail_no_trains_per_day_total.valueChanged.connect(self._controller.change_input_general_info_rail_no_trains_per_day_total)
+        #self.label_general_info_road_no_traffic_lanes_total.valueChanged.connect(self._controller.change_input_general_info_road_no_traffic_lanes_total)
         
         # DESIGN CONSIDERATIONS (GCS SECTION 10)
         #Group TextEdits
@@ -135,21 +131,21 @@ class ViewCrossingForm(qtw.QWidget):
 
         #Group ComboBoxes
         #input_design_observe_field_acceleration_times_exceed_td = None
-        self.comboBox_design_road_design_vehicle_type.valueChanged.connect(self._controller.change_input_design_road_design_vehicle_type)
+        #TODO self.comboBox_design_road_design_vehicle_type.activated[str].connect(self._controller.change_input_design_road_design_vehicle_type)
         
         #Group Labels
-        self.label_design_calculate_adjacent_track_clearance_time.valueChanged.connect(self._controller.change_input_design_calculate_adjacent_track_clearance_time)
-        self.label_design_calculate_clearance_time_crossing_pedestrian_design_check.valueChanged.connect(self._controller.change_input_design_calculate_clearance_time_crossing_pedestrian_design_check)
-        self.label_design_calculate_clearance_time_crossing_vehicle_design_check.valueChanged.connect(self._controller.change_input_design_calculate_clearance_time_crossing_vehicle_design_check)
-        self.label_design_calculate_clearance_time_gate_arm_ssd.valueChanged.connect(self._controller.change_input_design_calculate_clearance_time_gate_arm_ssd)
-        self.label_design_calculate_clearance_time_gate_arm_stop.valueChanged.connect(self._controller.change_input_design_calculate_clearance_time_gate_arm_stop)
-        self.label_design_calculate_vehicle_travel_distance.valueChanged.connect(self._controller.change_input_design_calculate_vehicle_travel_distance)
-        self.label_design_input_reaction_time.valueChanged.connect(self._controller.change_input_design_input_reaction_time)
-        self.label_design_lookup_design_vehicle_class.valueChanged.connect(self._controller.change_input_design_lookup_design_vehicle_class)
-        self.label_design_lookup_design_vehicle_length.valueChanged.connect(self._controller.change_input_design_lookup_design_vehicle_length)
-        self.label_design_lookup_grade_adjustment_factor.valueChanged.connect(self._controller.change_input_design_lookup_grade_adjustment_factor)
-        self.label_design_lookup_vehicle_departure_time_crossing.valueChanged.connect(self._controller.change_input_design_lookup_vehicle_departure_time_crossing)
-        self.label_design_lookup_vehicle_departure_time_gate_arm_clearance.valueChanged.connect(self._controller.change_input_design_lookup_vehicle_departure_time_gate_arm_clearance)
+        #self.label_design_calculate_adjacent_track_clearance_time.valueChanged.connect(self._controller.change_input_design_calculate_adjacent_track_clearance_time)
+        #self.label_design_calculate_clearance_time_crossing_pedestrian_design_check.valueChanged.connect(self._controller.change_input_design_calculate_clearance_time_crossing_pedestrian_design_check)
+        #self.label_design_calculate_clearance_time_crossing_vehicle_design_check.valueChanged.connect(self._controller.change_input_design_calculate_clearance_time_crossing_vehicle_design_check)
+        #self.label_design_calculate_clearance_time_gate_arm_ssd.valueChanged.connect(self._controller.change_input_design_calculate_clearance_time_gate_arm_ssd)
+        #self.label_design_calculate_clearance_time_gate_arm_stop.valueChanged.connect(self._controller.change_input_design_calculate_clearance_time_gate_arm_stop)
+        #self.label_design_calculate_vehicle_travel_distance.valueChanged.connect(self._controller.change_input_design_calculate_vehicle_travel_distance)
+        #self.label_design_input_reaction_time.valueChanged.connect(self._controller.change_input_design_input_reaction_time)
+        #self.label_design_lookup_design_vehicle_class.valueChanged.connect(self._controller.change_input_design_lookup_design_vehicle_class)
+        #self.label_design_lookup_design_vehicle_length.valueChanged.connect(self._controller.change_input_design_lookup_design_vehicle_length)
+        #self.label_design_lookup_grade_adjustment_factor.valueChanged.connect(self._controller.change_input_design_lookup_grade_adjustment_factor)
+        #self.label_design_lookup_vehicle_departure_time_crossing.valueChanged.connect(self._controller.change_input_design_lookup_vehicle_departure_time_crossing)
+        #self.label_design_lookup_vehicle_departure_time_gate_arm_clearance.valueChanged.connect(self._controller.change_input_design_lookup_vehicle_departure_time_gate_arm_clearance)
 
         # LOCATION OF GRADE CROSSING (GCS SECTION 11)
         #Group TextEdits
@@ -231,7 +227,7 @@ class ViewCrossingForm(qtw.QWidget):
         #input_road_geometry_observe_smooth_alignment_within_ssd_s_or_w_approach = None
         
         #Group Labels
-        self.label_road_geometry_lookup_gradient_difference.valueChanged.connect(self._controller.change_input_road_geometry_lookup_gradient_difference)
+        #self.label_road_geometry_lookup_gradient_difference.valueChanged.connect(self._controller.change_input_road_geometry_lookup_gradient_difference)
         
         # SIGHTLINES (GCS SECTION 7)
         #Group TextEdits
@@ -253,14 +249,14 @@ class ViewCrossingForm(qtw.QWidget):
         #input_sightlines_observe_sightline_obstructions = None
 
         #Group Labels
-        self.label_sightlines_calculate_dssd_vehicle_min_ft.valueChanged.connect(self._controller.change_input_sightlines_calculate_dssd_vehicle_min_ft)
-        self.label_sightlines_calculate_dssd_vehicle_min_m.valueChanged.connect(self._controller.change_input_sightlines_calculate_dssd_vehicle_min_m)
-        self.label_sightlines_calculate_dstopped_pedestrian_min_ft.valueChanged.connect(self._controller.change_input_sightlines_calculate_dstopped_pedestrian_min_ft)
-        self.label_sightlines_calculate_dstopped_pedestrian_min_m.valueChanged.connect(self._controller.change_input_sightlines_calculate_dstopped_pedestrian_min_m)
-        self.label_sightlines_calculate_dstopped_vehicle_min_ft.valueChanged.connect(self._controller.change_input_sightlines_calculate_dstopped_vehicle_min_ft)
-        self.label_sightlines_calculate_dstopped_vehicle_min_m.valueChanged.connect(self._controller.change_input_sightlines_calculate_dstopped_vehicle_min_m)
-        self.label_sightlines_lookup_ssd_minimum_n_or_e_approach.valueChanged.connect(self._controller.change_input_sightlines_lookup_ssd_minimum_n_or_e_approach)
-        self.label_sightlines_lookup_ssd_minimum_s_or_w_approach.valueChanged.connect(self._controller.change_input_sightlines_lookup_ssd_minimum_s_or_w_approach)
+        #self.label_sightlines_calculate_dssd_vehicle_min_ft.valueChanged.connect(self._controller.change_input_sightlines_calculate_dssd_vehicle_min_ft)
+        #self.label_sightlines_calculate_dssd_vehicle_min_m.valueChanged.connect(self._controller.change_input_sightlines_calculate_dssd_vehicle_min_m)
+        #self.label_sightlines_calculate_dstopped_pedestrian_min_ft.valueChanged.connect(self._controller.change_input_sightlines_calculate_dstopped_pedestrian_min_ft)
+        #self.label_sightlines_calculate_dstopped_pedestrian_min_m.valueChanged.connect(self._controller.change_input_sightlines_calculate_dstopped_pedestrian_min_m)
+        #self.label_sightlines_calculate_dstopped_vehicle_min_ft.valueChanged.connect(self._controller.change_input_sightlines_calculate_dstopped_vehicle_min_ft)
+        #self.label_sightlines_calculate_dstopped_vehicle_min_m.valueChanged.connect(self._controller.change_input_sightlines_calculate_dstopped_vehicle_min_m)
+        #self.label_sightlines_lookup_ssd_minimum_n_or_e_approach.valueChanged.connect(self._controller.change_input_sightlines_lookup_ssd_minimum_n_or_e_approach)
+        #self.label_sightlines_lookup_ssd_minimum_s_or_w_approach.valueChanged.connect(self._controller.change_input_sightlines_lookup_ssd_minimum_s_or_w_approach)
 
         # SIGNS AND PAVEMENT MARKINGS (GCS SECTION 8)
         #Group TextEdits
@@ -339,28 +335,28 @@ class ViewCrossingForm(qtw.QWidget):
         #input_gcws_warrants_comments = None
 
         # Group Labels
-        self.label_gcws_warrant_private_9_3.valueChanged.connect(self._controller.change_input_gcws_warrant_private_9_3)
-        self.label_gcws_warrant_private_9_3_1.valueChanged.connect(self._controller.change_input_gcws_warrant_private_9_3_1)
-        self.label_gcws_warrant_private_9_3_2_a.valueChanged.connect(self._controller.change_input_gcws_warrant_private_9_3_2_a)
-        self.label_gcws_warrant_private_9_3_2_b.valueChanged.connect(self._controller.change_input_gcws_warrant_private_9_3_2_b)
-        self.label_gcws_warrant_private_9_3_2_c.valueChanged.connect(self._controller.change_input_gcws_warrant_private_9_3_2_c)
-        self.label_gcws_warrant_public_9_1.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1)
-        self.label_gcws_warrant_public_9_1_a.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_a)
-        self.label_gcws_warrant_public_9_1_b.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_b)
-        self.label_gcws_warrant_public_9_1_c.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_c)
-        self.label_gcws_warrant_public_9_1_d_i.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_d_i)
-        self.label_gcws_warrant_public_9_1_d_ii.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_d_ii)
-        self.label_gcws_warrant_public_9_1_d_iii.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_d_iii)
-        self.label_gcws_warrant_sidewalk_9_5.valueChanged.connect(self._controller.change_input_gcws_warrant_sidewalk_9_5)
-        self.label_gates_gcws_warrant_private_9_4_1_a.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_private_9_4_1_a)
-        self.label_gates_gcws_warrant_private_9_4_1_b.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_private_9_4_1_b)
-        self.label_gates_gcws_warrant_private_9_4_1_c.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_private_9_4_1_c)
-        self.label_gates_gcws_warrant_public_9_2_1_a.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_public_9_2_1_a)
-        self.label_gates_gcws_warrant_public_9_2_1_b.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_public_9_2_1_b)
-        self.label_gates_gcws_warrant_public_9_2_1_c.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_public_9_2_1_c)
-        self.label_gates_gcws_warrant_public_9_2_1_d.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_public_9_2_1_d)
-        self.label_gates_gcws_warrant_public_9_2_1_e.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_public_9_2_1_e)
-        self.label_gates_gcws_warrant_sidewalk_9_6.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_sidewalk_9_6)
+        #self.label_gcws_warrant_private_9_3.valueChanged.connect(self._controller.change_input_gcws_warrant_private_9_3)
+        #self.label_gcws_warrant_private_9_3_1.valueChanged.connect(self._controller.change_input_gcws_warrant_private_9_3_1)
+        #self.label_gcws_warrant_private_9_3_2_a.valueChanged.connect(self._controller.change_input_gcws_warrant_private_9_3_2_a)
+        #self.label_gcws_warrant_private_9_3_2_b.valueChanged.connect(self._controller.change_input_gcws_warrant_private_9_3_2_b)
+        #self.label_gcws_warrant_private_9_3_2_c.valueChanged.connect(self._controller.change_input_gcws_warrant_private_9_3_2_c)
+        #self.label_gcws_warrant_public_9_1.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1)
+        #self.label_gcws_warrant_public_9_1_a.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_a)
+        #self.label_gcws_warrant_public_9_1_b.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_b)
+        #self.label_gcws_warrant_public_9_1_c.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_c)
+        #self.label_gcws_warrant_public_9_1_d_i.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_d_i)
+        #self.label_gcws_warrant_public_9_1_d_ii.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_d_ii)
+        #self.label_gcws_warrant_public_9_1_d_iii.valueChanged.connect(self._controller.change_input_gcws_warrant_public_9_1_d_iii)
+        #self.label_gcws_warrant_sidewalk_9_5.valueChanged.connect(self._controller.change_input_gcws_warrant_sidewalk_9_5)
+        #self.label_gates_gcws_warrant_private_9_4_1_a.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_private_9_4_1_a)
+        #self.label_gates_gcws_warrant_private_9_4_1_b.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_private_9_4_1_b)
+        #self.label_gates_gcws_warrant_private_9_4_1_c.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_private_9_4_1_c)
+        #self.label_gates_gcws_warrant_public_9_2_1_a.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_public_9_2_1_a)
+        #self.label_gates_gcws_warrant_public_9_2_1_b.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_public_9_2_1_b)
+        #self.label_gates_gcws_warrant_public_9_2_1_c.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_public_9_2_1_c)
+        #self.label_gates_gcws_warrant_public_9_2_1_d.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_public_9_2_1_d)
+        #self.label_gates_gcws_warrant_public_9_2_1_e.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_public_9_2_1_e)
+        #self.label_gates_gcws_warrant_sidewalk_9_6.valueChanged.connect(self._controller.change_input_gates_gcws_warrant_sidewalk_9_6)
 
         # GRADE CROSSING WARNING SYSTEMS (GCS SECTION 12-16)
         #Group TextEdits
@@ -400,14 +396,14 @@ class ViewCrossingForm(qtw.QWidget):
         #input_gcws_rail_self_diagnostic = None
 
         #Group Labels
-        self.label_gcws_rail_design_approach_warning_time.valueChanged.connect(self._controller.change_input_gcws_rail_design_approach_warning_time)
-        self.label_gcws_rail_design_warning_time_adjacent_crossing.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_adjacent_crossing)
-        self.label_gcws_rail_design_warning_time_clearance_distance.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_clearance_distance)
-        self.label_gcws_rail_design_warning_time_departure_time_pedestrian.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_departure_time_pedestrian)
-        self.label_gcws_rail_design_warning_time_departure_time_vehicle.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_departure_time_vehicle)
-        self.label_gcws_rail_design_warning_time_gate_arm_clearance.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_gate_arm_clearance)
-        self.label_gcws_rail_design_warning_time_preemption.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_preemption)
-        self.label_gcws_rail_design_warning_time_ssd.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_ssd)
+        #self.label_gcws_rail_design_approach_warning_time.valueChanged.connect(self._controller.change_input_gcws_rail_design_approach_warning_time)
+        #self.label_gcws_rail_design_warning_time_adjacent_crossing.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_adjacent_crossing)
+        #self.label_gcws_rail_design_warning_time_clearance_distance.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_clearance_distance)
+        #self.label_gcws_rail_design_warning_time_departure_time_pedestrian.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_departure_time_pedestrian)
+        #self.label_gcws_rail_design_warning_time_departure_time_vehicle.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_departure_time_vehicle)
+        #self.label_gcws_rail_design_warning_time_gate_arm_clearance.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_gate_arm_clearance)
+        #self.label_gcws_rail_design_warning_time_preemption.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_preemption)
+        #self.label_gcws_rail_design_warning_time_ssd.valueChanged.connect(self._controller.change_input_gcws_rail_design_warning_time_ssd)
  
         # FLASHING LIGHT UNITS (GCS SECTION 13 & 14)
         #Group TextEdits
@@ -453,8 +449,8 @@ class ViewCrossingForm(qtw.QWidget):
         #input_gates_gcws_rail_inner_gate_arm_delay_time_design = None 
 
         #Group Labels
-        self.label_gates_gcws_calculate_gate_arm_clearance_time_recommended.valueChanged.connect(self._controller.change_input_gates_gcws_calculate_gate_arm_clearance_time_recommended)
-        self.label_gates_gcws_calculate_inner_gate_arm_delay_time_recommended.valueChanged.connect(self._controller.change_input_gates_gcws_calculate_inner_gate_arm_delay_time_recommended)
+        #self.label_gates_gcws_calculate_gate_arm_clearance_time_recommended.valueChanged.connect(self._controller.change_input_gates_gcws_calculate_gate_arm_clearance_time_recommended)
+        #self.label_gates_gcws_calculate_inner_gate_arm_delay_time_recommended.valueChanged.connect(self._controller.change_input_gates_gcws_calculate_inner_gate_arm_delay_time_recommended)
 
         #Group ComboBoxes
         #input_gates_gcws_observe_gate_arm_rest = None
@@ -479,15 +475,15 @@ class ViewCrossingForm(qtw.QWidget):
         #input_aawd_road_aawd_sufficient_activation_time_s_or_w_approach = None
 
         #Group Labels
-        self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach.valueChanged.connect(self._controller.change_input_aawd_calculate_advance_activation_time_design_n_or_e_approach)
-        self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach.valueChanged.connect(self._controller.change_input_aawd_calculate_advance_activation_time_design_s_or_w_approach)
-        self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended.valueChanged.connect(self._controller.change_input_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended)
-        self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended.valueChanged.connect(self._controller.change_input_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended)
-        self.label_aawd_warrant_gcr_lookup_road_classification.valueChanged.connect(self._controller.change_input_aawd_warrant_gcr_lookup_road_classification)
-        self.label_aawd_warrant_gcr_observe_environmental_condition.valueChanged.connect(self._controller.change_input_aawd_warrant_gcr_observe_environmental_condition)
-        self.label_aawd_warrant_gcr_observe_sightline_obstruction.valueChanged.connect(self._controller.change_input_aawd_warrant_gcr_observe_sightline_obstruction)
-        self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr.valueChanged.connect(self._controller.change_input_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr)
-        self.label_aawd_warrant_mutcd_lookup_significant_road_downgrade.valueChanged.connect(self._controller.change_input_aawd_warrant_mutcd_lookup_significant_road_downgrade)
+        #self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach.valueChanged.connect(self._controller.change_input_aawd_calculate_advance_activation_time_design_n_or_e_approach)
+        #self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach.valueChanged.connect(self._controller.change_input_aawd_calculate_advance_activation_time_design_s_or_w_approach)
+        #self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended.valueChanged.connect(self._controller.change_input_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended)
+        #self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended.valueChanged.connect(self._controller.change_input_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended)
+        #self.label_aawd_warrant_gcr_lookup_road_classification.valueChanged.connect(self._controller.change_input_aawd_warrant_gcr_lookup_road_classification)
+        #self.label_aawd_warrant_gcr_observe_environmental_condition.valueChanged.connect(self._controller.change_input_aawd_warrant_gcr_observe_environmental_condition)
+        #self.label_aawd_warrant_gcr_observe_sightline_obstruction.valueChanged.connect(self._controller.change_input_aawd_warrant_gcr_observe_sightline_obstruction)
+        #self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr.valueChanged.connect(self._controller.change_input_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr)
+        #self.label_aawd_warrant_mutcd_lookup_significant_road_downgrade.valueChanged.connect(self._controller.change_input_aawd_warrant_mutcd_lookup_significant_road_downgrade)
 
         # INTERCONNECTION OF TRAFFIC SIGNALS (GCS SECTION 19)
         #Group TextEdits
@@ -511,8 +507,8 @@ class ViewCrossingForm(qtw.QWidget):
         #input_preemption_of_traffic_signals_road_date_Last_preemption_check = None
 
         #Group Labels
-        self.label_preemption_of_traffic_signals_lookup_proximity_condition.valueChanged.connect(self._controller.change_input_preemption_of_traffic_signals_lookup_proximity_condition)
-        self.label_preemption_of_traffic_signals_lookup_required.valueChanged.connect(self._controller.change_input_preemption_of_traffic_signals_lookup_required)
+        #self.label_preemption_of_traffic_signals_lookup_proximity_condition.valueChanged.connect(self._controller.change_input_preemption_of_traffic_signals_lookup_proximity_condition)
+        #self.label_preemption_of_traffic_signals_lookup_required.valueChanged.connect(self._controller.change_input_preemption_of_traffic_signals_lookup_required)
 
         # WHISTLE CESSATION (GCS SECTION Appendix D)
         #Group TextEdits
@@ -525,9 +521,9 @@ class ViewCrossingForm(qtw.QWidget):
         #input_areas_without_train_whistling_rail_anti_whistling_zone_24_hrs = None
 
         #Group Labels
-        self.label_areas_without_train_whistling_lookup_gcs_12_to_16.valueChanged.connect(self._controller.change_input_areas_without_train_whistling_lookup_gcs_12_to_16)
-        self.label_areas_without_train_whistling_lookup_gcs_9_2.valueChanged.connect(self._controller.change_input_areas_without_train_whistling_lookup_gcs_9_2)
-        self.label_areas_without_train_whistling_requirements_observe_table_D1.valueChanged.connect(self._controller.change_input_areas_without_train_whistling_requirements_observe_table_D1)
+        #self.label_areas_without_train_whistling_lookup_gcs_12_to_16.valueChanged.connect(self._controller.change_input_areas_without_train_whistling_lookup_gcs_12_to_16)
+        #self.label_areas_without_train_whistling_lookup_gcs_9_2.valueChanged.connect(self._controller.change_input_areas_without_train_whistling_lookup_gcs_9_2)
+        #self.label_areas_without_train_whistling_requirements_observe_table_D1.valueChanged.connect(self._controller.change_input_areas_without_train_whistling_requirements_observe_table_D1)
 
         ##############################
         # LSITEN MODEL EVENT SIGNALS #
@@ -2261,8 +2257,8 @@ class ViewCrossingForm(qtw.QWidget):
         self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_legible = qtw.QComboBox()
         self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_legible.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_emergency_Notification_n_or_e_approach_orientation = qtw.QComboBox()
-        self.comboBox_signs_and_markings_emergency_Notification_n_or_e_approach_orientation.addItems(list_yes_no_na)
+        self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_orientation = qtw.QComboBox()
+        self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_orientation.addItems(list_yes_no_na)
 
         self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_present = qtw.QComboBox()
         self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_present.addItems(list_yes_no)
@@ -2524,12 +2520,12 @@ class ViewCrossingForm(qtw.QWidget):
         #Group TextEdits
         self.textEdit_gates_gcws_comments = qtw.QTextEdit()
 
-        #Group SpinBox
-        self.spinBox_gates_gcws_measure_gate_ascent_time = qtw.QSpinBox () 
-        self.spinBox_gates_gcws_measure_gate_descent_time = qtw.QSpinBox () 
-        self.spinBox_gates_gcws_rail_gate_arm_delay_time_design = qtw.QSpinBox () 
-        self.spinBox_gates_gcws_rail_gate_arm_descent_time_design = qtw.QSpinBox () 
-        self.spinBox_gates_gcws_rail_inner_gate_arm_delay_time_design = qtw.QSpinBox () 
+        #Group DoubleSpinBox
+        self.doubleSpinBox_gates_gcws_measure_gate_ascent_time = qtw.QDoubleSpinBox () 
+        self.doubleSpinBox_gates_gcws_measure_gate_descent_time = qtw.QDoubleSpinBox () 
+        self.doubleSpinBox_gates_gcws_rail_gate_arm_delay_time_design = qtw.QDoubleSpinBox () 
+        self.doubleSpinBox_gates_gcws_rail_gate_arm_descent_time_design = qtw.QDoubleSpinBox () 
+        self.doubleSpinBox_gates_gcws_rail_inner_gate_arm_delay_time_design = qtw.QDoubleSpinBox () 
 
         #Group DoubleSpinBox
         self.doubleSpinBox_gates_gcws_measure_distance_between_gate_end_and_road_cl_n_or_e_approach = qtw.QDoubleSpinBox () 
@@ -2775,7 +2771,7 @@ class ViewCrossingForm(qtw.QWidget):
         form_layout_collision_history.addRow('Property Damage Collisions:', self.spinBox_collision_history_property_damage)
         form_layout_collision_history.addRow('Personal Injury Collisions:', self.spinBox_collision_history_personal_injury)
         form_layout_collision_history.addRow('Fatal Injury Collisions:', self.spinBox_collision_history_fatal_injury)
-        #form_layout_collision_history.addRow('Total Collisions in the last 5 year period:', self.label_collision_history_total_5_year_period)
+        form_layout_collision_history.addRow('Total Collisions in the last 5 year period:', self.label_collision_history_total_5_year_period)
         form_layout_collision_history.addRow('Number of Persons Injured:', self.spinBox_collision_history_fatalities)
         form_layout_collision_history.addRow('Number of Persons Killed:', self.spinBox_collision_history_personal_injuries)
         form_layout_collision_history.addRow('Details of Collisions:', self.textEdit_collision_history_comments)
@@ -2788,11 +2784,11 @@ class ViewCrossingForm(qtw.QWidget):
         form_layout_gcws_warrants.addRow(qtw.QLabel('Average Daily Train Volume'))
         form_layout_general_information.addRow('Freight Trains/Day:', self.spinBox_general_info_rail_no_trains_per_day_freight)
         form_layout_general_information.addRow('Passenger Trains/Day:', self.spinBox_general_info_rail_no_trains_per_day_passengers)
-        #TODO form_layout_general_information.addRow('Total Trains/Day:', self.label_general_info_rail_no_trains_per_day_total)
+        form_layout_general_information.addRow('Total Trains/Day:', self.label_general_info_rail_no_trains_per_day_total)
         form_layout_gcws_warrants.addRow(qtw.QLabel('Type and Number of Tracks'))
         form_layout_general_information.addRow('Main', self.spinBox_general_info_rail_no_tracks_main)
         form_layout_general_information.addRow('Other', self.spinBox_general_info_rail_no_tracks_other)
-        #TODO form_layout_general_information.addRow('Number of Tracks', self.label_general_info_rail_no_tracks_total)
+        form_layout_general_information.addRow('Number of Tracks', self.label_general_info_rail_no_tracks_total)
         form_layout_general_information.addRow('Train Switching within Crossing Approaches?', self.comboBox_general_info_rail_train_switching)
         form_layout_general_information.addRow('Road Crossing Design Speed (km/hr)', self.spinBox_general_info_road_speed_design)
         form_layout_general_information.addRow('Road Posted Speed (km/hr)', self.spinBox_general_info_road_speed_posted)
@@ -2805,7 +2801,7 @@ class ViewCrossingForm(qtw.QWidget):
         form_layout_general_information.addRow('Northbound / Eastbound', self.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound)
         form_layout_general_information.addRow('Southbound / Westbound', self.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound)
         form_layout_general_information.addRow('Bidirectional', self.spinBox_general_info_road_no_traffic_lanes_bidirectional)
-        #TODO form_layout_general_information.addRow('Total', self.label_general_info_road_no_traffic_lanes_total)
+        form_layout_general_information.addRow('Total', self.label_general_info_road_no_traffic_lanes_total)
         form_layout_general_information.addRow('Does Grade Crossing Include sidewalk, Path, or Trail?', self.comboBox_general_info_road_sidewalks)
         form_layout_general_information.addRow('Regular Use of Crossing by Persons with Assistive Devices?', self.comboBox_general_info_road_assistive_pedestrian_devices)
         form_layout_general_information.addRow('High Seasonal Fluctuation in Volumes?', self.comboBox_general_info_road_seasonal_volume_fluctuations)
@@ -2821,25 +2817,25 @@ class ViewCrossingForm(qtw.QWidget):
 
         # layout container widgets - DESIGN CONSIDERATIONS (GCS SECTION 10)
         form_layout_design_considerations.addRow('Design Vehicle Type:', self.comboBox_design_road_design_vehicle_type)
-        #TODO form_layout_design_considerations.addRow('Design Vehicle Class:', self.label_design_lookup_design_vehicle_class)
-        #TODO form_layout_design_considerations.addRow('Design Vehicle Length (m):', self.label_design_lookup_design_vehicle_length)
+        form_layout_design_considerations.addRow('Design Vehicle Class:', self.label_design_lookup_design_vehicle_class)
+        form_layout_design_considerations.addRow('Design Vehicle Length (m):', self.label_design_lookup_design_vehicle_length)
         form_layout_design_considerations.addRow('Clearance Distance - Vehicle, cd (m):', self.doubleSpinBox_design_measure_clearance_distance_vehicle)
-        #TODO form_layout_design_considerations.addRow('Vehicle Travel Distance, S = L + cd (m):', self.label_design_calculate_vehicle_travel_distance)
-        #TODO form_layout_design_considerations.addRow('Departure Time - Vehicle, Td = J + T:', self.label_design_calculate_clearance_time_crossing_vehicle_design_check)
-        #TODO form_layout_design_considerations.addRow("Driver's Reaction Time (s):", self.label_design_input_reaction_time)
+        form_layout_design_considerations.addRow('Vehicle Travel Distance, S = L + cd (m):', self.label_design_calculate_vehicle_travel_distance)
+        form_layout_design_considerations.addRow('Departure Time - Vehicle, Td = J + T:', self.label_design_calculate_clearance_time_crossing_vehicle_design_check)
+        form_layout_design_considerations.addRow("Driver's Reaction Time (s):", self.label_design_input_reaction_time)
         form_layout_design_considerations.addRow('Maximum Road Approach Grade within S (%):', self.doubleSpinBox_design_road_max_approach_grade_within_s)
-        #TODO form_layout_design_considerations.addRow('Grade Adjustment Factor:', self.label_design_lookup_grade_adjustment_factor)
+        form_layout_design_considerations.addRow('Grade Adjustment Factor:', self.label_design_lookup_grade_adjustment_factor)
         form_layout_design_considerations.addRow('Do Field Acceleration Times Exceed Td?:', self.comboBox_design_observe_field_acceleration_times_exceed_td)
         form_layout_design_considerations.addRow('Clearance Distance - Pedestrian, cd (m):', self.doubleSpinBox_design_measure_clearance_distance_pedestrian)
-        #TODO form_layout_design_considerations.addRow('Departure Time - Pedestrian, Td = J + T:', self.label_design_calculate_clearance_time_crossing_pedestrian_design_check)
+        form_layout_design_considerations.addRow('Departure Time - Pedestrian, Td = J + T:', self.label_design_calculate_clearance_time_crossing_pedestrian_design_check)
         form_layout_design_considerations.addRow('Separation Distnace Between Adjacent Tracks (m):', self.doubleSpinBox_design_measure_adjacent_track_separation_distance)      
         form_layout_design_considerations.addRow('Adjacent Track Clearance Distance (m):', self.doubleSpinBox_design_measure_adjacent_track_clearance_distance)
-        #TODO form_layout_design_considerations.addRow('Adjacent Track Clearance Time (s):', self.label_design_calculate_adjacent_track_clearance_time)
-        #TODO form_layout_design_considerations.addRow('', self.label_design_calculate_clearance_time_gate_arm_ssd)
-        #TODO form_layout_design_considerations.addRow('', self.label_design_calculate_clearance_time_gate_arm_stop)
-        #TODO form_layout_design_considerations.addRow('', self.label_design_lookup_vehicle_departure_time_crossing)
-        #TODO form_layout_design_considerations.addRow('', self.label_design_lookup_vehicle_departure_time_gate_arm_clearance)        
-        #TODO form_layout_design_considerations.addRow('Design Consideration Comments', self.label_design_comments)
+        form_layout_design_considerations.addRow('Adjacent Track Clearance Time (s):', self.label_design_calculate_adjacent_track_clearance_time)
+        form_layout_design_considerations.addRow('', self.label_design_calculate_clearance_time_gate_arm_ssd)
+        form_layout_design_considerations.addRow('', self.label_design_calculate_clearance_time_gate_arm_stop)
+        form_layout_design_considerations.addRow('', self.label_design_lookup_vehicle_departure_time_crossing)
+        form_layout_design_considerations.addRow('', self.label_design_lookup_vehicle_departure_time_gate_arm_clearance)        
+        form_layout_design_considerations.addRow('Design Consideration Comments', self.textEdit_design_comments)
 
         # layout container widgets - LOCATION OF GRADE CROSSING (GCS SECTION 11)
         form_layout_gcws_warrants.addRow(qtw.QLabel('D (Intersection with Stop Sign)'))
@@ -2918,20 +2914,20 @@ class ViewCrossingForm(qtw.QWidget):
         form_layout_road_geometry.addRow('Road Geometry Comments:', self.textEdit_road_geometry_comments)
 
         # layout container widgets - SIGHTLINES (GCS SECTION 7)
-        #TODO form_layout_sightlines.addRow('SSD Minimum (N or E Road Approach) (m):', self.label_sightlines_lookup_ssd_minimum_n_or_e_approach)
-        #TODO form_layout_sightlines.addRow('SSD Minimum (S or W Road Approach) (m):', self.label_sightlines_lookup_ssd_minimum_s_or_w_approach)
+        form_layout_sightlines.addRow('SSD Minimum (N or E Road Approach) (m):', self.label_sightlines_lookup_ssd_minimum_n_or_e_approach)
+        form_layout_sightlines.addRow('SSD Minimum (S or W Road Approach) (m):', self.label_sightlines_lookup_ssd_minimum_s_or_w_approach)
         form_layout_sightlines.addRow('SSD Actual (N or E Road Approach) (m):', self.doubleSpinBox_sightlines_measure_ssd_actual_n_or_e_approach)
         form_layout_sightlines.addRow('SSD Actual (S or W Road Approach) (m):', self.doubleSpinBox_sightlines_measure_ssd_actual_s_or_w_approach)
-        #TODO form_layout_sightlines.addRow('DSSD Minimum (ft):', self.label_sightlines_calculate_Dssd_vehicle_Min_ft)
-        #TODO form_layout_sightlines.addRow('DSSD Minimum (m):', self.label_sightlines_calculate_Dssd_vehicle_Min_m)
+        form_layout_sightlines.addRow('DSSD Minimum (ft):', self.label_sightlines_calculate_dssd_vehicle_min_ft)
+        form_layout_sightlines.addRow('DSSD Minimum (m):', self.label_sightlines_calculate_dssd_vehicle_min_m)
         form_layout_sightlines.addRow("DSSD Actual (N or E Road Approach) (Driver's Left) (m):", self.doubleSpinBox_sightlines_measure_dssd_actual_n_or_e_approach_left)
         form_layout_sightlines.addRow("DSSD Actual (N or E Road Approach) (Driver's Right) (m):", self.doubleSpinBox_sightlines_measure_dssd_actual_n_or_e_approach_right)
         form_layout_sightlines.addRow("DSSD Actual (S or W Road Approach) (Driver's Left) (m):", self.doubleSpinBox_sightlines_measure_dssd_actual_s_or_w_approach_left)
         form_layout_sightlines.addRow("DSSD Actual (S or W Road Approach) (Driver's Right) (m):", self.doubleSpinBox_sightlines_measure_dssd_actual_s_or_w_approach_right)
-        #TODO form_layout_sightlines.addRow('DStopped Minimum (Vehicle) (ft):', self.label_sightlines_calculate_Dstopped_vehicle_Min_ft)
-        #TODO form_layout_sightlines.addRow('DStopped Minimum (Vehicle) (m):', self.label_sightlines_calculate_Dstopped_vehicle_Min_m)
-        #TODO form_layout_sightlines.addRow('DStopped Minimum (Pedestiran) (ft):', self.label_sightlines_calculate_Dstopped_pedestrian_Min_ft)
-        #TODO form_layout_sightlines.addRow('DStopped Minimum (Pedestrian) (m):', self.label_sightlines_calculate_Dstopped_pedestrian_Min_m)
+        form_layout_sightlines.addRow('DStopped Minimum (Vehicle) (ft):', self.label_sightlines_calculate_dstopped_vehicle_min_ft)
+        form_layout_sightlines.addRow('DStopped Minimum (Vehicle) (m):', self.label_sightlines_calculate_dstopped_vehicle_min_m)
+        form_layout_sightlines.addRow('DStopped Minimum (Pedestiran) (ft):', self.label_sightlines_calculate_dstopped_pedestrian_min_ft)
+        form_layout_sightlines.addRow('DStopped Minimum (Pedestrian) (m):', self.label_sightlines_calculate_dstopped_pedestrian_min_m)
         form_layout_sightlines.addRow("DStopped Actual (N or E Road Approach) (Driver's Left) (m):", self.doubleSpinBox_sightlines_measure_dstopped_actual_n_or_e_approach_driver_left)
         form_layout_sightlines.addRow("DStopped Actual (N or E Road Approach) (Driver's Right) (m):", self.doubleSpinBox_sightlines_measure_dstopped_actual_n_or_e_approach_driver_right)
         form_layout_sightlines.addRow("DStopped Actual (S or W Road Approach) (Driver's Left) (m):", self.doubleSpinBox_sightlines_measure_dstopped_actual_s_or_w_approach_driver_left)
@@ -2951,7 +2947,7 @@ class ViewCrossingForm(qtw.QWidget):
         #DELETE form_layout_signs_and_pavement_markings.addRow('', self.label_signs_and_markings_emergency_notification_comments
         form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_condition)
         form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_legible)
-        #TODO form_layout_signs_and_pavement_markings.addRow('', self.label_signs_and_markings_emergency_notification_n_or_e_approach_orientation)
+        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_orientation)
         form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_present)
         form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_emergency_notification_s_or_w_approach_condition)
         form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_emergency_notification_s_or_w_approach_legible)
@@ -3010,51 +3006,51 @@ class ViewCrossingForm(qtw.QWidget):
         # layout container widgets - GRADE CROSSING WARNING SYSTEM WARRANTS (GCS SECTION 9)
         form_layout_gcws_warrants.addRow(qtw.QLabel('Warrants for a Warning System Without Gates (Public Crossings)'))
         form_layout_gcws_warrants.addRow(qtw.QLabel('If any of A through D below are met, then a warning system without gates is required'))
-        #TODO form_layout_gcws_warrants.addRow("A. Where the forecast cross-product is 2,000 or more:"", self.label_gcws_warrant_public_9_1_a)
-        #TODO form_layout_gcws_warrants.addRow("B. Where there is no sidewalk, path or trail and the railway design speed is more than 129 km/hr (80 mph);", self.label_gcws_warrant_public_9_1_b)
-        #TODO form_layout_gcws_warrants.addRow("C. Where there is a sidewalk, path or trail and the railway design speed is more than 81 km/hr (50 mph);", self.label_gcws_warrant_public_9_1_c)
+        form_layout_gcws_warrants.addRow("A. Where the forecast cross-product is 2,000 or more:", self.label_gcws_warrant_public_9_1_a)
+        form_layout_gcws_warrants.addRow("B. Where there is no sidewalk, path or trail and the railway design speed is more than 129 km/hr (80 mph);", self.label_gcws_warrant_public_9_1_b)
+        form_layout_gcws_warrants.addRow("C. Where there is a sidewalk, path or trail and the railway design speed is more than 81 km/hr (50 mph);", self.label_gcws_warrant_public_9_1_c)
         form_layout_gcws_warrants.addRow(qtw.QLabel('D. Where the railway design speed is more than 25 km/hr (15 mph) but less than the railway design speed referred to in (b) or (c), and'))
-        #TODO form_layout_gcws_warrants.addRow("D1. Where there are two or more lines of railway where railway equipment may pass each other;", self.label_gcws_warrant_public_9_1_d_i)
-        #TODO form_layout_gcws_warrants.addRow("D2. The distance as shown in Figure 9-1(a) between a Stop sign at an intersection and the nearest rail in the crossing surface is less than 30m;", self.label_gcws_warrant_public_9_1_d_ii)
-        #TODO form_layout_gcws_warrants.addRow("D3. In the case of an intersection with a traffic signal, the distance between the stop line of the intersection and the nearest rail in the crossing surface, as shown in Figure 9-1(b), is less than 60m, or where there is no stop line, the distance between the travelled way and the nearest rail in the crossing surface is less than 60m.", self.label_gcws_warrant_public_9_1_d_iii)
+        form_layout_gcws_warrants.addRow("D1. Where there are two or more lines of railway where railway equipment may pass each other;", self.label_gcws_warrant_public_9_1_d_i)
+        form_layout_gcws_warrants.addRow("D2. The distance as shown in Figure 9-1(a) between a Stop sign at an intersection and the nearest rail in the crossing surface is less than 30m;", self.label_gcws_warrant_public_9_1_d_ii)
+        form_layout_gcws_warrants.addRow("D3. In the case of an intersection with a traffic signal, the distance between the stop line of the intersection and the nearest rail in the crossing surface, as shown in Figure 9-1(b), is less than 60m, or where there is no stop line, the distance between the travelled way and the nearest rail in the crossing surface is less than 60m.", self.label_gcws_warrant_public_9_1_d_iii)
         form_layout_gcws_warrants.addRow(qtw.QLabel('Warrants for a Warning System Without Gates (Private Crossings)'))
         form_layout_gcws_warrants.addRow(qtw.QLabel('If any of A through B below are met, then a warning system without gates is required'))
-        #TODO form_layout_gcws_warrants.addRow("A. Where the forecast cross-product is 2,000 or more;", self.label_gcws_warrant_private_9_3_1)
+        form_layout_gcws_warrants.addRow("A. Where the forecast cross-product is 2,000 or more;", self.label_gcws_warrant_private_9_3_1)
         form_layout_gcws_warrants.addRow(qtw.QLabel('B. Where the railway design speed is more than 25 km/hr (15mph), and;'))
-        #TODO form_layout_gcws_warrants.addRow("B1. The forecast cross-product is 100 or more and there are two or more lines of railway where railway equipment may pass each other;", self.label_gcws_warrant_private_9_3_2_a)
-        #TODO form_layout_gcws_warrants.addRow("B2. The forecast cross-product is 100 or more and grade crossing does not include a sidewalk, path or trail and the railway design speed is more than 129 km/hr (80mph);", self.label_gcws_warrant_private_9_3_2_b)
-        #TODO form_layout_gcws_warrants.addRow("B3. The grade crossing does includes a sidewalk, path or trail and the railway design speed is more than 81 km/hr (50mph);", self.label_gcws_warrant_private_9_3_2_c)
+        form_layout_gcws_warrants.addRow("B1. The forecast cross-product is 100 or more and there are two or more lines of railway where railway equipment may pass each other;", self.label_gcws_warrant_private_9_3_2_a)
+        form_layout_gcws_warrants.addRow("B2. The forecast cross-product is 100 or more and grade crossing does not include a sidewalk, path or trail and the railway design speed is more than 129 km/hr (80mph);", self.label_gcws_warrant_private_9_3_2_b)
+        form_layout_gcws_warrants.addRow("B3. The grade crossing does includes a sidewalk, path or trail and the railway design speed is more than 81 km/hr (50mph);", self.label_gcws_warrant_private_9_3_2_c)
         form_layout_gcws_warrants.addRow(qtw.QLabel('Warrants for a Warning System Without Gates (Grade Crossings for a Sidewalk, Path, or Trail)'))
         form_layout_gcws_warrants.addRow(qtw.QLabel('If A below is met, then a warning system without gates is required'))
-        #TODO form_layout_gcws_warrants.addRow("A. The sidewalk, path or trail is outside the island circuit of an adjacent warning system and the railway design speed is more than 81 km/hr (50mph)", self.label_gcws_warrant_sidewalk_9_5)
+        form_layout_gcws_warrants.addRow("A. The sidewalk, path or trail is outside the island circuit of an adjacent warning system and the railway design speed is more than 81 km/hr (50mph)", self.label_gcws_warrant_sidewalk_9_5)
         form_layout_gcws_warrants.addRow(qtw.QLabel('Warrants for a Warning System With Gates (Public Crossings)'))
         form_layout_gcws_warrants.addRow(qtw.QLabel('If a warning system is warranted, and any of A through F are met, then gates are also required'))
-        #TODO form_layout_gcws_gates.addRow("A. A warning system is required under 9.1, and;", self.label_gcws_warrant_public_9_1)
-        #TODO form_layout_gcws_gates.addRow("B. The forecast cross-product is 50,000 or more;", self.label_gates_gcws_warrant_public_9_2_1_a)
-        #TODO form_layout_gcws_gates.addRow("C. There are two or more lines of railway where railway equipment may pass each other;", self.label_gates_gcws_warrant_public_9_2_1_b)
-        #TODO form_layout_gcws_gates.addRow("D. The railway design speed is more than 81 km/hr (50mph);", self.label_gates_gcws_warrant_public_9_2_1_c)
-        #TODO form_layout_gcws_gates.addRow("E. The distance as shown in Figure 9-1(a) between a Stop sign at an intersection and the nearest rail in the crossing surface is less than 30m;", self.label_gates_gcws_warrant_public_9_2_1_d)
-        #TODO form_layout_gcws_gates.addRow("F. In the case of an intersection with a traffic signal, the distance between the stop line of the intersection and the nearest rail in the crossing surface, as shown in Figure 9-1(b), is less than 60m, or where there is no stop line, the distance between the travelled way and the nearest rail in the crossing surface is less than 60m.", self.label_gates_gcws_warrant_public_9_2_1_e)
+        form_layout_gcws_warrants.addRow("A. A warning system is required under 9.1, and;", self.label_gcws_warrant_public_9_1)
+        form_layout_gcws_warrants.addRow("B. The forecast cross-product is 50,000 or more;", self.label_gates_gcws_warrant_public_9_2_1_a)
+        form_layout_gcws_warrants.addRow("C. There are two or more lines of railway where railway equipment may pass each other;", self.label_gates_gcws_warrant_public_9_2_1_b)
+        form_layout_gcws_warrants.addRow("D. The railway design speed is more than 81 km/hr (50mph);", self.label_gates_gcws_warrant_public_9_2_1_c)
+        form_layout_gcws_warrants.addRow("E. The distance as shown in Figure 9-1(a) between a Stop sign at an intersection and the nearest rail in the crossing surface is less than 30m;", self.label_gates_gcws_warrant_public_9_2_1_d)
+        form_layout_gcws_warrants.addRow("F. In the case of an intersection with a traffic signal, the distance between the stop line of the intersection and the nearest rail in the crossing surface, as shown in Figure 9-1(b), is less than 60m, or where there is no stop line, the distance between the travelled way and the nearest rail in the crossing surface is less than 60m.", self.label_gates_gcws_warrant_public_9_2_1_e)
         form_layout_gcws_warrants.addRow(qtw.QLabel('Warrants for a Warning System With Gates (Private Crossings)'))
         form_layout_gcws_warrants.addRow(qtw.QLabel('If a warning system is warranted, and any of A through D are met, then gates are also required'))
-        #TODO form_layout_gcws_gates.addRow("A. A warning system is required under 9.1, and;", self.label_gcws_warrant_private_9_3)
-        #TODO form_layout_gcws_gates.addRow("B. The forecast cross-product is 50,000 or more;", self.label_gates_gcws_warrant_private_9_4_1_a)
-        #TODO form_layout_gcws_gates.addRow("C. There are two or more lines of railway where railway equipment may pass each other;", self.label_gates_gcws_warrant_private_9_4_1_b)
-        #TODO form_layout_gcws_gates.addRow("D. The railway design speed is more than 81 km/hr (50mph);", self.label_gates_gcws_warrant_private_9_4_1_c)
+        form_layout_gcws_warrants.addRow("A. A warning system is required under 9.1, and;", self.label_gcws_warrant_private_9_3)
+        form_layout_gcws_warrants.addRow("B. The forecast cross-product is 50,000 or more;", self.label_gates_gcws_warrant_private_9_4_1_a)
+        form_layout_gcws_warrants.addRow("C. There are two or more lines of railway where railway equipment may pass each other;", self.label_gates_gcws_warrant_private_9_4_1_b)
+        form_layout_gcws_warrants.addRow("D. The railway design speed is more than 81 km/hr (50mph);", self.label_gates_gcws_warrant_private_9_4_1_c)
         form_layout_gcws_warrants.addRow(qtw.QLabel('Warrants for a Warning System With Gates (Grade Crossings for a Sidewalk, Path, or Trail)'))
-        #TODO form_layout_gcws_gates.addRow("", self.label_gates_gcws_warrant_sidewalk_9_6)
+        form_layout_gcws_warrants.addRow("", self.label_gates_gcws_warrant_sidewalk_9_6)
         form_layout_gcws_warrants.addRow('GCWS Warrants Comments', self.textEdit_gcws_warrants_comments)
 
         # layout container widgets - GRADE CROSSING WARNING SYSTEMS (GCS SECTION 12-16)
-        #TODO form_layout_gcws.addRow('Design Approach Warning Time:', self.label_gcws_rail_design_approach_warning_time)
+        form_layout_gcws.addRow('Design Approach Warning Time:', self.label_gcws_rail_design_approach_warning_time)
         form_layout_gcws_warrants.addRow(qtw.QLabel('Should be greatest of:'))
-        #TODO form_layout_gcws.addRow("a. 20 s, unless the grade crossing clearance distance (Fig 10-1) is more than 11 m (35 ft), in which case, the 20 s must be increased by one second for each additional 3 m (10 ft), or fraction thereof;", self.label_gcws_rail_design_warning_time_clearance_distance)
-        #TODO form_layout_gcws.addRow("b. The Departure Time for the grade crossing "design vehicle" (Article 10.3.2);", self.label_gcws_rail_design_warning_time_departure_time_vehicle)
-        #TODO form_layout_gcws.addRow("c. The Departure Time for pedestrians, cyclists, and persons using assistive devices (Article 10.3.3);", self.label_gcws_rail_design_warning_time_departure_time_pedestrian)
-        #TODO form_layout_gcws.addRow("d. The gate arm clearance time, plus the time to complete the gate arm descent, plus 5 seconds;", self.label_gcws_rail_design_warning_time_gate_arm_clearance)
-        #TODO form_layout_gcws.addRow("e. The minimum warning time required for traffic signal pre-emption;", self.label_gcws_rail_design_warning_time_preemption)
-        #TODO form_layout_gcws.addRow("f. The time for the design vehicle travelling at the design speed to travel from the stopping sight distance, as specified in article 1.2.5.2 of the Geometric Design Guide and pass completely through the clearance distance;", self.label_gcws_rail_design_warning_time_ssd)
-        #TODO form_layout_gcws.addRow("g. Adjacent Track Interconnected Highway-Rail Grade Crossing. (add to (a), - (e))", self.label_gcws_rail_design_warning_time_adjacent_crossing)
+        form_layout_gcws.addRow("a. 20 s, unless the grade crossing clearance distance (Fig 10-1) is more than 11 m (35 ft), in which case, the 20 s must be increased by one second for each additional 3 m (10 ft), or fraction thereof;", self.label_gcws_rail_design_warning_time_clearance_distance)
+        form_layout_gcws.addRow("b. The Departure Time for the grade crossing 'design vehicle' (Article 10.3.2);", self.label_gcws_rail_design_warning_time_departure_time_vehicle)
+        form_layout_gcws.addRow("c. The Departure Time for pedestrians, cyclists, and persons using assistive devices (Article 10.3.3);", self.label_gcws_rail_design_warning_time_departure_time_pedestrian)
+        form_layout_gcws.addRow("d. The gate arm clearance time, plus the time to complete the gate arm descent, plus 5 seconds;", self.label_gcws_rail_design_warning_time_gate_arm_clearance)
+        form_layout_gcws.addRow("e. The minimum warning time required for traffic signal pre-emption;", self.label_gcws_rail_design_warning_time_preemption)
+        form_layout_gcws.addRow("f. The time for the design vehicle travelling at the design speed to travel from the stopping sight distance, as specified in article 1.2.5.2 of the Geometric Design Guide and pass completely through the clearance distance;", self.label_gcws_rail_design_warning_time_ssd)
+        form_layout_gcws.addRow("g. Adjacent Track Interconnected Highway-Rail Grade Crossing. (add to (a), - (e))", self.label_gcws_rail_design_warning_time_adjacent_crossing)
         form_layout_gcws.addRow('Actual Approach Warning Time:', self.doubleSpinBox_gcws_rail_crossing_warning_time_actual)
         form_layout_gcws.addRow(qtw.QLabel("Warning Systems Clearance Distance from Railway (Min. 3.66 m (12 ft) for signal mast or 3.05 m (10 ft) for end of gate arm; from centreline of track) (m):"))
         form_layout_gcws.addRow('N or E Road Approach:', self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_distance_from_rail)
@@ -3130,13 +3126,13 @@ class ViewCrossingForm(qtw.QWidget):
         form_layout_gcws_lights.addRow('Light Unit Comments:', self.textEdit_light_units_comments)
 
         # layout container widgets - GATES FOR GRADE CROSSING WARNING SYSTEMS (GCS SECTION 10, 12, 15)
-        #TODO form_layout_gcws_gates.addRow('Gate arm delay (Recommended) (s):', self.label_gates_gcws_calculate_gate_arm_clearance_time_recommended)
-        form_layout_gcws_gates.addRow('Gate Arm Delay Time (from Plans) (s):', self.spinBox_gates_gcws_rail_gate_arm_delay_time_design)
-        form_layout_gcws_gates.addRow('Gate Arm Descent Time (from Plans) (s)', self.spinBox_gates_gcws_rail_gate_arm_descent_time_design)
-        #TODO form_layout_gcws_gates.addRow('Inner Gate Arm Delay Time for Adjacent Track Interconnected Highway-Rail Grade Crossing (Recommended) (s)', self.label_gates_gcws_calculate_inner_gate_arm_delay_time_recommended)
-        form_layout_gcws_gates.addRow('nner Gate Arm Delay Time for Adjacent Track Interconnected Highway-Rail Grade Crossing (from Plans) (s)', self.spinBox_gates_gcws_rail_inner_gate_arm_delay_time_design)
-        form_layout_gcws_gates.addRow('Measure Gate Ascent Time (Actual) (s)', self.spinBox_gates_gcws_measure_gate_ascent_time)
-        form_layout_gcws_gates.addRow('Measure Gate Descent Time (Actual) (s)', self.spinBox_gates_gcws_measure_gate_descent_time)
+        form_layout_gcws_gates.addRow('Gate arm delay (Recommended) (s):', self.label_gates_gcws_calculate_gate_arm_clearance_time_recommended)
+        form_layout_gcws_gates.addRow('Gate Arm Delay Time (from Plans) (s):', self.doubleSpinBox_gates_gcws_rail_gate_arm_delay_time_design)
+        form_layout_gcws_gates.addRow('Gate Arm Descent Time (from Plans) (s)', self.doubleSpinBox_gates_gcws_rail_gate_arm_descent_time_design)
+        form_layout_gcws_gates.addRow('Inner Gate Arm Delay Time for Adjacent Track Interconnected Highway-Rail Grade Crossing (Recommended) (s)', self.label_gates_gcws_calculate_inner_gate_arm_delay_time_recommended)
+        form_layout_gcws_gates.addRow('nner Gate Arm Delay Time for Adjacent Track Interconnected Highway-Rail Grade Crossing (from Plans) (s)', self.doubleSpinBox_gates_gcws_rail_inner_gate_arm_delay_time_design)
+        form_layout_gcws_gates.addRow('Measure Gate Ascent Time (Actual) (s)', self.doubleSpinBox_gates_gcws_measure_gate_ascent_time)
+        form_layout_gcws_gates.addRow('Measure Gate Descent Time (Actual) (s)', self.doubleSpinBox_gates_gcws_measure_gate_descent_time)
         form_layout_gcws_gates.addRow('Check Gate Ascent Time (6 to 12 sec)', self.comboBox_gates_gcws_observe_gate_ascent_time)
         form_layout_gcws_gates.addRow('Check Gate Descent Time (10 to 15 sec)', self.comboBox_gates_gcws_observe_gate_descent_time)
         form_layout_gcws_gates.addRow('Does gate arm come to rest in the horizontal position not less than 5s before the arrival at the crossing of railway equipment?', self.comboBox_gates_gcws_observe_gate_arm_rest)
@@ -3154,18 +3150,18 @@ class ViewCrossingForm(qtw.QWidget):
         form_layout_aaws.addRow('N or E Road Approach:', self.comboBox_aawd_observe_present_n_or_e_approach)
         form_layout_aaws.addRow('S or W Road Approach:', self.comboBox_aawd_observe_present_s_or_w_approach)
         form_layout_aaws.addRow(qtw.QLabel('Warrants for a Prepare to Stop at Railway Crossing Sign Per GCR'))
-        #TODO form_layout_aaws.addRow('A. Is the roadway classified as an expressway?', self.label_aawd_warrant_gcr_lookup_road_classification)
-        #TODO form_layout_aaws.addRow('B. Is at least one set of front lights on the warning system not clearly visible within the stopping sight distance of at least one of the lanes of the road approach?', self.label_aawd_warrant_gcr_observe_sightline_obstruction)
-        #TODO form_layout_aaws.addRow('C. Do weather conditions at the grade crossing repeatedly obscure the visibility of the warning system?', self.label_aawd_warrant_gcr_observe_environmental_condition)
+        form_layout_aaws.addRow('A. Is the roadway classified as an expressway?', self.label_aawd_warrant_gcr_lookup_road_classification)
+        form_layout_aaws.addRow('B. Is at least one set of front lights on the warning system not clearly visible within the stopping sight distance of at least one of the lanes of the road approach?', self.label_aawd_warrant_gcr_observe_sightline_obstruction)
+        form_layout_aaws.addRow('C. Do weather conditions at the grade crossing repeatedly obscure the visibility of the warning system?', self.label_aawd_warrant_gcr_observe_environmental_condition)
         form_layout_aaws.addRow(qtw.QLabel('Warrants for a Prepare to Stop at Railway Crossing Sign Per MUTCD'))
-        #TODO form_layout_aaws.addRow('D. Is the speed limit of the travelled way greater than 90 km/h?', self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr)
-        #TODO form_layout_aaws.addRow('E. Is the crossing at the bottom of a hill or downgrade of considerable length?', self.label_aawd_warrant_mutcd_lookup_significant_road_downgrade)
+        form_layout_aaws.addRow('D. Is the speed limit of the travelled way greater than 90 km/h?', self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr)
+        form_layout_aaws.addRow('E. Is the crossing at the bottom of a hill or downgrade of considerable length?', self.label_aawd_warrant_mutcd_lookup_significant_road_downgrade)
         form_layout_aaws.addRow(qtw.QLabel('Design AAWD Advance Activation Time (s):'))
-        #TODO form_layout_aaws.addRow('N or E Road Approach:', self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach)
-        #TODO form_layout_aaws.addRow('S or W Road Approach:', self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach)
+        form_layout_aaws.addRow('N or E Road Approach:', self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach)
+        form_layout_aaws.addRow('S or W Road Approach:', self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach)
         form_layout_aaws.addRow(qtw.QLabel('Recommended minimum Advance Warning Flasher Distance from Railway'))
-        #TODO form_layout_aaws.addRow('N or E Road Approach:', self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended)
-        #TODO form_layout_aaws.addRow('S or W Road Approach:', self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended)
+        form_layout_aaws.addRow('N or E Road Approach:', self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended)
+        form_layout_aaws.addRow('S or W Road Approach:', self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended)
         form_layout_aaws.addRow(qtw.QLabel('Actual Advance Warning Flasher Distance from Railway'))
         form_layout_aaws.addRow('N or E Road Approach:', self.doubleSpinBox_aawd_measure_distance_sign_and_stop_n_or_e_approach_actual)
         form_layout_aaws.addRow('S or W Road Approach:', self.doubleSpinBox_aawd_measure_distance_sign_and_stop_s_or_w_approach_actual)
@@ -3178,15 +3174,15 @@ class ViewCrossingForm(qtw.QWidget):
 
         # layout container widgets - INTERCONNECTION OF TRAFFIC SIGNALS (GCS SECTION 19)
         form_layout_interconnection_traffic_signals.addRow(qtw.QLabel('Warrants for an Interconnected Traffic Signal'))
-        #TODO form_layout_interconnection_traffic_signals.addRow('Is there less than 30m between the nearest rail of a grade crossing and the travelled way of an intersection with traffic signals?', self.label_preemption_of_traffic_signals_lookup_proximity_condition)
-        #TODO form_layout_interconnection_traffic_signals.addRow('Is an Interconnected Traffic Signal required?', self.label_preemption_of_traffic_signals_lookup_required)
+        form_layout_interconnection_traffic_signals.addRow('Is there less than 30m between the nearest rail of a grade crossing and the travelled way of an intersection with traffic signals?', self.label_preemption_of_traffic_signals_lookup_proximity_condition)
+        form_layout_interconnection_traffic_signals.addRow('Is an Interconnected Traffic Signal required?', self.label_preemption_of_traffic_signals_lookup_required)
         form_layout_interconnection_traffic_signals.addRow(qtw.QLabel('Other Queuing Condition(s)'))
         form_layout_interconnection_traffic_signals.addRow('Is "D" insufficient such that road vehicles might queue onto the rail tracks? (I.E. less than 60 m for traffic signals; 30 m or more for a Stop sign (or 60 m or more for traffic signals) with queued traffic encroaching within 2.4 m of the nearest rail; a situation causing vehicles to routinely queue closer than 2.4 m to the nearest rail in the crossing (Example(s): Yield sign, a roundabout, a pedestrian crossing, a bikeway, or a stopped vehicle waiting to make left turn))', self.comboBox_preemption_of_traffic_signals_observe_queuing_condition)
-        #TODO form_layout_interconnection_traffic_signals.addRow('Are adjacent traffic signals interconnected with a grade crossing warning system?', self.label_preemption_of_traffic_signals_road_or_rail_crossing_preemption_type)
+        form_layout_interconnection_traffic_signals.addRow('Are adjacent traffic signals interconnected with a grade crossing warning system?', self.comboBox_preemption_of_traffic_signals_road_or_rail_crossing_preemption_type)
         form_layout_interconnection_traffic_signals.addRow('Design Preemption activation warning time required for traffic signal preemption (s):', self.lineEdit_preemption_of_traffic_signals_road_preemption_warning_time_design)
         form_layout_interconnection_traffic_signals.addRow('Actual Preemption activation warning time required for traffic signal preemption (s):', self.lineEdit_preemption_of_traffic_signals_road_preemption_warning_time_actual)
         form_layout_interconnection_traffic_signals.addRow(qtw.QLabel('Field checks:'))
-        #TODO form_layout_interconnection_traffic_signals.addRow('Date of last pre-emption check?', self.label_preemption_of_traffic_signals_road_date_Last_preemption_check)
+        #form_layout_interconnection_traffic_signals.addRow('Date of last pre-emption check?', self.label_preemption_of_traffic_signals_road_date_Last_preemption_check)
         form_layout_interconnection_traffic_signals.addRow('Does interconnection provide adequate time to clear traffic from the grade crossing before the arrival of railway equipment?', self.comboBox_preemption_of_traffic_signals_observe_traffic_clearance_time_adequate)
         form_layout_interconnection_traffic_signals.addRow('Does interconnection prohibit road traffic from moving from the street intersection towards the grade crossing?', self.comboBox_preemption_of_traffic_signals_observe_unintended_queuing_by_traffic_signals)
         form_layout_interconnection_traffic_signals.addRow('Are there known queuing issues at the tracks?', self.comboBox_preemption_of_traffic_signals_observe_known_queuing_issues)
@@ -3200,10 +3196,10 @@ class ViewCrossingForm(qtw.QWidget):
         form_layout_whistle_cessation.addRow('24 hours per day?', self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone_24_hrs)
         form_layout_whistle_cessation.addRow(qtw.QLabel('Requirements'))
         form_layout_whistle_cessation.addRow('Is there evidence of routine unauthorized access (trespassing) on the rail line in the area of the crossing? Comment below.', self.comboBox_areas_without_train_whistling_observe_trespassing_area)
-        #TODO form_layout_whistle_cessation.addRow('What is the required type of warning system as per Table D-1?', self.label_areas_without_train_whistling_requirements_observe_table_D1)
-        #TODO form_layout_whistle_cessation.addRow('Further to Column A of Table D-1, is a crossing warning system with gates installed per GCS 9.2?', self.label_areas_without_train_whistling_lookup_gcs_9_2)
-        #TODO form_layout_whistle_cessation.addRow('Does crossing warning system meet requirements of GCS 12-16?', self.label_areas_without_train_whistling_lookup_gcs_12_to_16)
-        #TODO form_layout_whistle_cessation.addRow('If Stop and Proceed, is crossing equipped with FLB meeting GCS 12-16 or manually protected?', self.label_areas_without_train_whistling_observe_For_stop_and_proceed)       
+        form_layout_whistle_cessation.addRow('What is the required type of warning system as per Table D-1?', self.label_areas_without_train_whistling_requirements_observe_table_D1)
+        form_layout_whistle_cessation.addRow('Further to Column A of Table D-1, is a crossing warning system with gates installed per GCS 9.2?', self.label_areas_without_train_whistling_lookup_gcs_9_2)
+        form_layout_whistle_cessation.addRow('Does crossing warning system meet requirements of GCS 12-16?', self.label_areas_without_train_whistling_lookup_gcs_12_to_16)
+        form_layout_whistle_cessation.addRow('If Stop and Proceed, is crossing equipped with FLB meeting GCS 12-16 or manually protected?', self.comboBox_areas_without_train_whistling_observe_for_stop_and_proceed)       
         form_layout_whistle_cessation.addRow('Whistle Cessation Comments', self.textEdit_areas_without_train_whistling_comments)
 
 
