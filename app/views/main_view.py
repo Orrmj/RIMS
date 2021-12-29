@@ -35,18 +35,6 @@ class MainView(qtw.QWidget):
     @qtc.pyqtSlot()
     def onChange(self):
         self.formwindow = ViewCrossingForm()
-        #self.formwindow.submitted.connect(self.label.setText)
-        self.formwindow.submitted[str].connect(self.onSubmittedStr)
-        self.formwindow.submitted[int, str].connect(self.onSubmittedIntStr)
         self.formwindow.show()
-
-    @qtc.pyqtSlot(str)
-    def onSubmittedStr(self, string):
-        self.label.setText(string)
-
-    @qtc.pyqtSlot(int, str)
-    def onSubmittedIntStr(self, integer, string):
-        text = f'The string {string} becomes the number {integer}'
-        self.label.setText(text)
 
  
