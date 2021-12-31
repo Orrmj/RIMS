@@ -24,56 +24,51 @@ class ViewCrossingForm(qtw.QWidget):
         # COLLISION HISTORY (5 YEAR PERIOD)
         #Group Labels
         #collision_history_total_5_year_period
-        self.spinBox_collision_history_fatal_injury.valueChanged.connect(self.collision_history_total_5_year_period)
-        self.spinBox_collision_history_personal_injury.valueChanged.connect(self.collision_history_total_5_year_period)
-        self.spinBox_collision_history_property_damage.valueChanged.connect(self.collision_history_total_5_year_period)
+        self.spinBox_collision_history_fatal_injury.editingFinished.connect(self.collision_history_total_5_year_period)
+        self.spinBox_collision_history_personal_injury.editingFinished.connect(self.collision_history_total_5_year_period)
+        self.spinBox_collision_history_property_damage.editingFinished.connect(self.collision_history_total_5_year_period)
         
         # GENERAL INFORMATION
         #Group Labels
         #general_info_rail_no_tracks_total
-        self.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.general_info_rail_no_tracks_total)
-        self.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.general_info_rail_no_tracks_total)
+        self.spinBox_general_info_rail_no_tracks_main.editingFinished.connect(self.general_info_rail_no_tracks_total)
+        self.spinBox_general_info_rail_no_tracks_other.editingFinished.connect(self.general_info_rail_no_tracks_total)
         
         #general_info_rail_no_trains_per_day_total
-        self.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self.general_info_rail_no_trains_per_day_total)
-        self.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self.general_info_rail_no_trains_per_day_total)
+        self.spinBox_general_info_rail_no_trains_per_day_freight.editingFinished.connect(self.general_info_rail_no_trains_per_day_total)
+        self.spinBox_general_info_rail_no_trains_per_day_passengers.editingFinished.connect(self.general_info_rail_no_trains_per_day_total)
         
         #general_info_road_no_traffic_lanes_total
-        self.spinBox_general_info_road_no_traffic_lanes_bidirectional.valueChanged.connect(self.general_info_road_no_traffic_lanes_total)
-        self.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound.valueChanged.connect(self.general_info_road_no_traffic_lanes_total)
-        self.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound.valueChanged.connect(self.general_info_road_no_traffic_lanes_total)
+        self.spinBox_general_info_road_no_traffic_lanes_bidirectional.editingFinished.connect(self.general_info_road_no_traffic_lanes_total)
+        self.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound.editingFinished.connect(self.general_info_road_no_traffic_lanes_total)
+        self.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound.editingFinished.connect(self.general_info_road_no_traffic_lanes_total)
         
         #general_info_rail_railway_design_speed
-        self.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.general_info_rail_railway_design_speed)
-        self.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.general_info_rail_railway_design_speed)        
+        self.spinBox_general_info_rail_max_railway_operating_speed_freight.editingFinished.connect(self.general_info_rail_railway_design_speed)
+        self.spinBox_general_info_rail_max_railway_operating_speed_passenger.editingFinished.connect(self.general_info_rail_railway_design_speed)        
         
         # DESIGN CONSIDERATIONS (GCS SECTION 10)
         #Group Labels
         #design_calculate_adjacent_track_clearance_time
-        self.doubleSpinBox_design_measure_adjacent_track_separation_distance.valueChanged.connect(self.design_calculate_adjacent_track_clearance_time)
-        self.doubleSpinBox_design_measure_adjacent_track_clearance_distance.valueChanged.connect(self.design_calculate_adjacent_track_clearance_time)
+        self.doubleSpinBox_design_measure_adjacent_track_separation_distance.editingFinished.connect(self.design_calculate_adjacent_track_clearance_time)
+        self.doubleSpinBox_design_measure_adjacent_track_clearance_distance.editingFinished.connect(self.design_calculate_adjacent_track_clearance_time)
 
         #design_calculate_clearance_time_crossing_pedestrian_design_check
-        self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_calculate_clearance_time_crossing_pedestrian_design_check)
+        self.doubleSpinBox_design_measure_clearance_distance_pedestrian.editingFinished.connect(self.design_calculate_clearance_time_crossing_pedestrian_design_check)
         
         #TODO
         #design_calculate_clearance_time_crossing_vehicle_design_check
-        #self.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.design_calculate_clearance_time_crossing_vehicle_design_check)
+        #self.doubleSpinBox_design_road_max_approach_grade_within_s.editingFinished.connect(self.design_calculate_clearance_time_crossing_vehicle_design_check)
 
         #TODO
         #design_calculate_clearance_time_gate_arm_ssd
         #self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_calculate_clearance_time_gate_arm_ssd)
-        #self.spinBox_general_info_road_speed_design.valueChanged.connect(self.design_calculate_clearance_time_gate_arm_ssd)
+        #self.spinBox_general_info_road_speed_design.editingFinished.connect(self.design_calculate_clearance_time_gate_arm_ssd)
 
         #TODO
         #design_calculate_clearance_time_gate_arm_stop
-        #self.label_design_calculate_clearance_time_gate_arm_stop.valueChanged.connect(self.design_calculate_clearance_time_gate_arm_stop)
+        #self.label_design_calculate_clearance_time_gate_arm_stop.editingFinished.connect(self.design_calculate_clearance_time_gate_arm_stop)
         
-        #TODO
-        #design_calculate_vehicle_travel_distance
-        self.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.design_calculate_vehicle_travel_distance)
-        self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_calculate_vehicle_travel_distance)
-
         #design_lookup_design_vehicle_class
         self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_lookup_design_vehicle_class)
 
@@ -81,16 +76,21 @@ class ViewCrossingForm(qtw.QWidget):
         self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_lookup_design_vehicle_length)
         
         #TODO
+        #design_calculate_vehicle_travel_distance
+        self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_calculate_vehicle_travel_distance)
+        self.doubleSpinBox_design_measure_clearance_distance_vehicle.editingFinished.connect(self.design_calculate_vehicle_travel_distance)
+
+        #TODO
         #design_lookup_grade_adjustment_factor
-        #self.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.design_lookup_grade_adjustment_factor)
+        #self.doubleSpinBox_design_road_max_approach_grade_within_s.editingFinished.connect(self.design_lookup_grade_adjustment_factor)
         
         #TODO
         #design_lookup_vehicle_departure_time_crossing
-        #self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_lookup_vehicle_departure_time_crossing)
+        #self.doubleSpinBox_design_measure_clearance_distance_pedestrian.editingFinished.connect(self.design_lookup_vehicle_departure_time_crossing)
         
         '''
         #design_lookup_vehicle_departure_time_gate_arm_clearance
-        self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_lookup_vehicle_departure_time_gate_arm_clearance)
+        self.doubleSpinBox_design_measure_clearance_distance_pedestrian.editingFinished.connect(self.design_lookup_vehicle_departure_time_gate_arm_clearance)
         
         # ROAD GEOMETRY (GCS SECTION 6)
         #Group Labels
@@ -100,95 +100,95 @@ class ViewCrossingForm(qtw.QWidget):
         # SIGHTLINES (GCS SECTION 7)
         #Group Labels
         #sightlines_calculate_dssd_vehicle_min_ft
-        self.spinBox_general_info_road_speed_design.valueChanged.connect(self.sightlines_calculate_dssd_vehicle_min_ft)
-        self.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.sightlines_calculate_dssd_vehicle_min_ft)
+        self.spinBox_general_info_road_speed_design.editingFinished.connect(self.sightlines_calculate_dssd_vehicle_min_ft)
+        self.doubleSpinBox_design_measure_clearance_distance_vehicle.editingFinished.connect(self.sightlines_calculate_dssd_vehicle_min_ft)
         
-        #self.label_sightlines_calculate_dssd_vehicle_min_m.valueChanged.connect(self.sightlines_calculate_dssd_vehicle_min_m)
+        #self.label_sightlines_calculate_dssd_vehicle_min_m.editingFinished.connect(self.sightlines_calculate_dssd_vehicle_min_m)
         
-        #self.label_sightlines_calculate_dstopped_pedestrian_min_ft.valueChanged.connect(self.sightlines_calculate_dstopped_pedestrian_min_ft)
+        #self.label_sightlines_calculate_dstopped_pedestrian_min_ft.editingFinished.connect(self.sightlines_calculate_dstopped_pedestrian_min_ft)
         
-        #self.label_sightlines_calculate_dstopped_pedestrian_min_m.valueChanged.connect(self.sightlines_calculate_dstopped_pedestrian_min_m)
+        #self.label_sightlines_calculate_dstopped_pedestrian_min_m.editingFinished.connect(self.sightlines_calculate_dstopped_pedestrian_min_m)
         
-        #self.label_sightlines_calculate_dstopped_vehicle_min_ft.valueChanged.connect(self.sightlines_calculate_dstopped_vehicle_min_ft)
+        #self.label_sightlines_calculate_dstopped_vehicle_min_ft.editingFinished.connect(self.sightlines_calculate_dstopped_vehicle_min_ft)
         
-        #self.label_sightlines_calculate_dstopped_vehicle_min_m.valueChanged.connect(self.sightlines_calculate_dstopped_vehicle_min_m)
+        #self.label_sightlines_calculate_dstopped_vehicle_min_m.editingFinished.connect(self.sightlines_calculate_dstopped_vehicle_min_m)
         
         #sightlines_lookup_ssd_minimum_n_or_e_approach
-        self.spinBox_general_info_road_speed_design.valueChanged.connect(self.sightlines_lookup_ssd_minimum_n_or_e_approach)
-        self.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.valueChanged.connect(self.sightlines_lookup_ssd_minimum_n_or_e_approach)
+        self.spinBox_general_info_road_speed_design.editingFinished.connect(self.sightlines_lookup_ssd_minimum_n_or_e_approach)
+        self.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.editingFinished.connect(self.sightlines_lookup_ssd_minimum_n_or_e_approach)
 
-        #self.label_sightlines_lookup_ssd_minimum_s_or_w_approach.valueChanged.connect(self.sightlines_lookup_ssd_minimum_s_or_w_approach)
-        self.spinBox_general_info_road_speed_design.valueChanged.connect(self.sightlines_lookup_ssd_minimum_s_or_w_approach)
-        self.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.valueChanged.connect(self.sightlines_lookup_ssd_minimum_s_or_w_approach)
+        #self.label_sightlines_lookup_ssd_minimum_s_or_w_approach.editingFinished.connect(self.sightlines_lookup_ssd_minimum_s_or_w_approach)
+        self.spinBox_general_info_road_speed_design.editingFinished.connect(self.sightlines_lookup_ssd_minimum_s_or_w_approach)
+        self.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.editingFinished.connect(self.sightlines_lookup_ssd_minimum_s_or_w_approach)
 
         # GRADE CROSSING WARNING SYSTEM WARRANTS (GCS SECTION 9)
         # Group Labels
-        #self.label_gcws_warrant_private_9_3.valueChanged.connect(self.gcws_warrant_private_9_3)
-        #self.label_gcws_warrant_private_9_3_1.valueChanged.connect(self.gcws_warrant_private_9_3_1)
-        #self.label_gcws_warrant_private_9_3_2_a.valueChanged.connect(self.gcws_warrant_private_9_3_2_a)
-        #self.label_gcws_warrant_private_9_3_2_b.valueChanged.connect(self.gcws_warrant_private_9_3_2_b)
-        #self.label_gcws_warrant_private_9_3_2_c.valueChanged.connect(self.gcws_warrant_private_9_3_2_c)
-        #self.label_gcws_warrant_public_9_1.valueChanged.connect(self.gcws_warrant_public_9_1)
-        #self.label_gcws_warrant_public_9_1_a.valueChanged.connect(self.gcws_warrant_public_9_1_a)
-        #self.label_gcws_warrant_public_9_1_b.valueChanged.connect(self.gcws_warrant_public_9_1_b)
-        #self.label_gcws_warrant_public_9_1_c.valueChanged.connect(self.gcws_warrant_public_9_1_c)
-        #self.label_gcws_warrant_public_9_1_d_i.valueChanged.connect(self.gcws_warrant_public_9_1_d_i)
-        #self.label_gcws_warrant_public_9_1_d_ii.valueChanged.connect(self.gcws_warrant_public_9_1_d_ii)
-        #self.label_gcws_warrant_public_9_1_d_iii.valueChanged.connect(self.gcws_warrant_public_9_1_d_iii)
-        #self.label_gcws_warrant_sidewalk_9_5.valueChanged.connect(self.gcws_warrant_sidewalk_9_5)
-        #self.label_gates_gcws_warrant_private_9_4_1_a.valueChanged.connect(self.gates_gcws_warrant_private_9_4_1_a)
-        #self.label_gates_gcws_warrant_private_9_4_1_b.valueChanged.connect(self.gates_gcws_warrant_private_9_4_1_b)
-        #self.label_gates_gcws_warrant_private_9_4_1_c.valueChanged.connect(self.gates_gcws_warrant_private_9_4_1_c)
-        #self.label_gates_gcws_warrant_public_9_2_1_a.valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_a)
-        #self.label_gates_gcws_warrant_public_9_2_1_b.valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_b)
-        #self.label_gates_gcws_warrant_public_9_2_1_c.valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_c)
-        #self.label_gates_gcws_warrant_public_9_2_1_d.valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_d)
-        #self.label_gates_gcws_warrant_public_9_2_1_e.valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_e)
-        #self.label_gates_gcws_warrant_sidewalk_9_6.valueChanged.connect(self.gates_gcws_warrant_sidewalk_9_6)
+        #self.label_gcws_warrant_private_9_3.editingFinished.connect(self.gcws_warrant_private_9_3)
+        #self.label_gcws_warrant_private_9_3_1.editingFinished.connect(self.gcws_warrant_private_9_3_1)
+        #self.label_gcws_warrant_private_9_3_2_a.editingFinished.connect(self.gcws_warrant_private_9_3_2_a)
+        #self.label_gcws_warrant_private_9_3_2_b.editingFinished.connect(self.gcws_warrant_private_9_3_2_b)
+        #self.label_gcws_warrant_private_9_3_2_c.editingFinished.connect(self.gcws_warrant_private_9_3_2_c)
+        #self.label_gcws_warrant_public_9_1.editingFinished.connect(self.gcws_warrant_public_9_1)
+        #self.label_gcws_warrant_public_9_1_a.editingFinished.connect(self.gcws_warrant_public_9_1_a)
+        #self.label_gcws_warrant_public_9_1_b.editingFinished.connect(self.gcws_warrant_public_9_1_b)
+        #self.label_gcws_warrant_public_9_1_c.editingFinished.connect(self.gcws_warrant_public_9_1_c)
+        #self.label_gcws_warrant_public_9_1_d_i.editingFinished.connect(self.gcws_warrant_public_9_1_d_i)
+        #self.label_gcws_warrant_public_9_1_d_ii.editingFinished.connect(self.gcws_warrant_public_9_1_d_ii)
+        #self.label_gcws_warrant_public_9_1_d_iii.editingFinished.connect(self.gcws_warrant_public_9_1_d_iii)
+        #self.label_gcws_warrant_sidewalk_9_5.editingFinished.connect(self.gcws_warrant_sidewalk_9_5)
+        #self.label_gates_gcws_warrant_private_9_4_1_a.editingFinished.connect(self.gates_gcws_warrant_private_9_4_1_a)
+        #self.label_gates_gcws_warrant_private_9_4_1_b.editingFinished.connect(self.gates_gcws_warrant_private_9_4_1_b)
+        #self.label_gates_gcws_warrant_private_9_4_1_c.editingFinished.connect(self.gates_gcws_warrant_private_9_4_1_c)
+        #self.label_gates_gcws_warrant_public_9_2_1_a.editingFinished.connect(self.gates_gcws_warrant_public_9_2_1_a)
+        #self.label_gates_gcws_warrant_public_9_2_1_b.editingFinished.connect(self.gates_gcws_warrant_public_9_2_1_b)
+        #self.label_gates_gcws_warrant_public_9_2_1_c.editingFinished.connect(self.gates_gcws_warrant_public_9_2_1_c)
+        #self.label_gates_gcws_warrant_public_9_2_1_d.editingFinished.connect(self.gates_gcws_warrant_public_9_2_1_d)
+        #self.label_gates_gcws_warrant_public_9_2_1_e.editingFinished.connect(self.gates_gcws_warrant_public_9_2_1_e)
+        #self.label_gates_gcws_warrant_sidewalk_9_6.editingFinished.connect(self.gates_gcws_warrant_sidewalk_9_6)
 
         # GRADE CROSSING WARNING SYSTEMS (GCS SECTION 12-16)
         #Group Labels
         #gcws_rail_design_approach_warning_time
-        #self.label_gcws_rail_design_approach_warning_time.valueChanged.connect(self.gcws_rail_design_approach_warning_time)
+        #self.label_gcws_rail_design_approach_warning_time.editingFinished.connect(self.gcws_rail_design_approach_warning_time)
         
-        #self.label_gcws_rail_design_warning_time_adjacent_crossing.valueChanged.connect(self.gcws_rail_design_warning_time_adjacent_crossing)
+        #self.label_gcws_rail_design_warning_time_adjacent_crossing.editingFinished.connect(self.gcws_rail_design_warning_time_adjacent_crossing)
         
-        #self.label_gcws_rail_design_warning_time_clearance_distance.valueChanged.connect(self.gcws_rail_design_warning_time_clearance_distance)
+        #self.label_gcws_rail_design_warning_time_clearance_distance.editingFinished.connect(self.gcws_rail_design_warning_time_clearance_distance)
         
-        #self.label_gcws_rail_design_warning_time_departure_time_pedestrian.valueChanged.connect(self.gcws_rail_design_warning_time_departure_time_pedestrian)
+        #self.label_gcws_rail_design_warning_time_departure_time_pedestrian.editingFinished.connect(self.gcws_rail_design_warning_time_departure_time_pedestrian)
         
-        #self.label_gcws_rail_design_warning_time_departure_time_vehicle.valueChanged.connect(self.gcws_rail_design_warning_time_departure_time_vehicle)
+        #self.label_gcws_rail_design_warning_time_departure_time_vehicle.editingFinished.connect(self.gcws_rail_design_warning_time_departure_time_vehicle)
         
-        #self.label_gcws_rail_design_warning_time_gate_arm_clearance.valueChanged.connect(self.gcws_rail_design_warning_time_gate_arm_clearance)
+        #self.label_gcws_rail_design_warning_time_gate_arm_clearance.editingFinished.connect(self.gcws_rail_design_warning_time_gate_arm_clearance)
         
-        #self.label_gcws_rail_design_warning_time_preemption.valueChanged.connect(self.gcws_rail_design_warning_time_preemption)
+        #self.label_gcws_rail_design_warning_time_preemption.editingFinished.connect(self.gcws_rail_design_warning_time_preemption)
         
-        #self.label_gcws_rail_design_warning_time_ssd.valueChanged.connect(self.gcws_rail_design_warning_time_ssd)
+        #self.label_gcws_rail_design_warning_time_ssd.editingFinished.connect(self.gcws_rail_design_warning_time_ssd)
 
         # GATES FOR GRADE CROSSING WARNING SYSTEMS (GCS SECTION 10, 12, 15)
         #Group Labels
-        #self.label_gates_gcws_calculate_gate_arm_clearance_time_recommended.valueChanged.connect(self.gates_gcws_calculate_gate_arm_clearance_time_recommended)
-        #self.label_gates_gcws_calculate_inner_gate_arm_delay_time_recommended.valueChanged.connect(self.gates_gcws_calculate_inner_gate_arm_delay_time_recommended)
+        #self.label_gates_gcws_calculate_gate_arm_clearance_time_recommended.editingFinished.connect(self.gates_gcws_calculate_gate_arm_clearance_time_recommended)
+        #self.label_gates_gcws_calculate_inner_gate_arm_delay_time_recommended.editingFinished.connect(self.gates_gcws_calculate_inner_gate_arm_delay_time_recommended)
 
         # PREPARE TO STOP AT RAILWAY CROSSING SIGN (GCS SECTION 18)
         #Group Labels
-        #self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach.valueChanged.connect(self.aawd_calculate_advance_activation_time_design_n_or_e_approach)
-        #self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach.valueChanged.connect(self.aawd_calculate_advance_activation_time_design_s_or_w_approach)
-        #self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended.valueChanged.connect(self.aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended)
-        #self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended.valueChanged.connect(self.aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended)
-        #self.label_aawd_warrant_gcr_lookup_road_classification.valueChanged.connect(self.aawd_warrant_gcr_lookup_road_classification)
-        #self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr.valueChanged.connect(self.aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr)
+        #self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach.editingFinished.connect(self.aawd_calculate_advance_activation_time_design_n_or_e_approach)
+        #self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach.editingFinished.connect(self.aawd_calculate_advance_activation_time_design_s_or_w_approach)
+        #self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended.editingFinished.connect(self.aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended)
+        #self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended.editingFinished.connect(self.aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended)
+        #self.label_aawd_warrant_gcr_lookup_road_classification.editingFinished.connect(self.aawd_warrant_gcr_lookup_road_classification)
+        #self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr.editingFinished.connect(self.aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr)
         
         # INTERCONNECTION OF TRAFFIC SIGNALS (GCS SECTION 19)
         #Group Labels
-        #self.label_preemption_of_traffic_signals_lookup_proximity_condition.valueChanged.connect(self.preemption_of_traffic_signals_lookup_proximity_condition)
-        #self.label_preemption_of_traffic_signals_lookup_required.valueChanged.connect(self.preemption_of_traffic_signals_lookup_required)
+        #self.label_preemption_of_traffic_signals_lookup_proximity_condition.editingFinished.connect(self.preemption_of_traffic_signals_lookup_proximity_condition)
+        #self.label_preemption_of_traffic_signals_lookup_required.editingFinished.connect(self.preemption_of_traffic_signals_lookup_required)
 
         # WHISTLE CESSATION (GCS SECTION Appendix D)
         #Group Labels
-        #self.label_areas_without_train_whistling_lookup_gcs_9_2.valueChanged.connect(self.areas_without_train_whistling_lookup_gcs_9_2)
+        #self.label_areas_without_train_whistling_lookup_gcs_9_2.editingFinished.connect(self.areas_without_train_whistling_lookup_gcs_9_2)
         #self_label_areas_without_train_whistling_requirements_lookup_table_d1_criteria
-        #self.label_areas_without_train_whistling_requirements_observe_table_d1.valueChanged.connect(self.areas_without_train_whistling_requirements_observe_table_D1)
+        #self.label_areas_without_train_whistling_requirements_observe_table_d1.editingFinished.connect(self.areas_without_train_whistling_requirements_observe_table_D1)
         '''
 
     #Calculate collision_history_total_5_year_period
@@ -238,6 +238,7 @@ class ViewCrossingForm(qtw.QWidget):
 
         self.label_general_info_rail_railway_design_speed.setNum(general_info_rail_railway_design_speed)
 
+    # DESIGN CONSIDERATIONS (GCS SECTION 10)
     #Calculate design_calculate_adjacent_track_clearance_time
     def design_calculate_adjacent_track_clearance_time(self):
         design_measure_adjacent_track_separation_distance = self.doubleSpinBox_design_measure_adjacent_track_separation_distance.value()
@@ -277,7 +278,7 @@ class ViewCrossingForm(qtw.QWidget):
     #Calculate design_calculate_clearance_time_gate_arm_ssd
     def design_calculate_clearance_time_gate_arm_ssd(self):
         pass
-        #self.spinBox_general_info_road_speed_design.valueChanged.connect(self.design_calculate_clearance_time_gate_arm_ssd)
+        #self.spinBox_general_info_road_speed_design.editingFinished.connect(self.design_calculate_clearance_time_gate_arm_ssd)
         #self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_calculate_clearance_time_gate_arm_ssd)
         #self.label_design_lookup_design_vehicle_length
         #self.label_sightlines_lookup_ssd_minimum_n_or_e_approach
@@ -297,16 +298,13 @@ class ViewCrossingForm(qtw.QWidget):
         design_measure_clearance_distance_vehicle = self.doubleSpinBox_design_measure_clearance_distance_vehicle.value()
         design_lookup_design_vehicle_length = self.label_design_lookup_design_vehicle_length.text()
         
-        try:
-            float(design_lookup_design_vehicle_length)
-            design_lookup_design_vehicle_length(design_lookup_design_vehicle_length)
-            print('Success')
-            print(type(design_lookup_design_vehicle_length))
+        if design_lookup_design_vehicle_length == 'No Value':
+            pass
+        else:
+            design_lookup_design_vehicle_length = float(design_lookup_design_vehicle_length)          
             design_calculate_vehicle_travel_distance = sum((design_measure_clearance_distance_vehicle, design_lookup_design_vehicle_length))
             self.label_design_calculate_vehicle_travel_distance.setNum(design_calculate_vehicle_travel_distance)
-        except ValueError:
-            pass
-
+    
     #Calculate design_lookup_design_vehicle_class
     def design_lookup_design_vehicle_class(self):
         design_road_design_vehicle_type = self.comboBox_design_road_design_vehicle_type.currentText()
@@ -322,15 +320,14 @@ class ViewCrossingForm(qtw.QWidget):
         df_table_4_1_general_vehicles = pd.read_csv(r'app\\resources\\data\\TC\\GCS\\table_4_1_general_vehicles.csv')
         
         design_lookup_design_vehicle_length = df_table_4_1_general_vehicles.loc[df_table_4_1_general_vehicles.general_vehicle_descriptions == f'{design_road_design_vehicle_type}','vehicle_length_m'].item()
-        
+
         self.label_design_lookup_design_vehicle_length.setNum(design_lookup_design_vehicle_length)
-        return(design_lookup_design_vehicle_length)
 
     #TODO
     #Calculate design_lookup_grade_adjustment_factor
     def design_lookup_grade_adjustment_factor(self):
         pass
-        #self.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.design_lookup_grade_adjustment_factor)
+        #self.doubleSpinBox_design_road_max_approach_grade_within_s.editingFinished.connect(self.design_lookup_grade_adjustment_factor)
         #self.label_design_lookup_design_vehicle_class
         #lookup table
 
@@ -338,7 +335,7 @@ class ViewCrossingForm(qtw.QWidget):
     #Calulcate design_lookup_vehicle_departure_time_crossing
     def design_lookup_vehicle_departure_time_crossing(self):
         pass
-        #self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_lookup_vehicle_departure_time_crossing)
+        #self.doubleSpinBox_design_measure_clearance_distance_pedestrian.editingFinished.connect(self.design_lookup_vehicle_departure_time_crossing)
         #self.label_design_calculate_vehicle_travel_distance
         #self.label_design_lookup_design_vehicle_class
         
@@ -346,7 +343,7 @@ class ViewCrossingForm(qtw.QWidget):
     #Calculate design_lookup_vehicle_departure_time_gate_arm_clearance
     def design_lookup_vehicle_departure_time_gate_arm_clearance(self):
         pass
-        #self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_lookup_vehicle_departure_time_gate_arm_clearance)
+        #self.doubleSpinBox_design_measure_clearance_distance_pedestrian.editingFinished.connect(self.design_lookup_vehicle_departure_time_gate_arm_clearance)
         #self.label_design_lookup_design_vehicle_class
         #self.label_design_lookup_design_vehicle_length
 
@@ -363,8 +360,8 @@ class ViewCrossingForm(qtw.QWidget):
     #Calculate sightlines_calculate_dssd_vehicle_min_ft
     def sightlines_calculate_dssd_vehicle_min_ft(self):
         pass
-        #self.spinBox_general_info_road_speed_design.valueChanged.connect(self.sightlines_calculate_dssd_vehicle_min_ft)
-        #self.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.sightlines_calculate_dssd_vehicle_min_ft)
+        #self.spinBox_general_info_road_speed_design.editingFinished.connect(self.sightlines_calculate_dssd_vehicle_min_ft)
+        #self.doubleSpinBox_design_measure_clearance_distance_vehicle.editingFinished.connect(self.sightlines_calculate_dssd_vehicle_min_ft)
         #self.label_design_lookup_design_vehicle_class
         #self.label_design_lookup_design_vehicle_length
         #self.label_general_info_rail_railway_design_speed
@@ -407,8 +404,8 @@ class ViewCrossingForm(qtw.QWidget):
     #Calculate sightlines_lookup_ssd_minimum_n_or_e_approach
     def sightlines_lookup_ssd_minimum_n_or_e_approach(self):
         pass
-        #self.spinBox_general_info_road_speed_design.valueChanged.connect(self.sightlines_lookup_ssd_minimum_n_or_e_approach)
-        #self.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.valueChanged.connect(self.sightlines_lookup_ssd_minimum_n_or_e_approach)
+        #self.spinBox_general_info_road_speed_design.editingFinished.connect(self.sightlines_lookup_ssd_minimum_n_or_e_approach)
+        #self.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.editingFinished.connect(self.sightlines_lookup_ssd_minimum_n_or_e_approach)
         #self.label_design_lookup_design_vehicle_class
         #lookup table
 
@@ -416,35 +413,35 @@ class ViewCrossingForm(qtw.QWidget):
     #Calculate sightlines_lookup_ssd_minimum_s_or_w_approach
     def sightlines_lookup_ssd_minimum_s_or_w_approach(self):
         pass
-        #self.spinBox_general_info_road_speed_design.valueChanged.connect(self.sightlines_lookup_ssd_minimum_s_or_w_approach)
-        #self.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.valueChanged.connect(self.sightlines_lookup_ssd_minimum_s_or_w_approach)
+        #self.spinBox_general_info_road_speed_design.editingFinished.connect(self.sightlines_lookup_ssd_minimum_s_or_w_approach)
+        #self.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.editingFinished.connect(self.sightlines_lookup_ssd_minimum_s_or_w_approach)
         #self.label_design_lookup_design_vehicle_class
         #lookup table
 
         # GRADE CROSSING WARNING SYSTEM WARRANTS (GCS SECTION 9)
         # Group Labels
-        #self.label_gcws_warrant_private_9_3.valueChanged.connect(self.gcws_warrant_private_9_3)
-        #self.label_gcws_warrant_private_9_3_1.valueChanged.connect(self.gcws_warrant_private_9_3_1)
-        #self.label_gcws_warrant_private_9_3_2_a.valueChanged.connect(self.gcws_warrant_private_9_3_2_a)
-        #self.label_gcws_warrant_private_9_3_2_b.valueChanged.connect(self.gcws_warrant_private_9_3_2_b)
-        #self.label_gcws_warrant_private_9_3_2_c.valueChanged.connect(self.gcws_warrant_private_9_3_2_c)
-        #self.label_gcws_warrant_public_9_1.valueChanged.connect(self.gcws_warrant_public_9_1)
-        #self.label_gcws_warrant_public_9_1_a.valueChanged.connect(self.gcws_warrant_public_9_1_a)
-        #self.label_gcws_warrant_public_9_1_b.valueChanged.connect(self.gcws_warrant_public_9_1_b)
-        #self.label_gcws_warrant_public_9_1_c.valueChanged.connect(self.gcws_warrant_public_9_1_c)
-        #self.label_gcws_warrant_public_9_1_d_i.valueChanged.connect(self.gcws_warrant_public_9_1_d_i)
-        #self.label_gcws_warrant_public_9_1_d_ii.valueChanged.connect(self.gcws_warrant_public_9_1_d_ii)
-        #self.label_gcws_warrant_public_9_1_d_iii.valueChanged.connect(self.gcws_warrant_public_9_1_d_iii)
-        #self.label_gcws_warrant_sidewalk_9_5.valueChanged.connect(self.gcws_warrant_sidewalk_9_5)
-        #self.label_gates_gcws_warrant_private_9_4_1_a.valueChanged.connect(self.gates_gcws_warrant_private_9_4_1_a)
-        #self.label_gates_gcws_warrant_private_9_4_1_b.valueChanged.connect(self.gates_gcws_warrant_private_9_4_1_b)
-        #self.label_gates_gcws_warrant_private_9_4_1_c.valueChanged.connect(self.gates_gcws_warrant_private_9_4_1_c)
-        #self.label_gates_gcws_warrant_public_9_2_1_a.valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_a)
-        #self.label_gates_gcws_warrant_public_9_2_1_b.valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_b)
-        #self.label_gates_gcws_warrant_public_9_2_1_c.valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_c)
-        #self.label_gates_gcws_warrant_public_9_2_1_d.valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_d)
-        #self.label_gates_gcws_warrant_public_9_2_1_e.valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_e)
-        #self.label_gates_gcws_warrant_sidewalk_9_6.valueChanged.connect(self.gates_gcws_warrant_sidewalk_9_6)
+        #self.label_gcws_warrant_private_9_3.editingFinished.connect(self.gcws_warrant_private_9_3)
+        #self.label_gcws_warrant_private_9_3_1.editingFinished.connect(self.gcws_warrant_private_9_3_1)
+        #self.label_gcws_warrant_private_9_3_2_a.editingFinished.connect(self.gcws_warrant_private_9_3_2_a)
+        #self.label_gcws_warrant_private_9_3_2_b.editingFinished.connect(self.gcws_warrant_private_9_3_2_b)
+        #self.label_gcws_warrant_private_9_3_2_c.editingFinished.connect(self.gcws_warrant_private_9_3_2_c)
+        #self.label_gcws_warrant_public_9_1.editingFinished.connect(self.gcws_warrant_public_9_1)
+        #self.label_gcws_warrant_public_9_1_a.editingFinished.connect(self.gcws_warrant_public_9_1_a)
+        #self.label_gcws_warrant_public_9_1_b.editingFinished.connect(self.gcws_warrant_public_9_1_b)
+        #self.label_gcws_warrant_public_9_1_c.editingFinished.connect(self.gcws_warrant_public_9_1_c)
+        #self.label_gcws_warrant_public_9_1_d_i.editingFinished.connect(self.gcws_warrant_public_9_1_d_i)
+        #self.label_gcws_warrant_public_9_1_d_ii.editingFinished.connect(self.gcws_warrant_public_9_1_d_ii)
+        #self.label_gcws_warrant_public_9_1_d_iii.editingFinished.connect(self.gcws_warrant_public_9_1_d_iii)
+        #self.label_gcws_warrant_sidewalk_9_5.editingFinished.connect(self.gcws_warrant_sidewalk_9_5)
+        #self.label_gates_gcws_warrant_private_9_4_1_a.editingFinished.connect(self.gates_gcws_warrant_private_9_4_1_a)
+        #self.label_gates_gcws_warrant_private_9_4_1_b.editingFinished.connect(self.gates_gcws_warrant_private_9_4_1_b)
+        #self.label_gates_gcws_warrant_private_9_4_1_c.editingFinished.connect(self.gates_gcws_warrant_private_9_4_1_c)
+        #self.label_gates_gcws_warrant_public_9_2_1_a.editingFinished.connect(self.gates_gcws_warrant_public_9_2_1_a)
+        #self.label_gates_gcws_warrant_public_9_2_1_b.editingFinished.connect(self.gates_gcws_warrant_public_9_2_1_b)
+        #self.label_gates_gcws_warrant_public_9_2_1_c.editingFinished.connect(self.gates_gcws_warrant_public_9_2_1_c)
+        #self.label_gates_gcws_warrant_public_9_2_1_d.editingFinished.connect(self.gates_gcws_warrant_public_9_2_1_d)
+        #self.label_gates_gcws_warrant_public_9_2_1_e.editingFinished.connect(self.gates_gcws_warrant_public_9_2_1_e)
+        #self.label_gates_gcws_warrant_sidewalk_9_6.editingFinished.connect(self.gates_gcws_warrant_sidewalk_9_6)
 
     # GRADE CROSSING WARNING SYSTEMS (GCS SECTION 12-16)
     #Group Labels
