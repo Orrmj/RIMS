@@ -71,15 +71,14 @@ class ViewCrossingForm(qtw.QWidget):
         
         #TODO
         #design_calculate_vehicle_travel_distance
-        #self.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.design_calculate_vehicle_travel_distance)
+        self.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.design_calculate_vehicle_travel_distance)
+        self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_calculate_vehicle_travel_distance)
 
-        #TODO
         #design_lookup_design_vehicle_class
         self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_lookup_design_vehicle_class)
 
-        #TODO
         #design_lookup_design_vehicle_length
-        #self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_lookup_design_vehicle_length)
+        self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_lookup_design_vehicle_length)
         
         #TODO
         #design_lookup_grade_adjustment_factor
@@ -295,28 +294,37 @@ class ViewCrossingForm(qtw.QWidget):
     #TODO
     #Calculate design_calculate_vehicle_travel_distance
     def design_calculate_vehicle_travel_distance(self):
-        pass
-        #self.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.design_calculate_vehicle_travel_distance)
-        #self.label_design_lookup_design_vehicle_length
+        design_measure_clearance_distance_vehicle = self.doubleSpinBox_design_measure_clearance_distance_vehicle.value()
+        design_lookup_design_vehicle_length = self.label_design_lookup_design_vehicle_length.text()
         
-    #TODO
+        try:
+            float(design_lookup_design_vehicle_length)
+            design_lookup_design_vehicle_length(design_lookup_design_vehicle_length)
+            print('Success')
+            print(type(design_lookup_design_vehicle_length))
+            design_calculate_vehicle_travel_distance = sum((design_measure_clearance_distance_vehicle, design_lookup_design_vehicle_length))
+            self.label_design_calculate_vehicle_travel_distance.setNum(design_calculate_vehicle_travel_distance)
+        except ValueError:
+            pass
+
     #Calculate design_lookup_design_vehicle_class
     def design_lookup_design_vehicle_class(self):
-        pass
-        design_road_design_vehicle_type = self.comboBox_design_road_design_vehicle_type
+        design_road_design_vehicle_type = self.comboBox_design_road_design_vehicle_type.currentText()
         df_table_4_1_general_vehicles = pd.read_csv(r'app\\resources\\data\\TC\\GCS\\table_4_1_general_vehicles.csv')
-        print(df_table_4_1_general_vehicles)
+        
+        design_lookup_design_vehicle_class = df_table_4_1_general_vehicles.loc[df_table_4_1_general_vehicles.general_vehicle_descriptions == f'{design_road_design_vehicle_type}','class'].item()
+        
+        self.label_design_lookup_design_vehicle_class.setText(design_lookup_design_vehicle_class)
 
-        design_lookup_design_vehicle_class = df_table_4_1_general_vehicles.query(f'General Vehicle Descriptions == {design_road_design_vehicle_type}')['Class']
-
-        #self.label_design_lookup_design_vehicle_class.setNum(design_lookup_design_vehicle_class)
-
-    #TODO
     #Calculate design_lookup_design_vehicle_length
     def design_lookup_design_vehicle_length(self):
-        pass
-        #self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_lookup_design_vehicle_length)
-        #lookup table
+        design_road_design_vehicle_type = self.comboBox_design_road_design_vehicle_type.currentText()
+        df_table_4_1_general_vehicles = pd.read_csv(r'app\\resources\\data\\TC\\GCS\\table_4_1_general_vehicles.csv')
+        
+        design_lookup_design_vehicle_length = df_table_4_1_general_vehicles.loc[df_table_4_1_general_vehicles.general_vehicle_descriptions == f'{design_road_design_vehicle_type}','vehicle_length_m'].item()
+        
+        self.label_design_lookup_design_vehicle_length.setNum(design_lookup_design_vehicle_length)
+        return(design_lookup_design_vehicle_length)
 
     #TODO
     #Calculate design_lookup_grade_adjustment_factor

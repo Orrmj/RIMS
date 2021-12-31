@@ -1,4 +1,4 @@
-Maximum Road Operating Speed (km/h),Coefficient of Friction (f)
+maximum_road_operating_speed_km_per_h,coefficient_of_friction
 0-30,0.4
 31-40,0.38
 41-50,0.35

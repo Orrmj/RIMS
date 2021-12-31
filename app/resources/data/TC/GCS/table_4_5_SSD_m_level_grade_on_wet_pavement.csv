@@ -1,4 +1,4 @@
-Maximum Road Operating Speed (km/h),Passenger Car Class (m),Truck Class (m)
+maximum_road_operating_speed_km_per_h,passenger_car_class_m,truck_class_m
 0-10,8,10
 11-20,20,25
 21-30,30,45
