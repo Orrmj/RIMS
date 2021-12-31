@@ -1,6 +1,7 @@
 import sys
 import datetime
 import math
+import pandas as pd
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
@@ -54,34 +55,41 @@ class ViewCrossingForm(qtw.QWidget):
 
         #design_calculate_clearance_time_crossing_pedestrian_design_check
         self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_calculate_clearance_time_crossing_pedestrian_design_check)
-
-        '''
+        
+        #TODO
         #design_calculate_clearance_time_crossing_vehicle_design_check
-        self.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.design_calculate_clearance_time_crossing_vehicle_design_check)
+        #self.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.design_calculate_clearance_time_crossing_vehicle_design_check)
 
+        #TODO
         #design_calculate_clearance_time_gate_arm_ssd
-        self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_calculate_clearance_time_gate_arm_ssd)
-        self.spinBox_general_info_road_speed_design.valueChanged.connect(self.design_calculate_clearance_time_gate_arm_ssd)
+        #self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_calculate_clearance_time_gate_arm_ssd)
+        #self.spinBox_general_info_road_speed_design.valueChanged.connect(self.design_calculate_clearance_time_gate_arm_ssd)
 
+        #TODO
+        #design_calculate_clearance_time_gate_arm_stop
         #self.label_design_calculate_clearance_time_gate_arm_stop.valueChanged.connect(self.design_calculate_clearance_time_gate_arm_stop)
         
+        #TODO
         #design_calculate_vehicle_travel_distance
-        self.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.design_calculate_vehicle_travel_distance)
+        #self.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.design_calculate_vehicle_travel_distance)
 
-        #self.label_design_input_reaction_time.valueChanged.connect(self.design_input_reaction_time)
-        
+        #TODO
         #design_lookup_design_vehicle_class
         self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_lookup_design_vehicle_class)
 
+        #TODO
         #design_lookup_design_vehicle_length
-        self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_lookup_design_vehicle_length)
+        #self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_lookup_design_vehicle_length)
         
+        #TODO
         #design_lookup_grade_adjustment_factor
-        self.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.design_lookup_grade_adjustment_factor)
+        #self.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.design_lookup_grade_adjustment_factor)
         
+        #TODO
         #design_lookup_vehicle_departure_time_crossing
-        self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_lookup_vehicle_departure_time_crossing)
-
+        #self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_lookup_vehicle_departure_time_crossing)
+        
+        '''
         #design_lookup_vehicle_departure_time_gate_arm_clearance
         self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_lookup_vehicle_departure_time_gate_arm_clearance)
         
@@ -170,11 +178,8 @@ class ViewCrossingForm(qtw.QWidget):
         #self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended.valueChanged.connect(self.aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended)
         #self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended.valueChanged.connect(self.aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended)
         #self.label_aawd_warrant_gcr_lookup_road_classification.valueChanged.connect(self.aawd_warrant_gcr_lookup_road_classification)
-        #self.label_aawd_warrant_gcr_observe_environmental_condition.valueChanged.connect(self.aawd_warrant_gcr_observe_environmental_condition)
-        #self.label_aawd_warrant_gcr_observe_sightline_obstruction.valueChanged.connect(self.aawd_warrant_gcr_observe_sightline_obstruction)
         #self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr.valueChanged.connect(self.aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr)
-        #self.label_aawd_warrant_mutcd_lookup_significant_road_downgrade.valueChanged.connect(self.aawd_warrant_mutcd_lookup_significant_road_downgrade)
-
+        
         # INTERCONNECTION OF TRAFFIC SIGNALS (GCS SECTION 19)
         #Group Labels
         #self.label_preemption_of_traffic_signals_lookup_proximity_condition.valueChanged.connect(self.preemption_of_traffic_signals_lookup_proximity_condition)
@@ -182,11 +187,12 @@ class ViewCrossingForm(qtw.QWidget):
 
         # WHISTLE CESSATION (GCS SECTION Appendix D)
         #Group Labels
-        #self.label_areas_without_train_whistling_lookup_gcs_12_to_16.valueChanged.connect(self.areas_without_train_whistling_lookup_gcs_12_to_16)
         #self.label_areas_without_train_whistling_lookup_gcs_9_2.valueChanged.connect(self.areas_without_train_whistling_lookup_gcs_9_2)
-        #self.label_areas_without_train_whistling_requirements_observe_table_D1.valueChanged.connect(self.areas_without_train_whistling_requirements_observe_table_D1)
+        #self_label_areas_without_train_whistling_requirements_lookup_table_d1_criteria
+        #self.label_areas_without_train_whistling_requirements_observe_table_d1.valueChanged.connect(self.areas_without_train_whistling_requirements_observe_table_D1)
         '''
 
+    #Calculate collision_history_total_5_year_period
     def collision_history_total_5_year_period(self):
         collision_history_fatal_injury = self.spinBox_collision_history_fatal_injury.value()
         collision_history_personal_injury = self.spinBox_collision_history_personal_injury.value()
@@ -196,6 +202,7 @@ class ViewCrossingForm(qtw.QWidget):
 
         self.label_collision_history_total_5_year_period.setNum(collision_history_total_5_year_period)
 
+    #Calculate general_info_rail_no_tracks_total
     def general_info_rail_no_tracks_total(self):
         general_info_rail_no_tracks_main = self.spinBox_general_info_rail_no_tracks_main.value()
         general_info_rail_no_tracks_other = self.spinBox_general_info_rail_no_tracks_other.value()
@@ -204,6 +211,7 @@ class ViewCrossingForm(qtw.QWidget):
 
         self.label_general_info_rail_no_tracks_total.setNum(general_info_rail_no_tracks_total)
 
+    #Calculate general_info_rail_no_trains_per_day_total
     def general_info_rail_no_trains_per_day_total(self):
         general_info_rail_no_trains_per_day_freight = self.spinBox_general_info_rail_no_trains_per_day_freight.value()
         general_info_rail_no_trains_per_day_passengers = self.spinBox_general_info_rail_no_trains_per_day_passengers.value()
@@ -212,6 +220,7 @@ class ViewCrossingForm(qtw.QWidget):
 
         self.label_general_info_rail_no_trains_per_day_total.setNum(general_info_rail_no_trains_per_day_total)
 
+    #Calculate general_info_road_no_traffic_lanes_total
     def general_info_road_no_traffic_lanes_total(self):
         general_info_road_no_traffic_lanes_bidirectional = self.spinBox_general_info_road_no_traffic_lanes_bidirectional.value()
         general_info_road_no_traffic_lanes_northbound_or_eastbound = self.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound.value()
@@ -221,6 +230,7 @@ class ViewCrossingForm(qtw.QWidget):
 
         self.label_general_info_road_no_traffic_lanes_total.setNum(general_info_road_no_traffic_lanes_total)
 
+    #Calculate general_info_rail_railway_design_speed
     def general_info_rail_railway_design_speed(self):
         general_info_rail_max_railway_operating_speed_freight = self.spinBox_general_info_rail_max_railway_operating_speed_freight.value()
         general_info_rail_max_railway_operating_speed_passenger = self.spinBox_general_info_rail_max_railway_operating_speed_passenger.value()        
@@ -229,6 +239,7 @@ class ViewCrossingForm(qtw.QWidget):
 
         self.label_general_info_rail_railway_design_speed.setNum(general_info_rail_railway_design_speed)
 
+    #Calculate design_calculate_adjacent_track_clearance_time
     def design_calculate_adjacent_track_clearance_time(self):
         design_measure_adjacent_track_separation_distance = self.doubleSpinBox_design_measure_adjacent_track_separation_distance.value()
         design_measure_adjacent_track_clearance_distance = self.doubleSpinBox_design_measure_adjacent_track_clearance_distance.value()
@@ -241,12 +252,360 @@ class ViewCrossingForm(qtw.QWidget):
             design_calculate_adjacent_track_clearance_time = math.ceil(sum((20,max(0,design_measure_adjacent_track_clearance_distance-10.668)/3.048)))
             self.label_design_calculate_adjacent_track_clearance_time.setNum(design_calculate_adjacent_track_clearance_time)
     
+    #Calculate design_calculate_clearance_time_crossing_pedestrian_design_check
     def design_calculate_clearance_time_crossing_pedestrian_design_check(self):
         design_measure_clearance_distance_pedestrian = self.doubleSpinBox_design_measure_clearance_distance_pedestrian.value()
 
         design_calculate_clearance_time_crossing_pedestrian_design_check = math.ceil(design_measure_clearance_distance_pedestrian/1.22)
 
         self.label_design_calculate_clearance_time_crossing_pedestrian_design_check.setNum(design_calculate_clearance_time_crossing_pedestrian_design_check)
+
+    #TODO
+    #Calculate design_calculate_clearance_time_crossing_vehicle_design_check
+    def design_calculate_clearance_time_crossing_vehicle_design_check(self):
+        pass
+        #self.label_design_input_reaction_time
+        #TODO label_design_lookup_vehicle_departure_time_crossing_grade_adjusted
+
+    #TODO NEW
+    #Calculate design_lookup_vehicle_departure_time_crossing_grade_adjusted
+    def design_lookup_vehicle_departure_time_crossing_grade_adjusted(self):
+        pass
+        #label_design_lookup_vehicle_departure_time_crossing
+        #label_design_lookup_grade_adjustment_factor
+
+    #TODO
+    #Calculate design_calculate_clearance_time_gate_arm_ssd
+    def design_calculate_clearance_time_gate_arm_ssd(self):
+        pass
+        #self.spinBox_general_info_road_speed_design.valueChanged.connect(self.design_calculate_clearance_time_gate_arm_ssd)
+        #self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_calculate_clearance_time_gate_arm_ssd)
+        #self.label_design_lookup_design_vehicle_length
+        #self.label_sightlines_lookup_ssd_minimum_n_or_e_approach
+        #self.label_sightlines_lookup_ssd_minimum_s_or_w_approach
+
+    #TODO
+    #Calculate design_calculate_clearance_time_gate_arm_stop
+    def design_calculate_clearance_time_gate_arm_stop(self):
+        pass
+        #self.label_design_input_reaction_time
+        #self.label_design_lookup_grade_adjustment_factor
+        #self.label_design_lookup_vehicle_departure_time_gate_arm_clearance
+
+    #TODO
+    #Calculate design_calculate_vehicle_travel_distance
+    def design_calculate_vehicle_travel_distance(self):
+        pass
+        #self.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.design_calculate_vehicle_travel_distance)
+        #self.label_design_lookup_design_vehicle_length
+        
+    #TODO
+    #Calculate design_lookup_design_vehicle_class
+    def design_lookup_design_vehicle_class(self):
+        pass
+        design_road_design_vehicle_type = self.comboBox_design_road_design_vehicle_type
+        df_table_4_1_general_vehicles = pd.read_csv(r'app\\resources\\data\\TC\\GCS\\table_4_1_general_vehicles.csv')
+        print(df_table_4_1_general_vehicles)
+
+        design_lookup_design_vehicle_class = df_table_4_1_general_vehicles.query(f'General Vehicle Descriptions == {design_road_design_vehicle_type}')['Class']
+
+        #self.label_design_lookup_design_vehicle_class.setNum(design_lookup_design_vehicle_class)
+
+    #TODO
+    #Calculate design_lookup_design_vehicle_length
+    def design_lookup_design_vehicle_length(self):
+        pass
+        #self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_lookup_design_vehicle_length)
+        #lookup table
+
+    #TODO
+    #Calculate design_lookup_grade_adjustment_factor
+    def design_lookup_grade_adjustment_factor(self):
+        pass
+        #self.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.design_lookup_grade_adjustment_factor)
+        #self.label_design_lookup_design_vehicle_class
+        #lookup table
+
+    #TODO
+    #Calulcate design_lookup_vehicle_departure_time_crossing
+    def design_lookup_vehicle_departure_time_crossing(self):
+        pass
+        #self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_lookup_vehicle_departure_time_crossing)
+        #self.label_design_calculate_vehicle_travel_distance
+        #self.label_design_lookup_design_vehicle_class
+        
+    #TODO
+    #Calculate design_lookup_vehicle_departure_time_gate_arm_clearance
+    def design_lookup_vehicle_departure_time_gate_arm_clearance(self):
+        pass
+        #self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_lookup_vehicle_departure_time_gate_arm_clearance)
+        #self.label_design_lookup_design_vehicle_class
+        #self.label_design_lookup_design_vehicle_length
+
+    # ROAD GEOMETRY (GCS SECTION 6)
+    #Group Labels
+    #Calculate road_geometry_lookup_gradient_difference
+    def road_geometry_lookup_gradient_difference(self):
+        pass
+        #self.comboBox_general_info_road_classification.currentTextChanged.connect(self.road_geometry_lookup_gradient_difference)
+        #lookup table
+
+    # SIGHTLINES (GCS SECTION 7)
+    #Group Labels
+    #Calculate sightlines_calculate_dssd_vehicle_min_ft
+    def sightlines_calculate_dssd_vehicle_min_ft(self):
+        pass
+        #self.spinBox_general_info_road_speed_design.valueChanged.connect(self.sightlines_calculate_dssd_vehicle_min_ft)
+        #self.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.sightlines_calculate_dssd_vehicle_min_ft)
+        #self.label_design_lookup_design_vehicle_class
+        #self.label_design_lookup_design_vehicle_length
+        #self.label_general_info_rail_railway_design_speed
+        #self.label_sightlines_lookup_ssd_minimum_n_or_e_approach
+        #self.label_sightlines_lookup_ssd_minimum_s_or_w_approach
+
+    #TODO
+    #Calculate sightlines_calculate_dssd_vehicle_min_m
+    def sightlines_calculate_dssd_vehicle_min_m(self):
+        pass
+        #self.label_sightlines_calculate_dssd_vehicle_min_ft
+    
+    #TODO
+    #Calculate sightlines_calculate_dstopped_pedestrian_min_ft
+    def sightlines_calculate_dstopped_pedestrian_min_ft(self):
+        pass
+        #self.label_design_calculate_clearance_time_crossing_pedestrian_design_check
+        #self.label_general_info_rail_railway_design_speed
+
+    #TODO
+    #Calculate sightlines_calculate_dstopped_pedestrian_min_m
+    def sightlines_calculate_dstopped_pedestrian_min_m(self):
+        pass
+        #self.label_sightlines_calculate_dstopped_pedestrian_min_ft
+        
+    #TODO
+    #Calculate sightlines_calculate_dstopped_vehicle_min_ft
+    def sightlines_calculate_dstopped_vehicle_min_ft(self):
+        pass
+        #self.label_design_calculate_clearance_time_crossing_vehicle_design_check
+        #self.label_general_info_rail_railway_design_speed
+
+    #TODO
+    #Calculate sightlines_calculate_dstopped_vehicle_min_m
+    def sightlines_calculate_dstopped_vehicle_min_m(self):
+        pass
+        #self.label_sightlines_calculate_dstopped_vehicle_min_ft
+        
+    #TODO
+    #Calculate sightlines_lookup_ssd_minimum_n_or_e_approach
+    def sightlines_lookup_ssd_minimum_n_or_e_approach(self):
+        pass
+        #self.spinBox_general_info_road_speed_design.valueChanged.connect(self.sightlines_lookup_ssd_minimum_n_or_e_approach)
+        #self.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.valueChanged.connect(self.sightlines_lookup_ssd_minimum_n_or_e_approach)
+        #self.label_design_lookup_design_vehicle_class
+        #lookup table
+
+    #TODO
+    #Calculate sightlines_lookup_ssd_minimum_s_or_w_approach
+    def sightlines_lookup_ssd_minimum_s_or_w_approach(self):
+        pass
+        #self.spinBox_general_info_road_speed_design.valueChanged.connect(self.sightlines_lookup_ssd_minimum_s_or_w_approach)
+        #self.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.valueChanged.connect(self.sightlines_lookup_ssd_minimum_s_or_w_approach)
+        #self.label_design_lookup_design_vehicle_class
+        #lookup table
+
+        # GRADE CROSSING WARNING SYSTEM WARRANTS (GCS SECTION 9)
+        # Group Labels
+        #self.label_gcws_warrant_private_9_3.valueChanged.connect(self.gcws_warrant_private_9_3)
+        #self.label_gcws_warrant_private_9_3_1.valueChanged.connect(self.gcws_warrant_private_9_3_1)
+        #self.label_gcws_warrant_private_9_3_2_a.valueChanged.connect(self.gcws_warrant_private_9_3_2_a)
+        #self.label_gcws_warrant_private_9_3_2_b.valueChanged.connect(self.gcws_warrant_private_9_3_2_b)
+        #self.label_gcws_warrant_private_9_3_2_c.valueChanged.connect(self.gcws_warrant_private_9_3_2_c)
+        #self.label_gcws_warrant_public_9_1.valueChanged.connect(self.gcws_warrant_public_9_1)
+        #self.label_gcws_warrant_public_9_1_a.valueChanged.connect(self.gcws_warrant_public_9_1_a)
+        #self.label_gcws_warrant_public_9_1_b.valueChanged.connect(self.gcws_warrant_public_9_1_b)
+        #self.label_gcws_warrant_public_9_1_c.valueChanged.connect(self.gcws_warrant_public_9_1_c)
+        #self.label_gcws_warrant_public_9_1_d_i.valueChanged.connect(self.gcws_warrant_public_9_1_d_i)
+        #self.label_gcws_warrant_public_9_1_d_ii.valueChanged.connect(self.gcws_warrant_public_9_1_d_ii)
+        #self.label_gcws_warrant_public_9_1_d_iii.valueChanged.connect(self.gcws_warrant_public_9_1_d_iii)
+        #self.label_gcws_warrant_sidewalk_9_5.valueChanged.connect(self.gcws_warrant_sidewalk_9_5)
+        #self.label_gates_gcws_warrant_private_9_4_1_a.valueChanged.connect(self.gates_gcws_warrant_private_9_4_1_a)
+        #self.label_gates_gcws_warrant_private_9_4_1_b.valueChanged.connect(self.gates_gcws_warrant_private_9_4_1_b)
+        #self.label_gates_gcws_warrant_private_9_4_1_c.valueChanged.connect(self.gates_gcws_warrant_private_9_4_1_c)
+        #self.label_gates_gcws_warrant_public_9_2_1_a.valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_a)
+        #self.label_gates_gcws_warrant_public_9_2_1_b.valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_b)
+        #self.label_gates_gcws_warrant_public_9_2_1_c.valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_c)
+        #self.label_gates_gcws_warrant_public_9_2_1_d.valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_d)
+        #self.label_gates_gcws_warrant_public_9_2_1_e.valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_e)
+        #self.label_gates_gcws_warrant_sidewalk_9_6.valueChanged.connect(self.gates_gcws_warrant_sidewalk_9_6)
+
+    # GRADE CROSSING WARNING SYSTEMS (GCS SECTION 12-16)
+    #Group Labels
+    #TODO
+    #Calculate gcws_rail_design_approach_warning_time
+    def gcws_rail_design_approach_warning_time(self):
+        pass
+        #self.spinBox_gcws_rail_design_warning_time_preemption
+        #self.label_gcws_rail_design_warning_time_clearance_distance
+        #self.label_gcws_rail_design_warning_time_departure_time_vehicle
+        #self.label_gcws_rail_design_warning_time_departure_time_pedestrian
+        #self.label_gcws_rail_design_warning_time_gate_arm_clearance
+        #self.label_gcws_rail_design_warning_time_ssd
+        #self.label_gcws_rail_design_warning_time_adjacent_crossing
+
+    #TODO New
+    #Calculate label_gcws_rail_design_warning_time_adjacent_crossing
+    def gcws_rail_design_warning_time_adjacent_crossing(self):
+        pass
+        #self.label_design_calculate_adjacent_track_clearance_time
+
+    #TODO New
+    #calculate label_gcws_rail_design_warning_time_clearance_distance
+    def gcws_rail_design_warning_time_clearance_distance(self):
+        pass
+        #self.doubleSpinBox_design_measure_clearance_distance_pedestrian
+        #self.doubleSpinBox_design_measure_clearance_distance_vehicle
+        #self.comboBox_design_road_design_vehicle_type
+
+    #TODO New
+    #Calculate label_gcws_rail_design_warning_time_departure_time_pedestrian
+    def gcws_rail_design_warning_time_departure_time_pedestrian(self):
+        pass
+        #self.label_design_calculate_clearance_time_crossing_pedestrian_design_check
+    
+    #TODO New
+    #Calculate label_gcws_rail_design_warning_time_departure_time_vehicle
+    def gcws_rail_design_warning_time_departure_time_vehicle(self):
+        pass
+        #self.label_design_calculate_clearance_time_crossing_vehicle_design_check
+
+    #TODO New
+    #Calculate label_gcws_rail_design_warning_time_gate_arm_clearance
+    def gcws_rail_design_warning_time_gate_arm_clearance(self):
+        pass
+        #self.doubleSpinBox_gates_gcws_rail_gate_arm_descent_time_design
+        #self.label_gates_gcws_calculate_gate_arm_clearance_time_recommended
+    
+    #TODO New
+    #Calculate label_gcws_rail_design_warning_time_ssd
+    def gcws_rail_design_warning_time_ssd(self):
+        pass
+        #self.doubleSpinBox_general_info_road_speed_design
+        #self.comboBox_design_road_design_vehicle_type
+        #self.label_design_calculate_vehicle_travel_distance
+        #self.label_sightlines_lookup_ssd_minimum_n_or_e_approach
+        #self.label_sightlines_lookup_ssd_minimum_s_or_w_approach
+
+    # GATES FOR GRADE CROSSING WARNING SYSTEMS (GCS SECTION 10, 12, 15)
+    #Group Labels
+    #TODO
+    #Calculate gates_gcws_calculate_gate_arm_clearance_time_recommended
+    def gates_gcws_calculate_gate_arm_clearance_time_recommended(self):
+        pass
+        #self.label_design_calculate_clearance_time_gate_arm_ssd
+        #self.label_design_calculate_clearance_time_gate_arm_stop
+    
+    #TODO
+    #Calculate gates_gcws_calculate_inner_gate_arm_delay_time_recommended
+    def gates_gcws_calculate_inner_gate_arm_delay_time_recommended(self):
+        pass
+        #self.label_design_calculate_adjacent_track_clearance_time
+
+    # PREPARE TO STOP AT RAILWAY CROSSING SIGN (GCS SECTION 18)
+    #Group Labels
+    #TODO
+    #Calculate aawd_calculate_advance_activation_time_design_n_or_e_approach
+    def aawd_calculate_advance_activation_time_design_n_or_e_approach(self):
+        pass
+        #self.spinBox_general_info_road_speed_design
+        #self.label_design_calculate_vehicle_travel_distance
+        #self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended
+
+    #TODO
+    #Calculate aawd_calculate_advance_activation_time_design_s_or_w_approach    
+    def aawd_calculate_advance_activation_time_design_s_or_w_approach(self):
+        pass
+        #self.spinBox_general_info_road_speed_design
+        #self.label_design_calculate_vehicle_travel_distance
+        #self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended
+
+    #TODO
+    #Calculate aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended
+    def aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended(self):
+        pass
+        #self.spinBox_general_info_road_speed_posted
+        #self.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach
+        #self.label_design_input_reaction_time
+        #(deceleration rate; typically 2.6m/s2)
+        #(gravitational acceleration; 9.81m/s2)
+    
+    #TODO
+    #Calculate aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended
+    def aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended(self):
+        pass
+        #self.spinBox_general_info_road_speed_posted
+        #self.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach
+        #self.label_design_input_reaction_time
+        #(deceleration rate; typically 2.6m/s2)
+        #(gravitational acceleration; 9.81m/s2)
+
+    #TODO
+    #Calculate aawd_warrant_gcr_lookup_road_classification
+    def aawd_warrant_gcr_lookup_road_classification(self):
+        pass
+        #self.comboBox_general_info_road_classification
+        
+    #TODO
+    #Calculate aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr
+    def aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr(self):
+        pass
+        #self.spinBox_general_info_road_speed_design
+    
+    # INTERCONNECTION OF TRAFFIC SIGNALS (GCS SECTION 19)
+    #Group Labels
+    #TODO
+    #Calculate preemption_of_traffic_signals_lookup_proximity_condition
+    def preemption_of_traffic_signals_lookup_proximity_condition(self):
+        pass
+        #self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
+        #self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_of_w_approach
+
+    #TODO
+    #Calculate preemption_of_traffic_signals_lookup_required
+    def preemption_of_traffic_signals_lookup_required(self):
+        pass
+        #self.label_general_info_rail_railway_design_speed
+        #self.label_preemption_of_traffic_signals_lookup_proximity_condition
+
+    # WHISTLE CESSATION (GCS SECTION Appendix D)
+    #Group Labels
+    #TODO
+    #Calculate areas_without_train_whistling_lookup_gcs_9_2
+    def areas_without_train_whistling_lookup_gcs_9_2(self):
+        pass
+        #self.comboBox_gcws_observe_gates_n_or_e_approach
+        #self.comboBox_gcws_observe_gates_s_or_w_approach
+        #self.label_gates_gcws_warrant_public_9_2_1_a
+        #self.label_gates_gcws_warrant_public_9_2_1_b
+        #self.label_gates_gcws_warrant_public_9_2_1_c
+        #self.label_gates_gcws_warrant_public_9_2_1_d
+        #self.label_gates_gcws_warrant_public_9_2_1_e
+
+    #TODO
+    #Calculate areas_without_train_whistling_requirements_lookup_table_d1_criteria
+    def areas_without_train_whistling_requirements_lookup_table_d1_criteria(self):
+        pass
+        #self.label_general_info_rail_no_tracks_total
+        #self.label_general_info_rail_railway_design_speed
+
+    #TODO
+    #Calculate areas_without_train_whistling_requirements_observe_table_D1
+    def areas_without_train_whistling_requirements_observe_table_D1(self):
+        pass
+        #self.comboBox_gcws_observe_gates_n_or_e_approach
+        #self.comboBox_gcws_observe_gates_s_or_w_approach
+        #self.comboBox_gcws_observe_light_units_n_or_e_approach
+        #self.comboBox_gcws_observe_light_units_s_or_w_approach
+        #self.label_areas_without_train_whistling_requirements_lookup_table_d1_criteria
 
     def initializeUI(self):
         """
@@ -374,7 +733,7 @@ class ViewCrossingForm(qtw.QWidget):
         #Group SpinBox
         self.spinBox_collision_history_fatal_injury = qtw.QSpinBox()
         self.spinBox_collision_history_fatal_injury.setRange(0, 999999)
-
+        
         self.spinBox_collision_history_fatalities = qtw.QSpinBox() 
         self.spinBox_collision_history_fatalities.setRange(0, 999999)
 
@@ -521,7 +880,10 @@ class ViewCrossingForm(qtw.QWidget):
         self.label_design_calculate_clearance_time_gate_arm_ssd = qtw.QLabel('No Value')
         self.label_design_calculate_clearance_time_gate_arm_stop = qtw.QLabel('No Value')
         self.label_design_calculate_vehicle_travel_distance = qtw.QLabel('No Value')
-        self.label_design_input_reaction_time = qtw.QLabel('No Value')
+        
+        self.label_design_input_reaction_time = qtw.QLabel()
+        self.label_design_input_reaction_time.setNum(2)
+
         self.label_design_lookup_design_vehicle_class = qtw.QLabel('No Value')
         self.label_design_lookup_design_vehicle_length = qtw.QLabel('No Value')
         self.label_design_lookup_grade_adjustment_factor = qtw.QLabel('No Value')
@@ -1215,17 +1577,23 @@ class ViewCrossingForm(qtw.QWidget):
         self.comboBox_aawd_road_aawd_sufficient_activation_time_s_or_w_approach = qtw.QComboBox()
         self.comboBox_aawd_road_aawd_sufficient_activation_time_s_or_w_approach.addItems(list_yes_no_na)
 
+        self.comboBox_aawd_warrant_gcr_observe_environmental_condition = qtw.QComboBox()
+        self.comboBox_aawd_road_aawd_sufficient_activation_time_n_or_e_approach.addItems(list_yes_no_na)
+
+        self.comboBox_aawd_warrant_gcr_observe_sightline_obstruction = qtw.QComboBox()
+        self.comboBox_aawd_road_aawd_sufficient_activation_time_n_or_e_approach.addItems(list_yes_no_na)
+
+        self.comboBox_aawd_warrant_mutcd_lookup_significant_road_downgrade = qtw.QComboBox()
+        self.comboBox_aawd_road_aawd_sufficient_activation_time_n_or_e_approach.addItems(list_yes_no_na)
+
         #Group Labels
         self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach = qtw.QLabel('No Value')
         self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach = qtw.QLabel('No Value')
         self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended = qtw.QLabel('No Value')
         self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended = qtw.QLabel('No Value')
         self.label_aawd_warrant_gcr_lookup_road_classification = qtw.QLabel('No Value')
-        self.label_aawd_warrant_gcr_observe_environmental_condition = qtw.QLabel('No Value')
-        self.label_aawd_warrant_gcr_observe_sightline_obstruction = qtw.QLabel('No Value')
         self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr = qtw.QLabel('No Value')
-        self.label_aawd_warrant_mutcd_lookup_significant_road_downgrade = qtw.QLabel('No Value')
-
+        
         # INTERCONNECTION OF TRAFFIC SIGNALS (GCS SECTION 19)
         #Group TextEdits
         self.textEdit_preemption_of_traffic_signals_comments = qtw.QTextEdit()
@@ -1271,6 +1639,9 @@ class ViewCrossingForm(qtw.QWidget):
         self.textEdit_areas_without_train_whistling_comments = qtw.QTextEdit()
 
         #Group ComboBoxes
+        self.comboBox_areas_without_train_whistling_lookup_gcs_12_to_16 = qtw.QComboBox()
+        self.comboBox_areas_without_train_whistling_lookup_gcs_12_to_16.addItems(list_yes_no_na)
+
         self.comboBox_areas_without_train_whistling_observe_for_stop_and_proceed = qtw.QComboBox()
         self.comboBox_areas_without_train_whistling_observe_for_stop_and_proceed.addItems(list_yes_no_na)
 
@@ -1281,14 +1652,13 @@ class ViewCrossingForm(qtw.QWidget):
         self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone.addItems(list_yes_no)
 
         self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone_24_hrs = qtw.QComboBox()
-        self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone_24_hrs.addItems(list_yes_no)
+        self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone_24_hrs.addItems(list_yes_no)        
 
         #Group Labels
-        self.label_areas_without_train_whistling_lookup_gcs_12_to_16 = qtw.QLabel('No Value')
         self.label_areas_without_train_whistling_lookup_gcs_9_2 = qtw.QLabel('No Value')
+        self.label_areas_without_train_whistling_requirements_lookup_table_d1_criteria = qtw.QLabel('No Value')
         self.label_areas_without_train_whistling_requirements_observe_table_D1 = qtw.QLabel('No Value')
         
-
         ##################
         # Layout Objects #
         ##################
@@ -1790,11 +2160,11 @@ class ViewCrossingForm(qtw.QWidget):
         form_layout_aaws.addRow('S or W Road Approach:', self.comboBox_aawd_observe_present_s_or_w_approach)
         form_layout_aaws.addRow(qtw.QLabel('Warrants for a Prepare to Stop at Railway Crossing Sign Per GCR'))
         form_layout_aaws.addRow('A. Is the roadway classified as an expressway?', self.label_aawd_warrant_gcr_lookup_road_classification)
-        form_layout_aaws.addRow('B. Is at least one set of front lights on the warning system not clearly visible within the stopping sight distance of at least one of the lanes of the road approach?', self.label_aawd_warrant_gcr_observe_sightline_obstruction)
-        form_layout_aaws.addRow('C. Do weather conditions at the grade crossing repeatedly obscure the visibility of the warning system?', self.label_aawd_warrant_gcr_observe_environmental_condition)
+        form_layout_aaws.addRow('B. Is at least one set of front lights on the warning system not clearly visible within the stopping sight distance of at least one of the lanes of the road approach?', self.comboBox_aawd_warrant_gcr_observe_sightline_obstruction)
+        form_layout_aaws.addRow('C. Do weather conditions at the grade crossing repeatedly obscure the visibility of the warning system?', self.comboBox_aawd_warrant_gcr_observe_environmental_condition)
         form_layout_aaws.addRow(qtw.QLabel('Warrants for a Prepare to Stop at Railway Crossing Sign Per MUTCD'))
         form_layout_aaws.addRow('D. Is the speed limit of the travelled way greater than 90 km/h?', self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr)
-        form_layout_aaws.addRow('E. Is the crossing at the bottom of a hill or downgrade of considerable length?', self.label_aawd_warrant_mutcd_lookup_significant_road_downgrade)
+        form_layout_aaws.addRow('E. Is the crossing at the bottom of a hill or downgrade of considerable length?', self.comboBox_aawd_warrant_mutcd_lookup_significant_road_downgrade)
         form_layout_aaws.addRow(qtw.QLabel('Design AAWD Advance Activation Time (s):'))
         form_layout_aaws.addRow('N or E Road Approach:', self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach)
         form_layout_aaws.addRow('S or W Road Approach:', self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach)
@@ -1835,9 +2205,10 @@ class ViewCrossingForm(qtw.QWidget):
         form_layout_whistle_cessation.addRow('24 hours per day?', self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone_24_hrs)
         form_layout_whistle_cessation.addRow(qtw.QLabel('Requirements'))
         form_layout_whistle_cessation.addRow('Is there evidence of routine unauthorized access (trespassing) on the rail line in the area of the crossing? Comment below.', self.comboBox_areas_without_train_whistling_observe_trespassing_area)
-        form_layout_whistle_cessation.addRow('What is the required type of warning system as per Table D-1?', self.label_areas_without_train_whistling_requirements_observe_table_D1)
+        form_layout_whistle_cessation.addRow('What is the required type of warning system as per Table D-1?', self.label_areas_without_train_whistling_requirements_lookup_table_d1_criteria)
+        form_layout_whistle_cessation.addRow('Are the requirements of Table D-1 met?', self.label_areas_without_train_whistling_requirements_observe_table_D1)
         form_layout_whistle_cessation.addRow('Further to Column A of Table D-1, is a crossing warning system with gates installed per GCS 9.2?', self.label_areas_without_train_whistling_lookup_gcs_9_2)
-        form_layout_whistle_cessation.addRow('Does crossing warning system meet requirements of GCS 12-16?', self.label_areas_without_train_whistling_lookup_gcs_12_to_16)
+        form_layout_whistle_cessation.addRow('Does crossing warning system meet requirements of GCS 12-16?', self.comboBox_areas_without_train_whistling_lookup_gcs_12_to_16)
         form_layout_whistle_cessation.addRow('If Stop and Proceed, is crossing equipped with FLB meeting GCS 12-16 or manually protected?', self.comboBox_areas_without_train_whistling_observe_for_stop_and_proceed)       
         form_layout_whistle_cessation.addRow('Whistle Cessation Comments', self.textEdit_areas_without_train_whistling_comments)
 
