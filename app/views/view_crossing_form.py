@@ -83,7 +83,6 @@ class ViewCrossingForm(qtw.QWidget):
         self.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.design_lookup_grade_adjustment_factor)
         self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_lookup_grade_adjustment_factor)
 
-        #TODO
         #design_lookup_vehicle_departure_time_crossing
         self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_lookup_vehicle_departure_time_crossing)
         self.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.design_lookup_vehicle_departure_time_crossing)
@@ -355,7 +354,6 @@ class ViewCrossingForm(qtw.QWidget):
             design_lookup_grade_adjustment_factor = df_table_4_6_ratio_of_acceleration_times_on_road_grades.loc[df_table_4_6_ratio_of_acceleration_times_on_road_grades.grade_crossing_design_vehicle == f'{design_lookup_design_vehicle_class}','4'].item()
             self.label_design_lookup_grade_adjustment_factor.setNum(design_lookup_grade_adjustment_factor)
         
-    #TODO
     #Calulcate design_lookup_vehicle_departure_time_crossing
     def design_lookup_vehicle_departure_time_crossing(self):
         design_measure_clearance_distance_pedestrian = self.doubleSpinBox_design_measure_clearance_distance_pedestrian.value()
