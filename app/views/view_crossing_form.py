@@ -85,8 +85,10 @@ class ViewCrossingForm(qtw.QWidget):
 
         #TODO
         #design_lookup_vehicle_departure_time_crossing
-        #self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_lookup_vehicle_departure_time_crossing)
-        
+        self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_lookup_vehicle_departure_time_crossing)
+        self.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.design_lookup_vehicle_departure_time_crossing)
+        self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.design_lookup_vehicle_departure_time_crossing)
+
         '''
         #design_lookup_vehicle_departure_time_gate_arm_clearance
         self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_lookup_vehicle_departure_time_gate_arm_clearance)
@@ -356,11 +358,29 @@ class ViewCrossingForm(qtw.QWidget):
     #TODO
     #Calulcate design_lookup_vehicle_departure_time_crossing
     def design_lookup_vehicle_departure_time_crossing(self):
-        pass
-        #self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.design_lookup_vehicle_departure_time_crossing)
-        #self.label_design_calculate_vehicle_travel_distance
-        #self.label_design_lookup_design_vehicle_class
+        design_measure_clearance_distance_pedestrian = self.doubleSpinBox_design_measure_clearance_distance_pedestrian.value()
+        design_calculate_vehicle_travel_distance = self.label_design_calculate_vehicle_travel_distance.text()
+        design_lookup_design_vehicle_class = self.label_design_lookup_design_vehicle_class.text()
         
+        if design_lookup_design_vehicle_class == "No Value" or design_calculate_vehicle_travel_distance == "No Value":
+            design_lookup_vehicle_departure_time_crossing = "No Value"
+            self.label_design_lookup_vehicle_departure_time_crossing.setText('No Value')
+        elif design_lookup_design_vehicle_class == "Cars" and design_calculate_vehicle_travel_distance != "No Value":
+            design_calculate_vehicle_travel_distance = float(design_calculate_vehicle_travel_distance)
+            design_lookup_vehicle_departure_time_crossing = round(max(4,-1.83359063314625E-07 * design_calculate_vehicle_travel_distance**4 + 0.000030862217902978 * design_calculate_vehicle_travel_distance**3 - 0.00243559236227734 * design_calculate_vehicle_travel_distance**2 + 0.194096256511465 * design_calculate_vehicle_travel_distance + 1.9653478726958),4)
+            self.label_design_lookup_vehicle_departure_time_crossing.setNum(design_lookup_vehicle_departure_time_crossing)
+        elif design_lookup_design_vehicle_class == "Single-Unit Trucks" and design_calculate_vehicle_travel_distance != "No Value":
+            design_calculate_vehicle_travel_distance = float(design_calculate_vehicle_travel_distance)
+            design_lookup_vehicle_departure_time_crossing = round(max(6,2.95895110935529E-06 * design_calculate_vehicle_travel_distance**3 - 0.00120538991988588 * design_calculate_vehicle_travel_distance**2 + 0.23080739982193 * design_calculate_vehicle_travel_distance + 3.11489082547138),4)
+            self.label_design_lookup_vehicle_departure_time_crossing.setNum(design_lookup_vehicle_departure_time_crossing)
+        elif (design_lookup_design_vehicle_class == "Tractor Trailers" or design_lookup_design_vehicle_class == "Combination Vehicles" or design_lookup_design_vehicle_class == "Buses") and design_calculate_vehicle_travel_distance != "No Value":
+            design_calculate_vehicle_travel_distance = float(design_calculate_vehicle_travel_distance)
+            design_lookup_vehicle_departure_time_crossing = round(max(7,2.43585710133203E-07 * design_calculate_vehicle_travel_distance**4 - 0.0000473118786681759 * design_calculate_vehicle_travel_distance**3 + 0.00169819852156627 * design_calculate_vehicle_travel_distance**2 + 0.211550565362998 * design_calculate_vehicle_travel_distance + 3.96662867415871),4)
+            self.label_design_lookup_vehicle_departure_time_crossing.setNum(design_lookup_vehicle_departure_time_crossing)        
+        elif design_lookup_design_vehicle_class == "Pedestrian" and design_calculate_vehicle_travel_distance != "No Value":
+            design_lookup_vehicle_departure_time_crossing = round(design_measure_clearance_distance_pedestrian/1.22,4)
+            self.label_design_lookup_vehicle_departure_time_crossing.setNum(design_lookup_vehicle_departure_time_crossing)
+          
     #TODO
     #Calculate design_lookup_vehicle_departure_time_gate_arm_clearance
     def design_lookup_vehicle_departure_time_gate_arm_clearance(self):
@@ -915,6 +935,7 @@ class ViewCrossingForm(qtw.QWidget):
         self.label_design_lookup_design_vehicle_length = qtw.QLabel('No Value')
         self.label_design_lookup_grade_adjustment_factor = qtw.QLabel('No Value')
         self.label_design_lookup_vehicle_departure_time_crossing = qtw.QLabel('No Value')
+        self.label_design_lookup_vehicle_departure_time_crossing_adjusted = qtw.QLabel('No Value')
         self.label_design_lookup_vehicle_departure_time_gate_arm_clearance = qtw.QLabel('No Value')
         
         # LOCATION OF GRADE CROSSING (GCS SECTION 11)
@@ -1857,20 +1878,21 @@ class ViewCrossingForm(qtw.QWidget):
         form_layout_design_considerations.addRow('Design Vehicle Length (m):', self.label_design_lookup_design_vehicle_length)
         form_layout_design_considerations.addRow('Clearance Distance - Vehicle, cd (m):', self.doubleSpinBox_design_measure_clearance_distance_vehicle)
         form_layout_design_considerations.addRow('Vehicle Travel Distance, S = L + cd (m):', self.label_design_calculate_vehicle_travel_distance)
-        form_layout_design_considerations.addRow('Departure Time - Vehicle, Td = J + T:', self.label_design_calculate_clearance_time_crossing_vehicle_design_check)
+        form_layout_design_considerations.addRow('Clearance Time - Vehicle, Td = J + T:', self.label_design_calculate_clearance_time_crossing_vehicle_design_check)
         form_layout_design_considerations.addRow("Driver's Reaction Time (s):", self.label_design_input_reaction_time)
+        form_layout_design_considerations.addRow("Departure Time - Vehicle (without Grade Adjustment Factor) (t):", self.label_design_lookup_vehicle_departure_time_crossing)
+        form_layout_design_considerations.addRow("Departure Time - Vehicle (with Grade Adjustment Factor) (T = txG):", self.label_design_lookup_vehicle_departure_time_crossing_adjusted)
         form_layout_design_considerations.addRow('Maximum Road Approach Grade within S (%):', self.doubleSpinBox_design_road_max_approach_grade_within_s)
-        form_layout_design_considerations.addRow('Grade Adjustment Factor:', self.label_design_lookup_grade_adjustment_factor)
+        form_layout_design_considerations.addRow('Grade Adjustment Factor (G):', self.label_design_lookup_grade_adjustment_factor)
         form_layout_design_considerations.addRow('Do Field Acceleration Times Exceed Td?:', self.comboBox_design_observe_field_acceleration_times_exceed_td)
         form_layout_design_considerations.addRow('Clearance Distance - Pedestrian, cd (m):', self.doubleSpinBox_design_measure_clearance_distance_pedestrian)
-        form_layout_design_considerations.addRow('Departure Time - Pedestrian, Td = J + T:', self.label_design_calculate_clearance_time_crossing_pedestrian_design_check)
+        form_layout_design_considerations.addRow('Clearance Time - Pedestrian, Td = J + T:', self.label_design_calculate_clearance_time_crossing_pedestrian_design_check)
         form_layout_design_considerations.addRow('Separation Distnace Between Adjacent Tracks (m):', self.doubleSpinBox_design_measure_adjacent_track_separation_distance)      
         form_layout_design_considerations.addRow('Adjacent Track Clearance Distance (m):', self.doubleSpinBox_design_measure_adjacent_track_clearance_distance)
         form_layout_design_considerations.addRow('Adjacent Track Clearance Time (s):', self.label_design_calculate_adjacent_track_clearance_time)
-        form_layout_design_considerations.addRow('', self.label_design_calculate_clearance_time_gate_arm_ssd)
-        form_layout_design_considerations.addRow('', self.label_design_calculate_clearance_time_gate_arm_stop)
-        form_layout_design_considerations.addRow('', self.label_design_lookup_vehicle_departure_time_crossing)
-        form_layout_design_considerations.addRow('', self.label_design_lookup_vehicle_departure_time_gate_arm_clearance)        
+        form_layout_design_considerations.addRow('Gate Arm Clearance Time (from the SSD position)(TG SSD)', self.label_design_calculate_clearance_time_gate_arm_ssd)
+        form_layout_design_considerations.addRow('Gate Arm Clearance Time (from the Stop position)(TG Stop)', self.label_design_calculate_clearance_time_gate_arm_stop)
+        form_layout_design_considerations.addRow('Vehicle Departure Time, Gate Arm Clearance, t(s):', self.label_design_lookup_vehicle_departure_time_gate_arm_clearance)        
         form_layout_design_considerations.addRow('Design Consideration Comments', self.textEdit_design_comments)
 
         # layout container widgets - LOCATION OF GRADE CROSSING (GCS SECTION 11)
