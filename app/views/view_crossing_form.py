@@ -172,8 +172,7 @@ class ViewCrossingForm(qtw.QWidget):
         self.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.valueChanged.connect(self.sightlines_calculate_dssd_vehicle_min_m)
         self.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.valueChanged.connect(self.sightlines_calculate_dssd_vehicle_min_m)
         self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.sightlines_calculate_dssd_vehicle_min_m)
-        
-        '''
+   
         # GRADE CROSSING WARNING SYSTEM WARRANTS (GCS SECTION 9)
         #gcws_warrant_private_9_3 - connect signals and slots
         # .valueChanged.connect(self.gcws_warrant_private_9_3)
@@ -240,9 +239,8 @@ class ViewCrossingForm(qtw.QWidget):
         
         #gates_gcws_warrant_sidewalk_9_6 - connect signals and slots
         # .valueChanged.connect(self.gates_gcws_warrant_sidewalk_9_6)
-        '''
 
-        # GRADE CROSSING WARNING SYSTEMS (GCS SECTION 12-16)
+        #GRADE CROSSING WARNING SYSTEMS (GCS SECTION 12-16)
         #gcws_rail_design_warning_time_clearance_distance - connect signals and slots
         self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.gcws_rail_design_warning_time_clearance_distance)
         self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.gcws_rail_design_warning_time_clearance_distance)
@@ -254,7 +252,7 @@ class ViewCrossingForm(qtw.QWidget):
         self.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.gcws_rail_design_warning_time_departure_time_vehicle)
         self.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.gcws_rail_design_warning_time_departure_time_vehicle)
         self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.gcws_rail_design_warning_time_departure_time_vehicle)                                                                     
-
+       
         #TODO
         #gcws_rail_design_warning_time_departure_time_pedestrian - connect signals and slots
         
@@ -895,7 +893,7 @@ class ViewCrossingForm(qtw.QWidget):
             gcws_rail_design_warning_time_clearance_distance = max(20,sum((20, math.ceil((design_measure_clearance_distance_vehicle-11.0)/3.0, 0))))
             self.label_gcws_rail_design_warning_time_clearance_distance.setNum(gcws_rail_design_warning_time_clearance_distance)
         return gcws_rail_design_warning_time_clearance_distance
-
+    
     #TODO
     #Calculate gcws_rail_design_warning_time_departure_time_vehicle
     def gcws_rail_design_warning_time_departure_time_vehicle(self):
@@ -938,11 +936,10 @@ class ViewCrossingForm(qtw.QWidget):
     def gcws_rail_design_warning_time_adjacent_crossing(self):
         pass
     
-    '''
     #TODO
     #Calculate gcws_rail_design_approach_warning_time
     def gcws_rail_design_approach_warning_time(self):
-        gcws_rail_design_warning_time_preemption = self.spinBox_gcws_rail_design_warning_time_preemption.value()
+        #gcws_rail_design_warning_time_preemption = self.spinBox_gcws_rail_design_warning_time_preemption.value()
         gcws_rail_design_warning_time_clearance_distance = self.gcws_rail_design_warning_time_clearance_distance()
         gcws_rail_design_warning_time_departure_time_vehicle = self.gcws_rail_design_warning_time_departure_time_vehicle()
         gcws_rail_design_warning_time_departure_time_pedestrian = self.gcws_rail_design_warning_time_departure_time_pedestrian()
@@ -951,7 +948,7 @@ class ViewCrossingForm(qtw.QWidget):
         gcws_rail_design_warning_time_adjacent_crossing = self.gcws_rail_design_warning_time_adjacent_crossing()
 
         gcws_rail_design_approach_warning_time = {
-            'gcws_rail_design_warning_time_preemption': gcws_rail_design_warning_time_preemption,
+            #'gcws_rail_design_warning_time_preemption': gcws_rail_design_warning_time_preemption,
             'gcws_rail_design_warning_time_clearance_distance': gcws_rail_design_warning_time_clearance_distance, 
             'gcws_rail_design_warning_time_departure_time_vehicle': gcws_rail_design_warning_time_departure_time_vehicle, 
             'gcws_rail_design_warning_time_departure_time_pedestrian': gcws_rail_design_warning_time_departure_time_pedestrian,
@@ -963,7 +960,6 @@ class ViewCrossingForm(qtw.QWidget):
             print (i)
 
         return gcws_rail_design_approach_warning_time
-        '''
 
     #TODO New
     #Calculate label_gcws_rail_design_warning_time_adjacent_crossing
@@ -2582,7 +2578,7 @@ class ViewCrossingForm(qtw.QWidget):
 
         # layout container widgets - GRADE CROSSING WARNING SYSTEMS (GCS SECTION 12-16)
         form_layout_gcws.addRow('Design Approach Warning Time:', self.label_gcws_rail_design_approach_warning_time)
-        form_layout_gcws_warrants.addRow(qtw.QLabel('Should be greatest of:'))
+        form_layout_gcws.addRow(qtw.QLabel('Should be greatest of:'))
         form_layout_gcws.addRow('a. 20 s, unless the grade crossing clearance distance (Fig 10-1) is more than 11 m (35 ft), in which case, the 20 s must be increased by one second for each additional 3 m (10 ft), or fraction thereof;', self.label_gcws_rail_design_warning_time_clearance_distance)
         form_layout_gcws.addRow("b. The Departure Time for the grade crossing 'design vehicle' (Article 10.3.2);", self.label_gcws_rail_design_warning_time_departure_time_vehicle)
         form_layout_gcws.addRow('c. The Departure Time for pedestrians, cyclists, and persons using assistive devices (Article 10.3.3);', self.label_gcws_rail_design_warning_time_departure_time_pedestrian)
