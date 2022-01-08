@@ -1,8 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication
-from controllers.controller import Controller
-from models.model import Model
-from views.main_view import MainView, ViewCrossingForm
+from views.main_view import MainView
 
 # Run program
 class App(QApplication):
