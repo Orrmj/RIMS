@@ -6,6 +6,9 @@ from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
 
+class Signals(qtc.QObject):
+    submitted = qtc.pyqtSignal(int, int, int)
+
 class ViewCrossingForm(qtw.QWidget):
 
     def __init__(self, model):
@@ -15,43 +18,43 @@ class ViewCrossingForm(qtw.QWidget):
         #self._controller = controller
         self.initializeUI()
         self.connect_and_emit_trigger()
-        
+
     def connect_and_emit_trigger(self):
         #connecting a signal to python callables
         # COLLISION HISTORY (5 YEAR PERIOD)
         #collision_history_total_5_year_period - connect signals and slots
-        self.spinBox_collision_history_fatal_injury.valueChanged.connect(self.handle_collision_history_total_5_year_period)
-        self.spinBox_collision_history_personal_injury.valueChanged.connect(self.handle_collision_history_total_5_year_period)
-        self.spinBox_collision_history_property_damage.valueChanged.connect(self.handle_collision_history_total_5_year_period)
+        self.spinBox_collision_history_fatal_injury.valueChanged.connect(lambda val: self.handle_collision_history_total_5_year_period('spinBox_collision_history_fatal_injury', val))
+        self.spinBox_collision_history_personal_injury.valueChanged.connect(lambda val: self.handle_collision_history_total_5_year_period('spinBox_collision_history_personal_injury', val))
+        self.spinBox_collision_history_property_damage.valueChanged.connect(lambda val: self.handle_collision_history_total_5_year_period('spinBox_collision_history_property_damage', val))
         
         # GENERAL INFORMATION
         #general_info_rail_no_tracks_total - connect signals and slots
-        self.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.handle_general_info_rail_no_tracks_total)
-        self.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.handle_general_info_rail_no_tracks_total)
+        self.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(lambda val: self.handle_general_info_rail_no_tracks_total('spinBox_general_info_rail_no_tracks_main', val))
+        self.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(lambda val: self.handle_general_info_rail_no_tracks_total('spinBox_general_info_rail_no_tracks_other', val))
         
         #general_info_rail_no_trains_per_day_total - connect signals and slots
-        self.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self.handle_general_info_rail_no_trains_per_day_total)
-        self.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self.handle_general_info_rail_no_trains_per_day_total)
+        self.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(lambda val: self.handle_general_info_rail_no_trains_per_day_total('spinBox_general_info_rail_no_trains_per_day_freight', val))
+        self.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(lambda val: self.handle_general_info_rail_no_trains_per_day_total('spinBox_general_info_rail_no_trains_per_day_passengers', val))
         
         #general_info_road_no_traffic_lanes_total - connect signals and slots
-        self.spinBox_general_info_road_no_traffic_lanes_bidirectional.valueChanged.connect(self.handle_general_info_road_no_traffic_lanes_total)
-        self.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound.valueChanged.connect(self.handle_general_info_road_no_traffic_lanes_total)
-        self.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound.valueChanged.connect(self.handle_general_info_road_no_traffic_lanes_total)
+        self.spinBox_general_info_road_no_traffic_lanes_bidirectional.valueChanged.connect(lambda val: self.handle_general_info_road_no_traffic_lanes_total('spinBox_general_info_road_no_traffic_lanes_bidirectional', val))
+        self.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound.valueChanged.connect(lambda val: self.handle_general_info_road_no_traffic_lanes_total('spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound', val))
+        self.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound.valueChanged.connect(lambda val: self.handle_general_info_road_no_traffic_lanes_total('spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound', val))
         
         #general_info_rail_railway_design_speed - connect signals and slots
-        self.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.handle_general_info_rail_railway_design_speed)
-        self.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.handle_general_info_rail_railway_design_speed)        
+        self.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(lambda val: self.handle_general_info_rail_railway_design_speed('spinBox_general_info_rail_max_railway_operating_speed_freight', val))
+        self.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(lambda val: self.handle_general_info_rail_railway_design_speed('spinBox_general_info_rail_max_railway_operating_speed_passenger', val))        
         
         # DESIGN CONSIDERATIONS (GCS SECTION 10)
         #design_calculate_adjacent_track_clearance_time - connect signals and slots
-        self.doubleSpinBox_design_measure_adjacent_track_separation_distance.valueChanged.connect(self.handle_design_calculate_adjacent_track_clearance_time)
-        self.doubleSpinBox_design_measure_adjacent_track_clearance_distance.valueChanged.connect(self.handle_design_calculate_adjacent_track_clearance_time)
+        self.doubleSpinBox_design_measure_adjacent_track_separation_distance.valueChanged.connect(lambda val: self.handle_design_calculate_adjacent_track_clearance_time('doubleSpinBox_design_measure_adjacent_track_separation_distance', val))
+        self.doubleSpinBox_design_measure_adjacent_track_clearance_distance.valueChanged.connect(lambda val: self.handle_design_calculate_adjacent_track_clearance_time('doubleSpinBox_design_measure_adjacent_track_clearance_distance', val))
 
         #design_calculate_clearance_time_crossing_pedestrian_design_check - connect signals and slots
-        self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.handle_design_calculate_clearance_time_pedestrian_design_check)
+        self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(lambda val: self.handle_design_calculate_clearance_time_pedestrian_design_check('doubleSpinBox_design_measure_clearance_distance_pedestrian', val))
 
         #design_calculate_vehicle_departure_time - connect signals and slots
-        self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.handle_design_calculate_vehicle_departure_time)
+        self.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(lambda val: self.handle_design_calculate_vehicle_departure_time('doubleSpinBox_design_measure_clearance_distance_pedestrian', val))
         self.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.handle_design_calculate_vehicle_departure_time)
         self.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.handle_design_calculate_vehicle_departure_time)
 
@@ -395,12 +398,14 @@ class ViewCrossingForm(qtw.QWidget):
         #areas_without_train_whistling_requirements_observe_table_d1 - connect signals and slots
         # .valueChanged.connect(self.handle_areas_without_train_whistling_requirements_observe_table_D1)
         '''
-
+    
     #Calculate collision_history_total_5_year_period
-    def handle_collision_history_total_5_year_period(self):
+    def handle_collision_history_total_5_year_period(self, name, value):
         collision_history_fatal_injury = self.spinBox_collision_history_fatal_injury.value()
         collision_history_personal_injury = self.spinBox_collision_history_personal_injury.value()
         collision_history_property_damage = self.spinBox_collision_history_property_damage.value()
+
+        print(name, value)
 
         result = sum((collision_history_fatal_injury, collision_history_personal_injury, collision_history_property_damage))
         self.label_collision_history_total_5_year_period.setNum(result)
