@@ -985,15 +985,6 @@ class ViewCrossingForm(qtw.QWidget):
         else:
             ht = dict_general_info_road_classification[general_info_road_classification]       
 
-        print('c', c, type(c))
-        print('t', t, type(t))
-        print('d', d, type(d))
-        print('mt', mt, type(mt))
-        print('ms', ms, type(ms))
-        print('hl', hl, type(hl))
-        print('hp', hp, type(hp))
-        print('ht', ht, type(ht))
-
         if inspection_details_gcws_type == '' or general_info_road_classification == '' or grade_crossing_surface_observe_road_approach_surface_type == '' or gcws_observe_gates_n_or_e_approach == '' or gcws_observe_gates_s_or_w_approach == '' or general_info_rail_no_tracks_total == 'No Value' or mt == 'No Value' or c == 0 or t == 'No Value' or d == 'No Value' or ms == 'No Value' or hl == 'No Value' or hp == 'No Value' or ht == 'No Value':            
             result = "No Value"
             self.label_collision_history_risk_index_initial.setText(result)
@@ -1009,7 +1000,6 @@ class ViewCrossingForm(qtw.QWidget):
         else:
             result = 'No Value'
             self.label_collision_history_risk_index_initial.setText(result)
-
         return result
     
     #Calculate collision_history_risk_index_final
@@ -1018,9 +1008,6 @@ class ViewCrossingForm(qtw.QWidget):
 
         collision_history_risk_index_initial = self.handle_collision_history_risk_index_initial(name, value)
         collision_history_total_5_year_period = self.handle_collision_history_total_5_year_period(name, value)
-
-        print('collision_history_risk_index_initial', collision_history_risk_index_initial, type(collision_history_risk_index_initial))
-        print('collision_history_total_5_year_period', collision_history_total_5_year_period, type(collision_history_total_5_year_period))
 
         if collision_history_risk_index_initial == 'No Value':
             result = 'No Value'
@@ -1032,7 +1019,6 @@ class ViewCrossingForm(qtw.QWidget):
                 collision_history_total_5_year_period / sum([5, 1 / sum([0.05, collision_history_risk_index_initial])])
                 ]),
                 5)
-            print('result', result)
             self.label_collision_history_risk_index_final.setNum(result)
         return result
 
