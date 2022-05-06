@@ -3,7 +3,7 @@ from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
 
 from .view_crossing_form import ViewCrossingForm
-from models.model import Model
+from models.model_crossing import ModelGradeCrossing
 
 class MainView(qtw.QWidget):
     def __init__(self):
@@ -27,14 +27,12 @@ class MainView(qtw.QWidget):
         """
         self.setLayout(qtw.QVBoxLayout())
         self.label = qtw.QLabel('Click "change" to change this text.')
-        self.Crossing_Inspection_Application = qtw.QPushButton("Crossing Inspection Application", clicked=self.onChange)
-        #self.Track_Inspection_Application = qtw.QPushButton("Track Inspection Application", clicked=self.onChange)
-        #self.Bridge_Inspection_Application = qtw.QPushButton("Bridge Inspection Application", clicked=self.onChange)
+        self.Crossing_Inspection_Application = qtw.QPushButton("Crossing Inspection Application", clicked=self.GradeCrossingForm)
         self.layout().addWidget(self.label)
         self.layout().addWidget(self.Crossing_Inspection_Application)
 
-    def onChange(self):
-        self.model = Model()
+    def GradeCrossingForm(self):
+        self.model = ModelGradeCrossing()
         self.view = ViewCrossingForm(self.model)
         self.view.show()
 
