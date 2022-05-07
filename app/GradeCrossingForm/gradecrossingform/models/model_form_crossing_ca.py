@@ -8,18 +8,18 @@ from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
 
-class ModelGradeCrossingForm(qtc.QObject):
+class ModelFormCrossingCA(qtc.QObject):
     
     def __init__(self, view):
         super().__init__()
         self.view = view
-    
+        
     #Calculate collision_history_total_5_year_period
     def handle_collision_history_total_5_year_period(self):       
         collision_history_fatal_injury = self.view.spinBox_collision_history_fatal_injury.value()
         collision_history_personal_injury = self.view.spinBox_collision_history_personal_injury.value()
         collision_history_property_damage = self.view.spinBox_collision_history_property_damage.value()
-        
+
         result = sum([collision_history_fatal_injury, collision_history_personal_injury, collision_history_property_damage])
         self.view.label_collision_history_total_5_year_period.setNum(result)
         return result
@@ -77,13 +77,13 @@ class ModelGradeCrossingForm(qtc.QObject):
             result = "No Value"
             self.view.label_collision_history_risk_index_initial.setText(result)
         elif inspection_details_gcws_type == 'Passive':
-            result = round(0.002268 * ((c * t + 0.2)/0.2)**0.3334 * math.exp(0.2094 * mt) * ((d + 0.2)/0.2)**0.1336 * math.exp(-0.616 * (hp - 1)) * math.exp(0.0077 * ms) * math.exp(-0.1000 * (ht - 1)) * 1, 5)
+            result = round(0.002268 * math.pow(((c * t + 0.2)/0.2), 0.3334) * math.exp(0.2094 * mt) * math.pow(((d + 0.2)/0.2), 0.1336) * math.exp(-0.616 * (hp - 1)) * math.exp(0.0077 * ms) * math.exp(-0.1000 * (ht - 1)) * 1, 5)
             self.view.label_collision_history_risk_index_initial.setNum(result)
         elif inspection_details_gcws_type == 'Active' and (gcws_observe_gates_n_or_e_approach != 'Yes' or gcws_observe_gates_s_or_w_approach != 'Yes') and (gcws_observe_gates_n_or_e_approach != '' or gcws_observe_gates_s_or_w_approach != ''):
-            result = round(0.003646 * ((c * t + 0.2)/0.2)**0.2953 * math.exp(0.1088 * mt) * ((d + 0.2)/0.2)**0.047 * 1 * 1 * 1 * math.exp(0.1380 * (hl - 1)), 5)
+            result = round(0.003646 * math.pow(((c * t + 0.2)/0.2), 0.2953) * math.exp(0.1088 * mt) * math.pow(((d + 0.2)/0.2), 0.047) * 1 * 1 * 1 * math.exp(0.1380 * (hl - 1)), 5)
             self.view.label_collision_history_risk_index_initial.setNum(result)
         elif inspection_details_gcws_type == 'Active' and (gcws_observe_gates_n_or_e_approach == 'Yes' or gcws_observe_gates_s_or_w_approach == 'Yes'):
-            result = round(0.001088 * ((c * t + 0.2)/0.2)**0.3116 * math.exp(0.2912 * mt) * 1 * 1 * 1 * 1 * math.exp(0.1036 * (hl - 1)) ,5)
+            result = round(0.001088 * math.pow(((c * t + 0.2)/0.2), 0.3116) * math.exp(0.2912 * mt) * 1 * 1 * 1 * 1 * math.exp(0.1036 * (hl - 1)) ,5)
             self.view.label_collision_history_risk_index_initial.setNum(result)
         else:
             result = 'No Value'
@@ -264,15 +264,15 @@ class ModelGradeCrossingForm(qtc.QObject):
             self.view.label_design_calculate_vehicle_departure_time.setText(result)
         elif design_lookup_design_vehicle_class == 'Cars' and design_calculate_vehicle_travel_distance != 'No Value':
             design_calculate_vehicle_travel_distance = float(design_calculate_vehicle_travel_distance)
-            result = round(max(4.00,-1.83359063314625E-07 * design_calculate_vehicle_travel_distance**4 + 0.000030862217902978 * design_calculate_vehicle_travel_distance**3 - 0.00243559236227734 * design_calculate_vehicle_travel_distance**2 + 0.194096256511465 * design_calculate_vehicle_travel_distance + 1.9653478726958),4)
+            result = round(max(4.00,-1.83359063314625E-07 * math.pow(design_calculate_vehicle_travel_distance, 4) + 0.000030862217902978 * math.pow(design_calculate_vehicle_travel_distance, 3) - 0.00243559236227734 * math.pow(design_calculate_vehicle_travel_distance, 2) + 0.194096256511465 * design_calculate_vehicle_travel_distance + 1.9653478726958),4)
             self.view.label_design_calculate_vehicle_departure_time.setNum(result)
         elif design_lookup_design_vehicle_class == 'Single-Unit Trucks' and design_calculate_vehicle_travel_distance != 'No Value':
             design_calculate_vehicle_travel_distance = float(design_calculate_vehicle_travel_distance)
-            result = round(max(6.00,2.95895110935529E-06 * design_calculate_vehicle_travel_distance**3 - 0.00120538991988588 * design_calculate_vehicle_travel_distance**2 + 0.23080739982193 * design_calculate_vehicle_travel_distance + 3.11489082547138),4)
+            result = round(max(6.00,2.95895110935529E-06 * math.pow(design_calculate_vehicle_travel_distance, 3) - 0.00120538991988588 * math.pow(design_calculate_vehicle_travel_distance, 2) + 0.23080739982193 * design_calculate_vehicle_travel_distance + 3.11489082547138),4)
             self.view.label_design_calculate_vehicle_departure_time.setNum(result)
         elif (design_lookup_design_vehicle_class == 'Tractor Trailers' or design_lookup_design_vehicle_class == 'Combination Vehicles' or design_lookup_design_vehicle_class == 'Buses') and design_calculate_vehicle_travel_distance != 'No Value':
             design_calculate_vehicle_travel_distance = float(design_calculate_vehicle_travel_distance)
-            result = round(max(7.00,2.43585710133203E-07 * design_calculate_vehicle_travel_distance**4 - 0.0000473118786681759 * design_calculate_vehicle_travel_distance**3 + 0.00169819852156627 * design_calculate_vehicle_travel_distance**2 + 0.211550565362998 * design_calculate_vehicle_travel_distance + 3.96662867415871),4)
+            result = round(max(7.00,2.43585710133203E-07 * math.pow(design_calculate_vehicle_travel_distance, 4) - 0.0000473118786681759 * math.pow(design_calculate_vehicle_travel_distance, 3) + 0.00169819852156627 * math.pow(design_calculate_vehicle_travel_distance, 2) + 0.211550565362998 * design_calculate_vehicle_travel_distance + 3.96662867415871),4)
             self.view.label_design_calculate_vehicle_departure_time.setNum(result)        
         elif design_lookup_design_vehicle_class == 'Pedestrian' and design_calculate_vehicle_travel_distance != 'No Value':
             result = round(design_measure_clearance_distance_pedestrian/1.22,4)
@@ -310,15 +310,15 @@ class ModelGradeCrossingForm(qtc.QObject):
             self.view.label_design_calculate_vehicle_departure_time_gate_arm_clearance.setText(result)
         elif design_lookup_design_vehicle_class == 'Cars' and design_lookup_design_vehicle_length != 'No Value':
             design_lookup_design_vehicle_length = float(design_lookup_design_vehicle_length)
-            result = round(max(4.00,-1.83359063314625E-07 * sum([design_lookup_design_vehicle_length,2.00])**4 + 0.000030862217902978 * sum([design_lookup_design_vehicle_length,2.00])**3 - 0.00243559236227073 * sum([design_lookup_design_vehicle_length,2.00])**2 + 0.194096256511465 * sum([design_lookup_design_vehicle_length,2.00]) + 1.9653478726958),4)
+            result = round(max(4.00,-1.83359063314625E-07 * math.pow(sum([design_lookup_design_vehicle_length,2.00]), 4) + 0.000030862217902978 * math.pow(sum([design_lookup_design_vehicle_length,2.00]), 3) - 0.00243559236227073 * math.pow(sum([design_lookup_design_vehicle_length,2.00]), 2) + 0.194096256511465 * sum([design_lookup_design_vehicle_length,2.00]) + 1.9653478726958),4)
             self.view.label_design_calculate_vehicle_departure_time_gate_arm_clearance.setNum(result)
         elif design_lookup_design_vehicle_class == 'Single-Unit Trucks' and design_lookup_design_vehicle_length != 'No Value':            
             design_lookup_design_vehicle_length = float(design_lookup_design_vehicle_length)
-            result = round(max(6.00,2.95895110935529E-06 * sum([design_lookup_design_vehicle_length,2.00])**3 - 0.00120538991988588 * sum([design_lookup_design_vehicle_length,2.00])**2 + 0.23080739982193 * sum([design_lookup_design_vehicle_length,2.00]) + 3.11489082547138),4)
+            result = round(max(6.00,2.95895110935529E-06 * math.pow(sum([design_lookup_design_vehicle_length,2.00]), 3) - 0.00120538991988588 * math.pow(sum([design_lookup_design_vehicle_length,2.00]), 2) + 0.23080739982193 * sum([design_lookup_design_vehicle_length,2.00]) + 3.11489082547138),4)
             self.view.label_design_calculate_vehicle_departure_time_gate_arm_clearance.setNum(result)
         elif (design_lookup_design_vehicle_class == 'Tractor Trailers' or design_lookup_design_vehicle_class == 'Combination Vehicles' or design_lookup_design_vehicle_class == 'Buses') and design_lookup_design_vehicle_length != 'No Value':
             design_lookup_design_vehicle_length = float(design_lookup_design_vehicle_length)
-            result = round(max(7.00,2.43585710133203E-07 * sum([design_lookup_design_vehicle_length,2.00])**4 - 0.0000473118786681759 * sum([design_lookup_design_vehicle_length,2.00])**3 + 0.00169819852156627 * sum([design_lookup_design_vehicle_length,2.00])**2 + 0.211550565362998 * sum([design_lookup_design_vehicle_length,2.00]) + 3.96662867415871),4)
+            result = round(max(7.00,2.43585710133203E-07 * math.pow(sum([design_lookup_design_vehicle_length,2.00]), 4) - 0.0000473118786681759 * math.pow(sum([design_lookup_design_vehicle_length,2.00]), 3) + 0.00169819852156627 * math.pow(sum([design_lookup_design_vehicle_length,2.00]), 2) + 0.211550565362998 * sum([design_lookup_design_vehicle_length,2.00]) + 3.96662867415871),4)
             self.view.label_design_calculate_vehicle_departure_time_gate_arm_clearance.setNum(result)
         return result
 
@@ -361,7 +361,7 @@ class ModelGradeCrossingForm(qtc.QObject):
     #Calculate design_lookup_design_vehicle_class
     def handle_design_lookup_design_vehicle_class(self):
         design_road_design_vehicle_type = self.view.comboBox_design_road_design_vehicle_type.currentText()
-        df_table_4_1_general_vehicles = pd.read_csv(r'app\\resources\\data\\TC\\GCS\\table_4_1_general_vehicles.csv')
+        df_table_4_1_general_vehicles = pd.read_csv(r'app\\GradeCrossingForm\\resources\\data\\TC\\GCS\\table_4_1_general_vehicles.csv')
 
         if design_road_design_vehicle_type == '':
             result = 'No Value'
@@ -374,7 +374,7 @@ class ModelGradeCrossingForm(qtc.QObject):
     #Calculate design_lookup_design_vehicle_length
     def handle_design_lookup_design_vehicle_length(self):
         design_road_design_vehicle_type = self.view.comboBox_design_road_design_vehicle_type.currentText()
-        df_table_4_1_general_vehicles = pd.read_csv(r'app\\resources\\data\\TC\\GCS\\table_4_1_general_vehicles.csv')
+        df_table_4_1_general_vehicles = pd.read_csv(r'app\\GradeCrossingForm\\resources\\data\\TC\\GCS\\table_4_1_general_vehicles.csv')
         
         if design_road_design_vehicle_type == '':
             result = 'No Value'
@@ -391,7 +391,7 @@ class ModelGradeCrossingForm(qtc.QObject):
     def handle_design_lookup_grade_adjustment_factor(self):
         design_road_max_approach_grade_within_s = self.view.doubleSpinBox_design_road_max_approach_grade_within_s.value()
         design_lookup_design_vehicle_class = self.handle_design_lookup_design_vehicle_class()
-        df_table_4_6_ratio_of_acceleration_times_on_road_grades = pd.read_csv(r'app\\resources\\data\\TC\\GCS\\table_4_6_ratio_of_acceleration_times_on_road_grades.csv')
+        df_table_4_6_ratio_of_acceleration_times_on_road_grades = pd.read_csv(r'app\\GradeCrossingForm\\resources\\data\\TC\\GCS\\table_4_6_ratio_of_acceleration_times_on_road_grades.csv')
 
         if design_lookup_design_vehicle_class == 'No Value':
             result = 'No Value'
@@ -420,7 +420,7 @@ class ModelGradeCrossingForm(qtc.QObject):
     #Calculate road_geometry_lookup_gradient_difference
     def handle_road_geometry_lookup_gradient_difference(self):
         general_info_road_classification = self.view.comboBox_general_info_road_classification.currentText()
-        table_6_1_difference_in_gradient = pd.read_csv(r'app\\resources\\data\\TC\\GCS\\table_6_1_difference_in_gradient.csv')
+        table_6_1_difference_in_gradient = pd.read_csv(r'app\\GradeCrossingForm\\resources\\data\\TC\\GCS\\table_6_1_difference_in_gradient.csv')
 
         if general_info_road_classification == '':
             result = 'No Value'
@@ -573,7 +573,7 @@ class ModelGradeCrossingForm(qtc.QObject):
         general_info_road_speed_design = self.view.spinBox_general_info_road_speed_design.value()
         road_geometry_road_general_approach_grade_n_or_e_approach = self.view.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.value()
         design_lookup_design_vehicle_class = self.handle_design_lookup_design_vehicle_class()
-        df_table_4_5_SSD_m_passenger_car_class = pd.read_csv(r'app\\resources\\data\\TC\\GCS\\table_4_5_SSD_m_passenger_car_class.csv')
+        df_table_4_5_SSD_m_passenger_car_class = pd.read_csv(r'app\\GradeCrossingForm\\resources\\data\\TC\\GCS\\table_4_5_SSD_m_passenger_car_class.csv')
 
         road_geometry_road_general_approach_grade_n_or_e_approach = round(road_geometry_road_general_approach_grade_n_or_e_approach/100.0, 0)
 
@@ -628,7 +628,7 @@ class ModelGradeCrossingForm(qtc.QObject):
         general_info_road_speed_design = self.view.spinBox_general_info_road_speed_design.value()
         road_geometry_road_general_approach_grade_s_or_w_approach = self.view.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.value()
         design_lookup_design_vehicle_class = self.handle_design_lookup_design_vehicle_class()
-        df_table_4_5_SSD_m_passenger_car_class = pd.read_csv(r'app\\resources\\data\\TC\\GCS\\table_4_5_SSD_m_passenger_car_class.csv')
+        df_table_4_5_SSD_m_passenger_car_class = pd.read_csv(r'app\\GradeCrossingForm\\resources\\data\\TC\\GCS\\table_4_5_SSD_m_passenger_car_class.csv')
 
         road_geometry_road_general_approach_grade_s_or_w_approach = round(road_geometry_road_general_approach_grade_s_or_w_approach/100.0, 0)
 
@@ -779,7 +779,7 @@ class ModelGradeCrossingForm(qtc.QObject):
             result = 'N/A'
             self.view.label_gcws_rail_design_warning_time_ssd.setText(result)
         else:
-            result = math.ceil(sum([max(sightlines_lookup_ssd_minimum_n_or_e_approach, sightlines_lookup_ssd_minimum_s_or_w_approach), design_calculate_vehicle_travel_distance]) * 3600 / (general_info_road_speed_design * 10**3))
+            result = math.ceil(sum([max(sightlines_lookup_ssd_minimum_n_or_e_approach, sightlines_lookup_ssd_minimum_s_or_w_approach), design_calculate_vehicle_travel_distance]) * 3600 / (general_info_road_speed_design * math.pow(10, 3)))
             self.view.label_gcws_rail_design_warning_time_ssd.setNum(result)
         return result
     
@@ -872,7 +872,7 @@ class ModelGradeCrossingForm(qtc.QObject):
             result = 'No Value'
             self.view.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended.setText(result)
         else:
-            result = sum([general_info_road_speed_posted * design_input_reaction_time / 3.6, general_info_road_speed_posted**2 / (25.92 * sum([deceleration_rate, road_geometry_road_general_approach_grade_n_or_e_approach * gravitational_acceleration])) ])
+            result = sum([general_info_road_speed_posted * design_input_reaction_time / 3.6, math.pow(general_info_road_speed_posted, 2) / (25.92 * sum([deceleration_rate, road_geometry_road_general_approach_grade_n_or_e_approach * gravitational_acceleration])) ])
             self.view.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended.setNum(result)
         return result
 
@@ -890,7 +890,7 @@ class ModelGradeCrossingForm(qtc.QObject):
             result = 'No Value'
             self.view.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended.setText(result)
         else:
-            result = sum([general_info_road_speed_posted * design_input_reaction_time / 3.6, general_info_road_speed_posted**2 / (25.92 * sum([deceleration_rate, road_geometry_road_general_approach_grade_s_or_w_approach * gravitational_acceleration])) ])
+            result = sum([general_info_road_speed_posted * design_input_reaction_time / 3.6, math.pow(general_info_road_speed_posted, 2) / (25.92 * sum([deceleration_rate, road_geometry_road_general_approach_grade_s_or_w_approach * gravitational_acceleration])) ])
             self.view.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended.setNum(result)
         return result
 

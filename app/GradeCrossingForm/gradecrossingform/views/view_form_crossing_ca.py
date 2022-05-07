@@ -8,11 +8,12 @@ from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
 
-class ViewCrossingForm(qtw.QWidget):
+class ViewFormCrossingCA(qtw.QWidget):
 
     def __init__(self):
         super().__init__()
         self.initializeUI()
+
         
     def initializeUI(self):
         """
@@ -1968,4 +1969,5 @@ class ViewCrossingForm(qtw.QWidget):
         settings_dialog = SettingsDialog(self.settings, self)
         settings_dialog.exec()
         '''
+    
     
