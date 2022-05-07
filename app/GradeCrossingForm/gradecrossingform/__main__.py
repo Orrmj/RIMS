@@ -2,7 +2,7 @@
 
 import sys
 from PyQt5.QtWidgets import QApplication
-from GradeCrossingForm.gradecrossingform.mainwindow import MainWindow
+from .mainwindow import MainWindow
 
 def main():
     app = QApplication(sys.argv)

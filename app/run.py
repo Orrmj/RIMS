@@ -1,3 +1,3 @@
-from .__main__ import main
+from GradeCrossingForm.gradecrossingform.__main__ import main
 
 main()
