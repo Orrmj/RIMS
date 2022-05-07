@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets as qtw
 #from PyQt5 import QtGui as qtg
 #from PyQt5 import QtCore as qtc
 
-from .form_crossing_ca import FormGradeCrossingCA
+from .form_crossing_ca import FormCrossingCA
 
 class MainWindow(qtw.QWidget):
 
@@ -34,4 +34,4 @@ class MainWindow(qtw.QWidget):
         self.layout().addWidget(self.Crossing_Inspection_Application)
 
     def FormCrossingCA(self):
-        self.formWindow = FormGradeCrossingCA()
+        self.formWindow = FormCrossingCA()
