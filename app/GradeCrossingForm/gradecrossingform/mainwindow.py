@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets as qtw
 #from PyQt5 import QtGui as qtg
 #from PyQt5 import QtCore as qtc
 
-from .GradeCrossingForm.gradecrossingform.form_crossing_ca import FormCrossingCA
+from .form_crossing_ca import FormCrossingCA
 
 class MainWindow(qtw.QWidget):
 
