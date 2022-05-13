@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets as qtw
 
-from .models.model_form_crossing_ca import ModelFormCrossingCA
-from .views.view_form_crossing_ca import ViewFormCrossingCA
+from ..models.model_form_crossing_ca import ModelFormCrossingCA
+from ..views.view_form_crossing_ca import ViewFormCrossingCA
 
 class FormCrossingCA(qtw.QWidget):
     def __init__(self):
