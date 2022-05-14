@@ -8,7 +8,7 @@ from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
 
-class ViewFormCrossingCA(qtw.QWidget):
+class ViewFormCrossingAssessmentCA(qtw.QWidget):
 
     def __init__(self):
         super().__init__()
@@ -20,7 +20,7 @@ class ViewFormCrossingCA(qtw.QWidget):
         Initialize the window and display its contents to the screen
         """
         self.setGeometry(100, 100, 300, 400)
-        self.setWindowTitle('Crossing Assessment Form')
+        self.setWindowTitle('Crossing Assessment Form (Canada)')
         self.formWidgets()
         self.show()
    

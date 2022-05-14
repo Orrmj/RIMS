@@ -1,12 +1,12 @@
 from PyQt5 import QtWidgets as qtw
 
 from ..models.model_form_crossing_ca import ModelFormCrossingCA
-from ..views.view_form_crossing_ca import ViewFormCrossingCA
+from ..views.view_form_xing_assessment_ca import ViewFormCrossingAssessmentCA
 
-class FormCrossingCA(qtw.QWidget):
+class FormCrossingAssessmentCA(qtw.QWidget):
     def __init__(self):
         super().__init__() # create default constructor for QWidget
-        self.view = ViewFormCrossingCA()
+        self.view = ViewFormCrossingAssessmentCA()
         self.model = ModelFormCrossingCA(self.view)
         self.connect_and_emit_trigger()
 
