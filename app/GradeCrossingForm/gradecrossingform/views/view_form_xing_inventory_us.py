@@ -32,7 +32,17 @@ class ViewFormUSDOTCrossingInventory(qtw.QWidget):
         # Combo Box Lists
         list_yes_no = ['', 'Yes', 'No']
         list_yes_no_na = ['', 'Yes', 'No', 'N/A']
+        list_yes_no_unknown = ['', 'Yes', 'No', 'Unknonwn']
         list_condition = ['', 'Good', 'Fair', 'Poor']
+        list_general_initiating_agency = ['', 'Railroad', 'State']
+        list_general_reason_for_update = ['', 'Changes in Existing Data', 'New Crossing', 'Closed Crossing or Abandoned']
+        list_location_and_classification_info_xing_owner = ['', 'In', 'Near']
+        list_location_and_classification_info_quiet_zone = ['', 'No', '24 hr', 'Partial', 'Unknown']
+        list_location_and_classification_info_xing_type = ['', 'Public', 'Private', 'Pedestrian']
+        list_location_and_classification_info_xing_position = ['', 'At Grade', 'RR Under', 'RR Over']
+        list_location_and_classification_info_passenger_type = ['', 'AMTRAK', 'AMTRAK & Other', 'Other', 'None']
+        list_location_and_classification_info_xing_private_category = ['', 'Farm', 'Residential', 'Recreational', 'Industrial', 'Commercial']
+
         list_inspection_details_gcws_type = ['','Active','Passive']
         list_inspection_details_grade_crossing_type = ['','Public', 'Private (CTA 102-Type)', 'Private (CTA 103-Type)']
         list_inspection_details_track_type = ['','Mainline', 'Industrial Spur', 'Mainline Spur', 'Yard, Other']
@@ -103,119 +113,64 @@ class ViewFormUSDOTCrossingInventory(qtw.QWidget):
         self.spinBox_collision_history_fatal_injury = qtw.QSpinBox()
         self.spinBox_collision_history_fatal_injury.setRange(0, 999999)
         
-        self.spinBox_collision_history_fatalities = qtw.QSpinBox() 
-        self.spinBox_collision_history_fatalities.setRange(0, 999999)
-
-        self.spinBox_collision_history_personal_injuries = qtw.QSpinBox() 
-        self.spinBox_collision_history_personal_injuries.setRange(0, 999999)
-        
-        self.spinBox_collision_history_personal_injury = qtw.QSpinBox() 
-        self.spinBox_collision_history_personal_injury.setRange(0, 999999)
-
-        self.spinBox_collision_history_property_damage = qtw.QSpinBox()
-        self.spinBox_collision_history_property_damage.setRange(0, 999999)
-
         #Group Labels 
         self.label_collision_history_total_5_year_period = qtw.QLabel('No Value')
-        self.label_collision_history_risk_index_initial = qtw.QLabel('No Value')
-        self.label_collision_history_risk_index_final = qtw.QLabel('No Value')
-
+        
         # GENERAL INFORMATION
         #Group TextEdits
-        self.textEdit_general_info_comments = qtw.QTextEdit()
+        self.lineEdit_location_and_classification_info_narrative = qtw.QTextEdit()
 
         #Group LineEdits
-        self.lineEdit_general_info_observe_special_buildings = qtw.QLineEdit() 
-        self.lineEdit_general_info_road_other_users = qtw.QLineEdit() 
+        self.lineEdit_location_and_classification_info_rr_operator_co = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_state = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_county = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_rr_division_or_region = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_rrsubdivision_or_district = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_branch_or_line_name = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_rr_milepost = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_rr_id = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_rr_timetable_station = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_rr_parent = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_xing_owner = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_road_name = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_hwy_type = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_rr_use = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_state_use = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_contact_emergency = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_contact_rr = qtw.QLineEdit()
+        self.lineEdit_location_and_classification_info_contact_state = qtw.QLineEdit() 
 
         #Group SpinBox
-        self.spinBox_general_info_rail_max_railway_operating_speed_freight = qtw.QSpinBox()
-        self.spinBox_general_info_rail_max_railway_operating_speed_freight.setRange(0, 999999)
+        self.spinBox_location_and_classification_info_train_count_passenger = qtw.QSpinBox()
+        self.spinBox_location_and_classification_info_train_count_passenger.setRange(0, 999999)
  
-        self.spinBox_general_info_rail_max_railway_operating_speed_passenger = qtw.QSpinBox() 
-        self.spinBox_general_info_rail_max_railway_operating_speed_passenger.setRange(0, 999999)
-
-        self.spinBox_general_info_rail_no_tracks_main = qtw.QSpinBox() 
-        self.spinBox_general_info_rail_no_tracks_main.setRange(0, 999999)
-
-        self.spinBox_general_info_rail_no_tracks_other = qtw.QSpinBox()
-        self.spinBox_general_info_rail_no_tracks_other.setRange(0, 999999)
-
-        self.spinBox_general_info_rail_no_trains_per_day_freight = qtw.QSpinBox() 
-        self.spinBox_general_info_rail_no_trains_per_day_freight.setRange(0, 999999)
-
-        self.spinBox_general_info_rail_no_trains_per_day_passengers = qtw.QSpinBox() 
-        self.spinBox_general_info_rail_no_trains_per_day_passengers.setRange(0, 999999)
-
-        self.spinBox_general_info_road_aadt_current = qtw.QSpinBox()
-        self.spinBox_general_info_road_aadt_current.setRange(0, 999999)
-
-        self.spinBox_general_info_road_aadt_forecast = qtw.QSpinBox() 
-        self.spinBox_general_info_road_aadt_forecast.setRange(0, 999999)
-
-        self.spinBox_general_info_road_aadt_year_current = qtw.QSpinBox() 
-        self.spinBox_general_info_road_aadt_year_current.setRange(0, 999999)
-
-        self.spinBox_general_info_road_aadt_year_forecasted = qtw.QSpinBox() 
-        self.spinBox_general_info_road_aadt_year_forecasted.setRange(0, 999999)
-
-        self.spinBox_general_info_road_cyclist_per_day = qtw.QSpinBox()
-        self.spinBox_general_info_road_cyclist_per_day.setRange(0, 999999)
-
-        self.spinBox_general_info_road_no_traffic_lanes_bidirectional = qtw.QSpinBox() 
-        self.spinBox_general_info_road_no_traffic_lanes_bidirectional.setRange(0, 100)
-
-        self.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound = qtw.QSpinBox() 
-        self.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound.setRange(0, 100)
-
-        self.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound = qtw.QSpinBox()
-        self.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound.setRange(0, 100)
-
-        self.spinBox_general_info_road_other_users_daily_users = qtw.QSpinBox() 
-        self.spinBox_general_info_road_other_users_daily_users.setRange(0, 999999)
-
-        self.spinBox_general_info_road_pedestrians_per_day = qtw.QSpinBox() 
-        self.spinBox_general_info_road_pedestrians_per_day.setRange(0, 999999)
-
-        self.spinBox_general_info_road_speed_design = qtw.QSpinBox() 
-        self.spinBox_general_info_road_speed_design.setRange(0, 200)
-
-        self.spinBox_general_info_road_speed_posted = qtw.QSpinBox() 
-        self.spinBox_general_info_road_speed_posted.setRange(0, 200)
-
         #Group ComboBoxes
-        self.comboBox_general_info_observe_roadway_illumination = qtw.QComboBox()
-        self.comboBox_general_info_observe_roadway_illumination.addItems(list_yes_no)
+        self.comboBox_location_and_classification_info_xing_owner = qtw.QComboBox()
+        self.comboBox_location_and_classification_info_xing_owner.addItems(list_location_and_classification_info_xing_owner)
 
-        self.comboBox_general_info_observe_surrounding_land_use = qtw.QComboBox()
-        self.comboBox_general_info_observe_surrounding_land_use.addItems(list_general_info_observe_surrounding_land_use)
+        self.comboBox_location_and_classification_info_ens_sign = qtw.QComboBox()
+        self.comboBox_location_and_classification_info_ens_sign.addItems(list_yes_no)
 
-        self.comboBox_general_info_rail_train_switching = qtw.QComboBox()
-        self.comboBox_general_info_rail_train_switching.addItems(list_yes_no)
-        
-        self.comboBox_general_info_road_assistive_pedestrian_devices = qtw.QComboBox()
-        self.comboBox_general_info_road_assistive_pedestrian_devices.addItems(list_yes_no)
+        self.comboBox_location_and_classification_info_quiet_zone = qtw.QComboBox()
+        self.comboBox_location_and_classification_info_quiet_zone.addItems(list_location_and_classification_info_quiet_zone)
 
-        self.comboBox_general_info_road_classification = qtw.QComboBox()
-        self.comboBox_general_info_road_classification.addItems(list_general_info_road_classification)
-        
-        self.comboBox_general_info_road_dangerous_goods_route = qtw.QComboBox()
-        self.comboBox_general_info_road_dangerous_goods_route.addItems(list_yes_no)
+        self.comboBox_location_and_classification_info_xing_type = qtw.QComboBox()
+        self.comboBox_location_and_classification_info_xing_type.addItems(list_location_and_classification_info_xing_type)
 
-        self.comboBox_general_info_road_school_bus_route = qtw.QComboBox()
-        self.comboBox_general_info_road_school_bus_route.addItems(list_yes_no)
+        self.comboBox_location_and_classification_info_xing_position = qtw.QComboBox()
+        self.comboBox_location_and_classification_info_xing_position.addItems(list_location_and_classification_info_xing_position)
 
-        self.comboBox_general_info_road_seasonal_volume_fluctuations = qtw.QComboBox()
-        self.comboBox_general_info_road_seasonal_volume_fluctuations.addItems(list_yes_no)
+        self.comboBox_location_and_classification_info_passenger_type = qtw.QComboBox()
+        self.comboBox_location_and_classification_info_passenger_type.addItems(list_location_and_classification_info_passenger_type)
 
-        self.comboBox_general_info_road_sidewalks = qtw.QComboBox()
-        self.comboBox_general_info_road_sidewalks.addItems(list_yes_no)
+        self.comboBox_location_and_classification_info_adjacent_xing = qtw.QComboBox()
+        self.comboBox_location_and_classification_info_adjacent_xing.addItems(list_yes_no)
 
-        #Group Labels
-        self.label_general_info_rail_no_tracks_total = qtw.QLabel('No Value')
-        self.label_general_info_rail_no_trains_per_day_total = qtw.QLabel('No Value')
-        self.label_general_info_rail_railway_design_speed = qtw.QLabel('No Value')
-        self.label_general_info_road_no_traffic_lanes_total = qtw.QLabel('No Value')
+        self.comboBox_location_and_classification_info_xing_private_category = qtw.QComboBox()
+        self.comboBox_location_and_classification_info_xing_private_category.addItems(list_location_and_classification_info_xing_private_category)
+
+        self.comboBox_location_and_classification_info_xing_private_access = qtw.QComboBox()
+        self.comboBox_location_and_classification_info_xing_private_access.addItems(list_yes_no_unknown)
 
         # DESIGN CONSIDERATIONS (GCS SECTION 10)
         #Group TextEdits
