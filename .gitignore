@@ -1,3 +1,6 @@
+# Ignore folder types
+**\resources
+
 # Ignore file types
 *.1
 *.abs
@@ -35,6 +38,7 @@
 *.eqr
 *.ex
 *.EX_
+*.exe
 *.gid
 *.gif
 *.gml
@@ -46,6 +50,7 @@
 *.id
 *.idx
 *.ini
+*.jar
 *.jpg
 *.kml
 *.kmz
@@ -83,6 +88,7 @@
 *.prj
 *.prn
 *.psd
+*.pyc
 *.rar
 *.rcf
 *.rpt
@@ -109,6 +115,3 @@
 *.xml
 *.xsd
 *.zip
-
-# Ignore folder types
-**\resources
