@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets as qtw
 #from PyQt5 import QtGui as qtg
 #from PyQt5 import QtCore as qtc
 
-from controller.controller_form_xing_assessment_ca import FormCrossingAssessmentCA
+from gradecrossingform.controllers.controller_form_xing_assessment_ca import FormCrossingAssessmentCA
 
 class MainWindow(qtw.QWidget):
 
