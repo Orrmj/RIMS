@@ -14,6 +14,7 @@
 *.btb
 *.c
 *.cab
+*.cache
 *.ccf
 *.cdc
 *.cdl
@@ -25,6 +26,7 @@
 *.ctb
 *.dat
 *.dbf
+*.dbmdl
 *.dfr
 *.doc
 *.docx
@@ -51,6 +53,7 @@
 *.idx
 *.ini
 *.jar
+*.jfm
 *.jpg
 *.kml
 *.kmz
@@ -98,12 +101,17 @@
 *.script
 *.shp
 *.shx
+*.sln
+*.sql
+*.sqlproj
+*.suo
 *.tif
 *.tpz
 *.tut
 *.txt
 *.upf
 *.url
+*.user
 *.veq
 *.vdr
 *.xcm
