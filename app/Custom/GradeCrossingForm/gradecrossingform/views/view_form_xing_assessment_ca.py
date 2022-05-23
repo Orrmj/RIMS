@@ -8,7 +8,7 @@ from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
 
-class ViewFormCrossingAssessmentCA(qtw.QWidget):
+class ViewCrossingAssessmentCA(qtw.QWidget):
 
     def __init__(self):
         super().__init__()
