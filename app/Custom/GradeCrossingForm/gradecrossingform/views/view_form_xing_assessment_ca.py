@@ -249,6 +249,9 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.comboBox_general_info_road_sidewalks = qtw.QComboBox()
         self.comboBox_general_info_road_sidewalks.addItems(list_yes_no)
 
+        self.comboBox_general_info_road_sidewalk_island_circuit = qtw.QComboBox()
+        self.comboBox_general_info_road_sidewalk_island_circuit.addItems(list_yes_no)
+
         #Group Labels
         self.label_general_info_rail_no_tracks_total = qtw.QLabel('No Value')
         self.label_general_info_rail_no_trains_per_day_total = qtw.QLabel('No Value')
@@ -1262,6 +1265,7 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         form_layout_general_information.addRow('High Seasonal Fluctuation in Volumes?:', self.comboBox_general_info_road_seasonal_volume_fluctuations)
         form_layout_general_information.addRow('Road Classification', self.comboBox_general_info_road_classification)
         form_layout_general_information.addRow('Does Grade Crossing Include sidewalk, Path, or Trail?:', self.comboBox_general_info_road_sidewalks)
+        form_layout_general_information.addRow('Is the sidewalk, path or trail outside the island circuit of an adjacent warning system?', self.comboBox_general_info_road_sidewalk_island_circuit)
         form_layout_general_information.addRow('Regular Use of Crossing by Persons with Assistive Devices?:', self.comboBox_general_info_road_assistive_pedestrian_devices)
         form_layout_general_information.addRow('Is Crossing on a School Bus Route?:', self.comboBox_general_info_road_school_bus_route)
         form_layout_general_information.addRow('Do Dangerous Goods Trucks Use this Roadway?:', self.comboBox_general_info_road_dangerous_goods_route)

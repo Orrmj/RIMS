@@ -800,49 +800,172 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     #TODO
     #Calculate gcws_warrant_public_9_1_a
     def gcws_warrant_public_9_1_a(self):
-        pass
+        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total()
+        general_info_road_aadt_forecast = self.view.spinBox_general_info_road_aadt_forecast.value()
+        inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
+
+        if inspection_details_grade_crossing_type == '' or general_info_road_aadt_forecast == '' or general_info_rail_no_trains_per_day_total == '':
+            result = 'No Value'
+            self.view.label_gcws_warrant_public_9_1_a.setText(result)
+        elif inspection_details_grade_crossing_type != 'Public':
+            result = "N/A"
+            self.view.label_gcws_warrant_public_9_1_a.setText(result)
+        elif inspection_details_grade_crossing_type == 'Public' and (general_info_road_aadt_forecast * general_info_rail_no_trains_per_day_total >= 2000):
+            result = 'Yes'
+            self.view.label_gcws_warrant_public_9_1_a.setText(result)
+        else:
+            result = 'No'
+            self.view.label_gcws_warrant_public_9_1_a.setText(result)
         return result
 
     #TODO
     #Calculate gcws_warrant_public_9_1_b
     def gcws_warrant_public_9_1_b(self):
-        pass   
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+        general_info_road_sidewalks = self.view.comboBox_general_info_road_sidewalks.currentText()
+        inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
+        
+        if inspection_details_grade_crossing_type == '' or general_info_road_sidewalks == '' or general_info_rail_railway_design_speed == '':
+            result = 'No Value'
+            self.view.label_gcws_warrant_public_9_1_b.setText(result)
+        elif inspection_details_grade_crossing_type != 'Public':
+            result = "N/A"
+            self.view.label_gcws_warrant_public_9_1_b.setText(result)
+        elif inspection_details_grade_crossing_type == 'Public' and general_info_road_sidewalks == 'No' and general_info_rail_railway_design_speed > 80:
+            result = 'Yes'
+            self.view.label_gcws_warrant_public_9_1_b.setText(result)
+        else:
+            result = 'No'
+            self.view.label_gcws_warrant_public_9_1_b.setText(result)
         return result
 
     #TODO
     #Calculate gcws_warrant_public_9_1_c
     def gcws_warrant_public_9_1_c(self):
-        pass
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+        general_info_road_sidewalks = self.view.comboBox_general_info_road_sidewalks.currentText()
+        inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
+
+        if inspection_details_grade_crossing_type == '' or general_info_road_sidewalks == '' or general_info_rail_railway_design_speed == '':
+            result = 'No Value'
+            self.view.label_gcws_warrant_public_9_1_c.setText(result)
+        elif inspection_details_grade_crossing_type != 'Public':
+            result = 'N/A'
+            self.view.label_gcws_warrant_public_9_1_c.setText(result)
+        elif inspection_details_grade_crossing_type == 'Public' and general_info_road_sidewalks == 'Yes' and general_info_rail_railway_design_speed > 50:
+            result = 'Yes'
+            self.view.label_gcws_warrant_public_9_1_c.setText(result)
+        else:
+            result = 'No'
+            self.view.label_gcws_warrant_public_9_1_c.setText(result)
         return result
 
     #TODO
     #Calculate gcws_warrant_public_9_1_d_i
     def gcws_warrant_public_9_1_d_i(self):
-        pass
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+        general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total()
+        inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
+        
+        if inspection_details_grade_crossing_type == '' or general_info_rail_railway_design_speed == '' or general_info_rail_no_tracks_total == '':
+            result = 'No Value'
+            self.view.label_gcws_warrant_public_9_1_d_i.setText(result)
+        elif inspection_details_grade_crossing_type != 'Public':
+            result = 'N/A'
+            self.view.label_gcws_warrant_public_9_1_d_i.setText(result)
+        elif inspection_details_grade_crossing_type == 'Public' and general_info_rail_railway_design_speed > 15 and general_info_rail_no_tracks_total >= 2:
+            result = 'Yes'
+            self.view.label_gcws_warrant_public_9_1_d_i.setText(result)
+        else:
+            result = 'No'
+            self.view.label_gcws_warrant_public_9_1_d_i.setText(result)
         return result
     
     #TODO
     #Calculate gcws_warrant_public_9_1_d_ii
     def gcws_warrant_public_9_1_d_ii(self):
-        pass
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+        inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
+        location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.value()
+        location_of_grade_crossing_nearest_intersection_stop_s_of_w_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_of_w_approach.value()
+
+        if inspection_details_grade_crossing_type == '' or general_info_rail_railway_design_speed == '' or location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach == '' or location_of_grade_crossing_nearest_intersection_stop_s_of_w_approach == '':
+            result = 'No Value'
+            self.view.label_gcws_warrant_public_9_1_d_ii.setText(result)
+        elif inspection_details_grade_crossing_type != 'Public':
+            result = 'N/A'
+            self.view.label_gcws_warrant_public_9_1_d_ii.setText(result)
+        elif inspection_details_grade_crossing_type == 'Public' and general_info_rail_railway_design_speed > 15 and (location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach < 30 or location_of_grade_crossing_nearest_intersection_stop_s_of_w_approach < 30):
+            result = 'Yes'
+            self.view.label_gcws_warrant_public_9_1_d_ii.setText(result)
+        else:
+            result = 'No'
+            self.view.label_gcws_warrant_public_9_1_d_ii.setText(result)
         return result
 
     #TODO
     #Calculate gcws_warrant_public_9_1_d_iii
     def gcws_warrant_public_9_1_d_iii(self):
-        pass
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+        inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
+        location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.value()
+        location_of_grade_crossing_nearest_intersection_signalized_s_of_w_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_of_w_approach.value()
+        
+        if inspection_details_grade_crossing_type == '' or general_info_rail_railway_design_speed == '' or location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach == '' or location_of_grade_crossing_nearest_intersection_signalized_s_of_w_approach == '':
+            result = 'No Value'
+            self.view.label_gcws_warrant_public_9_1_d_iii.setText(result)
+        elif inspection_details_grade_crossing_type != 'Public':
+            result = 'N/A'
+            self.view.label_gcws_warrant_public_9_1_d_iii.setText(result)
+        elif inspection_details_grade_crossing_type == 'Public' and general_info_rail_railway_design_speed > 15 and (location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach < 30 or location_of_grade_crossing_nearest_intersection_signalized_s_of_w_approach < 30):
+            result = 'Yes'
+            self.view.label_gcws_warrant_public_9_1_d_iii.setText(result)
+        else:
+            result = 'No'
+            self.view.label_gcws_warrant_public_9_1_d_iii.setText(result)
         return result
     
     #TODO
     #Calculate gcws_warrant_sidewalk_9_5
     def gcws_warrant_sidewalk_9_5(self):
-        pass  
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+        general_info_road_sidewalks = self.view.comboBox_general_info_road_sidewalks.currentText()
+        general_info_road_sidewalk_island_circuit = self.view.comboBox_general_info_road_sidewalk_island_circuit.currentText()
+
+        if general_info_road_sidewalks == '' or general_info_rail_railway_design_speed == '' or general_info_road_sidewalk_island_circuit == '':
+            result = 'No Value'
+            self.view.label_gcws_warrant_sidewalk_9_5.setText(result)
+        elif general_info_road_sidewalks == 'Yes' and general_info_road_sidewalk_island_circuit == 'Yes' and general_info_rail_railway_design_speed > 50:
+            result = 'Yes'
+            self.view.label_gcws_warrant_sidewalk_9_5.setText(result)
+        else:
+            result = 'No'
+            self.view.label_gcws_warrant_sidewalk_9_5.setText(result)
         return result
     
     #TODO
     #Calculate gates_gcws_warrant_private_9_4_1_a
     def gates_gcws_warrant_private_9_4_1_a(self):
-        pass
+        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total()
+        general_info_road_aadt_forecast = self.view.spinBox_general_info_road_aadt_forecast.value()
+        gcws_warrant_private_9_3_1 = self.gcws_warrant_private_9_3_1()
+        gcws_warrant_private_9_3_2_a = self.gcws_warrant_private_9_3_2_a()
+        gcws_warrant_private_9_3_2_b = self.gcws_warrant_private_9_3_2_b()
+        gcws_warrant_private_9_3_2_c = self.gcws_warrant_private_9_3_2_c()
+        inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
+        
+        if inspection_details_grade_crossing_type == '' or general_info_rail_no_trains_per_day_total == '' or general_info_road_aadt_forecast == '' or gcws_warrant_private_9_3_1 == 'No Value' or gcws_warrant_private_9_3_2_a == 'No Value' or gcws_warrant_private_9_3_2_b == 'No Value' or gcws_warrant_private_9_3_2_c == 'No Value':
+            result = 'No Value'
+            self.view.label_gates_gcws_warrant_private_9_4_1_a.setText(result)
+        elif inspection_details_grade_crossing_type == 'Public':
+            result = 'N/A'
+            self.view.label_gates_gcws_warrant_private_9_4_1_a.setText(result)
+        elif inspection_details_grade_crossing_type != 'Public' and (gcws_warrant_private_9_3_1 == 'Yes' or gcws_warrant_private_9_3_2_a == 'Yes' or gcws_warrant_private_9_3_2_b == 'Yes' or gcws_warrant_private_9_3_2_c == 'Yes') and (general_info_rail_no_trains_per_day_total * general_info_road_aadt_forecast >= 50000):
+            result = 'Yes'
+            self.view.label_gates_gcws_warrant_private_9_4_1_a.setText(result)
+        else:
+            result = 'No'
+            self.view.label_gates_gcws_warrant_private_9_4_1_a.setText(result)
         return result
 
     #TODO
@@ -1187,11 +1310,11 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     #TODO
     #Calculate areas_without_train_whistling_requirements_observe_table_D1
     def areas_without_train_whistling_requirements_observe_table_D1(self):
+        areas_without_train_whistling_requirements_lookup_table_d1_criteria = self.areas_without_train_whistling_requirements_lookup_table_d1_criteria()
         gcws_observe_gates_n_or_e_approach = self.view.comboBox_gcws_observe_gates_n_or_e_approach.currentText()
         gcws_observe_gates_s_or_w_approach = self.view.comboBox_gcws_observe_gates_s_or_w_approach.currentText()
         gcws_observe_light_units_n_or_e_approach = self.view.comboBox_gcws_observe_light_units_n_or_e_approach.currentText()
         gcws_observe_light_units_s_or_w_approach = self.view.comboBox_gcws_observe_light_units_s_or_w_approach.currentText()
-        areas_without_train_whistling_requirements_lookup_table_d1_criteria = self.areas_without_train_whistling_requirements_lookup_table_d1_criteria()
 
         print(gcws_observe_gates_n_or_e_approach)
         print(gcws_observe_gates_s_or_w_approach)
@@ -1221,4 +1344,3 @@ class ModelCrossingAssessmentCA(qtc.QObject):
             print('condition4')
         print(result)
         return result
-
