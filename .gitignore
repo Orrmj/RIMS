@@ -25,6 +25,7 @@
 *.csv
 *.ctb
 *.dat
+*.db
 *.dbf
 *.dbmdl
 *.dfr

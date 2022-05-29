@@ -1090,6 +1090,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     def gates_gcws_warrant_public_9_2_1_d(self):
         gcws_warrant_public_9_1_a = self.gcws_warrant_public_9_1_a()
         gcws_warrant_public_9_1_b = self.gcws_warrant_public_9_1_b()
+        gcws_warrant_public_9_1_c = self.gcws_warrant_public_9_1_c()
         gcws_warrant_public_9_1_d_i  = self.gcws_warrant_public_9_1_d_i()
         gcws_warrant_public_9_1_d_ii = self.gcws_warrant_public_9_1_d_ii()
         gcws_warrant_public_9_1_d_iii = self.gcws_warrant_public_9_1_d_iii()
