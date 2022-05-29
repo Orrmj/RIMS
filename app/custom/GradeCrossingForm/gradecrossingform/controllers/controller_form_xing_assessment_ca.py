@@ -672,7 +672,7 @@ class ControllerCrossingAssessmentCA(qtw.QWidget):
 
         #connect signals and slots - gcws_warrant_public_9_1_a
         '''
-        Connect input variable signals to gcws_warrant_private_9_3_1 method slot.
+        Connect input variable signals to gcws_warrant_public_9_1_a method slot.
         Required input variables:
             spinBox_general_info_rail_no_trains_per_day_freight
             spinBox_general_info_rail_no_trains_per_day_passengers
@@ -773,7 +773,6 @@ class ControllerCrossingAssessmentCA(qtw.QWidget):
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gcws_warrant_public_9_1_d_iii)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gcws_warrant_public_9_1_d_iii)        
         
-        #TODO
         #connect signals and slots - gcws_warrant_sidewalk_9_5
         #TODO add Design Vehcile Pedestrian
         '''
@@ -794,39 +793,363 @@ class ControllerCrossingAssessmentCA(qtw.QWidget):
 
         #TODO
         #connect signals and slots - gates_gcws_warrant_private_9_4_1_a
-        # .valueChanged.connect(self.gates_gcws_warrant_private_9_4_1_a)
+        '''
+        Connect input variable signals to gates_gcws_warrant_private_9_4_1_a method slot.
+        Required input variables:
+            GCWS Private Warrants
+            comboBox_inspection_details_grade_crossing_type
+            spinBox_general_info_rail_max_railway_operating_speed_freight
+            spinBox_general_info_rail_max_railway_operating_speed_passenger
+            spinBox_general_info_rail_no_tracks_main
+            spinBox_general_info_rail_no_tracks_other
+            spinBox_general_info_rail_no_trains_per_day_freight
+            spinBox_general_info_rail_no_trains_per_day_passengers
+            spinBox_general_info_road_aadt_forecast
+            comboBox_general_info_road_sidewalks    
+        Related methods:           
+            GCWS Private Warrants
+            gcws_warrant_private_9_3_1
+            gcws_warrant_private_9_3_2_a
+            gcws_warrant_private_9_3_2_b
+            gcws_warrant_private_9_3_2_c
+            general_info_rail_no_tracks_total
+            general_info_rail_no_trains_per_day_total
+            general_info_rail_railway_design_speed    
+        '''
+        #GCWS Private Warrants
+        self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_a)
+        self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_a)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_a)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_a)        
+        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_a)
+        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_a)
+        self.view.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_a)
+        self.view.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_a)
+        self.view.spinBox_general_info_road_aadt_forecast.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_a)
 
         #TODO
         #connect signals and slots - gates_gcws_warrant_private_9_4_1_b
-        # .valueChanged.connect(self.gates_gcws_warrant_private_9_4_1_b)
+        '''
+        Connect input variable signals to gates_gcws_warrant_private_9_4_1_b method slot.
+        Required input variables:
+            GCWS Private Warrants
+            comboBox_inspection_details_grade_crossing_type
+            spinBox_general_info_rail_max_railway_operating_speed_freight
+            spinBox_general_info_rail_max_railway_operating_speed_passenger
+            spinBox_general_info_rail_no_tracks_main
+            spinBox_general_info_rail_no_tracks_other
+            spinBox_general_info_rail_no_trains_per_day_freight
+            spinBox_general_info_rail_no_trains_per_day_passengers
+            spinBox_general_info_road_aadt_forecast
+            comboBox_general_info_road_sidewalks    
+        Related methods:           
+            GCWS Private Warrants
+            gcws_warrant_private_9_3_1
+            gcws_warrant_private_9_3_2_a
+            gcws_warrant_private_9_3_2_b
+            gcws_warrant_private_9_3_2_c
+            general_info_rail_no_tracks_total
+            general_info_rail_no_trains_per_day_total
+            general_info_rail_railway_design_speed    
+        '''
+        #GCWS Private Warrants
+        self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_b)
+        self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_b)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_b)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_b)        
+        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_b)
+        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_b)
+        self.view.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_b)
+        self.view.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_b)
+        self.view.spinBox_general_info_road_aadt_forecast.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_b)
 
         #TODO
         #connect signals and slots - gates_gcws_warrant_private_9_4_1_c
-        # .valueChanged.connect(self.gates_gcws_warrant_private_9_4_1_c)
+        '''
+        Connect input variable signals to gates_gcws_warrant_private_9_4_1_c method slot.
+        Required input variables:
+            GCWS Private Warrants
+            comboBox_inspection_details_grade_crossing_type
+            spinBox_general_info_rail_max_railway_operating_speed_freight
+            spinBox_general_info_rail_max_railway_operating_speed_passenger
+            spinBox_general_info_rail_no_tracks_main
+            spinBox_general_info_rail_no_tracks_other
+            spinBox_general_info_rail_no_trains_per_day_freight
+            spinBox_general_info_rail_no_trains_per_day_passengers
+            spinBox_general_info_road_aadt_forecast
+            comboBox_general_info_road_sidewalks    
+        Related methods:           
+            GCWS Private Warrants
+            gcws_warrant_private_9_3_1
+            gcws_warrant_private_9_3_2_a
+            gcws_warrant_private_9_3_2_b
+            gcws_warrant_private_9_3_2_c
+            general_info_rail_no_tracks_total
+            general_info_rail_no_trains_per_day_total
+            general_info_rail_railway_design_speed    
+        '''
+        #GCWS Private Warrants
+        self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_c)
+        self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_c)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_c)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_c)        
+        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_c)
+        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_c)
+        self.view.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_c)
+        self.view.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_c)
+        self.view.spinBox_general_info_road_aadt_forecast.valueChanged.connect(self.model.gates_gcws_warrant_private_9_4_1_c)
 
         #TODO
         #connect signals and slots - gates_gcws_warrant_public_9_2_1_a
-        # .valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_a)
+        '''
+        Connect input variable signals to gates_gcws_warrant_public_9_2_1_a method slot.
+        Required input variables:
+            GCWS Public Warrants
+            comboBox_general_info_road_sidewalks
+            comboBox_inspection_details_grade_crossing_type
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach
+            spinBox_general_info_rail_max_railway_operating_speed_freight
+            spinBox_general_info_rail_max_railway_operating_speed_passenger
+            spinBox_general_info_rail_no_tracks_main
+            spinBox_general_info_rail_no_tracks_other
+            spinBox_general_info_rail_no_trains_per_day_freight
+            spinBox_general_info_rail_no_trains_per_day_passengers
+            spinBox_general_info_road_aadt_forecast
+
+        Related methods:
+            GCWS Public Warrants
+            gcws_warrant_public_9_1_a
+            gcws_warrant_public_9_1_b
+            gcws_warrant_public_9_1_c
+            gcws_warrant_public_9_1_d_i
+            gcws_warrant_public_9_1_d_ii
+            gcws_warrant_public_9_1_d_iii
+            general_info_rail_no_tracks_total
+            general_info_rail_no_trains_per_day_total
+            general_info_rail_railway_design_speed
+        '''
+        self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.spinBox_general_info_road_aadt_forecast.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
 
         #TODO
         #connect signals and slots - gates_gcws_warrant_public_9_2_1_b
-        # .valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_b)
+        '''
+        Connect input variable signals to gates_gcws_warrant_public_9_2_1_b method slot.
+        Required input variables:
+            GCWS Public Warrants
+            comboBox_general_info_road_sidewalks
+            comboBox_inspection_details_grade_crossing_type
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach
+            spinBox_general_info_rail_max_railway_operating_speed_freight
+            spinBox_general_info_rail_max_railway_operating_speed_passenger
+            spinBox_general_info_rail_no_tracks_main
+            spinBox_general_info_rail_no_tracks_other
+            spinBox_general_info_rail_no_trains_per_day_freight
+            spinBox_general_info_rail_no_trains_per_day_passengers
+            spinBox_general_info_road_aadt_forecast
+
+        Related methods:
+            GCWS Public Warrants
+            gcws_warrant_public_9_1_a
+            gcws_warrant_public_9_1_b
+            gcws_warrant_public_9_1_c
+            gcws_warrant_public_9_1_d_i
+            gcws_warrant_public_9_1_d_ii
+            gcws_warrant_public_9_1_d_iii
+            general_info_rail_no_tracks_total
+            general_info_rail_no_trains_per_day_total
+            general_info_rail_railway_design_speed
+        '''
+        self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.spinBox_general_info_road_aadt_forecast.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
 
         #TODO
         #connect signals and slots - gates_gcws_warrant_public_9_2_1_c
-        # .valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_c)
+        '''
+        Connect input variable signals to gates_gcws_warrant_public_9_2_1_c method slot.
+        Required input variables:
+            GCWS Public Warrants
+            comboBox_general_info_road_sidewalks
+            comboBox_inspection_details_grade_crossing_type
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach
+            spinBox_general_info_rail_max_railway_operating_speed_freight
+            spinBox_general_info_rail_max_railway_operating_speed_passenger
+            spinBox_general_info_rail_no_tracks_main
+            spinBox_general_info_rail_no_tracks_other
+            spinBox_general_info_rail_no_trains_per_day_freight
+            spinBox_general_info_rail_no_trains_per_day_passengers
+            spinBox_general_info_road_aadt_forecast
+
+        Related methods:
+            GCWS Public Warrants
+            gcws_warrant_public_9_1_a
+            gcws_warrant_public_9_1_b
+            gcws_warrant_public_9_1_c
+            gcws_warrant_public_9_1_d_i
+            gcws_warrant_public_9_1_d_ii
+            gcws_warrant_public_9_1_d_iii
+            general_info_rail_no_tracks_total
+            general_info_rail_no_trains_per_day_total
+            general_info_rail_railway_design_speed
+        '''
+        self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.spinBox_general_info_road_aadt_forecast.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
 
         #TODO
         #connect signals and slots - gates_gcws_warrant_public_9_2_1_d
-        # .valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_d)
+        '''
+        Connect input variable signals to gates_gcws_warrant_public_9_2_1_d method slot.
+        Required input variables:
+            GCWS Public Warrants
+            comboBox_general_info_road_sidewalks
+            comboBox_inspection_details_grade_crossing_type
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach
+            spinBox_general_info_rail_max_railway_operating_speed_freight
+            spinBox_general_info_rail_max_railway_operating_speed_passenger
+            spinBox_general_info_rail_no_tracks_main
+            spinBox_general_info_rail_no_tracks_other
+            spinBox_general_info_rail_no_trains_per_day_freight
+            spinBox_general_info_rail_no_trains_per_day_passengers
+            spinBox_general_info_road_aadt_forecast
+
+        Related methods:
+            GCWS Public Warrants
+            gcws_warrant_public_9_1_a
+            gcws_warrant_public_9_1_b
+            gcws_warrant_public_9_1_c
+            gcws_warrant_public_9_1_d_i
+            gcws_warrant_public_9_1_d_ii
+            gcws_warrant_public_9_1_d_iii
+            general_info_rail_no_tracks_total
+            general_info_rail_no_trains_per_day_total
+            general_info_rail_railway_design_speed
+        '''
+        self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.spinBox_general_info_road_aadt_forecast.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
 
         #TODO
         # connect signals and slots - gates_gcws_warrant_public_9_2_1_e
-        # .valueChanged.connect(self.gates_gcws_warrant_public_9_2_1_e)
+        '''
+        Connect input variable signals to gates_gcws_warrant_public_9_2_1_e method slot.
+        Required input variables:
+            GCWS Public Warrants
+            comboBox_general_info_road_sidewalks
+            comboBox_inspection_details_grade_crossing_type
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach
+            spinBox_general_info_rail_max_railway_operating_speed_freight
+            spinBox_general_info_rail_max_railway_operating_speed_passenger
+            spinBox_general_info_rail_no_tracks_main
+            spinBox_general_info_rail_no_tracks_other
+            spinBox_general_info_rail_no_trains_per_day_freight
+            spinBox_general_info_rail_no_trains_per_day_passengers
+            spinBox_general_info_road_aadt_forecast
+
+        Related methods:
+            GCWS Public Warrants
+            gcws_warrant_public_9_1_a
+            gcws_warrant_public_9_1_b
+            gcws_warrant_public_9_1_c
+            gcws_warrant_public_9_1_d_i
+            gcws_warrant_public_9_1_d_ii
+            gcws_warrant_public_9_1_d_iii
+            general_info_rail_no_tracks_total
+            general_info_rail_no_trains_per_day_total
+            general_info_rail_railway_design_speed
+        '''
+        self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.spinBox_general_info_road_aadt_forecast.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
 
         #TODO
         #connect signals and slots - gates_gcws_warrant_sidewalk_9_6
-        # .valueChanged.connect(self.gates_gcws_warrant_sidewalk_9_6)
+        '''
+        Connect input variable signals to gates_gcws_warrant_sidewalk_9_6 method slot.
+        Required input variables:
+            comboBox_general_info_road_sidewalks 
+            comboBox_general_info_road_sidewalk_island_circuit
+            spinBox_general_info_rail_max_railway_operating_speed_freight
+            spinBox_general_info_rail_max_railway_operating_speed_passenger
+            spinBox_general_info_rail_no_tracks_main
+            spinBox_general_info_rail_no_tracks_other
+        Related methods:
+            general_info_rail_railway_design_speed
+            general_info_rail_no_tracks_total
+        '''
+        self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.gates_gcws_warrant_sidewalk_9_6)
+        self.view.comboBox_general_info_road_sidewalk_island_circuit.currentTextChanged.connect(self.model.gates_gcws_warrant_sidewalk_9_6)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gates_gcws_warrant_sidewalk_9_6)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gates_gcws_warrant_sidewalk_9_6)
+        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.gates_gcws_warrant_sidewalk_9_6)
+        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.gates_gcws_warrant_sidewalk_9_6)
 
         #GRADE CROSSING WARNING SYSTEMS (GCS SECTION 12-16)
         #TODO
@@ -1084,12 +1407,55 @@ class ControllerCrossingAssessmentCA(qtw.QWidget):
         self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.preemption_of_traffic_signals_lookup_required)
         self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.preemption_of_traffic_signals_lookup_required)
 
-        '''
         # WHISTLE CESSATION (GCS SECTION Appendix D)
         #TODO
         #connect signals and slots - areas_without_train_whistling_lookup_gcs_9_2
-        # .valueChanged.connect(self.areas_without_train_whistling_lookup_gcs_9_2)
         '''
+        Connect input variable signals to areas_without_train_whistling_lookup_gcs_9_2 method slot.
+        required input variables:
+            comboBox_gcws_observe_gates_n_or_e_approach
+            comboBox_gcws_observe_gates_s_or_w_approach
+            GCWS Public Warrants
+            comboBox_general_info_road_sidewalks
+            comboBox_inspection_details_grade_crossing_type
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach
+            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach
+            spinBox_general_info_rail_max_railway_operating_speed_freight
+            spinBox_general_info_rail_max_railway_operating_speed_passenger
+            spinBox_general_info_rail_no_tracks_main
+            spinBox_general_info_rail_no_tracks_other
+            spinBox_general_info_rail_no_trains_per_day_freight
+            spinBox_general_info_rail_no_trains_per_day_passengers
+            spinBox_general_info_road_aadt_forecast
+        required methods:
+            GCWS Public Warrants
+            gcws_warrant_public_9_1_a
+            gcws_warrant_public_9_1_b
+            gcws_warrant_public_9_1_c
+            gcws_warrant_public_9_1_d_i
+            gcws_warrant_public_9_1_d_ii
+            gcws_warrant_public_9_1_d_iii
+            general_info_rail_no_tracks_total
+            general_info_rail_no_trains_per_day_total
+            general_info_rail_railway_design_speed        
+            '''
+        self.view.comboBox_gcws_observe_gates_n_or_e_approach.currentTextChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.comboBox_gcws_observe_gates_s_or_w_approach.currentTextChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.spinBox_general_info_road_aadt_forecast.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
 
         #connect signals and slots - areas_without_train_whistling_requirements_lookup_table_d1_criteria
         '''

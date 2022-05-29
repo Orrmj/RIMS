@@ -916,14 +916,13 @@ class ModelCrossingAssessmentCA(qtc.QObject):
             self.view.label_gcws_warrant_public_9_1_d_iii.setText(result)
         return result
     
-    #TODO
     #Calculate gcws_warrant_sidewalk_9_5
     def gcws_warrant_sidewalk_9_5(self):
         general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
         general_info_road_sidewalks = self.view.comboBox_general_info_road_sidewalks.currentText()
         general_info_road_sidewalk_island_circuit = self.view.comboBox_general_info_road_sidewalk_island_circuit.currentText()
 
-        if general_info_road_sidewalks == '' or general_info_rail_railway_design_speed == '' or general_info_road_sidewalk_island_circuit == '':
+        if general_info_road_sidewalks == '' or general_info_rail_railway_design_speed == 'No Value' or general_info_road_sidewalk_island_circuit == '':
             result = 'No Value'
             self.view.label_gcws_warrant_sidewalk_9_5.setText(result)
         elif general_info_road_sidewalks == 'Yes' and general_info_road_sidewalk_island_circuit == 'Yes' and general_info_rail_railway_design_speed > 50:
@@ -937,15 +936,15 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     #TODO
     #Calculate gates_gcws_warrant_private_9_4_1_a
     def gates_gcws_warrant_private_9_4_1_a(self):
-        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total()
-        general_info_road_aadt_forecast = self.view.spinBox_general_info_road_aadt_forecast.value()
         gcws_warrant_private_9_3_1 = self.gcws_warrant_private_9_3_1()
         gcws_warrant_private_9_3_2_a = self.gcws_warrant_private_9_3_2_a()
         gcws_warrant_private_9_3_2_b = self.gcws_warrant_private_9_3_2_b()
         gcws_warrant_private_9_3_2_c = self.gcws_warrant_private_9_3_2_c()
+        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total()
+        general_info_road_aadt_forecast = self.view.spinBox_general_info_road_aadt_forecast.value()
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
         
-        if inspection_details_grade_crossing_type == '' or general_info_rail_no_trains_per_day_total == '' or general_info_road_aadt_forecast == '' or gcws_warrant_private_9_3_1 == 'No Value' or gcws_warrant_private_9_3_2_a == 'No Value' or gcws_warrant_private_9_3_2_b == 'No Value' or gcws_warrant_private_9_3_2_c == 'No Value':
+        if inspection_details_grade_crossing_type == '' or general_info_rail_no_trains_per_day_total == 'No Value' or general_info_road_aadt_forecast == 0 or gcws_warrant_private_9_3_1 == 'No Value' or gcws_warrant_private_9_3_2_a == 'No Value' or gcws_warrant_private_9_3_2_b == 'No Value' or gcws_warrant_private_9_3_2_c == 'No Value':
             result = 'No Value'
             self.view.label_gates_gcws_warrant_private_9_4_1_a.setText(result)
         elif inspection_details_grade_crossing_type == 'Public':
@@ -969,7 +968,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total()
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
 
-        if inspection_details_grade_crossing_type == '' or general_info_rail_no_tracks_total == '' or gcws_warrant_private_9_3_1 == 'No Value' or gcws_warrant_private_9_3_2_a == 'No Value' or gcws_warrant_private_9_3_2_b == 'No Value' or gcws_warrant_private_9_3_2_c == 'No Value':
+        if inspection_details_grade_crossing_type == '' or general_info_rail_no_tracks_total == 'No Value' or gcws_warrant_private_9_3_1 == 'No Value' or gcws_warrant_private_9_3_2_a == 'No Value' or gcws_warrant_private_9_3_2_b == 'No Value' or gcws_warrant_private_9_3_2_c == 'No Value':
             result = 'No Value'
             self.view.label_gates_gcws_warrant_private_9_4_1_b.setText(result)
         elif inspection_details_grade_crossing_type == 'Public':
