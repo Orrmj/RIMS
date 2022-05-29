@@ -343,14 +343,14 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach = qtw.QDoubleSpinBox() 
         self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_of_w_approach = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_of_w_approach.setRange(0, 999999)
+        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.setRange(0, 999999)
         
         self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach = qtw.QDoubleSpinBox() 
         self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_of_w_approach = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_of_w_approach.setRange(0, 999999)
+        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.setRange(0, 999999)
 
         #group ComboBoxes
         self.comboBox_location_of_grade_crossing_observe_nearby_pedestrian_crosswalk = qtw.QComboBox()
@@ -1322,10 +1322,10 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         # layout container widgets - LOCATION OF GRADE CROSSING (GCS SECTION 11)
         form_layout_location_of_crossing.addRow(qtw.QLabel('D (Intersection with Stop Sign)'))
         form_layout_location_of_crossing.addRow('N or E Road Approach (m):', self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach)
-        form_layout_location_of_crossing.addRow('S or W Road Approach (m):', self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_of_w_approach)
+        form_layout_location_of_crossing.addRow('S or W Road Approach (m):', self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach)
         form_layout_location_of_crossing.addRow(qtw.QLabel('D (Signalized Intersection)'))
         form_layout_location_of_crossing.addRow('N or E Road Approach (m):', self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach)
-        form_layout_location_of_crossing.addRow('S or W Road Approach (m):', self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_of_w_approach)
+        form_layout_location_of_crossing.addRow('S or W Road Approach (m):', self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach)
         form_layout_location_of_crossing.addRow(qtw.QLabel('D (Other Intersection / Driveway / Crosswalk)'))
         form_layout_location_of_crossing.addRow('N or E Road Approach (m):', self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_other_n_or_e_approach)
         form_layout_location_of_crossing.addRow('S or W Road Approach (m):', self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_other_s_of_w_approach)        
