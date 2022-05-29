@@ -1,4 +1,7 @@
+import sys
 from PyQt5 import QtWidgets as qtw
+from PyQt5 import QtCore as qtc
+from PyQt5 import QtSql as qts
 
 from gradecrossingform.models.model_form_crossing_ca import ModelCrossingAssessmentCA
 from gradecrossingform.views.view_form_xing_assessment_ca import ViewCrossingAssessmentCA
@@ -9,6 +12,73 @@ class ControllerCrossingAssessmentCA(qtw.QWidget):
         self.view = ViewCrossingAssessmentCA()
         self.model = ModelCrossingAssessmentCA(self.view)
         self.connect_and_emit_trigger()
+
+        '''DATABASE SAMPLE CODE START'''
+
+        # Connect to the database
+        self.db = qts.QSqlDatabase.addDatabase('QSQLITE')
+        self.db.setDatabaseName('app\custom\GradeCrossingForm\db\sqllite\db_sqllite_grade_crossing.db')
+        if not self.db.open():
+            error = self.db.lastError().text()
+            qtw.QMessageBox.critical(
+                None, 'DB Connection Error',
+                'Could not open database file: '
+                f'{error}')
+            sys.exit(1)
+
+        # Check for missing tables
+        required_tables = {'roasts', 'crossing_ca_inventory', 'reviews'}
+        tables = self.db.tables()
+        missing_tables = required_tables - set(tables)
+        if missing_tables:
+            qtw.QMessageBox.critical(
+                None, 'DB Integrity Error',
+                'Missing tables, please repair DB: '
+                f'{missing_tables}')
+            sys.exit(1)
+
+        # Make a query
+        query = self.db.exec('SELECT count(*) FROM crossing_ca_inventory')
+        query.next()
+        count = query.value(0)
+        print(f'There are {count} crossing_ca_inventory in the database.')
+
+        # Retreive the roasts table
+        query = self.db.exec('SELECT * FROM roasts ORDER BY id')
+        roasts = []
+        while query.next():
+            roasts.append(query.value(1))
+
+        # create the form
+        self.coffee_form = CoffeeForm(roasts)
+        self.stack.addWidget(self.coffee_form)
+
+        # Retreive the crossing_ca_inventory table using a QSqlQueryModel
+        crossing_ca_inventory = qts.QSqlQueryModel()
+        crossing_ca_inventory.setQuery(
+            "SELECT id, coffee_brand, coffee_name AS coffee "
+            "FROM crossing_ca_inventory ORDER BY id")
+        self.coffee_list = qtw.QTableView()
+        self.coffee_list.setModel(crossing_ca_inventory)
+        self.stack.addWidget(self.coffee_list)
+        self.stack.setCurrentWidget(self.coffee_list)
+
+        crossing_ca_inventory.setHeaderData(1, qtc.Qt.Horizontal, 'Brand')
+        crossing_ca_inventory.setHeaderData(2, qtc.Qt.Horizontal, 'Product')
+
+        # Navigation between stacked widgets
+        navigation = self.addToolBar("Navigation")
+        navigation.addAction(
+            "Back to list",
+            lambda: self.stack.setCurrentWidget(self.coffee_list))
+
+        self.coffee_list.doubleClicked.connect(
+            lambda x: self.show_coffee(self.get_id_for_row(x)))
+
+        # Code ends here
+        self.show()
+
+        '''DATABASE SAMPLE CODE END'''
 
     def connect_and_emit_trigger(self):
         #connecting a signal to python callables
@@ -1499,3 +1569,41 @@ class ControllerCrossingAssessmentCA(qtw.QWidget):
         self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.areas_without_train_whistling_requirements_observe_table_D1)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.areas_without_train_whistling_requirements_observe_table_D1) 
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.areas_without_train_whistling_requirements_observe_table_D1)
+
+    '''DATABASE SAMPLE CODE START'''
+    #Database Sample Code
+    def get_id_for_row(self, index):
+        index = index.siblingAtColumn(0)
+        coffee_id = self.coffee_list.model().data(index)
+        return coffee_id
+
+    def show_coffee(self, coffee_id):
+        # get the basic coffee information
+        query1 = qts.QSqlQuery(self.db)
+        query1.prepare('SELECT * FROM crossing_ca_inventory WHERE id=:id')
+        query1.bindValue(':id', coffee_id)
+        query1.exec()
+        query1.next()
+        coffee = {
+            'id': query1.value(0),
+            'coffee_brand': query1.value(1),
+            'coffee_name': query1.value(2),
+            'roast_id': query1.value(3)
+        }
+        # get the reviews
+        query2 = qts.QSqlQuery()
+        query2.prepare('SELECT * FROM reviews WHERE coffee_id=:id')
+        query2.bindValue(':id', coffee_id)
+        query2.exec()
+        reviews = []
+        while query2.next():
+            reviews.append((
+                query2.value('reviewer'),
+                query2.value('review_date'),
+                query2.value('review')
+            ))
+
+        self.coffee_form.show_coffee(coffee, reviews)
+        self.stack.setCurrentWidget(self.coffee_form)
+        '''DATABASE SAMPLE CODE END'''
+        
