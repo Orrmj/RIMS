@@ -972,8 +972,8 @@ class ModelCrossingAssessmentCA(qtc.QObject):
             result = 'No Value'
             self.view.label_gates_gcws_warrant_private_9_4_1_b.setText(result)
         elif inspection_details_grade_crossing_type == 'Public':
-            self.view.label_gates_gcws_warrant_private_9_4_1_b.setText(result)
             result = 'N/A'
+            self.view.label_gates_gcws_warrant_private_9_4_1_b.setText(result)
         elif inspection_details_grade_crossing_type != 'Public' and (gcws_warrant_private_9_3_1 == 'Yes' or gcws_warrant_private_9_3_2_a == 'Yes' or gcws_warrant_private_9_3_2_b == 'Yes' or gcws_warrant_private_9_3_2_c == 'Yes') and general_info_rail_no_tracks_total >= 2:
             result = 'Yes'
             self.view.label_gates_gcws_warrant_private_9_4_1_b.setText(result)
@@ -990,7 +990,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         gcws_warrant_private_9_3_2_b = self.gcws_warrant_private_9_3_2_b()
         gcws_warrant_private_9_3_2_c = self.gcws_warrant_private_9_3_2_c()
         general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
-        inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type()
+        inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
 
         if inspection_details_grade_crossing_type == '' or general_info_rail_railway_design_speed == '' or gcws_warrant_private_9_3_1 == 'No Value' or gcws_warrant_private_9_3_2_a == 'No Value' or gcws_warrant_private_9_3_2_b == 'No Value' or gcws_warrant_private_9_3_2_c == 'No Value':
             result = 'No Value'
@@ -1017,7 +1017,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         gcws_warrant_public_9_1_d_iii = self.gcws_warrant_public_9_1_d_iii()
         general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total()
         general_info_road_aadt_forecast = self.view.spinBox_general_info_road_aadt_forecast.value()
-        inspection_details_grade_crossing_type = self.comboBox_inspection_details_grade_crossing_type.currentText()
+        inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
 
         if inspection_details_grade_crossing_type == '' or general_info_rail_no_trains_per_day_total == '' or general_info_road_aadt_forecast == '' or gcws_warrant_public_9_1_a == 'No Value' or gcws_warrant_public_9_1_b == 'No Value' or gcws_warrant_public_9_1_c == 'No Value' or gcws_warrant_public_9_1_d_i == 'No Value' or gcws_warrant_public_9_1_d_ii == 'No Value' or gcws_warrant_public_9_1_d_iii == 'No Value':
             result = 'No Value'
@@ -1095,8 +1095,8 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         gcws_warrant_public_9_1_d_ii = self.gcws_warrant_public_9_1_d_ii()
         gcws_warrant_public_9_1_d_iii = self.gcws_warrant_public_9_1_d_iii()
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
-        location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach = self.view.spinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.value()
-        location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach = self.view.spinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.value()
+        location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.value()
+        location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.value()
 
         if inspection_details_grade_crossing_type == '' or location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach == '' or location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach == '' or gcws_warrant_public_9_1_a == 'No Value' or gcws_warrant_public_9_1_b == 'No Value' or gcws_warrant_public_9_1_d_i == 'No Value' or gcws_warrant_public_9_1_d_ii == 'No Value' or gcws_warrant_public_9_1_d_iii == 'No Value':
             result = 'No Value'
@@ -1122,8 +1122,8 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         gcws_warrant_public_9_1_d_ii = self.gcws_warrant_public_9_1_d_ii()
         gcws_warrant_public_9_1_d_iii = self.gcws_warrant_public_9_1_d_iii()
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
-        location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach = self.view.spinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.value()
-        location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach = self.view.spinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.value()
+        location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.value()
+        location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.value()
 
         if inspection_details_grade_crossing_type == '' or location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach == '' or location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach == '' or gcws_warrant_public_9_1_a == 'No Value' or gcws_warrant_public_9_1_b == 'No Value' or gcws_warrant_public_9_1_d_i == 'No Value' or gcws_warrant_public_9_1_d_ii == 'No Value' or gcws_warrant_public_9_1_d_iii == 'No Value':
             result = 'No Value'
@@ -1274,8 +1274,12 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     #Calculate gates_gcws_calculate_inner_gate_arm_delay_time_recommended
     def gates_gcws_calculate_inner_gate_arm_delay_time_recommended(self):
         design_calculate_adjacent_track_clearance_time = self.design_calculate_adjacent_track_clearance_time()
-
+        
         if design_calculate_adjacent_track_clearance_time == 'No Value':
+            result = design_calculate_adjacent_track_clearance_time
+            self.view.label_gcws_rail_design_warning_time_ssd.setText(result)
+
+        elif design_calculate_adjacent_track_clearance_time == 'N/A':
             result = design_calculate_adjacent_track_clearance_time
             self.view.label_gcws_rail_design_warning_time_ssd.setText(result)
         else:
