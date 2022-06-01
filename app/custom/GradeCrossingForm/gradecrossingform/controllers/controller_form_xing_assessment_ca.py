@@ -13,7 +13,7 @@ class ControllerCrossingAssessmentCA(qtw.QWidget):
         self.model = ModelCrossingAssessmentCA(self.view)
         self.connect_and_emit_trigger()
 
-        '''DATABASE SAMPLE CODE START'''
+        '''DATABASE SAMPLE CODE START
 
         # Connect to the database
         self.db = qts.QSqlDatabase.addDatabase('QSQLITE')
@@ -78,7 +78,7 @@ class ControllerCrossingAssessmentCA(qtw.QWidget):
         # Code ends here
         self.show()
 
-        '''DATABASE SAMPLE CODE END'''
+        DATABASE SAMPLE CODE END'''
 
     def connect_and_emit_trigger(self):
         #connecting a signal to python callables
@@ -858,7 +858,7 @@ class ControllerCrossingAssessmentCA(qtw.QWidget):
         # .valueChanged.connect(self.gcws_warrant_sidewalk_9_5)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gcws_warrant_sidewalk_9_5)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gcws_warrant_sidewalk_9_5)        
-        self.view.comboBox_general_info_road_sidewalks.currentTextChange.connect(self.model.gcws_warrant_sidewalk_9_5)   
+        self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.gcws_warrant_sidewalk_9_5)   
         self.view.comboBox_general_info_road_sidewalk_island_circuit.currentTextChanged.connect(self.model.gcws_warrant_sidewalk_9_5)   
 
         #TODO
