@@ -13,7 +13,6 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
     def __init__(self):
         super().__init__()
         self.initializeUI()
-
         
     def initializeUI(self):
         """
@@ -22,6 +21,7 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.setGeometry(100, 100, 300, 400)
         self.setWindowTitle('Crossing Assessment Form (Canada)')
         self.formWidgets()
+        self.map_fields()
         self.show()
    
     def formWidgets(self):
@@ -1973,5 +1973,3 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         settings_dialog = SettingsDialog(self.settings, self)
         settings_dialog.exec()
         '''
-    
-    
