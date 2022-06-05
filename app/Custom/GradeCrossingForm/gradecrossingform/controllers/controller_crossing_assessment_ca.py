@@ -1416,9 +1416,9 @@ class controllerCrossingassessmentCA(qtw.QWidget):
 
         # whistLE CESSATION (GCS seCTION Appendix D)
         #TODO
-        #connect signals and slots - areast_without_train_whistling_lookup_gcs_9_2
+        #connect signals and slots - areas_without_train_whistling_lookup_gcs_9_2
         '''
-        Connect input variable signals to areast_without_train_whistling_lookup_gcs_9_2 method slot.
+        Connect input variable signals to areas_without_train_whistling_lookup_gcs_9_2 method slot.
         required input variables:
             comboBox_gcws_observe_gates_n_or_e_approach
             comboBox_gcws_observe_gates_s_or_w_approach
@@ -1448,25 +1448,25 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             general_info_rail_no_trains_per_day_total
             general_info_rail_railway_design_speed        
             '''
-        self.view.comboBox_gcws_observe_gates_n_or_e_approach.currentTextChanged.connect(self.model.areast_without_train_whistling_lookup_gcs_9_2)
-        self.view.comboBox_gcws_observe_gates_s_or_w_approach.currentTextChanged.connect(self.model.areast_without_train_whistling_lookup_gcs_9_2)
-        self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.areast_without_train_whistling_lookup_gcs_9_2)
-        self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.areast_without_train_whistling_lookup_gcs_9_2)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.areast_without_train_whistling_lookup_gcs_9_2)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.areast_without_train_whistling_lookup_gcs_9_2)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.areast_without_train_whistling_lookup_gcs_9_2)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.areast_without_train_whistling_lookup_gcs_9_2)
-        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.areast_without_train_whistling_lookup_gcs_9_2)
-        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.areast_without_train_whistling_lookup_gcs_9_2)
-        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.areast_without_train_whistling_lookup_gcs_9_2)
-        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.areast_without_train_whistling_lookup_gcs_9_2)
-        self.view.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self.model.areast_without_train_whistling_lookup_gcs_9_2)
-        self.view.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self.model.areast_without_train_whistling_lookup_gcs_9_2)
-        self.view.spinBox_general_info_road_aadt_forecast.valueChanged.connect(self.model.areast_without_train_whistling_lookup_gcs_9_2)
+        self.view.comboBox_gcws_observe_gates_n_or_e_approach.currentTextChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.comboBox_gcws_observe_gates_s_or_w_approach.currentTextChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.spinBox_general_info_road_aadt_forecast.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
 
-        #connect signals and slots - areast_without_train_whistling_requirements_lookup_table_d1_criteria
+        #connect signals and slots - areas_without_train_whistling_requirements_lookup_table_d1_criteria
         '''
-        Connect input variable signals to areast_without_train_whistling_requirements_lookup_table_d1_criteria method slot.
+        Connect input variable signals to areas_without_train_whistling_requirements_lookup_table_d1_criteria method slot.
         required input variables:
             spinBox_general_info_rail_no_tracks_main
             spinBox_general_info_rail_no_tracks_other
@@ -1476,14 +1476,14 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             general_info_rail_no_tracks_total
             general_info_rail_railway_design_speed
         '''
-        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.areast_without_train_whistling_requirements_lookup_table_d1_criteria)
-        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.areast_without_train_whistling_requirements_lookup_table_d1_criteria)
-        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.areast_without_train_whistling_requirements_lookup_table_d1_criteria)
-        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.areast_without_train_whistling_requirements_lookup_table_d1_criteria)
+        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.areas_without_train_whistling_requirements_lookup_table_d1_criteria)
+        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.areas_without_train_whistling_requirements_lookup_table_d1_criteria)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.areas_without_train_whistling_requirements_lookup_table_d1_criteria)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.areas_without_train_whistling_requirements_lookup_table_d1_criteria)
 
-        #connect signals and slots - areast_without_train_whistling_requirements_observe_table_d1
+        #connect signals and slots - areas_without_train_whistling_requirements_observe_table_d1
         '''
-        Connect input variable signals to areast_without_train_whistling_requirements_observe_table_d1 method slot.
+        Connect input variable signals to areas_without_train_whistling_requirements_observe_table_d1 method slot.
         required input variables:
             comboBox_gcws_observe_gates_n_or_e_approach
             comboBox_gcws_observe_gates_s_or_w_approach
@@ -1494,18 +1494,18 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             spinBox_general_info_rail_max_railway_operating_speed_freight 
             spinBox_general_info_rail_max_railway_operating_speed_passenger
         required methods:
-            areast_without_train_whistling_requirements_lookup_table_d1_criteria
+            areas_without_train_whistling_requirements_lookup_table_d1_criteria
             general_info_rail_no_tracks_total
             general_info_rail_railway_design_speed
         '''
-        self.view.comboBox_gcws_observe_gates_n_or_e_approach.currentTextChanged.connect(self.model.areast_without_train_whistling_requirements_observe_table_D1)
-        self.view.comboBox_gcws_observe_gates_s_or_w_approach.currentTextChanged.connect(self.model.areast_without_train_whistling_requirements_observe_table_D1)
-        self.view.comboBox_gcws_observe_light_units_n_or_e_approach.currentTextChanged.connect(self.model.areast_without_train_whistling_requirements_observe_table_D1)
-        self.view.comboBox_gcws_observe_light_units_s_or_w_approach.currentTextChanged.connect(self.model.areast_without_train_whistling_requirements_observe_table_D1)
-        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.areast_without_train_whistling_requirements_observe_table_D1)
-        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.areast_without_train_whistling_requirements_observe_table_D1)
-        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.areast_without_train_whistling_requirements_observe_table_D1) 
-        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.areast_without_train_whistling_requirements_observe_table_D1)
+        self.view.comboBox_gcws_observe_gates_n_or_e_approach.currentTextChanged.connect(self.model.areas_without_train_whistling_requirements_observe_table_D1)
+        self.view.comboBox_gcws_observe_gates_s_or_w_approach.currentTextChanged.connect(self.model.areas_without_train_whistling_requirements_observe_table_D1)
+        self.view.comboBox_gcws_observe_light_units_n_or_e_approach.currentTextChanged.connect(self.model.areas_without_train_whistling_requirements_observe_table_D1)
+        self.view.comboBox_gcws_observe_light_units_s_or_w_approach.currentTextChanged.connect(self.model.areas_without_train_whistling_requirements_observe_table_D1)
+        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.areas_without_train_whistling_requirements_observe_table_D1)
+        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.areas_without_train_whistling_requirements_observe_table_D1)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.areas_without_train_whistling_requirements_observe_table_D1) 
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.areas_without_train_whistling_requirements_observe_table_D1)
 
     def map_fields_to_sql(self):
     # Map the crossing fields
@@ -1513,124 +1513,137 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         self.mapper.setModel(self.db.db_model_crossing_assessment_ca)
         self.mapper.setItemDelegate(
             qts.QSqlRelationalDelegate(self))
+        #self.mapper.addMapping(
+        #    self.view.temp,
+        #    self.db.db_model_crossing_assessment_ca.fieldIndex('functional_location')
+        #)
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('functional_location')
+            self.view.label_aawd_calculate_advance_activation_time_design_n_or_e_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_calculate_advance_activation_time_design_n_or_e_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_calculate_aawd_advance_activation_time_design_n_or_e_approach')
+            self.view.label_aawd_calculate_advance_activation_time_design_s_or_w_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_calculate_advance_activation_time_design_s_or_w_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_calculate_aawd_advance_activation_time_design_s_or_w_approach')
+            self.view.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_measture_distance_between_sign_and_stopline_n_or_e_approach_actual')
+            self.view.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_measture_distance_between_sign_and_stopline_n_or_e_approach_recommended')
+            self.view.doubleSpinBox_aawd_measure_distance_sign_and_stop_n_or_e_approach_actual,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_measure_distance_sign_and_stop_n_or_e_approach_actual')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_measture_distance_between_sign_and_stopline_s_or_w_approach_actual')
+            self.view.doubleSpinBox_aawd_measure_distance_sign_and_stop_s_or_w_approach_actual,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_measure_distance_sign_and_stop_s_or_w_approach_actual')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_measture_distance_between_sign_and_stopline_s_or_w_approach_recommended')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_aawd_observe_present_n_or_e_approach,
             self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_observe_present_n_or_e_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_aawd_observe_present_s_or_w_approach,
             self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_observe_present_s_or_w_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_rail_aawd_advance_activation_time_actual_n_or_e_approach')
+            self.view.spinBox_aawd_rail_advance_activation_time_actual_n_or_e_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_rail_advance_activation_time_actual_n_or_e_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_rail_aawd_advance_activation_time_actual_s_or_w_approach')
+            self.view.spinBox_aawd_rail_advance_activation_time_actual_s_or_w_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_rail_advance_activation_time_actual_s_or_w_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_road_aawd_advance_activation_time_info_sharing')
+            self.view.comboBox_aawd_road_aawd_sufficient_activation_time_n_or_e_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_road_sufficient_activation_time_n_or_e_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_road_aawd_operation_time')
+            self.view.comboBox_aawd_road_aawd_sufficient_activation_time_s_or_w_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_road_sufficient_activation_time_s_or_w_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.label_aawd_warrant_gcr_lookup_road_classification,
             self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_warrant_gcr_lookup_road_classification')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_aawd_warrant_gcr_observe_environmental_condition,
             self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_warrant_gcr_observe_environmental_condition')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_aawd_warrant_gcr_observe_sightline_obstruction,
             self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_warrant_gcr_observe_sightline_obstruction')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr,
             self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_aawd_warrant_mutcd_lookup_significant_road_downgrade,
             self.db.db_model_crossing_assessment_ca.fieldIndex('aawd_warrant_mutcd_lookup_significant_road_downgrade')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('areast_Whithout_train_whistling_observe_trespassing_area')
+            self.view.comboBox_areas_without_train_whistling_observe_trespassing_area,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('areas_without_train_whistling_observe_trespassing_area')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('areast_without_train_whistling_rail_anti_whistling_zone')
+            self.view.comboBox_areas_without_train_whistling_rail_anti_whistling_zone,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('areas_without_train_whistling_rail_anti_whistling_zone')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('areast_without_train_whistling_requirements_lookup_GCS_12_16')
+            self.view.comboBox_areas_without_train_whistling_rail_anti_whistling_zone_24_hrs,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('areas_without_train_whistling_rail_anti_whistling_zone_24_hrs')
+        )
+
+        self.mapper.addMapping(
+            self.view.comboBox_areas_without_train_whistling_lookup_gcs_12_to_16,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('areas_without_train_whistling_lookup_GCS_12_to_16')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('areast_without_train_whistling_requirements_lookup_GCS_9_2')
+            self.view.label_areas_without_train_whistling_lookup_gcs_9_2,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('areas_without_train_whistling_lookup_gcs_9_2')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('areast_without_train_whistling_requirements_observe_for_stop_and_proceed')
+            self.view.label_areas_without_train_whistling_lookup_table_d1_criteria,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('label_areas_without_train_whistling_lookup_table_d1_criteria')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.label_areas_without_train_whistling_observe_table_D1,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('label_areas_without_train_whistling_observe_table_D1')
+        )
+        self.mapper.addMapping(
+            self.view.comboBox_areas_without_train_whistling_observe_for_stop_and_proceed,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('areas_without_train_whistling_observe_for_stop_and_proceed')
+        )
+        self.mapper.addMapping(
+            self.view.textEdit_collision_history_comments,
             self.db.db_model_crossing_assessment_ca.fieldIndex('collision_history_comments')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.spinBox_collision_history_fatal_injury,
             self.db.db_model_crossing_assessment_ca.fieldIndex('collision_history_fatal_injury')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.spinBox_collision_history_fatalities,
             self.db.db_model_crossing_assessment_ca.fieldIndex('collision_history_fatalities')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.spinBox_collision_history_personal_injuries,
             self.db.db_model_crossing_assessment_ca.fieldIndex('collision_history_personal_injuries')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.spinBox_collision_history_personal_injury,
             self.db.db_model_crossing_assessment_ca.fieldIndex('collision_history_personal_injury')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.spinBox_collision_history_property_damage,
             self.db.db_model_crossing_assessment_ca.fieldIndex('collision_history_property_damage')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.label_collision_history_total_5_year_period,
             self.db.db_model_crossing_assessment_ca.fieldIndex('collision_history_total_5_year_period')
         )
         self.mapper.addMapping(
