@@ -45,7 +45,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             spinBox_general_info_rail_no_trains_per_day_passengers
             comboBox_inspection_details_gcws_type
             comboBox_general_info_road_classification
-            comboBox_grade_crossing_surface_observe_road_approach_surface_type
+            comboBox_crossing_surface_observe_road_approach_surface_type
             comboBox_gcws_observe_gates_n_or_e_approach
             comboBox_gcws_observe_gates_s_or_w_approach
         
@@ -63,11 +63,11 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         self.view.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self.model.collision_history_risk_index_initial)
         self.view.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self.model.collision_history_risk_index_initial)
         self.view.spinBox_general_info_road_no_traffic_lanes_bidirectional.valueChanged.connect(self.model.collision_history_risk_index_initial)
-        self.view.spinBox_general_info_road_no_traffic_lanes_northbound_or_easttbound.valueChanged.connect(self.model.collision_history_risk_index_initial)
+        self.view.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound.valueChanged.connect(self.model.collision_history_risk_index_initial)
         self.view.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound.valueChanged.connect(self.model.collision_history_risk_index_initial)
         self.view.comboBox_inspection_details_gcws_type.currentTextChanged.connect(self.model.collision_history_risk_index_initial)
         self.view.comboBox_general_info_road_classification.currentTextChanged.connect(self.model.collision_history_risk_index_initial)
-        self.view.comboBox_grade_crossing_surface_observe_road_approach_surface_type.currentTextChanged.connect(self.model.collision_history_risk_index_initial)
+        self.view.comboBox_crossing_surface_observe_road_approach_surface_type.currentTextChanged.connect(self.model.collision_history_risk_index_initial)
         self.view.comboBox_gcws_observe_gates_n_or_e_approach.currentTextChanged.connect(self.model.collision_history_risk_index_initial)
         self.view.comboBox_gcws_observe_gates_s_or_w_approach.currentTextChanged.connect(self.model.collision_history_risk_index_initial)
         
@@ -84,7 +84,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             spinBox_general_info_rail_no_trains_per_day_passengers
             comboBox_inspection_details_gcws_type
             comboBox_general_info_road_classification
-            comboBox_grade_crossing_surface_observe_road_approach_surface_type
+            comboBox_crossing_surface_observe_road_approach_surface_type
             comboBox_gcws_observe_gates_n_or_e_approach
             comboBox_gcws_observe_gates_s_or_w_approach
             spinBox_collision_history_fatal_injury, 
@@ -107,11 +107,11 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         self.view.spinBox_general_info_rail_no_trains_per_day_freight.valueChanged.connect(self.model.collision_history_risk_index_final)
         self.view.spinBox_general_info_rail_no_trains_per_day_passengers.valueChanged.connect(self.model.collision_history_risk_index_final)
         self.view.spinBox_general_info_road_no_traffic_lanes_bidirectional.valueChanged.connect(self.model.collision_history_risk_index_final)
-        self.view.spinBox_general_info_road_no_traffic_lanes_northbound_or_easttbound.valueChanged.connect(self.model.collision_history_risk_index_final)
+        self.view.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound.valueChanged.connect(self.model.collision_history_risk_index_final)
         self.view.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound.valueChanged.connect(self.model.collision_history_risk_index_final)
         self.view.comboBox_inspection_details_gcws_type.currentTextChanged.connect(self.model.collision_history_risk_index_final)
         self.view.comboBox_general_info_road_classification.currentTextChanged.connect(self.model.collision_history_risk_index_final)
-        self.view.comboBox_grade_crossing_surface_observe_road_approach_surface_type.currentTextChanged.connect(self.model.collision_history_risk_index_final)
+        self.view.comboBox_crossing_surface_observe_road_approach_surface_type.currentTextChanged.connect(self.model.collision_history_risk_index_final)
         self.view.comboBox_gcws_observe_gates_n_or_e_approach.currentTextChanged.connect(self.model.collision_history_risk_index_final)
         self.view.comboBox_gcws_observe_gates_s_or_w_approach.currentTextChanged.connect(self.model.collision_history_risk_index_final)
         self.view.spinBox_collision_history_fatal_injury.valueChanged.connect(self.model.collision_history_risk_index_final)
@@ -150,7 +150,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             none
         '''
         self.view.spinBox_general_info_road_no_traffic_lanes_bidirectional.valueChanged.connect(self.model.general_info_road_no_traffic_lanes_total)
-        self.view.spinBox_general_info_road_no_traffic_lanes_northbound_or_easttbound.valueChanged.connect(self.model.general_info_road_no_traffic_lanes_total)
+        self.view.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound.valueChanged.connect(self.model.general_info_road_no_traffic_lanes_total)
         self.view.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound.valueChanged.connect(self.model.general_info_road_no_traffic_lanes_total)
         
         #connect signals and slots - general_info_rail_railway_design_speed
@@ -169,29 +169,29 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         '''
         Connect input variable signals to design_calculate_adjacent_track_clearance_time method slot.
         required input variables: 
-            doubleSpinBox_design_measture_adjacent_track_separation_distance, doubleSpinBox_design_measture_adjacent_track_clearance_distance
+            doubleSpinBox_design_measure_adjacent_track_separation_distance, doubleSpinBox_design_measure_adjacent_track_clearance_distance
         Related methods:
             none
         '''
-        self.view.doubleSpinBox_design_measture_adjacent_track_separation_distance.valueChanged.connect(self.model.design_calculate_adjacent_track_clearance_time)
-        self.view.doubleSpinBox_design_measture_adjacent_track_clearance_distance.valueChanged.connect(self.model.design_calculate_adjacent_track_clearance_time)
+        self.view.doubleSpinBox_design_measure_adjacent_track_separation_distance.valueChanged.connect(self.model.design_calculate_adjacent_track_clearance_time)
+        self.view.doubleSpinBox_design_measure_adjacent_track_clearance_distance.valueChanged.connect(self.model.design_calculate_adjacent_track_clearance_time)
 
         #connect signals and slots - design_calculate_clearance_time_crossing_pedestrian_design_check
         '''
         Connect input variable signals to design_calculate_clearance_time_crossing_pedestrian_design_check method slot.
         required input variables: 
-            doubleSpinBox_design_measture_clearance_distance_pedestrian
+            doubleSpinBox_design_measure_clearance_distance_pedestrian
         Related methods:
             none
         '''
-        self.view.doubleSpinBox_design_measture_clearance_distance_pedestrian.valueChanged.connect(self.model.design_calculate_clearance_time_pedestrian_design_check)
+        self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.model.design_calculate_clearance_time_pedestrian_design_check)
 
         #connect signals and slots - design_calculate_clearance_time_vehicle_design_check
         '''
         Connect input variable signals to design_calculate_clearance_time_vehicle_design_check method slot.
         required input variables: 
-            doubleSpinBox_design_measture_clearance_distance_pedestrian
-            doubleSpinBox_design_measture_clearance_distance_vehicle
+            doubleSpinBox_design_measure_clearance_distance_pedestrian
+            doubleSpinBox_design_measure_clearance_distance_vehicle
             doubleSpinBox_design_road_max_approach_grade_within_s
             combo_Box_design_road_design_vehicle_type        
         Related methods:
@@ -203,17 +203,17 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             design_lookup_design_vehicle_class
             design_lookup_grade_adjustment_factor
         '''
-        self.view.doubleSpinBox_design_measture_clearance_distance_pedestrian.valueChanged.connect(self.model.design_calculate_clearance_time_vehicle_design_check)
-        self.view.doubleSpinBox_design_measture_clearance_distance_vehicle.valueChanged.connect(self.model.design_calculate_clearance_time_vehicle_design_check)
+        self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.model.design_calculate_clearance_time_vehicle_design_check)
+        self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.model.design_calculate_clearance_time_vehicle_design_check)
         self.view.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.model.design_calculate_clearance_time_vehicle_design_check)
         self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.design_calculate_clearance_time_vehicle_design_check)                                                                     
 
         #TODO 
-        #self.label_design_measture_clearance_distance_gate_arm_ssd = qtw.QLabel('no Value')
+        #self.label_design_measure_clearance_distance_gate_arm_ssd = qtw.QLabel('no Value')
 
-        #connect signals and slots - design_calculate_gate_arm_clearance_time_vehicle_ssd
+        #connect signals and slots - design_calculate_clearance_time_gate_arm_vehicle_ssd
         '''
-        Connect input variable signals to design_calculate_gate_arm_clearance_time_vehicle_ssd method slot.
+        Connect input variable signals to design_calculate_clearance_time_gate_arm_vehicle_ssd method slot.
         required input variables: 
             spinBox_general_info_road_speed_design
             doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach
@@ -224,16 +224,16 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             sightlines_lookup_ssd_minimum_n_or_e_approach
             sightlines_lookup_ssd_minimum_s_or_w_approach
         '''
-        self.view.spinBox_general_info_road_speed_design.valueChanged.connect(self.model.design_calculate_gate_arm_clearance_time_vehicle_ssd)
-        self.view.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.valueChanged.connect(self.model.design_calculate_gate_arm_clearance_time_vehicle_ssd)
-        self.view.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.valueChanged.connect(self.model.design_calculate_gate_arm_clearance_time_vehicle_ssd)
-        self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.design_calculate_gate_arm_clearance_time_vehicle_ssd)
+        self.view.spinBox_general_info_road_speed_design.valueChanged.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_ssd)
+        self.view.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.valueChanged.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_ssd)
+        self.view.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.valueChanged.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_ssd)
+        self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_ssd)
 
-        #connect signals and slots - design_calculate_gate_arm_clearance_time_vehicle_stop
+        #connect signals and slots - design_calculate_clearance_time_gate_arm_vehicle_stop
         '''
-        Connect input variable signals to design_calculate_gate_arm_clearance_time_vehicle_stop method slot.
+        Connect input variable signals to design_calculate_clearance_time_gate_arm_vehicle_stop method slot.
         required input variables:
-            doubleSpinBox_design_measture_clearance_distance_pedestrian 
+            doubleSpinBox_design_measure_clearance_distance_pedestrian 
             doubleSpinBox_design_road_max_approach_grade_within_s
             comboBox_design_road_design_vehicle_type
         Related methods:
@@ -243,24 +243,24 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             design_lookup_design_vehicle_class
             design_lookup_design_vehicle_length
         '''
-        self.view.doubleSpinBox_design_measture_clearance_distance_pedestrian.valueChanged.connect(self.model.design_calculate_gate_arm_clearance_time_vehicle_stop)
-        self.view.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.model.design_calculate_gate_arm_clearance_time_vehicle_stop)
-        self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.design_calculate_gate_arm_clearance_time_vehicle_stop)
+        self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_stop)
+        self.view.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_stop)
+        self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_stop)
 
-        #connect signals and slots - design_calculate_gate_arm_clearance_time_vehicle_recommended
+        #connect signals and slots - design_calculate_clearance_time_gate_arm_vehicle_recommended
         '''
-        Connect input variable signals to design_calculate_gate_arm_clearance_time_vehicle_recommended method slot.
+        Connect input variable signals to design_calculate_clearance_time_gate_arm_vehicle_recommended method slot.
         required input variables: 
             spinBox_general_info_road_speed_design
-            doubleSpinBox_design_measture_clearance_distance_pedestrian
+            doubleSpinBox_design_measure_clearance_distance_pedestrian
             doubleSpinBox_design_road_max_approach_grade_within_s
             doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach
             doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach
             comboBox_design_road_design_vehicle_type
         Related methods:
             label_design_input_reaction_time
-            design_calculate_gate_arm_clearance_time_vehicle_ssd
-            design_calculate_gate_arm_clearance_time_vehicle_stop
+            design_calculate_clearance_time_gate_arm_vehicle_ssd
+            design_calculate_clearance_time_gate_arm_vehicle_stop
             design_calculate_vehicle_departure_time_gate_arm_clearance
             design_lookup_design_vehicle_class
             design_lookup_design_vehicle_length
@@ -268,47 +268,47 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             sightlines_lookup_ssd_minimum_n_or_e_approach
             sightlines_lookup_ssd_minimum_s_or_w_approach
         '''
-        self.view.spinBox_general_info_road_speed_design.valueChanged.connect(self.model.design_calculate_gate_arm_clearance_time_vehicle_recommended)
-        self.view.doubleSpinBox_design_measture_clearance_distance_pedestrian.valueChanged.connect(self.model.design_calculate_gate_arm_clearance_time_vehicle_recommended)
-        self.view.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.model.design_calculate_gate_arm_clearance_time_vehicle_recommended)
-        self.view.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.valueChanged.connect(self.model.design_calculate_gate_arm_clearance_time_vehicle_recommended)
-        self.view.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.valueChanged.connect(self.model.design_calculate_gate_arm_clearance_time_vehicle_recommended)
-        self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.design_calculate_gate_arm_clearance_time_vehicle_recommended)
+        self.view.spinBox_general_info_road_speed_design.valueChanged.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_recommended)
+        self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_recommended)
+        self.view.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_recommended)
+        self.view.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.valueChanged.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_recommended)
+        self.view.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.valueChanged.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_recommended)
+        self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_recommended)
 
         #connect signals and slots - design_calculate_vehicle_travel_distance
         '''
         Connect input variable signals to design_calculate_vehicle_travel_distance method slot.
         required input variables:
-            doubleSpinBox_design_measture_clearance_distance_vehicle
+            doubleSpinBox_design_measure_clearance_distance_vehicle
             comboBox_design_road_design_vehicle_type
         Related methods:
             design_lookup_design_vehicle_length 
         ''' 
-        self.view.doubleSpinBox_design_measture_clearance_distance_vehicle.valueChanged.connect(self.model.design_calculate_vehicle_travel_distance)
+        self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.model.design_calculate_vehicle_travel_distance)
         self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.design_calculate_vehicle_travel_distance)
         
         #connect signals and slots - design_calculate_vehicle_departure_time
         '''
         Connect input variable signals to design_calculate_vehicle_departure_time method slot.
         required input variables:
-            doubleSpinBox_design_measture_clearance_distance_pedestrian
-            doubleSpinBox_design_measture_clearance_distance_vehicle
+            doubleSpinBox_design_measure_clearance_distance_pedestrian
+            doubleSpinBox_design_measure_clearance_distance_vehicle
             comboBox_design_road_design_vehicle_type
         Related methods:
             design_calculate_vehicle_travel_distance
             design_lookup_design_vehicle_class
             design_lookup_design_vehicle_length
         ''' 
-        self.view.doubleSpinBox_design_measture_clearance_distance_pedestrian.valueChanged.connect(self.model.design_calculate_vehicle_departure_time)
-        self.view.doubleSpinBox_design_measture_clearance_distance_vehicle.valueChanged.connect(self.model.design_calculate_vehicle_departure_time)
+        self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.model.design_calculate_vehicle_departure_time)
+        self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.model.design_calculate_vehicle_departure_time)
         self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.design_calculate_vehicle_departure_time)
 
         #connect signals and slots - design_calculate_vehicle_departure_time_grade_adjusted
         '''
         Connect input variable signals to design_calculate_vehicle_departure_time_grade_adjusted method slot.
         required input variables:
-           doubleSpinBox_design_measture_clearance_distance_pedestrian
-           doubleSpinBox_design_measture_clearance_distance_vehicle
+           doubleSpinBox_design_measure_clearance_distance_pedestrian
+           doubleSpinBox_design_measure_clearance_distance_vehicle
            doubleSpinBox_design_road_max_approach_grade_within_s
            comboBox_design_road_design_vehicle_type
         Related methods:
@@ -318,8 +318,8 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             design_lookup_design_vehicle_length
             design_lookup_grade_adjustment_factor
         '''
-        self.view.doubleSpinBox_design_measture_clearance_distance_pedestrian.valueChanged.connect(self.model.design_calculate_vehicle_departure_time_grade_adjusted)
-        self.view.doubleSpinBox_design_measture_clearance_distance_vehicle.valueChanged.connect(self.model.design_calculate_vehicle_departure_time_grade_adjusted)
+        self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.model.design_calculate_vehicle_departure_time_grade_adjusted)
+        self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.model.design_calculate_vehicle_departure_time_grade_adjusted)
         self.view.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(lambda val:self.model.design_calculate_vehicle_departure_time_grade_adjusted)
         self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.design_calculate_vehicle_departure_time_grade_adjusted)
 
@@ -383,7 +383,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.design_lookup_grade_adjustment_factor)
 
         #TODO
-        #connect signals and slots - design_measture_clearance_distance_gate_arm_stop
+        #connect signals and slots - design_measure_clearance_distance_gate_arm_stop
 
         # road geomETRY (GCS seCTION 6)
         #connect signals and slots - road_geometry_lookup_gradient_difference
@@ -425,14 +425,14 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         '''
         Connect input variable signals to sightlines_calculate_dstopped_pedestrian_min_ft method slot.
         required input variables:
-            doubleSpinBox_design_measture_clearance_distance_pedestrian
+            doubleSpinBox_design_measure_clearance_distance_pedestrian
             spinBox_general_info_rail_max_railway_operating_speed_freight
             spinBox_general_info_rail_max_railway_operating_speed_passenger
         Related methods: 
             design_calculate_clearance_time_pedestrian_design_check       
             general_info_rail_railway_design_speed
         '''
-        self.view.doubleSpinBox_design_measture_clearance_distance_pedestrian.valueChanged.connect(self.model.sightlines_calculate_dstopped_pedestrian_min_ft)
+        self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.model.sightlines_calculate_dstopped_pedestrian_min_ft)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.sightlines_calculate_dstopped_pedestrian_min_ft)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.sightlines_calculate_dstopped_pedestrian_min_ft)
 
@@ -440,14 +440,14 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         '''
         Connect input variable signals to sightlines_calculate_dstopped_pedestrian_min_m method slot.
         required input variables:
-            doubleSpinBox_design_measture_clearance_distance_pedestrian
+            doubleSpinBox_design_measure_clearance_distance_pedestrian
             spinBox_general_info_rail_max_railway_operating_speed_freight
             spinBox_general_info_rail_max_railway_operating_speed_passenger
         Related methods: 
             self.model.design_calculate_clearance_time_pedestrian_design_check       
             general_info_rail_railway_design_speed
         '''
-        self.view.doubleSpinBox_design_measture_clearance_distance_pedestrian.valueChanged.connect(self.model.sightlines_calculate_dstopped_pedestrian_min_m)
+        self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.model.sightlines_calculate_dstopped_pedestrian_min_m)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.sightlines_calculate_dstopped_pedestrian_min_m)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.sightlines_calculate_dstopped_pedestrian_min_m)
 
@@ -458,8 +458,8 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         required input variables:
             spinBox_general_info_rail_max_railway_operating_speed_freight
             spinBox_general_info_rail_max_railway_operating_speed_passenger
-            doubleSpinBox_design_measture_clearance_distance_pedestrian
-            doubleSpinBox_design_measture_clearance_distance_vehicle
+            doubleSpinBox_design_measure_clearance_distance_pedestrian
+            doubleSpinBox_design_measure_clearance_distance_vehicle
             doubleSpinBox_design_road_max_approach_grade_within_s
             comboBox_design_road_design_vehicle_type
         Related methods: 
@@ -474,8 +474,8 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         '''
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_ft)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_ft)
-        self.view.doubleSpinBox_design_measture_clearance_distance_pedestrian.valueChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_ft)
-        self.view.doubleSpinBox_design_measture_clearance_distance_vehicle.valueChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_ft)
+        self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_ft)
+        self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_ft)
         self.view.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_ft)
         self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_ft)
 
@@ -485,8 +485,8 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         required input variables:
             spinBox_general_info_rail_max_railway_operating_speed_freight
             spinBox_general_info_rail_max_railway_operating_speed_passenger
-            doubleSpinBox_design_measture_clearance_distance_pedestrian
-            doubleSpinBox_design_measture_clearance_distance_vehicle
+            doubleSpinBox_design_measure_clearance_distance_pedestrian
+            doubleSpinBox_design_measure_clearance_distance_vehicle
             doubleSpinBox_design_road_max_approach_grade_within_s
             comboBox_design_road_design_vehicle_type
         Related methods: 
@@ -501,8 +501,8 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         '''
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_m)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_m)
-        self.view.doubleSpinBox_design_measture_clearance_distance_pedestrian.valueChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_m)
-        self.view.doubleSpinBox_design_measture_clearance_distance_vehicle.valueChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_m)
+        self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_m)
+        self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_m)
         self.view.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_m)
         self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.sightlines_calculate_dstopped_vehicle_min_m)
 
@@ -541,7 +541,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             spinBox_general_info_rail_max_railway_operating_speed_freight
             spinBox_general_info_rail_max_railway_operating_speed_passenger
             spinBox_general_info_road_speed_design
-            doubleSpinBox_design_measture_clearance_distance_vehicle
+            doubleSpinBox_design_measure_clearance_distance_vehicle
             doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach
             doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach
             comboBox_design_road_design_vehicle_type 
@@ -555,7 +555,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_ft)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_ft)
         self.view.spinBox_general_info_road_speed_design.valueChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_ft)
-        self.view.doubleSpinBox_design_measture_clearance_distance_vehicle.valueChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_ft)
+        self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_ft)
         self.view.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.valueChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_ft)
         self.view.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.valueChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_ft)
         self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_ft)
@@ -567,7 +567,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             spinBox_general_info_rail_max_railway_operating_speed_freight
             spinBox_general_info_rail_max_railway_operating_speed_passenger
             spinBox_general_info_road_speed_design
-            doubleSpinBox_design_measture_clearance_distance_vehicle
+            doubleSpinBox_design_measure_clearance_distance_vehicle
             doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach
             doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach
             comboBox_design_road_design_vehicle_type 
@@ -581,7 +581,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_m)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_m)
         self.view.spinBox_general_info_road_speed_design.valueChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_m)
-        self.view.doubleSpinBox_design_measture_clearance_distance_vehicle.valueChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_m)
+        self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_m)
         self.view.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.valueChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_m)
         self.view.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.valueChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_m)
         self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.sightlines_calculate_dssd_vehicle_min_m)
@@ -1169,21 +1169,21 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         Connect input variable signals to gcws_rail_design_warning_time_clearance_distance method slot.
         required input variables:
             comboBox_design_road_design_vehicle_type
-            doubleSpinBox_design_measture_clearance_distance_pedestrian
-            doubleSpinBox_design_measture_clearance_distance_vehicle 
+            doubleSpinBox_design_measure_clearance_distance_pedestrian
+            doubleSpinBox_design_measure_clearance_distance_vehicle 
         Related methods:
             none
         '''
         self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.gcws_rail_design_warning_time_clearance_distance)
-        self.view.doubleSpinBox_design_measture_clearance_distance_pedestrian.valueChanged.connect(self.model.gcws_rail_design_warning_time_clearance_distance)
-        self.view.doubleSpinBox_design_measture_clearance_distance_vehicle.valueChanged.connect(self.model.gcws_rail_design_warning_time_clearance_distance)
+        self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.model.gcws_rail_design_warning_time_clearance_distance)
+        self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.model.gcws_rail_design_warning_time_clearance_distance)
         
         #connect signals and slots - gcws_rail_design_warning_time_departure_time_vehicle
         '''
         Connect input variable signals to gcws_rail_design_warning_time_departure_time_vehicle method slot.
         required input variables:
-            doubleSpinBox_design_measture_clearance_distance_pedestrian
-            doubleSpinBox_design_measture_clearance_distance_vehicle
+            doubleSpinBox_design_measure_clearance_distance_pedestrian
+            doubleSpinBox_design_measure_clearance_distance_vehicle
             doubleSpinBox_design_road_max_approach_grade_within_s
             combo_Box_design_road_design_vehicle_type        
         Related methods:
@@ -1196,8 +1196,8 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             design_lookup_design_vehicle_class
             design_lookup_grade_adjustment_factor
         '''
-        self.view.doubleSpinBox_design_measture_clearance_distance_pedestrian.valueChanged.connect(self.model.gcws_rail_design_warning_time_departure_time_vehicle)
-        self.view.doubleSpinBox_design_measture_clearance_distance_vehicle.valueChanged.connect(self.model.gcws_rail_design_warning_time_departure_time_vehicle)
+        self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.model.gcws_rail_design_warning_time_departure_time_vehicle)
+        self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.model.gcws_rail_design_warning_time_departure_time_vehicle)
         self.view.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.model.gcws_rail_design_warning_time_departure_time_vehicle)
         self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.gcws_rail_design_warning_time_departure_time_vehicle)
 
@@ -1205,11 +1205,11 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         '''
         Connect input variable signals to gcws_rail_design_warning_time_departure_time_pedestrian method slot.
         required input variables:
-            doubleSpinBox_design_measture_clearance_distance_pedestrian
+            doubleSpinBox_design_measure_clearance_distance_pedestrian
         Related methods:
             self.model.design_calculate_clearance_time_pedestrian_design_check
         '''
-        self.view.doubleSpinBox_design_measture_clearance_distance_pedestrian.valueChanged.connect(self.model.gcws_rail_design_warning_time_departure_time_pedestrian)
+        self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.model.gcws_rail_design_warning_time_departure_time_pedestrian)
 
         #connect signals and slots - gcws_rail_design_warning_time_gate_arm_clearance
         '''
@@ -1223,19 +1223,19 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             comboBox_design_road_design_vehicle_type
         Related methods:
             label_design_input_reaction_time
-            design_calculate_gate_arm_clearance_time_vehicle_recommended
-            design_calculate_gate_arm_clearance_time_vehicle_ssd
+            design_calculate_clearance_time_gate_arm_vehicle_recommended
+            design_calculate_clearance_time_gate_arm_vehicle_ssd
             design_lookup_design_vehicle_class
             design_lookup_design_vehicle_length
             sightlines_lookup_ssd_minimum_n_or_e_approach
             sightlines_lookup_ssd_minimum_s_or_w_approach
-            design_calculate_gate_arm_clearance_time_vehicle_stop
+            design_calculate_clearance_time_gate_arm_vehicle_stop
             design_lookup_grade_adjustment_factor
             design_calculate_vehicle_departure_time_gate_arm_clearance
         '''
         self.view.spinBox_general_info_road_speed_design.valueChanged.connect(self.model.gcws_rail_design_warning_time_gate_arm_clearance)
         #TODO Remove pedestrian clearance distance
-        # self.view.doubleSpinBox_design_measture_clearance_distance_pedestrian.valueChanged.connect(self.model.gcws_rail_design_warning_time_gate_arm_clearance('doubleSpinBox_design_measture_clearance_distance_pedestrian', val))
+        # self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.model.gcws_rail_design_warning_time_gate_arm_clearance('doubleSpinBox_design_measure_clearance_distance_pedestrian', val))
         self.view.doubleSpinBox_design_road_max_approach_grade_within_s.valueChanged.connect(self.model.gcws_rail_design_warning_time_gate_arm_clearance)
         self.view.doubleSpinBox_gates_gcws_rail_gate_arm_descent_time_design.valueChanged.connect(self.model.gcws_rail_design_warning_time_gate_arm_clearance)
         self.view.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.valueChanged.connect(self.model.gcws_rail_design_warning_time_gate_arm_clearance)
@@ -1251,7 +1251,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         Connect input variable signals to gcws_rail_design_warning_time_ssd method slot.
         required input variables:
             spinBox_general_info_road_speed_design
-            doubleSpinBox_design_measture_clearance_distance_vehicle
+            doubleSpinBox_design_measure_clearance_distance_vehicle
             doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach
             doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach
             comboBox_design_road_design_vehicle_type
@@ -1263,7 +1263,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             sightlines_lookup_ssd_minimum_s_or_w_approach
         '''
         self.view.spinBox_general_info_road_speed_design.valueChanged.connect(self.model.gcws_rail_design_warning_time_ssd)
-        self.view.doubleSpinBox_design_measture_clearance_distance_vehicle.valueChanged.connect(self.model.gcws_rail_design_warning_time_ssd)
+        self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.model.gcws_rail_design_warning_time_ssd)
         self.view.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.valueChanged.connect(self.model.gcws_rail_design_warning_time_ssd)
         self.view.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.valueChanged.connect(self.model.gcws_rail_design_warning_time_ssd)
         self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.gcws_rail_design_warning_time_ssd)
@@ -1279,12 +1279,12 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         '''
         Connect input variable signals to gates_gcws_calculate_inner_gate_arm_delay_time_recommended method slot.
         required input variables: 
-            doubleSpinBox_design_measture_adjacent_track_separation_distance, doubleSpinBox_design_measture_adjacent_track_clearance_distance
+            doubleSpinBox_design_measure_adjacent_track_separation_distance, doubleSpinBox_design_measure_adjacent_track_clearance_distance
         Related methods:
             none
         '''
-        self.view.doubleSpinBox_design_measture_adjacent_track_separation_distance.valueChanged.connect(self.model.gates_gcws_calculate_inner_gate_arm_delay_time_recommended)
-        self.view.doubleSpinBox_design_measture_adjacent_track_clearance_distance.valueChanged.connect(self.model.gates_gcws_calculate_inner_gate_arm_delay_time_recommended)
+        self.view.doubleSpinBox_design_measure_adjacent_track_separation_distance.valueChanged.connect(self.model.gates_gcws_calculate_inner_gate_arm_delay_time_recommended)
+        self.view.doubleSpinBox_design_measure_adjacent_track_clearance_distance.valueChanged.connect(self.model.gates_gcws_calculate_inner_gate_arm_delay_time_recommended)
 
         # PREPARE TO stop AT railWAY CROSSING sign (GCS seCTION 18)
         #TODO
@@ -1293,7 +1293,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         Connect input variable signals to aawd_calculate_advance_activation_time_design_n_or_e_approach method slot.
         required input variables:
             spinBox_general_info_road_speed_design
-            doubleSpinBox_design_measture_clearance_distance_vehicle
+            doubleSpinBox_design_measure_clearance_distance_vehicle
             comboBox_design_road_design_vehicle_type
             spinBox_general_info_road_speed_posted
             doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach  
@@ -1305,7 +1305,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             label_design_input_reaction_time
         '''
         self.view.spinBox_general_info_road_speed_design.valueChanged.connect(self.model.aawd_calculate_advance_activation_time_design_n_or_e_approach)
-        self.view.doubleSpinBox_design_measture_clearance_distance_vehicle.valueChanged.connect(self.model.aawd_calculate_advance_activation_time_design_n_or_e_approach)
+        self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.model.aawd_calculate_advance_activation_time_design_n_or_e_approach)
         self.view.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.valueChanged.connect(self.model.aawd_calculate_advance_activation_time_design_n_or_e_approach)
         self.view.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.valueChanged.connect(self.model.aawd_calculate_advance_activation_time_design_n_or_e_approach)
         self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.aawd_calculate_advance_activation_time_design_n_or_e_approach)
@@ -1316,7 +1316,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         Connect input variable signals to aawd_calculate_advance_activation_time_design_s_or_w_approach method slot.
         required input variables:
             spinBox_general_info_road_speed_design
-            doubleSpinBox_design_measture_clearance_distance_vehicle
+            doubleSpinBox_design_measure_clearance_distance_vehicle
             comboBox_design_road_design_vehicle_type
             spinBox_general_info_road_speed_posted
             doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach  
@@ -1328,7 +1328,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             label_design_input_reaction_time
         '''
         self.view.spinBox_general_info_road_speed_design.valueChanged.connect(self.model.aawd_calculate_advance_activation_time_design_s_or_w_approach)
-        self.view.doubleSpinBox_design_measture_clearance_distance_vehicle.valueChanged.connect(self.model.aawd_calculate_advance_activation_time_design_s_or_w_approach)
+        self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.valueChanged.connect(self.model.aawd_calculate_advance_activation_time_design_s_or_w_approach)
         self.view.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.valueChanged.connect(self.model.aawd_calculate_advance_activation_time_design_s_or_w_approach)
         self.view.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.valueChanged.connect(self.model.aawd_calculate_advance_activation_time_design_s_or_w_approach)
         self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.aawd_calculate_advance_activation_time_design_s_or_w_approach)
@@ -1647,192 +1647,192 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             self.db.db_model_crossing_assessment_ca.fieldIndex('collision_history_total_5_year_period')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_calculate_adjacent_track_clearance_time')
+            self.view.label_design_calculate_adjacent_track_clearance_time,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_calculate_adjacent_track_clearance_time')
+        )
+        self.mapper.addMapping(
+            self.view.label_design_calculate_clearance_time_pedestrian_design_check,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_calculate_clearance_time_pedestrian_design_check')
+        )
+        self.mapper.addMapping(
+            self.view.label_design_calculate_clearance_time_vehicle_design_check,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_calculate_clearance_time_vehicle_design_check')
+        )
+        self.mapper.addMapping(
+            self.view.label_design_calculate_clearance_time_gate_arm_vehicle_ssd,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_calculate_clearance_time_gate_arm_vehicle_ssd')
+        )
+        self.mapper.addMapping(
+            self.view.label_design_calculate_clearance_time_gate_arm_vehicle_stop,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_calculate_clearance_time_gate_arm_vehicle_stop')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_calculate_clearance_time_crossing_pedestrian_design_check')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_calculate_vehicle_travel_distance')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_calculate_clearance_time_crossing_vehicle_design_check')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_input_reaction_time')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_calculate_clearance_time_gate_arm_ssd')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_lookup_design_vehicle_Class')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_calculate_clearance_time_gate_arm_stop')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_lookup_design_vehicle_length')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_calculate_vehicle_travel_distance')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_lookup_grade_adjustment_Factor')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_input_reaction_time')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_lookup_vehicle_departure_time_Crossing')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_lookup_design_vehicle_Class')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_lookup_vehicle_departure_time_gate_arm_clearance')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_lookup_design_vehicle_length')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_measure_adjacent_track_clearance_distance')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_lookup_grade_adjustment_Factor')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_measure_adjacent_track_separation_distance')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_lookup_vehicle_departure_time_Crossing')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_measure_clearance_distance_crossing_pedestrian')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_lookup_vehicle_departure_time_gate_arm_clearance')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_measure_clearance_distance_crossing_vehicle')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_measture_adjacent_track_clearance_distance')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_measure_clearance_distance_gate_arm_ssd')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_measture_adjacent_track_separation_distance')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_measure_clearance_distance_gate_arm_stop')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_measture_clearance_distance_crossing_pedestrian')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_observe_field_acceleration_times_exceed_td')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_measture_clearance_distance_crossing_vehicle')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_observe_k_factor_crossing_nearby_intersection')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_measture_clearance_distance_gate_arm_ssd')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_observe_k_factor_crossing_surface_condition')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_measture_clearance_distance_gate_arm_stop')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_observe_k_factor_other')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_observe_field_acceleration_times_exceed_td')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_observe_k_factor_pavement_marking_condition')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_observe_k_factor_crossing_nearby_intersection')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_observe_k_factor_superelevation')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_observe_k_factor_crossing_surface_condition')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_observe_k_factor_vehicle_restrictions')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_observe_k_factor_other')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_road_clearance_time_crossing_pedestrian_info_sharing')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_observe_k_factor_pavement_marking_condition')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_road_clearance_time_crossing_vehicle_info_sharing')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_observe_k_factor_superelevation')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_road_design_vehicle_type')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_observe_k_factor_vehicle_restrictions')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_road_max_approach_grade_Within_S')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_road_clearance_time_crossing_pedestrian_info_sharing')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_lookup_distance_primary_lights_minimum_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_road_clearance_time_crossing_vehicle_info_sharing')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_lookup_distance_primary_lights_minimum_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_road_design_vehicle_type')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_alignment_height_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_considerations_road_max_approach_grade_Within_S')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_alignment_height_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_lookup_distance_primary_lights_minimum_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_cantilever_lights_dl_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_lookup_distance_primary_lights_minimum_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_cantilever_lights_dl_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_measture_alignment_height_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_cantilever_lights_dr_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_measture_alignment_height_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_cantilever_lights_dr_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_measture_cantilever_lights_dl_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_lights_by_road_alignment_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_measture_cantilever_lights_dl_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_lights_by_road_alignment_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_measture_cantilever_lights_dr_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_lights_by_road_intersection_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_measture_cantilever_lights_dr_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_lights_by_road_intersection_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_observe_supplemental_lights_by_road_alignment_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_lights_sidewalks_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_observe_supplemental_lights_by_road_alignment_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_lights_sidewalks_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_observe_supplemental_lights_by_road_intersection_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_visibility_back_lights_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_observe_supplemental_lights_by_road_intersection_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_visibility_back_lights_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_observe_supplemental_lights_sidewalks_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_visibility_front_lights_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_observe_supplemental_lights_sidewalks_s_or_w_approach')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_observe_visibility_back_lights_n_or_e_approach')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_observe_visibility_back_lights_s_or_w_approach')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_observe_visibility_front_lights_n_or_e_approach')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('flashing_light_units_observe_visibility_front_lights_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_visibility_front_lights_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
@@ -1840,7 +1840,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_lookup_gate_arm_clearance_time_design')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_lookup_clearance_time_gate_arm_design')
         )
         self.mapper.addMapping(
             self.view.temp,
@@ -2152,103 +2152,103 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_crossing_surface_extension_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_crossing_surface_extension_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_crossing_surface_extension_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_crossing_surface_extension_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_crossing_surface_length')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_crossing_surface_length')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_distance_between_signal_mast_and_sidewalk_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_distance_between_signal_mast_and_sidewalk_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_distance_between_signal_mast_and_sidewalk_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_distance_between_signal_mast_and_sidewalk_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_elevation_top_of_rail_above_road_surface')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_elevation_top_of_rail_above_road_surface')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_elevation_top_of_rail_below_road_surface')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_elevation_top_of_rail_below_road_surface')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_flangeway_depth')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_flangeway_depth')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_flangeway_width')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_flangeway_width')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_road_surface_Median_width')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_road_surface_Median_width')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_road_surface_shoulder_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_road_surface_shoulder_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_road_surface_shoulder_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_road_surface_shoulder_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_road_surface_travel_lanes_width_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_road_surface_travel_lanes_width_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_road_surface_travel_lanes_width_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_road_surface_travel_lanes_width_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_side_grinding_depth')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_side_grinding_depth')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_side_grinding_width')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_side_grinding_width')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_sidewalk_extension_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_sidewalk_extension_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_sidewalk_extension_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_sidewalk_extension_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_sidewalk_width_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_sidewalk_width_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_measture_sidewalk_width_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_measure_sidewalk_width_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_observe_road_approach_surface_condition')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_observe_road_approach_surface_condition')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_observe_road_approach_surface_type')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_observe_road_approach_surface_type')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_observe_crossing_smoothness')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_observe_crossing_smoothness')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_observe_crossing_surface_condition')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_observe_crossing_surface_condition')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('grade_crossing_surface_observe_Material')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('crossing_surface_observe_Material')
         )
         self.mapper.addMapping(
             self.view.temp,
@@ -2440,27 +2440,27 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('road_geometry_measture_railway_cross_slope')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('road_geometry_measure_railway_cross_slope')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('road_geometry_measture_slope_between_8m_and_18m_nearest_rail_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('road_geometry_measure_slope_between_8m_and_18m_nearest_rail_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('road_geometry_measture_slope_between_8m_and_18m_nearest_rail_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('road_geometry_measure_slope_between_8m_and_18m_nearest_rail_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('road_geometry_measture_slope_Within_5m_nearest_rail_at_sidewalk')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('road_geometry_measure_slope_Within_5m_nearest_rail_at_sidewalk')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('road_geometry_measture_slope_Within_8m_nearest_rail_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('road_geometry_measure_slope_Within_8m_nearest_rail_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('road_geometry_measture_slope_Within_8m_nearest_rail_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('road_geometry_measure_slope_Within_8m_nearest_rail_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
@@ -2540,43 +2540,43 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measture_Dssd_actual_n_or_e_approach_driver_left')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measure_Dssd_actual_n_or_e_approach_driver_left')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measture_Dssd_actual_n_or_e_approach_driver_right')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measure_Dssd_actual_n_or_e_approach_driver_right')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measture_Dssd_actual_s_or_w_approach_driver_left')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measure_Dssd_actual_s_or_w_approach_driver_left')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measture_Dssd_actual_s_or_w_approach_driver_right')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measure_Dssd_actual_s_or_w_approach_driver_right')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measture_dstopped_actual_n_or_e_approach_driver_left')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measure_dstopped_actual_n_or_e_approach_driver_left')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measture_dstopped_actual_n_or_e_approach_driver_right')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measure_dstopped_actual_n_or_e_approach_driver_right')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measture_dstopped_actual_s_or_w_approach_driver_left')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measure_dstopped_actual_s_or_w_approach_driver_left')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measture_dstopped_actual_s_or_w_approach_driver_right')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measure_dstopped_actual_s_or_w_approach_driver_right')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measture_stopping_sight_distance_actual_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measure_stopping_sight_distance_actual_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measture_stopping_sight_distance_actual_s_or_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('sightlines_measure_stopping_sight_distance_actual_s_or_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,

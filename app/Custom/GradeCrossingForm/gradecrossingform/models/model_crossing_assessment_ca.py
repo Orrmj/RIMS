@@ -33,7 +33,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         gcws_observe_gates_n_or_e_approach = self.view.comboBox_gcws_observe_gates_n_or_e_approach.currentText()
         gcws_observe_gates_s_or_w_approach = self.view.comboBox_gcws_observe_gates_s_or_w_approach.currentText()
 
-        grade_crossing_surface_observe_road_approach_surface_type = self.view.comboBox_grade_crossing_surface_observe_road_approach_surface_type.currentText()
+        crossing_surface_observe_road_approach_surface_type = self.view.comboBox_crossing_surface_observe_road_approach_surface_type.currentText()
         general_info_road_classification = self.view.comboBox_general_info_road_classification.currentText()
  
         c = self.view.spinBox_general_info_road_aadt_current.value()               # c = annual average number of highway vehicles per day (total both directions)
@@ -48,7 +48,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
         if not split_general_info_road_classification:
             hp = 'No Value'
-        elif split_general_info_road_classification[1] == 'Freeway' and grade_crossing_surface_observe_road_approach_surface_type == 'Asphalt':
+        elif split_general_info_road_classification[1] == 'Freeway' and crossing_surface_observe_road_approach_surface_type == 'Asphalt':
             hp = 1.0
         else:
             hp = 2.0
@@ -74,7 +74,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         else:
             ht = dict_general_info_road_classification[general_info_road_classification]       
 
-        if inspection_details_gcws_type == '' or general_info_road_classification == '' or grade_crossing_surface_observe_road_approach_surface_type == '' or gcws_observe_gates_n_or_e_approach == '' or gcws_observe_gates_s_or_w_approach == '' or general_info_rail_no_tracks_total == 'No Value' or mt == 'No Value' or c == 0 or t == 'No Value' or d == 'No Value' or ms == 'No Value' or hl == 'No Value' or hp == 'No Value' or ht == 'No Value':            
+        if inspection_details_gcws_type == '' or general_info_road_classification == '' or crossing_surface_observe_road_approach_surface_type == '' or gcws_observe_gates_n_or_e_approach == '' or gcws_observe_gates_s_or_w_approach == '' or general_info_rail_no_tracks_total == 'No Value' or mt == 'No Value' or c == 0 or t == 'No Value' or d == 'No Value' or ms == 'No Value' or hl == 'No Value' or hp == 'No Value' or ht == 'No Value':            
             result = 'No Value'
             self.view.label_collision_history_risk_index_initial.setText(result)
         elif inspection_details_gcws_type == 'Passive':
@@ -203,12 +203,12 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #TODO
-    #Calculate design_calculate_gate_arm_clearance_time_pedestrian
-    def design_calculate_gate_arm_clearance_time_pedestrian(self):
+    #Calculate design_calculate_clearance_time_gate_arm_pedestrian
+    def design_calculate_clearance_time_gate_arm_pedestrian(self):
         pass
 
-    #Calculate design_calculate_gate_arm_clearance_time_vehicle_ssd
-    def design_calculate_gate_arm_clearance_time_vehicle_ssd(self):
+    #Calculate design_calculate_clearance_time_gate_arm_vehicle_ssd
+    def design_calculate_clearance_time_gate_arm_vehicle_ssd(self):
         general_info_road_speed_design = self.view.spinBox_general_info_road_speed_design.value()
         design_road_design_vehicle_type = self.view.comboBox_design_road_design_vehicle_type.currentText()
         design_lookup_design_vehicle_length = self.design_lookup_design_vehicle_length()
@@ -217,54 +217,54 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
         if design_road_design_vehicle_type == "Pedestrian Only":
             result = 'N/A'
-            self.view.label_design_calculate_gate_arm_clearance_time_vehicle_ssd.setText(result)
+            self.view.label_design_calculate_clearance_time_gate_arm_vehicle_ssd.setText(result)
         elif design_road_design_vehicle_type == '' or design_lookup_design_vehicle_length == 'No Value' or sightlines_lookup_ssd_minimum_n_or_e_approach == 'No Value' or sightlines_lookup_ssd_minimum_s_or_w_approach == 'No Value' or general_info_road_speed_design == 0:
             result = 'No Value'
-            self.view.label_design_calculate_gate_arm_clearance_time_vehicle_ssd.setText(result)
+            self.view.label_design_calculate_clearance_time_gate_arm_vehicle_ssd.setText(result)
         else:
             design_lookup_design_vehicle_length = float(design_lookup_design_vehicle_length)
             sightlines_lookup_ssd_minimum_n_or_e_approach = float(sightlines_lookup_ssd_minimum_n_or_e_approach)
             sightlines_lookup_ssd_minimum_s_or_w_approach = float(sightlines_lookup_ssd_minimum_s_or_w_approach)
             result = math.ceil(sum([max(sightlines_lookup_ssd_minimum_n_or_e_approach, sightlines_lookup_ssd_minimum_s_or_w_approach), 2.0, design_lookup_design_vehicle_length]) / (0.278 * general_info_road_speed_design))
-            self.view.label_design_calculate_gate_arm_clearance_time_vehicle_ssd.setNum(result)
+            self.view.label_design_calculate_clearance_time_gate_arm_vehicle_ssd.setNum(result)
         return result
 
-    #Calculate design_calculate_gate_arm_clearance_time_vehicle_stop
-    def design_calculate_gate_arm_clearance_time_vehicle_stop(self):
+    #Calculate design_calculate_clearance_time_gate_arm_vehicle_stop
+    def design_calculate_clearance_time_gate_arm_vehicle_stop(self):
         design_input_reaction_time = self.view.label_design_input_reaction_time.text()
         design_lookup_grade_adjustment_factor = self.design_lookup_grade_adjustment_factor()
         design_calculate_vehicle_departure_time_gate_arm_clearance = self.design_calculate_vehicle_departure_time_gate_arm_clearance()
 
         if design_calculate_vehicle_departure_time_gate_arm_clearance == 'N/A' or design_lookup_grade_adjustment_factor == 'N/A':
             result = 'N/A'
-            self.view.label_design_calculate_gate_arm_clearance_time_vehicle_stop.setText(result)
+            self.view.label_design_calculate_clearance_time_gate_arm_vehicle_stop.setText(result)
         elif design_calculate_vehicle_departure_time_gate_arm_clearance == 'No Value' or design_lookup_grade_adjustment_factor == 'No Value':
             result = 'No Value'
-            self.view.label_design_calculate_gate_arm_clearance_time_vehicle_stop.setText(result)
+            self.view.label_design_calculate_clearance_time_gate_arm_vehicle_stop.setText(result)
         else:
             design_input_reaction_time = float(design_input_reaction_time)
             design_calculate_vehicle_departure_time_gate_arm_clearance = float(design_calculate_vehicle_departure_time_gate_arm_clearance)
             design_lookup_grade_adjustment_factor = float(design_lookup_grade_adjustment_factor)
             result = math.ceil(sum([design_input_reaction_time, design_calculate_vehicle_departure_time_gate_arm_clearance * design_lookup_grade_adjustment_factor]))
-            self.view.label_design_calculate_gate_arm_clearance_time_vehicle_stop.setNum(result)
+            self.view.label_design_calculate_clearance_time_gate_arm_vehicle_stop.setNum(result)
         return result
 
-    #Calculate design_calculate_gate_arm_clearance_time_vehicle_recommended
-    def design_calculate_gate_arm_clearance_time_vehicle_recommended(self):
-        design_calculate_gate_arm_clearance_time_vehicle_ssd = self.design_calculate_gate_arm_clearance_time_vehicle_ssd()
-        design_calculate_gate_arm_clearance_time_vehicle_stop = self.design_calculate_gate_arm_clearance_time_vehicle_stop()
+    #Calculate design_calculate_clearance_time_gate_arm_vehicle_recommended
+    def design_calculate_clearance_time_gate_arm_vehicle_recommended(self):
+        design_calculate_clearance_time_gate_arm_vehicle_ssd = self.design_calculate_clearance_time_gate_arm_vehicle_ssd()
+        design_calculate_clearance_time_gate_arm_vehicle_stop = self.design_calculate_clearance_time_gate_arm_vehicle_stop()
 
-        if design_calculate_gate_arm_clearance_time_vehicle_ssd == 'N/A' or design_calculate_gate_arm_clearance_time_vehicle_stop == 'N/A':
+        if design_calculate_clearance_time_gate_arm_vehicle_ssd == 'N/A' or design_calculate_clearance_time_gate_arm_vehicle_stop == 'N/A':
             result = 'N/A'
-            self.view.label_design_calculate_gate_arm_clearance_time_vehicle_recommended.setText(result)
-        elif design_calculate_gate_arm_clearance_time_vehicle_ssd == 'No Value' or design_calculate_gate_arm_clearance_time_vehicle_ssd == 'No Value':
+            self.view.label_design_calculate_clearance_time_gate_arm_vehicle_recommended.setText(result)
+        elif design_calculate_clearance_time_gate_arm_vehicle_ssd == 'No Value' or design_calculate_clearance_time_gate_arm_vehicle_ssd == 'No Value':
             result = 'No Value'
-            self.view.label_design_calculate_gate_arm_clearance_time_vehicle_recommended.setText(result)
+            self.view.label_design_calculate_clearance_time_gate_arm_vehicle_recommended.setText(result)
         else:
-            design_calculate_clearance_time_gate_arm_ssd = int(design_calculate_gate_arm_clearance_time_vehicle_ssd)
-            design_calculate_clearance_time_gate_arm_stop = int(design_calculate_gate_arm_clearance_time_vehicle_ssd)
+            design_calculate_clearance_time_gate_arm_ssd = int(design_calculate_clearance_time_gate_arm_vehicle_ssd)
+            design_calculate_clearance_time_gate_arm_stop = int(design_calculate_clearance_time_gate_arm_vehicle_ssd)
             result = max(design_calculate_clearance_time_gate_arm_ssd, design_calculate_clearance_time_gate_arm_stop)
-            self.view.label_design_calculate_gate_arm_clearance_time_vehicle_recommended.setNum(result)
+            self.view.label_design_calculate_clearance_time_gate_arm_vehicle_recommended.setNum(result)
         return result
 
     #Calulcate design_calculate_vehicle_departure_time
@@ -1208,14 +1208,14 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     #TODO
     #Calculate gcws_rail_design_warning_time_gate_arm_clearance
     def gcws_rail_design_warning_time_gate_arm_clearance(self):
-        design_calculate_gate_arm_clearance_time_vehicle_recommended = self.design_calculate_gate_arm_clearance_time_vehicle_recommended()
+        design_calculate_clearance_time_gate_arm_vehicle_recommended = self.design_calculate_clearance_time_gate_arm_vehicle_recommended()
         gates_gcws_rail_gate_arm_descent_time_design = self.view.doubleSpinBox_gates_gcws_rail_gate_arm_descent_time_design.value()
 
-        if design_calculate_gate_arm_clearance_time_vehicle_recommended == 'No Value' or gates_gcws_rail_gate_arm_descent_time_design == 0.0:
+        if design_calculate_clearance_time_gate_arm_vehicle_recommended == 'No Value' or gates_gcws_rail_gate_arm_descent_time_design == 0.0:
             result = 'No Value'
             self.view.label_gcws_rail_design_warning_time_gate_arm_clearance.setText(result)
         else:
-            result = math.ceil(sum([design_calculate_gate_arm_clearance_time_vehicle_recommended, gates_gcws_rail_gate_arm_descent_time_design, 5.0]))
+            result = math.ceil(sum([design_calculate_clearance_time_gate_arm_vehicle_recommended, gates_gcws_rail_gate_arm_descent_time_design, 5.0]))
             self.view.label_gcws_rail_design_warning_time_gate_arm_clearance.setNum(result)
         return result
 
