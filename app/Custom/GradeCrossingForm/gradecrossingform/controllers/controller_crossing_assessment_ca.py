@@ -209,7 +209,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         self.view.comboBox_design_road_design_vehicle_type.currentTextChanged.connect(self.model.design_calculate_clearance_time_vehicle_design_check)                                                                     
 
         #TODO 
-        #self.label_design_measure_clearance_distance_gate_arm_ssd = qtw.QLabel('no Value')
+        #self.view.label_design_measure_clearance_distance_gate_arm_ssd = qtw.QLabel('no Value')
 
         #connect signals and slots - design_calculate_clearance_time_gate_arm_vehicle_ssd
         '''
@@ -1667,176 +1667,236 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_calculate_clearance_time_gate_arm_vehicle_stop')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.label_design_calculate_vehicle_travel_distance,
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_calculate_vehicle_travel_distance')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.label_design_input_reaction_time,
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_input_reaction_time')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_lookup_design_vehicle_Class')
+            self.view.label_design_lookup_design_vehicle_class,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_lookup_design_vehicle_class')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.label_design_lookup_design_vehicle_length,
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_lookup_design_vehicle_length')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_lookup_grade_adjustment_Factor')
+            self.view.label_design_lookup_grade_adjustment_factor,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_lookup_grade_adjustment_factor')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_lookup_vehicle_departure_time_Crossing')
+            self.view.label_design_calculate_vehicle_departure_time,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_calculate_vehicle_departure_time')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_lookup_vehicle_departure_time_gate_arm_clearance')
+            self.view.label_design_calculate_vehicle_departure_time_gate_arm_clearance,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_calculate_vehicle_departure_time_gate_arm_clearance')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.doubleSpinBox_design_measure_adjacent_track_clearance_distance,
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_measure_adjacent_track_clearance_distance')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.doubleSpinBox_design_measure_adjacent_track_separation_distance,
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_measure_adjacent_track_separation_distance')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_measure_clearance_distance_crossing_pedestrian')
+            self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_measure_clearance_distance_pedestrian')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_measure_clearance_distance_crossing_vehicle')
+            self.view.doubleSpinBox_design_measure_clearance_distance_vehicle,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_measure_clearance_distance_vehicle')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.label_design_measure_clearance_distance_gate_arm_ssd,
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_measure_clearance_distance_gate_arm_ssd')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.label_design_measure_clearance_distance_gate_arm_stop,
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_measure_clearance_distance_gate_arm_stop')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_design_observe_field_acceleration_times_exceed_td,
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_observe_field_acceleration_times_exceed_td')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_design_observe_k_factor_crossing_nearby_intersection,
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_observe_k_factor_crossing_nearby_intersection')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_design_observe_k_factor_crossing_surface_condition,
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_observe_k_factor_crossing_surface_condition')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.textEdit_design_observe_k_factor_other,
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_observe_k_factor_other')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_design_observe_k_factor_pavement_marking_condition,
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_observe_k_factor_pavement_marking_condition')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_design_observe_k_factor_superelevation,
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_observe_k_factor_superelevation')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_design_observe_k_factor_vehicle_restrictions,
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_observe_k_factor_vehicle_restrictions')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_road_clearance_time_crossing_pedestrian_info_sharing')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_road_clearance_time_crossing_vehicle_info_sharing')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_design_road_design_vehicle_type,
             self.db.db_model_crossing_assessment_ca.fieldIndex('design_road_design_vehicle_type')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('design_road_max_approach_grade_Within_S')
+            self.view.doubleSpinBox_design_road_max_approach_grade_within_s,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('design_road_max_approach_grade_within_s')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_lookup_distance_primary_lights_minimum_n_or_e_approach')
+            self.view.doubleSpinBox_light_units_measure_mast_height_n_or_e_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_mast_height_n_or_e_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_lookup_distance_primary_lights_minimum_s_or_w_approach')
+            self.view.doubleSpinBox_light_units_measure_mast_height_s_or_w_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_mast_height_s_or_w_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_alignment_height_n_or_e_approach')
+            self.view.doubleSpinBox_light_units_measure_cantilever_dl_n_or_e_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_cantilever_dl_n_or_e_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_alignment_height_s_or_w_approach')
+            self.view.doubleSpinBox_light_units_measure_cantilever_dl_s_or_w_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_cantilever_dl_s_or_w_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_cantilever_lights_dl_n_or_e_approach')
+            self.view.doubleSpinBox_light_units_measure_cantilever_dr_n_or_e_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_cantilever_dr_n_or_e_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_cantilever_lights_dl_s_or_w_approach')
+            self.view.doubleSpinBox_light_units_measure_cantilever_dr_s_or_w_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_cantilever_dr_s_or_w_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_cantilever_lights_dr_n_or_e_approach')
+            self.view.comboBox_light_units_observe_supplemental_intersection_n_or_e_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_intersection_n_or_e_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_measure_cantilever_lights_dr_s_or_w_approach')
+            self.view.comboBox_light_units_observe_supplemental_intersection_s_or_w_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_intersection_s_or_w_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_lights_by_road_alignment_n_or_e_approach')
+            self.view.comboBox_light_units_observe_supplemental_sidewalk_n_or_e_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_sidewalk_n_or_e_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_lights_by_road_alignment_s_or_w_approach')
+            self.view.comboBox_light_units_observe_supplemental_sidewalk_s_or_w_approach,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_sidewalk_s_or_w_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_lights_by_road_intersection_n_or_e_approach')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_lights_by_road_intersection_s_or_w_approach')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_lights_sidewalks_n_or_e_approach')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_supplemental_lights_sidewalks_s_or_w_approach')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_light_units_observe_visibility_back_lights_n_or_e_approach,
             self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_visibility_back_lights_n_or_e_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_light_units_observe_visibility_back_lights_s_or_w_approach,
             self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_visibility_back_lights_s_or_w_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_light_units_observe_visibility_front_lights_n_or_e_approach,
             self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_visibility_front_lights_n_or_e_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
+            self.view.comboBox_light_units_observe_visibility_front_lights_s_or_w_approach,
             self.db.db_model_crossing_assessment_ca.fieldIndex('light_units_observe_visibility_front_lights_s_or_w_approach')
         )
         self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_calculate_warrant_cross_product')
+            self.view.label_gcws_warrant_private_9_3,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_warrant_private_9_3')
+        )
+        self.mapper.addMapping(
+            self.view.label_gcws_warrant_private_9_3_1,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_warrant_private_9_3_1')
+        )
+        self.mapper.addMapping(
+            self.view.label_gcws_warrant_private_9_3_2_a,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_warrant_private_9_3_2_a')
+        )
+        self.mapper.addMapping(
+            self.view.label_gcws_warrant_private_9_3_2_b,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_warrant_private_9_3_2_b')
+        )
+        self.mapper.addMapping(
+            self.view.label_gcws_warrant_private_9_3_2_c,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_warrant_private_9_3_2_c')
+        )
+        self.mapper.addMapping(
+            self.view.label_gcws_warrant_public_9_1,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_warrant_public_9_1')
+        )
+        self.mapper.addMapping(
+            self.view.label_gcws_warrant_public_9_1_a,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_warrant_public_9_1_a')
+        )
+        self.mapper.addMapping(
+            self.view.label_gcws_warrant_public_9_1_b,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_warrant_public_9_1_b')
+        )
+        self.mapper.addMapping(
+            self.view.label_gcws_warrant_public_9_1_c,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_warrant_public_9_1_c')
+        )
+        self.mapper.addMapping(
+            self.view.label_gcws_warrant_public_9_1_d_i,
+             self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_warrant_public_9_1_d_i')
+        )
+        self.mapper.addMapping(
+            self.view.label_gcws_warrant_public_9_1_d_ii,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_warrant_public_9_1_d_ii')
+        )
+        self.mapper.addMapping(
+            self.view.label_gcws_warrant_public_9_1_d_iii,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_warrant_public_9_1_d_iii')
+        )
+        self.mapper.addMapping(
+            self.view.label_gcws_warrant_sidewalk_9_5,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_warrant_sidewalk_9_5')
+        )
+        self.mapper.addMapping(
+            self.view.label_gates_gcws_warrant_private_9_4_1_a,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_warrant_private_9_4_1_a')
+        )
+        self.mapper.addMapping(
+            self.view.label_gates_gcws_warrant_private_9_4_1_b,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_warrant_private_9_4_1_b')
+        )
+        self.mapper.addMapping(
+            self.view.label_gates_gcws_warrant_private_9_4_1_c,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_warrant_private_9_4_1_c')
+        )
+        self.mapper.addMapping(
+            self.view.label_gates_gcws_warrant_public_9_2_1_a,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_warrant_public_9_2_1_a')
+        )
+        self.mapper.addMapping(
+            self.view.label_gates_gcws_warrant_public_9_2_1_b,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_warrant_public_9_2_1_b')
+        )
+        self.mapper.addMapping(
+            self.view.label_gates_gcws_warrant_public_9_2_1_c,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_warrant_public_9_2_1_c')
+        )
+        self.mapper.addMapping(
+            self.view.label_gates_gcws_warrant_public_9_2_1_d,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_warrant_public_9_2_1_d')
+        )
+        self.mapper.addMapping(
+            self.view.label_gates_gcws_warrant_public_9_2_1_e,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_warrant_public_9_2_1_e')
+        )
+        self.mapper.addMapping(
+            self.view.label_gates_gcws_warrant_sidewalk_9_6,
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_warrant_sidewalk_9_6')
         )
         self.mapper.addMapping(
             self.view.temp,
@@ -1844,15 +1904,7 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_lookup_warrant_max_rail_operating_speed')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_lookup_warrant_sightlines')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_observe_gate_arm_Rest')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_observe_gate_arm_rest')
         )
         self.mapper.addMapping(
             self.view.temp,
@@ -1861,14 +1913,6 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         self.mapper.addMapping(
             self.view.temp,
             self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_observe_gate_descent_time')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_observe_warrant_proximity_condition_stop_sign')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_observe_warrant_proximity_condition_traffic_signal')
         )
         self.mapper.addMapping(
             self.view.temp,
@@ -1881,22 +1925,6 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         self.mapper.addMapping(
             self.view.temp,
             self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_rail_inner_gate_arm_delay_time_actual')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('gates_gcws_rail_warrant_no_of_tracks')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_calculate_warrant_cross_product')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_lookup_warrant_max_rail_operating_speed')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_lookup_warrant_sightlines')
         )
         self.mapper.addMapping(
             self.view.temp,
@@ -1976,14 +2004,6 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_observe_warrant_proximity_condition_stop_sign')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_observe_warrant_proximity_condition_traffic_signal')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
             self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_rail_crossing_warning_time_actual')
         )
         self.mapper.addMapping(
@@ -2025,10 +2045,6 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         self.mapper.addMapping(
             self.view.temp,
             self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_rail_video_recorder')
-        )
-        self.mapper.addMapping(
-            self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('gcws_rail_warrant_no_of_tracks')
         )
         self.mapper.addMapping(
             self.view.temp,
