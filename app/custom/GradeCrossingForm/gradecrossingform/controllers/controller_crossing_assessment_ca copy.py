@@ -5,12 +5,12 @@ from PyQt5 import QtSql as qts
 
 from gradecrossingform.models.model_crossing_assessment_ca import ModelCrossingAssessmentCA
 from gradecrossingform.views.view_crossing_assessment_ca import ViewCrossingAssessmentCA
-#from GradeCrossingForm.db.db_crossing_assessment_ca import DBCrossingAssessmentCA
+from GradeCrossingForm.db.db_crossing_assessment_ca import DBCrossingAssessmentCA
 
-class ControllerCrossingAssessmentCA(qtw.QWidget):
+class controllerCrossingassessmentCA(qtw.QWidget):
     def __init__(self):
         super().__init__() # create default constructor for QWidget
-        #self.db = DBCrossingAssessmentCA()
+        self.db = DBCrossingAssessmentCA()
         self.view = ViewCrossingAssessmentCA()
         self.model = ModelCrossingAssessmentCA(self.view)
 

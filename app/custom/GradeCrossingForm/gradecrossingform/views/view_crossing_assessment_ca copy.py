@@ -9,8 +9,6 @@ from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
 
 class ViewCrossingAssessmentCA(qtw.QWidget):
-    
-    changed = qtc.pyqtSignal(dict)
 
     def __init__(self):
         super().__init__()
@@ -26,13 +24,6 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.map_fields()
         self.show()
    
-    
-    def on_change(self):
-        data = {
-            'inspection_details_assessment_team': self.textEdit_inspection_details_assessment_team.toPlainText()
-        }
-        self.changed.emit(data)
-
     def formWidgets(self):
         """
         Create widgets that will be used in the application form. 
@@ -84,7 +75,7 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
                 
         # INSPECTION DETAILS
         #Group TextBoxes
-        self.textEdit_inspection_details_assessment_team = qtw.QTextEdit(textChanged=self.on_change)
+        self.textEdit_inspection_details_assessment_team = qtw.QTextEdit()
         
         '''
         #Group DatePicker

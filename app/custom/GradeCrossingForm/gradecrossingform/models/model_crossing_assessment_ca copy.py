@@ -16,12 +16,10 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         self.view = view
         
     #Calculate collision_history_total_5_year_period
-    def collision_history_total_5_year_period(self, data):       
+    def collision_history_total_5_year_period(self):       
         collision_history_fatal_injury = self.view.spinBox_collision_history_fatal_injury.value()
         collision_history_personal_injury = self.view.spinBox_collision_history_personal_injury.value()
         collision_history_property_damage = self.view.spinBox_collision_history_property_damage.value()
-        test = data.get('inspection_details_assessment_team')
-        print(test)
         
         result = sum([collision_history_fatal_injury, collision_history_personal_injury, collision_history_property_damage])
         self.view.label_collision_history_total_5_year_period.setNum(result)
