@@ -1,3 +1,4 @@
+from msilib import data_xing_inventorysizemask
 import sys
 import datetime
 import math
@@ -16,21 +17,19 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         self.view = view
         
     #Calculate collision_history_total_5_year_period
-    def collision_history_total_5_year_period(self, data):       
-        collision_history_fatal_injury = self.view.spinBox_collision_history_fatal_injury.value()
-        collision_history_personal_injury = self.view.spinBox_collision_history_personal_injury.value()
-        collision_history_property_damage = self.view.spinBox_collision_history_property_damage.value()
-        test = data.get('inspection_details_assessment_team')
-        print(test)
-        
+    def collision_history_total_5_year_period(self, data_xing_inventory):       
+        collision_history_fatal_injury = data_xing_inventory.get('collision_history_fatal_injury')
+        collision_history_personal_injury = data_xing_inventory.get('collision_history_personal_injury')
+        collision_history_property_damage = data_xing_inventory.get('collision_history_property_damage')
+        print(data_xing_inventory)
         result = sum([collision_history_fatal_injury, collision_history_personal_injury, collision_history_property_damage])
         self.view.label_collision_history_total_5_year_period.setNum(result)
         return result
     
 
     #Calculate collision_history_risk_index_initial
-    def collision_history_risk_index_initial(self):
-        general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total()
+    def collision_history_risk_index_initial(self, data_xing_inventory):
+        general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total(data_xing_inventory)
         inspection_details_gcws_type = self.view.comboBox_inspection_details_gcws_type.currentText()
         gcws_observe_gates_n_or_e_approach = self.view.comboBox_gcws_observe_gates_n_or_e_approach.currentText()
         gcws_observe_gates_s_or_w_approach = self.view.comboBox_gcws_observe_gates_s_or_w_approach.currentText()
@@ -39,11 +38,11 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         general_info_road_classification = self.view.comboBox_general_info_road_classification.currentText()
  
         c = self.view.spinBox_general_info_road_aadt_current.value()               # c = annual average number of highway vehicles per day (total both directions)
-        t = self.general_info_rail_no_trains_per_day_total() # t = average total train movements per day
-        d = self.general_info_rail_no_trains_per_day_total() # d = average number of thru trains per day during daylight
+        t = self.general_info_rail_no_trains_per_day_total(data_xing_inventory) # t = average total train movements per day
+        d = self.general_info_rail_no_trains_per_day_total(data_xing_inventory) # d = average number of thru trains per day during daylight
         mt = self.view.spinBox_general_info_rail_no_tracks_main.value()             # mt = number of main tracks
-        ms = self.general_info_rail_railway_design_speed()   # ms = maximum timetable speed, mph
-        hl = self.general_info_road_no_traffic_lanes_total() # hl = number of highway lanes
+        ms = self.general_info_rail_railway_design_speed(data_xing_inventory)   # ms = maximum timetable speed, mph
+        hl = self.general_info_road_no_traffic_lanes_total(data_xing_inventory) # hl = number of highway lanes
         
         # hp = highway paved, yes = 1.0, no = 2.0
         split_general_info_road_classification = general_info_road_classification.split()
@@ -94,9 +93,9 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
     
     #Calculate collision_history_risk_index_final
-    def collision_history_risk_index_final(self):
-        collision_history_risk_index_initial = self.collision_history_risk_index_initial()
-        collision_history_total_5_year_period = self.collision_history_total_5_year_period()
+    def collision_history_risk_index_final(self, data_xing_inventory):
+        collision_history_risk_index_initial = self.collision_history_risk_index_initial(data_xing_inventory)
+        collision_history_total_5_year_period = self.collision_history_total_5_year_period(data_xing_inventory)
 
         if collision_history_risk_index_initial == 'No Value':
             result = 'No Value'
@@ -112,7 +111,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate general_info_rail_no_tracks_total
-    def general_info_rail_no_tracks_total(self):      
+    def general_info_rail_no_tracks_total(self, data_xing_inventory):      
         general_info_rail_no_tracks_main = self.view.spinBox_general_info_rail_no_tracks_main.value()
         general_info_rail_no_tracks_other = self.view.spinBox_general_info_rail_no_tracks_other.value()
         
@@ -125,7 +124,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate general_info_rail_no_trains_per_day_total
-    def general_info_rail_no_trains_per_day_total(self):       
+    def general_info_rail_no_trains_per_day_total(self, data_xing_inventory):       
         general_info_rail_no_trains_per_day_freight = self.view.spinBox_general_info_rail_no_trains_per_day_freight.value()
         general_info_rail_no_trains_per_day_passengers = self.view.spinBox_general_info_rail_no_trains_per_day_passengers.value()
         
@@ -138,7 +137,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate general_info_road_no_traffic_lanes_total
-    def general_info_road_no_traffic_lanes_total(self):     
+    def general_info_road_no_traffic_lanes_total(self, data_xing_inventory):     
         general_info_road_no_traffic_lanes_bidirectional = self.view.spinBox_general_info_road_no_traffic_lanes_bidirectional.value()
         general_info_road_no_traffic_lanes_northbound_or_eastbound = self.view.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound.value()
         general_info_road_no_traffic_lanes_southbound_or_westbound = self.view.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound.value()        
@@ -152,7 +151,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate general_info_rail_railway_design_speed
-    def general_info_rail_railway_design_speed(self):
+    def general_info_rail_railway_design_speed(self, data_xing_inventory):
         general_info_rail_max_railway_operating_speed_freight = self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.value()
         general_info_rail_max_railway_operating_speed_passenger = self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.value()        
         
@@ -166,7 +165,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     # DESIGN CONSIDERATIONS (GCS SECTION 10)
     #Calculate design_calculate_adjacent_track_clearance_time
-    def design_calculate_adjacent_track_clearance_time(self):        
+    def design_calculate_adjacent_track_clearance_time(self, data_xing_inventory):        
         design_measure_adjacent_track_separation_distance = self.view.doubleSpinBox_design_measure_adjacent_track_separation_distance.value()
         design_measure_adjacent_track_clearance_distance = self.view.doubleSpinBox_design_measure_adjacent_track_clearance_distance.value()
 
@@ -179,7 +178,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate design_calculate_clearance_time_pedestrian_design_check
-    def design_calculate_clearance_time_pedestrian_design_check(self):
+    def design_calculate_clearance_time_pedestrian_design_check(self, data_xing_inventory):
         design_measure_clearance_distance_pedestrian = self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.value()
         
         result = math.ceil(design_measure_clearance_distance_pedestrian/1.22)
@@ -187,9 +186,9 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate design_calculate_clearance_time_vehicle_design_check
-    def design_calculate_clearance_time_vehicle_design_check(self):
+    def design_calculate_clearance_time_vehicle_design_check(self, data_xing_inventory):
         design_input_reaction_time = self.view.label_design_input_reaction_time.text()
-        design_calculate_vehicle_departure_time_grade_adjusted = self.design_calculate_vehicle_departure_time_grade_adjusted()
+        design_calculate_vehicle_departure_time_grade_adjusted = self.design_calculate_vehicle_departure_time_grade_adjusted(data_xing_inventory)
         
         if design_calculate_vehicle_departure_time_grade_adjusted == 'N/A':
             result = 'N/A'
@@ -206,16 +205,16 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     #TODO
     #Calculate design_calculate_clearance_time_gate_arm_pedestrian
-    def design_calculate_clearance_time_gate_arm_pedestrian(self):
+    def design_calculate_clearance_time_gate_arm_pedestrian(self, data_xing_inventory):
         pass
 
     #Calculate design_calculate_clearance_time_gate_arm_vehicle_ssd
-    def design_calculate_clearance_time_gate_arm_vehicle_ssd(self):
+    def design_calculate_clearance_time_gate_arm_vehicle_ssd(self, data_xing_inventory):
         general_info_road_speed_design = self.view.spinBox_general_info_road_speed_design.value()
         design_road_design_vehicle_type = self.view.comboBox_design_road_design_vehicle_type.currentText()
-        design_lookup_design_vehicle_length = self.design_lookup_design_vehicle_length()
-        sightlines_lookup_ssd_minimum_n_or_e_approach = self.sightlines_lookup_ssd_minimum_n_or_e_approach()
-        sightlines_lookup_ssd_minimum_s_or_w_approach = self.sightlines_lookup_ssd_minimum_s_or_w_approach()
+        design_lookup_design_vehicle_length = self.design_lookup_design_vehicle_length(data_xing_inventory)
+        sightlines_lookup_ssd_minimum_n_or_e_approach = self.sightlines_lookup_ssd_minimum_n_or_e_approach(data_xing_inventory)
+        sightlines_lookup_ssd_minimum_s_or_w_approach = self.sightlines_lookup_ssd_minimum_s_or_w_approach(data_xing_inventory)
 
         if design_road_design_vehicle_type == "Pedestrian Only":
             result = 'N/A'
@@ -232,10 +231,10 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate design_calculate_clearance_time_gate_arm_vehicle_stop
-    def design_calculate_clearance_time_gate_arm_vehicle_stop(self):
+    def design_calculate_clearance_time_gate_arm_vehicle_stop(self, data_xing_inventory):
         design_input_reaction_time = self.view.label_design_input_reaction_time.text()
-        design_lookup_grade_adjustment_factor = self.design_lookup_grade_adjustment_factor()
-        design_calculate_vehicle_departure_time_gate_arm_clearance = self.design_calculate_vehicle_departure_time_gate_arm_clearance()
+        design_lookup_grade_adjustment_factor = self.design_lookup_grade_adjustment_factor(data_xing_inventory)
+        design_calculate_vehicle_departure_time_gate_arm_clearance = self.design_calculate_vehicle_departure_time_gate_arm_clearance(data_xing_inventory)
 
         if design_calculate_vehicle_departure_time_gate_arm_clearance == 'N/A' or design_lookup_grade_adjustment_factor == 'N/A':
             result = 'N/A'
@@ -252,9 +251,9 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate design_calculate_clearance_time_gate_arm_vehicle_recommended
-    def design_calculate_clearance_time_gate_arm_vehicle_recommended(self):
-        design_calculate_clearance_time_gate_arm_vehicle_ssd = self.design_calculate_clearance_time_gate_arm_vehicle_ssd()
-        design_calculate_clearance_time_gate_arm_vehicle_stop = self.design_calculate_clearance_time_gate_arm_vehicle_stop()
+    def design_calculate_clearance_time_gate_arm_vehicle_recommended(self, data_xing_inventory):
+        design_calculate_clearance_time_gate_arm_vehicle_ssd = self.design_calculate_clearance_time_gate_arm_vehicle_ssd(data_xing_inventory)
+        design_calculate_clearance_time_gate_arm_vehicle_stop = self.design_calculate_clearance_time_gate_arm_vehicle_stop(data_xing_inventory)
 
         if design_calculate_clearance_time_gate_arm_vehicle_ssd == 'N/A' or design_calculate_clearance_time_gate_arm_vehicle_stop == 'N/A':
             result = 'N/A'
@@ -270,10 +269,10 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calulcate design_calculate_vehicle_departure_time
-    def design_calculate_vehicle_departure_time(self):
+    def design_calculate_vehicle_departure_time(self, data_xing_inventory):
         design_measure_clearance_distance_pedestrian = self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.value()
-        design_calculate_vehicle_travel_distance = self.design_calculate_vehicle_travel_distance()
-        design_lookup_design_vehicle_class = self.design_lookup_design_vehicle_class()
+        design_calculate_vehicle_travel_distance = self.design_calculate_vehicle_travel_distance(data_xing_inventory)
+        design_lookup_design_vehicle_class = self.design_lookup_design_vehicle_class(data_xing_inventory)
         
         if design_lookup_design_vehicle_class == 'Pedestrian':
             result = 'N/A'
@@ -299,9 +298,9 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate design_calculate_vehicle_departure_time_grade_adjusted
-    def design_calculate_vehicle_departure_time_grade_adjusted(self):
-        design_calculate_vehicle_departure_time = self.design_calculate_vehicle_departure_time()
-        design_lookup_grade_adjustment_factor = self.design_lookup_grade_adjustment_factor()
+    def design_calculate_vehicle_departure_time_grade_adjusted(self, data_xing_inventory):
+        design_calculate_vehicle_departure_time = self.design_calculate_vehicle_departure_time(data_xing_inventory)
+        design_lookup_grade_adjustment_factor = self.design_lookup_grade_adjustment_factor(data_xing_inventory)
 
         if design_calculate_vehicle_departure_time == 'N/A':
             result = 'N/A'
@@ -317,9 +316,9 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate design_calculate_vehicle_departure_time_gate_arm_clearance
-    def design_calculate_vehicle_departure_time_gate_arm_clearance(self):
-        design_lookup_design_vehicle_class = self.design_lookup_design_vehicle_class()
-        design_lookup_design_vehicle_length = self.design_lookup_design_vehicle_length()
+    def design_calculate_vehicle_departure_time_gate_arm_clearance(self, data_xing_inventory):
+        design_lookup_design_vehicle_class = self.design_lookup_design_vehicle_class(data_xing_inventory)
+        design_lookup_design_vehicle_length = self.design_lookup_design_vehicle_length(data_xing_inventory)
 
         if design_lookup_design_vehicle_class == 'Pedestrian':
             result = 'N/A'
@@ -342,9 +341,9 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate design_calculate_vehicle_departure_time_gate_arm_clearance_grade_adjusted
-    def design_calculate_vehicle_departure_time_gate_arm_clearance_grade_adjusted(self):
-        design_calculate_vehicle_departure_time_gate_arm_clearance = self.design_calculate_vehicle_departure_time_gate_arm_clearance()
-        design_lookup_grade_adjustment_factor = self.design_lookup_grade_adjustment_factor()
+    def design_calculate_vehicle_departure_time_gate_arm_clearance_grade_adjusted(self, data_xing_inventory):
+        design_calculate_vehicle_departure_time_gate_arm_clearance = self.design_calculate_vehicle_departure_time_gate_arm_clearance(data_xing_inventory)
+        design_lookup_grade_adjustment_factor = self.design_lookup_grade_adjustment_factor(data_xing_inventory)
 
         if design_calculate_vehicle_departure_time_gate_arm_clearance == 'N/A':
             result = 'N/A'
@@ -360,10 +359,10 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate design_calculate_vehicle_travel_distance
-    def design_calculate_vehicle_travel_distance(self):
+    def design_calculate_vehicle_travel_distance(self, data_xing_inventory):
         design_measure_clearance_distance_vehicle = self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.value()
         design_road_design_vehicle_type = self.view.comboBox_design_road_design_vehicle_type.currentText()
-        design_lookup_design_vehicle_length = self.design_lookup_design_vehicle_length()
+        design_lookup_design_vehicle_length = self.design_lookup_design_vehicle_length(data_xing_inventory)
 
         if design_road_design_vehicle_type == 'Pedestrian Only':
             result = 'N/A'
@@ -378,9 +377,9 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate design_lookup_design_vehicle_class
-    def design_lookup_design_vehicle_class(self):
+    def design_lookup_design_vehicle_class(self, data_xing_inventory):
         design_road_design_vehicle_type = self.view.comboBox_design_road_design_vehicle_type.currentText()
-        df_table_4_1_general_vehicles = pd.read_csv(r'resources\\railway_data\\track_and_roadway\\custom\\table_4_1_general_vehicles.csv')
+        df_table_4_1_general_vehicles = pd.read_csv(r'resources\\railway_data_xing_inventory\\track_and_roadway\\custom\\table_4_1_general_vehicles.csv')
 
         if design_road_design_vehicle_type == '':
             result = 'No Value'
@@ -391,9 +390,9 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate design_lookup_design_vehicle_length
-    def design_lookup_design_vehicle_length(self):
+    def design_lookup_design_vehicle_length(self, data_xing_inventory):
         design_road_design_vehicle_type = self.view.comboBox_design_road_design_vehicle_type.currentText()
-        df_table_4_1_general_vehicles = pd.read_csv(r'resources\\railway_data\\track_and_roadway\\custom\\table_4_1_general_vehicles.csv')
+        df_table_4_1_general_vehicles = pd.read_csv(r'resources\\railway_data_xing_inventory\\track_and_roadway\\custom\\table_4_1_general_vehicles.csv')
         
         if design_road_design_vehicle_type == '':
             result = 'No Value'
@@ -407,10 +406,10 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate design_lookup_grade_adjustment_factor
-    def design_lookup_grade_adjustment_factor(self):
+    def design_lookup_grade_adjustment_factor(self, data_xing_inventory):
         design_road_max_approach_grade_within_s = self.view.doubleSpinBox_design_road_max_approach_grade_within_s.value()
-        design_lookup_design_vehicle_class = self.design_lookup_design_vehicle_class()
-        df_table_4_6_ratio_of_acceleration_times_on_road_grades = pd.read_csv(r'resources\\railway_data\\track_and_roadway\\custom\\table_4_6_ratio_of_acceleration_times_on_road_grades.csv')
+        design_lookup_design_vehicle_class = self.design_lookup_design_vehicle_class(data_xing_inventory)
+        df_table_4_6_ratio_of_acceleration_times_on_road_grades = pd.read_csv(r'resources\\railway_data_xing_inventory\\track_and_roadway\\custom\\table_4_6_ratio_of_acceleration_times_on_road_grades.csv')
 
         if design_lookup_design_vehicle_class == 'No Value':
             result = 'No Value'
@@ -437,9 +436,9 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     # ROAD GEOMETRY (GCS SECTION 6)
     #Calculate road_geometry_lookup_gradient_difference
-    def road_geometry_lookup_gradient_difference(self):
+    def road_geometry_lookup_gradient_difference(self, data_xing_inventory):
         general_info_road_classification = self.view.comboBox_general_info_road_classification.currentText()
-        table_6_1_difference_in_gradient = pd.read_csv(r'resources\\railway_data\\track_and_roadway\\custom\\table_6_1_difference_in_gradient.csv')
+        table_6_1_difference_in_gradient = pd.read_csv(r'resources\\railway_data_xing_inventory\\track_and_roadway\\custom\\table_6_1_difference_in_gradient.csv')
 
         if general_info_road_classification == '':
             result = 'No Value'
@@ -451,7 +450,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     # SIGHTLINES (GCS SECTION 7)
     #Calculate sightlines_lookup_existing_active_crossing
-    def sightlines_lookup_existing_active_crossing(self):
+    def sightlines_lookup_existing_active_crossing(self, data_xing_inventory):
         inspection_details_gcws_type = self.view.comboBox_inspection_details_gcws_type.currentText()
 
         if inspection_details_gcws_type == '':
@@ -466,7 +465,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate sightlines_lookup_existing_active_crossing_with_gates
-    def sightlines_lookup_existing_active_crossing_with_gates(self):
+    def sightlines_lookup_existing_active_crossing_with_gates(self, data_xing_inventory):
         inspection_details_gcws_type = self.view.comboBox_inspection_details_gcws_type.currentText()
         gcws_observe_gates_n_or_e_approach = self.view.comboBox_gcws_observe_gates_n_or_e_approach.currentText()
         gcws_observe_gates_s_or_w_approach = self.view.comboBox_gcws_observe_gates_s_or_w_approach.currentText()
@@ -483,14 +482,14 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate sightlines_calculate_dssd_vehicle_min_ft
-    def sightlines_calculate_dssd_vehicle_min_ft(self):
+    def sightlines_calculate_dssd_vehicle_min_ft(self, data_xing_inventory):
         general_info_road_speed_design = self.view.spinBox_general_info_road_speed_design.value()
         design_measure_clearance_distance_vehicle = self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.value()
-        design_lookup_design_vehicle_class = self.design_lookup_design_vehicle_class()
-        design_lookup_design_vehicle_length = self.design_lookup_design_vehicle_length()
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
-        sightlines_lookup_ssd_minimum_n_or_e_approach = self.sightlines_lookup_ssd_minimum_n_or_e_approach()
-        sightlines_lookup_ssd_minimum_s_or_w_approach = self.sightlines_lookup_ssd_minimum_s_or_w_approach()
+        design_lookup_design_vehicle_class = self.design_lookup_design_vehicle_class(data_xing_inventory)
+        design_lookup_design_vehicle_length = self.design_lookup_design_vehicle_length(data_xing_inventory)
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
+        sightlines_lookup_ssd_minimum_n_or_e_approach = self.sightlines_lookup_ssd_minimum_n_or_e_approach(data_xing_inventory)
+        sightlines_lookup_ssd_minimum_s_or_w_approach = self.sightlines_lookup_ssd_minimum_s_or_w_approach(data_xing_inventory)
 
         if design_lookup_design_vehicle_class == 'No Value' or general_info_rail_railway_design_speed == 'No Value' or general_info_road_speed_design == 0 or design_measure_clearance_distance_vehicle == 0.0 or sightlines_lookup_ssd_minimum_n_or_e_approach == 'No Value' or sightlines_lookup_ssd_minimum_s_or_w_approach == 'No Value' or design_lookup_design_vehicle_length == 'No Value':
             result = 'No Value'
@@ -510,8 +509,8 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate sightlines_calculate_dssd_vehicle_min_m
-    def sightlines_calculate_dssd_vehicle_min_m(self):
-        sightlines_calculate_dssd_vehicle_min_ft = self.sightlines_calculate_dssd_vehicle_min_ft()
+    def sightlines_calculate_dssd_vehicle_min_m(self, data_xing_inventory):
+        sightlines_calculate_dssd_vehicle_min_ft = self.sightlines_calculate_dssd_vehicle_min_ft(data_xing_inventory)
 
         if sightlines_calculate_dssd_vehicle_min_ft == 'No Value':
             result = 'No Value'
@@ -526,9 +525,9 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate sightlines_calculate_dstopped_pedestrian_min_ft
-    def sightlines_calculate_dstopped_pedestrian_min_ft(self):
-        design_calculate_clearance_time_crossing_pedestrian_design_check = self.design_calculate_clearance_time_pedestrian_design_check()
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+    def sightlines_calculate_dstopped_pedestrian_min_ft(self, data_xing_inventory):
+        design_calculate_clearance_time_crossing_pedestrian_design_check = self.design_calculate_clearance_time_pedestrian_design_check(data_xing_inventory)
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
 
         if general_info_rail_railway_design_speed == 'No Value' or design_calculate_clearance_time_crossing_pedestrian_design_check == 'No Value':
             result = 'No Value'
@@ -541,8 +540,8 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate sightlines_calculate_dstopped_pedestrian_min_m
-    def sightlines_calculate_dstopped_pedestrian_min_m(self):
-        sightlines_calculate_dstopped_pedestrian_min_ft = self.sightlines_calculate_dstopped_pedestrian_min_ft()
+    def sightlines_calculate_dstopped_pedestrian_min_m(self, data_xing_inventory):
+        sightlines_calculate_dstopped_pedestrian_min_ft = self.sightlines_calculate_dstopped_pedestrian_min_ft(data_xing_inventory)
 
         if sightlines_calculate_dstopped_pedestrian_min_ft == 'No Value':
             result = 'No Value'
@@ -554,9 +553,9 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate sightlines_calculate_dstopped_vehicle_min_ft
-    def sightlines_calculate_dstopped_vehicle_min_ft(self):
-        design_calculate_clearance_time_vehicle_design_check = self.design_calculate_clearance_time_vehicle_design_check()
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+    def sightlines_calculate_dstopped_vehicle_min_ft(self, data_xing_inventory):
+        design_calculate_clearance_time_vehicle_design_check = self.design_calculate_clearance_time_vehicle_design_check(data_xing_inventory)
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
 
         if design_calculate_clearance_time_vehicle_design_check == 'N/A':
             result = 'N/A'
@@ -572,8 +571,8 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate sightlines_calculate_dstopped_vehicle_min_m
-    def sightlines_calculate_dstopped_vehicle_min_m(self):
-        sightlines_calculate_dstopped_vehicle_min_ft = self.sightlines_calculate_dstopped_vehicle_min_ft()
+    def sightlines_calculate_dstopped_vehicle_min_m(self, data_xing_inventory):
+        sightlines_calculate_dstopped_vehicle_min_ft = self.sightlines_calculate_dstopped_vehicle_min_ft(data_xing_inventory)
 
         if sightlines_calculate_dstopped_vehicle_min_ft == 'N/A':
             result = 'N/A'
@@ -588,11 +587,11 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate sightlines_lookup_ssd_minimum_n_or_e_approach
-    def sightlines_lookup_ssd_minimum_n_or_e_approach(self):
+    def sightlines_lookup_ssd_minimum_n_or_e_approach(self, data_xing_inventory):
         general_info_road_speed_design = self.view.spinBox_general_info_road_speed_design.value()
         road_geometry_road_general_approach_grade_n_or_e_approach = self.view.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.value()
-        design_lookup_design_vehicle_class = self.design_lookup_design_vehicle_class()
-        df_table_4_5_SSD_m_passenger_car_class = pd.read_csv(r'resources\\railway_data\\track_and_roadway\\custom\\table_4_5_SSD_m_passenger_car_class.csv')
+        design_lookup_design_vehicle_class = self.design_lookup_design_vehicle_class(data_xing_inventory)
+        df_table_4_5_SSD_m_passenger_car_class = pd.read_csv(r'resources\\railway_data_xing_inventory\\track_and_roadway\\custom\\table_4_5_SSD_m_passenger_car_class.csv')
 
         road_geometry_road_general_approach_grade_n_or_e_approach = round(road_geometry_road_general_approach_grade_n_or_e_approach/100.0, 0)
 
@@ -643,11 +642,11 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate sightlines_lookup_ssd_minimum_s_or_w_approach
-    def sightlines_lookup_ssd_minimum_s_or_w_approach(self):
+    def sightlines_lookup_ssd_minimum_s_or_w_approach(self, data_xing_inventory):
         general_info_road_speed_design = self.view.spinBox_general_info_road_speed_design.value()
         road_geometry_road_general_approach_grade_s_or_w_approach = self.view.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.value()
-        design_lookup_design_vehicle_class = self.design_lookup_design_vehicle_class()
-        df_table_4_5_SSD_m_passenger_car_class = pd.read_csv(r'resources\\railway_data\\track_and_roadway\\custom\\table_4_5_SSD_m_passenger_car_class.csv')
+        design_lookup_design_vehicle_class = self.design_lookup_design_vehicle_class(data_xing_inventory)
+        df_table_4_5_SSD_m_passenger_car_class = pd.read_csv(r'resources\\railway_data_xing_inventory\\track_and_roadway\\custom\\table_4_5_SSD_m_passenger_car_class.csv')
 
         road_geometry_road_general_approach_grade_s_or_w_approach = round(road_geometry_road_general_approach_grade_s_or_w_approach/100.0, 0)
 
@@ -700,13 +699,13 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     # GRADE CROSSING WARNING SYSTEM WARRANTS (GCS SECTION 9)
     #TODO
     #Calculate gcws_warrant_private_9_3
-    def gcws_warrant_private_9_3(self):
+    def gcws_warrant_private_9_3(self, data_xing_inventory):
         pass
         return result
 
     #Calculate gcws_warrant_private_9_3_1
-    def gcws_warrant_private_9_3_1(self):
-        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total()
+    def gcws_warrant_private_9_3_1(self, data_xing_inventory):
+        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total(data_xing_inventory)
         general_info_road_aadt_forecast = self.view.spinBox_general_info_road_aadt_forecast.value()
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
         
@@ -726,10 +725,10 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate gcws_warrant_private_9_3_2_a
-    def gcws_warrant_private_9_3_2_a(self):
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
-        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total()
-        general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total()
+    def gcws_warrant_private_9_3_2_a(self, data_xing_inventory):
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
+        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total(data_xing_inventory)
+        general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total(data_xing_inventory)
         general_info_road_aadt_forecast = self.view.spinBox_general_info_road_aadt_forecast.value()
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
 
@@ -749,9 +748,9 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     #TODO
     #Calculate gcws_warrant_private_9_3_2_b
-    def gcws_warrant_private_9_3_2_b(self):
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
-        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total()
+    def gcws_warrant_private_9_3_2_b(self, data_xing_inventory):
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
+        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total(data_xing_inventory)
         general_info_road_aadt_forecast = self.view.spinBox_general_info_road_aadt_forecast.value()
         general_info_road_sidewalks = self.view.comboBox_general_info_road_sidewalks.currentText()
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
@@ -771,8 +770,8 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate gcws_warrant_private_9_3_2_c
-    def gcws_warrant_private_9_3_2_c(self):
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+    def gcws_warrant_private_9_3_2_c(self, data_xing_inventory):
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
         general_info_road_sidewalks = self.view.comboBox_general_info_road_sidewalks.currentText()
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
 
@@ -792,13 +791,13 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     #TODO
     #Calculate gcws_warrant_public_9_1
-    def gcws_warrant_public_9_1(self):
+    def gcws_warrant_public_9_1(self, data_xing_inventory):
         pass
         return result
 
     #Calculate gcws_warrant_public_9_1_a
-    def gcws_warrant_public_9_1_a(self):
-        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total()
+    def gcws_warrant_public_9_1_a(self, data_xing_inventory):
+        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total(data_xing_inventory)
         general_info_road_aadt_forecast = self.view.spinBox_general_info_road_aadt_forecast.value()
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
 
@@ -817,8 +816,8 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate gcws_warrant_public_9_1_b
-    def gcws_warrant_public_9_1_b(self):
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+    def gcws_warrant_public_9_1_b(self, data_xing_inventory):
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
         general_info_road_sidewalks = self.view.comboBox_general_info_road_sidewalks.currentText()
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
         
@@ -837,8 +836,8 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate gcws_warrant_public_9_1_c
-    def gcws_warrant_public_9_1_c(self):
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+    def gcws_warrant_public_9_1_c(self, data_xing_inventory):
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
         general_info_road_sidewalks = self.view.comboBox_general_info_road_sidewalks.currentText()
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
 
@@ -857,9 +856,9 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate gcws_warrant_public_9_1_d_i
-    def gcws_warrant_public_9_1_d_i(self):
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
-        general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total()
+    def gcws_warrant_public_9_1_d_i(self, data_xing_inventory):
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
+        general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total(data_xing_inventory)
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
 
         if inspection_details_grade_crossing_type == '' or general_info_rail_railway_design_speed == 'No Value' or general_info_rail_no_tracks_total == 'No Value':
@@ -877,19 +876,19 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
     
     #Calculate gcws_warrant_public_9_1_d_ii
-    def gcws_warrant_public_9_1_d_ii(self):
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+    def gcws_warrant_public_9_1_d_ii(self, data_xing_inventory):
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
-        location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.value()
-        location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.value()
+        location_of_crossing_nearest_intersection_stop_n_or_e_approach = self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach.value()
+        location_of_crossing_nearest_intersection_stop_s_or_w_approach = self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach.value()
 
-        if inspection_details_grade_crossing_type == '' or general_info_rail_railway_design_speed == 'No Value' or (location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach == 0.00 and location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach == 0.00):
+        if inspection_details_grade_crossing_type == '' or general_info_rail_railway_design_speed == 'No Value' or (location_of_crossing_nearest_intersection_stop_n_or_e_approach == 0.00 and location_of_crossing_nearest_intersection_stop_s_or_w_approach == 0.00):
             result = 'No Value'
             self.view.label_gcws_warrant_public_9_1_d_ii.setText(result)
         elif inspection_details_grade_crossing_type != 'Public':
             result = 'N/A'
             self.view.label_gcws_warrant_public_9_1_d_ii.setText(result)
-        elif inspection_details_grade_crossing_type == 'Public' and general_info_rail_railway_design_speed > 15 and ((location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach > 0.00 and location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach < 30.00) or (location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach > 0.00 and location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach < 30.00)):
+        elif inspection_details_grade_crossing_type == 'Public' and general_info_rail_railway_design_speed > 15 and ((location_of_crossing_nearest_intersection_stop_n_or_e_approach > 0.00 and location_of_crossing_nearest_intersection_stop_n_or_e_approach < 30.00) or (location_of_crossing_nearest_intersection_stop_s_or_w_approach > 0.00 and location_of_crossing_nearest_intersection_stop_s_or_w_approach < 30.00)):
             result = 'Yes'
             self.view.label_gcws_warrant_public_9_1_d_ii.setText(result)
         else:
@@ -898,19 +897,19 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate gcws_warrant_public_9_1_d_iii
-    def gcws_warrant_public_9_1_d_iii(self):
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+    def gcws_warrant_public_9_1_d_iii(self, data_xing_inventory):
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
-        location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.value()
-        location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.value()
+        location_of_crossing_nearest_intersection_signalized_n_or_e_approach = self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach.value()
+        location_of_crossing_nearest_intersection_signalized_s_or_w_approach = self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach.value()
         
-        if inspection_details_grade_crossing_type == '' or general_info_rail_railway_design_speed == 0 or (location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach == 0.00 and location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach == 0.00):
+        if inspection_details_grade_crossing_type == '' or general_info_rail_railway_design_speed == 0 or (location_of_crossing_nearest_intersection_signalized_n_or_e_approach == 0.00 and location_of_crossing_nearest_intersection_signalized_s_or_w_approach == 0.00):
             result = 'No Value'
             self.view.label_gcws_warrant_public_9_1_d_iii.setText(result)
         elif inspection_details_grade_crossing_type != 'Public':
             result = 'N/A'
             self.view.label_gcws_warrant_public_9_1_d_iii.setText(result)
-        elif inspection_details_grade_crossing_type == 'Public' and general_info_rail_railway_design_speed > 15 and ((location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach > 0.00 and location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach < 60.00) or (location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach > 0.00 and location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach < 60.00)):
+        elif inspection_details_grade_crossing_type == 'Public' and general_info_rail_railway_design_speed > 15 and ((location_of_crossing_nearest_intersection_signalized_n_or_e_approach > 0.00 and location_of_crossing_nearest_intersection_signalized_n_or_e_approach < 60.00) or (location_of_crossing_nearest_intersection_signalized_s_or_w_approach > 0.00 and location_of_crossing_nearest_intersection_signalized_s_or_w_approach < 60.00)):
             result = 'Yes'
             self.view.label_gcws_warrant_public_9_1_d_iii.setText(result)
         else:
@@ -919,8 +918,8 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
     
     #Calculate gcws_warrant_sidewalk_9_5
-    def gcws_warrant_sidewalk_9_5(self):
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+    def gcws_warrant_sidewalk_9_5(self, data_xing_inventory):
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
         general_info_road_sidewalks = self.view.comboBox_general_info_road_sidewalks.currentText()
         general_info_road_sidewalk_island_circuit = self.view.comboBox_general_info_road_sidewalk_island_circuit.currentText()
 
@@ -937,12 +936,12 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     
     #TODO
     #Calculate gates_gcws_warrant_private_9_4_1_a
-    def gates_gcws_warrant_private_9_4_1_a(self):
-        gcws_warrant_private_9_3_1 = self.gcws_warrant_private_9_3_1()
-        gcws_warrant_private_9_3_2_a = self.gcws_warrant_private_9_3_2_a()
-        gcws_warrant_private_9_3_2_b = self.gcws_warrant_private_9_3_2_b()
-        gcws_warrant_private_9_3_2_c = self.gcws_warrant_private_9_3_2_c()
-        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total()
+    def gates_gcws_warrant_private_9_4_1_a(self, data_xing_inventory):
+        gcws_warrant_private_9_3_1 = self.gcws_warrant_private_9_3_1(data_xing_inventory)
+        gcws_warrant_private_9_3_2_a = self.gcws_warrant_private_9_3_2_a(data_xing_inventory)
+        gcws_warrant_private_9_3_2_b = self.gcws_warrant_private_9_3_2_b(data_xing_inventory)
+        gcws_warrant_private_9_3_2_c = self.gcws_warrant_private_9_3_2_c(data_xing_inventory)
+        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total(data_xing_inventory)
         general_info_road_aadt_forecast = self.view.spinBox_general_info_road_aadt_forecast.value()
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
         
@@ -962,12 +961,12 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     #TODO
     #Calculate gates_gcws_warrant_private_9_4_1_b
-    def gates_gcws_warrant_private_9_4_1_b(self):
-        gcws_warrant_private_9_3_1 = self.gcws_warrant_private_9_3_1()
-        gcws_warrant_private_9_3_2_a = self.gcws_warrant_private_9_3_2_a()
-        gcws_warrant_private_9_3_2_b = self.gcws_warrant_private_9_3_2_b()
-        gcws_warrant_private_9_3_2_c = self.gcws_warrant_private_9_3_2_c()
-        general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total()
+    def gates_gcws_warrant_private_9_4_1_b(self, data_xing_inventory):
+        gcws_warrant_private_9_3_1 = self.gcws_warrant_private_9_3_1(data_xing_inventory)
+        gcws_warrant_private_9_3_2_a = self.gcws_warrant_private_9_3_2_a(data_xing_inventory)
+        gcws_warrant_private_9_3_2_b = self.gcws_warrant_private_9_3_2_b(data_xing_inventory)
+        gcws_warrant_private_9_3_2_c = self.gcws_warrant_private_9_3_2_c(data_xing_inventory)
+        general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total(data_xing_inventory)
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
 
         if inspection_details_grade_crossing_type == '' or general_info_rail_no_tracks_total == 'No Value' or gcws_warrant_private_9_3_1 == 'No Value' or gcws_warrant_private_9_3_2_a == 'No Value' or gcws_warrant_private_9_3_2_b == 'No Value' or gcws_warrant_private_9_3_2_c == 'No Value':
@@ -986,12 +985,12 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     #TODO
     #Calculate gates_gcws_warrant_private_9_4_1_c
-    def gates_gcws_warrant_private_9_4_1_c(self):
-        gcws_warrant_private_9_3_1 = self.gcws_warrant_private_9_3_1()
-        gcws_warrant_private_9_3_2_a = self.gcws_warrant_private_9_3_2_a()
-        gcws_warrant_private_9_3_2_b = self.gcws_warrant_private_9_3_2_b()
-        gcws_warrant_private_9_3_2_c = self.gcws_warrant_private_9_3_2_c()
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+    def gates_gcws_warrant_private_9_4_1_c(self, data_xing_inventory):
+        gcws_warrant_private_9_3_1 = self.gcws_warrant_private_9_3_1(data_xing_inventory)
+        gcws_warrant_private_9_3_2_a = self.gcws_warrant_private_9_3_2_a(data_xing_inventory)
+        gcws_warrant_private_9_3_2_b = self.gcws_warrant_private_9_3_2_b(data_xing_inventory)
+        gcws_warrant_private_9_3_2_c = self.gcws_warrant_private_9_3_2_c(data_xing_inventory)
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
 
         if inspection_details_grade_crossing_type == '' or general_info_rail_railway_design_speed == '' or gcws_warrant_private_9_3_1 == 'No Value' or gcws_warrant_private_9_3_2_a == 'No Value' or gcws_warrant_private_9_3_2_b == 'No Value' or gcws_warrant_private_9_3_2_c == 'No Value':
@@ -1010,14 +1009,14 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     #TODO
     #Calculate gates_gcws_warrant_public_9_2_1_a
-    def gates_gcws_warrant_public_9_2_1_a(self):
-        gcws_warrant_public_9_1_a = self.gcws_warrant_public_9_1_a()
-        gcws_warrant_public_9_1_b = self.gcws_warrant_public_9_1_b()
-        gcws_warrant_public_9_1_c = self.gcws_warrant_public_9_1_c()
-        gcws_warrant_public_9_1_d_i = self.gcws_warrant_public_9_1_d_i()
-        gcws_warrant_public_9_1_d_ii = self.gcws_warrant_public_9_1_d_ii()
-        gcws_warrant_public_9_1_d_iii = self.gcws_warrant_public_9_1_d_iii()
-        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total()
+    def gates_gcws_warrant_public_9_2_1_a(self, data_xing_inventory):
+        gcws_warrant_public_9_1_a = self.gcws_warrant_public_9_1_a(data_xing_inventory)
+        gcws_warrant_public_9_1_b = self.gcws_warrant_public_9_1_b(data_xing_inventory)
+        gcws_warrant_public_9_1_c = self.gcws_warrant_public_9_1_c(data_xing_inventory)
+        gcws_warrant_public_9_1_d_i = self.gcws_warrant_public_9_1_d_i(data_xing_inventory)
+        gcws_warrant_public_9_1_d_ii = self.gcws_warrant_public_9_1_d_ii(data_xing_inventory)
+        gcws_warrant_public_9_1_d_iii = self.gcws_warrant_public_9_1_d_iii(data_xing_inventory)
+        general_info_rail_no_trains_per_day_total = self.general_info_rail_no_trains_per_day_total(data_xing_inventory)
         general_info_road_aadt_forecast = self.view.spinBox_general_info_road_aadt_forecast.value()
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
 
@@ -1037,14 +1036,14 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     
     #TODO
     #Calculate gates_gcws_warrant_public_9_2_1_b
-    def gates_gcws_warrant_public_9_2_1_b(self):
-        gcws_warrant_public_9_1_a = self.gcws_warrant_public_9_1_a()
-        gcws_warrant_public_9_1_b = self.gcws_warrant_public_9_1_b()
-        gcws_warrant_public_9_1_c = self.gcws_warrant_public_9_1_c()
-        gcws_warrant_public_9_1_d_i = self.gcws_warrant_public_9_1_d_i()
-        gcws_warrant_public_9_1_d_ii = self.gcws_warrant_public_9_1_d_ii()
-        gcws_warrant_public_9_1_d_iii = self.gcws_warrant_public_9_1_d_iii()
-        general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total()
+    def gates_gcws_warrant_public_9_2_1_b(self, data_xing_inventory):
+        gcws_warrant_public_9_1_a = self.gcws_warrant_public_9_1_a(data_xing_inventory)
+        gcws_warrant_public_9_1_b = self.gcws_warrant_public_9_1_b(data_xing_inventory)
+        gcws_warrant_public_9_1_c = self.gcws_warrant_public_9_1_c(data_xing_inventory)
+        gcws_warrant_public_9_1_d_i = self.gcws_warrant_public_9_1_d_i(data_xing_inventory)
+        gcws_warrant_public_9_1_d_ii = self.gcws_warrant_public_9_1_d_ii(data_xing_inventory)
+        gcws_warrant_public_9_1_d_iii = self.gcws_warrant_public_9_1_d_iii(data_xing_inventory)
+        general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total(data_xing_inventory)
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
 
         if inspection_details_grade_crossing_type == '' or gcws_warrant_public_9_1_a == 'No Value' or gcws_warrant_public_9_1_b == 'No Value' or gcws_warrant_public_9_1_c == 'No Value' or gcws_warrant_public_9_1_d_i == 'No Value' or gcws_warrant_public_9_1_d_ii == 'No Value' or gcws_warrant_public_9_1_d_iii == 'No Value' or general_info_rail_no_tracks_total == '':
@@ -1063,14 +1062,14 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     #TODO
     #Calculate gates_gcws_warrant_public_9_2_1_c
-    def gates_gcws_warrant_public_9_2_1_c(self):
-        gcws_warrant_public_9_1_a = self.gcws_warrant_public_9_1_a()
-        gcws_warrant_public_9_1_b = self.gcws_warrant_public_9_1_b()
-        gcws_warrant_public_9_1_c = self.gcws_warrant_public_9_1_c()
-        gcws_warrant_public_9_1_d_i = self.gcws_warrant_public_9_1_d_i()
-        gcws_warrant_public_9_1_d_ii = self.gcws_warrant_public_9_1_d_ii()
-        gcws_warrant_public_9_1_d_iii = self.gcws_warrant_public_9_1_d_iii() 
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+    def gates_gcws_warrant_public_9_2_1_c(self, data_xing_inventory):
+        gcws_warrant_public_9_1_a = self.gcws_warrant_public_9_1_a(data_xing_inventory)
+        gcws_warrant_public_9_1_b = self.gcws_warrant_public_9_1_b(data_xing_inventory)
+        gcws_warrant_public_9_1_c = self.gcws_warrant_public_9_1_c(data_xing_inventory)
+        gcws_warrant_public_9_1_d_i = self.gcws_warrant_public_9_1_d_i(data_xing_inventory)
+        gcws_warrant_public_9_1_d_ii = self.gcws_warrant_public_9_1_d_ii(data_xing_inventory)
+        gcws_warrant_public_9_1_d_iii = self.gcws_warrant_public_9_1_d_iii(data_xing_inventory) 
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
 
         if inspection_details_grade_crossing_type == '' or general_info_rail_railway_design_speed == '' or gcws_warrant_public_9_1_a == 'No Value' or gcws_warrant_public_9_1_b == 'No Value' or gcws_warrant_public_9_1_c == 'No Value' or gcws_warrant_public_9_1_d_i == 'No Value' or gcws_warrant_public_9_1_d_ii == 'No Value' or gcws_warrant_public_9_1_d_iii == 'No Value':
@@ -1089,24 +1088,24 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     
     #TODO
     #Calculate gates_gcws_warrant_public_9_2_1_d
-    def gates_gcws_warrant_public_9_2_1_d(self):
-        gcws_warrant_public_9_1_a = self.gcws_warrant_public_9_1_a()
-        gcws_warrant_public_9_1_b = self.gcws_warrant_public_9_1_b()
-        gcws_warrant_public_9_1_c = self.gcws_warrant_public_9_1_c()
-        gcws_warrant_public_9_1_d_i  = self.gcws_warrant_public_9_1_d_i()
-        gcws_warrant_public_9_1_d_ii = self.gcws_warrant_public_9_1_d_ii()
-        gcws_warrant_public_9_1_d_iii = self.gcws_warrant_public_9_1_d_iii()
+    def gates_gcws_warrant_public_9_2_1_d(self, data_xing_inventory):
+        gcws_warrant_public_9_1_a = self.gcws_warrant_public_9_1_a(data_xing_inventory)
+        gcws_warrant_public_9_1_b = self.gcws_warrant_public_9_1_b(data_xing_inventory)
+        gcws_warrant_public_9_1_c = self.gcws_warrant_public_9_1_c(data_xing_inventory)
+        gcws_warrant_public_9_1_d_i  = self.gcws_warrant_public_9_1_d_i(data_xing_inventory)
+        gcws_warrant_public_9_1_d_ii = self.gcws_warrant_public_9_1_d_ii(data_xing_inventory)
+        gcws_warrant_public_9_1_d_iii = self.gcws_warrant_public_9_1_d_iii(data_xing_inventory)
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
-        location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.value()
-        location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.value()
+        location_of_crossing_nearest_intersection_stop_n_or_e_approach = self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach.value()
+        location_of_crossing_nearest_intersection_stop_s_or_w_approach = self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach.value()
 
-        if inspection_details_grade_crossing_type == '' or location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach == '' or location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach == '' or gcws_warrant_public_9_1_a == 'No Value' or gcws_warrant_public_9_1_b == 'No Value' or gcws_warrant_public_9_1_d_i == 'No Value' or gcws_warrant_public_9_1_d_ii == 'No Value' or gcws_warrant_public_9_1_d_iii == 'No Value':
+        if inspection_details_grade_crossing_type == '' or location_of_crossing_nearest_intersection_stop_n_or_e_approach == '' or location_of_crossing_nearest_intersection_stop_s_or_w_approach == '' or gcws_warrant_public_9_1_a == 'No Value' or gcws_warrant_public_9_1_b == 'No Value' or gcws_warrant_public_9_1_d_i == 'No Value' or gcws_warrant_public_9_1_d_ii == 'No Value' or gcws_warrant_public_9_1_d_iii == 'No Value':
             result = 'No Value'
             self.view.label_gates_gcws_warrant_public_9_2_1_d.setText(result)
         elif inspection_details_grade_crossing_type !='Public':
             result = 'N/A'
             self.view.label_gates_gcws_warrant_public_9_2_1_d.setText(result)
-        elif inspection_details_grade_crossing_type == 'Public' and (gcws_warrant_public_9_1_a == 'Yes' or gcws_warrant_public_9_1_b == 'Yes' or gcws_warrant_public_9_1_c == 'Yes' or gcws_warrant_public_9_1_d_i == 'Yes' or gcws_warrant_public_9_1_d_ii == 'Yes' or gcws_warrant_public_9_1_d_iii == 'Yes') and ((location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach > 0 and location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach < 30) or (location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach > 0 and location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach < 30)):
+        elif inspection_details_grade_crossing_type == 'Public' and (gcws_warrant_public_9_1_a == 'Yes' or gcws_warrant_public_9_1_b == 'Yes' or gcws_warrant_public_9_1_c == 'Yes' or gcws_warrant_public_9_1_d_i == 'Yes' or gcws_warrant_public_9_1_d_ii == 'Yes' or gcws_warrant_public_9_1_d_iii == 'Yes') and ((location_of_crossing_nearest_intersection_stop_n_or_e_approach > 0 and location_of_crossing_nearest_intersection_stop_n_or_e_approach < 30) or (location_of_crossing_nearest_intersection_stop_s_or_w_approach > 0 and location_of_crossing_nearest_intersection_stop_s_or_w_approach < 30)):
             result = 'Yes'
             self.view.label_gates_gcws_warrant_public_9_2_1_d.setText(result)
         else:
@@ -1116,24 +1115,24 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     
     #TODO
     #Calculate gates_gcws_warrant_public_9_2_1_e
-    def gates_gcws_warrant_public_9_2_1_e(self):
-        gcws_warrant_public_9_1_a = self.gcws_warrant_public_9_1_a()
-        gcws_warrant_public_9_1_b = self.gcws_warrant_public_9_1_b()
-        gcws_warrant_public_9_1_c = self.gcws_warrant_public_9_1_c()
-        gcws_warrant_public_9_1_d_i = self.gcws_warrant_public_9_1_d_i()
-        gcws_warrant_public_9_1_d_ii = self.gcws_warrant_public_9_1_d_ii()
-        gcws_warrant_public_9_1_d_iii = self.gcws_warrant_public_9_1_d_iii()
+    def gates_gcws_warrant_public_9_2_1_e(self, data_xing_inventory):
+        gcws_warrant_public_9_1_a = self.gcws_warrant_public_9_1_a(data_xing_inventory)
+        gcws_warrant_public_9_1_b = self.gcws_warrant_public_9_1_b(data_xing_inventory)
+        gcws_warrant_public_9_1_c = self.gcws_warrant_public_9_1_c(data_xing_inventory)
+        gcws_warrant_public_9_1_d_i = self.gcws_warrant_public_9_1_d_i(data_xing_inventory)
+        gcws_warrant_public_9_1_d_ii = self.gcws_warrant_public_9_1_d_ii(data_xing_inventory)
+        gcws_warrant_public_9_1_d_iii = self.gcws_warrant_public_9_1_d_iii(data_xing_inventory)
         inspection_details_grade_crossing_type = self.view.comboBox_inspection_details_grade_crossing_type.currentText()
-        location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.value()
-        location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.value()
+        location_of_crossing_nearest_intersection_signalized_n_or_e_approach = self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach.value()
+        location_of_crossing_nearest_intersection_signalized_s_or_w_approach = self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach.value()
 
-        if inspection_details_grade_crossing_type == '' or location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach == '' or location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach == '' or gcws_warrant_public_9_1_a == 'No Value' or gcws_warrant_public_9_1_b == 'No Value' or gcws_warrant_public_9_1_d_i == 'No Value' or gcws_warrant_public_9_1_d_ii == 'No Value' or gcws_warrant_public_9_1_d_iii == 'No Value':
+        if inspection_details_grade_crossing_type == '' or location_of_crossing_nearest_intersection_signalized_n_or_e_approach == '' or location_of_crossing_nearest_intersection_signalized_s_or_w_approach == '' or gcws_warrant_public_9_1_a == 'No Value' or gcws_warrant_public_9_1_b == 'No Value' or gcws_warrant_public_9_1_d_i == 'No Value' or gcws_warrant_public_9_1_d_ii == 'No Value' or gcws_warrant_public_9_1_d_iii == 'No Value':
             result = 'No Value'
             self.view.label_gates_gcws_warrant_public_9_2_1_e.setText(result)
         elif inspection_details_grade_crossing_type !='Public':
             result = 'N/A'
             self.view.label_gates_gcws_warrant_public_9_2_1_e.setText(result)
-        elif inspection_details_grade_crossing_type == 'Public' and (gcws_warrant_public_9_1_a == 'Yes' or gcws_warrant_public_9_1_b == 'Yes' or gcws_warrant_public_9_1_c == 'Yes' or gcws_warrant_public_9_1_d_i == 'Yes' or gcws_warrant_public_9_1_d_ii == 'Yes' or gcws_warrant_public_9_1_d_iii == 'Yes') and ((location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach > 0 and location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach < 60) or (location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach > 0 and location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach < 60)):
+        elif inspection_details_grade_crossing_type == 'Public' and (gcws_warrant_public_9_1_a == 'Yes' or gcws_warrant_public_9_1_b == 'Yes' or gcws_warrant_public_9_1_c == 'Yes' or gcws_warrant_public_9_1_d_i == 'Yes' or gcws_warrant_public_9_1_d_ii == 'Yes' or gcws_warrant_public_9_1_d_iii == 'Yes') and ((location_of_crossing_nearest_intersection_signalized_n_or_e_approach > 0 and location_of_crossing_nearest_intersection_signalized_n_or_e_approach < 60) or (location_of_crossing_nearest_intersection_signalized_s_or_w_approach > 0 and location_of_crossing_nearest_intersection_signalized_s_or_w_approach < 60)):
             result = 'Yes'
             self.view.label_gates_gcws_warrant_public_9_2_1_e.setText(result)
         else:
@@ -1143,9 +1142,9 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     
     #TODO
     #Calculate gates_gcws_warrant_sidewalk_9_6
-    def gates_gcws_warrant_sidewalk_9_6(self):
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
-        general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total()
+    def gates_gcws_warrant_sidewalk_9_6(self, data_xing_inventory):
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
+        general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total(data_xing_inventory)
         general_info_road_sidewalks = self.view.comboBox_general_info_road_sidewalks.currentText() 
         general_info_road_sidewalk_island_circuit = self.view.comboBox_general_info_road_sidewalk_island_circuit.currentText()
 
@@ -1162,7 +1161,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     # GRADE CROSSING WARNING SYSTEMS (GCS SECTION 12-16)
     #Calculate gcws_rail_design_warning_time_clearance_distance
-    def gcws_rail_design_warning_time_clearance_distance(self):
+    def gcws_rail_design_warning_time_clearance_distance(self, data_xing_inventory):
         design_road_design_vehicle_type = self.view.comboBox_design_road_design_vehicle_type.currentText()
         design_measure_clearance_distance_pedestrian = self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.value()
         design_measure_clearance_distance_vehicle = self.view.doubleSpinBox_design_measure_clearance_distance_vehicle.value()
@@ -1179,8 +1178,8 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
     
     #Calculate gcws_rail_design_warning_time_departure_time_vehicle
-    def gcws_rail_design_warning_time_departure_time_vehicle(self):
-        design_calculate_clearance_time_vehicle_design_check = self.design_calculate_clearance_time_vehicle_design_check()
+    def gcws_rail_design_warning_time_departure_time_vehicle(self, data_xing_inventory):
+        design_calculate_clearance_time_vehicle_design_check = self.design_calculate_clearance_time_vehicle_design_check(data_xing_inventory)
 
         if design_calculate_clearance_time_vehicle_design_check == 'N/A':
             result = 'N/A'
@@ -1195,8 +1194,8 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate gcws_rail_design_warning_time_departure_time_pedestrian
-    def gcws_rail_design_warning_time_departure_time_pedestrian(self):
-        design_calculate_clearance_time_crossing_pedestrian_design_check = self.design_calculate_clearance_time_pedestrian_design_check()
+    def gcws_rail_design_warning_time_departure_time_pedestrian(self, data_xing_inventory):
+        design_calculate_clearance_time_crossing_pedestrian_design_check = self.design_calculate_clearance_time_pedestrian_design_check(data_xing_inventory)
 
         if design_calculate_clearance_time_crossing_pedestrian_design_check == 'No Value':
             result = 'No Value'
@@ -1209,8 +1208,8 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     #TODO
     #Calculate gcws_rail_design_warning_time_gate_arm_clearance
-    def gcws_rail_design_warning_time_gate_arm_clearance(self):
-        design_calculate_clearance_time_gate_arm_vehicle_recommended = self.design_calculate_clearance_time_gate_arm_vehicle_recommended()
+    def gcws_rail_design_warning_time_gate_arm_clearance(self, data_xing_inventory):
+        design_calculate_clearance_time_gate_arm_vehicle_recommended = self.design_calculate_clearance_time_gate_arm_vehicle_recommended(data_xing_inventory)
         gates_gcws_rail_gate_arm_descent_time_design = self.view.doubleSpinBox_gates_gcws_rail_gate_arm_descent_time_design.value()
 
         if design_calculate_clearance_time_gate_arm_vehicle_recommended == 'No Value' or gates_gcws_rail_gate_arm_descent_time_design == 0.0:
@@ -1223,11 +1222,11 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     #TODO
     #Calculate gcws_rail_design_warning_time_ssd
-    def gcws_rail_design_warning_time_ssd(self):
-        sightlines_lookup_ssd_minimum_n_or_e_approach = self.sightlines_lookup_ssd_minimum_n_or_e_approach()
-        sightlines_lookup_ssd_minimum_s_or_w_approach = self.sightlines_lookup_ssd_minimum_s_or_w_approach()
+    def gcws_rail_design_warning_time_ssd(self, data_xing_inventory):
+        sightlines_lookup_ssd_minimum_n_or_e_approach = self.sightlines_lookup_ssd_minimum_n_or_e_approach(data_xing_inventory)
+        sightlines_lookup_ssd_minimum_s_or_w_approach = self.sightlines_lookup_ssd_minimum_s_or_w_approach(data_xing_inventory)
         design_road_design_vehicle_type = self.view.comboBox_design_road_design_vehicle_type.currentText()
-        design_calculate_vehicle_travel_distance = self.design_calculate_vehicle_travel_distance()
+        design_calculate_vehicle_travel_distance = self.design_calculate_vehicle_travel_distance(data_xing_inventory)
         general_info_road_speed_design = self.view.spinBox_general_info_road_speed_design.value()
 
         if sightlines_lookup_ssd_minimum_n_or_e_approach == 'No Value' or sightlines_lookup_ssd_minimum_s_or_w_approach == 'No Value' or design_road_design_vehicle_type == '' or design_calculate_vehicle_travel_distance == 'No Value' or general_info_road_speed_design == 0:
@@ -1243,19 +1242,19 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     
     #TODO
     #Calculate gcws_rail_design_warning_time_adjacent_crossing
-    def gcws_rail_design_warning_time_adjacent_crossing(self):
+    def gcws_rail_design_warning_time_adjacent_crossing(self, data_xing_inventory):
         pass
     
     #TODO
     #Calculate gcws_rail_design_approach_warning_time
-    def gcws_rail_design_approach_warning_time(self):
+    def gcws_rail_design_approach_warning_time(self, data_xing_inventory):
         pass
         gcws_rail_design_warning_time_preemption = self.view.spinBox_gcws_rail_design_warning_time_preemption.value()
-        gcws_rail_design_warning_time_clearance_distance = self.gcws_rail_design_warning_time_clearance_distance()
-        gcws_rail_design_warning_time_departure_time_vehicle = self.gcws_rail_design_warning_time_departure_time_vehicle()
-        gcws_rail_design_warning_time_departure_time_pedestrian = self.gcws_rail_design_warning_time_departure_time_pedestrian()
-        gcws_rail_design_warning_time_gate_arm_clearance = self.gcws_rail_design_warning_time_gate_arm_clearance() 
-        gcws_rail_design_warning_time_ssd = self.gcws_rail_design_warning_time_ssd()
+        gcws_rail_design_warning_time_clearance_distance = self.gcws_rail_design_warning_time_clearance_distance(data_xing_inventory)
+        gcws_rail_design_warning_time_departure_time_vehicle = self.gcws_rail_design_warning_time_departure_time_vehicle(data_xing_inventory)
+        gcws_rail_design_warning_time_departure_time_pedestrian = self.gcws_rail_design_warning_time_departure_time_pedestrian(data_xing_inventory)
+        gcws_rail_design_warning_time_gate_arm_clearance = self.gcws_rail_design_warning_time_gate_arm_clearance(data_xing_inventory) 
+        gcws_rail_design_warning_time_ssd = self.gcws_rail_design_warning_time_ssd(data_xing_inventory)
 
         gcws_rail_design_approach_warning_time = {
             'gcws_rail_design_warning_time_preemption': gcws_rail_design_warning_time_preemption,
@@ -1274,8 +1273,8 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     # GATES FOR GRADE CROSSING WARNING SYSTEMS (GCS SECTION 10, 12, 15)
     #TODO
     #Calculate gates_gcws_calculate_inner_gate_arm_delay_time_recommended
-    def gates_gcws_calculate_inner_gate_arm_delay_time_recommended(self):
-        design_calculate_adjacent_track_clearance_time = self.design_calculate_adjacent_track_clearance_time()
+    def gates_gcws_calculate_inner_gate_arm_delay_time_recommended(self, data_xing_inventory):
+        design_calculate_adjacent_track_clearance_time = self.design_calculate_adjacent_track_clearance_time(data_xing_inventory)
         
         if design_calculate_adjacent_track_clearance_time == 'No Value':
             result = design_calculate_adjacent_track_clearance_time
@@ -1292,10 +1291,10 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     # PREPARE TO STOP AT RAILWAY CROSSING SIGN (GCS SECTION 18)
     #TODO
     #Calculate aawd_calculate_advance_activation_time_design_n_or_e_approach
-    def aawd_calculate_advance_activation_time_design_n_or_e_approach(self):
+    def aawd_calculate_advance_activation_time_design_n_or_e_approach(self, data_xing_inventory):
         general_info_road_speed_design = self.view.spinBox_general_info_road_speed_design.value()
-        design_calculate_vehicle_travel_distance = self.design_calculate_vehicle_travel_distance()
-        aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended = self.aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended()
+        design_calculate_vehicle_travel_distance = self.design_calculate_vehicle_travel_distance(data_xing_inventory)
+        aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended = self.aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended(data_xing_inventory)
 
         if general_info_road_speed_design == 0 or design_calculate_vehicle_travel_distance == 'No Value' or aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended == 'No Value':
             result = 'No Value'
@@ -1307,10 +1306,10 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     #TODO
     #Calculate aawd_calculate_advance_activation_time_design_s_or_w_approach    
-    def aawd_calculate_advance_activation_time_design_s_or_w_approach(self):
+    def aawd_calculate_advance_activation_time_design_s_or_w_approach(self, data_xing_inventory):
         general_info_road_speed_design = self.view.spinBox_general_info_road_speed_design.value()
-        design_calculate_vehicle_travel_distance = self.design_calculate_vehicle_travel_distance()
-        aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended = self.aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended()
+        design_calculate_vehicle_travel_distance = self.design_calculate_vehicle_travel_distance(data_xing_inventory)
+        aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended = self.aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended(data_xing_inventory)
 
         if general_info_road_speed_design == 0 or design_calculate_vehicle_travel_distance == 'No Value' or aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended == 'No Value':
             result = 'No Value'
@@ -1322,7 +1321,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     #TODO
     #Calculate aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended
-    def aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended(self):
+    def aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended(self, data_xing_inventory):
         general_info_road_speed_posted = self.view.spinBox_general_info_road_speed_posted.value()
         road_geometry_road_general_approach_grade_n_or_e_approach = self.view.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.value()
         road_geometry_road_general_approach_grade_s_or_w_approach = self.view.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.value()
@@ -1340,7 +1339,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     #TODO
     #Calculate aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended
-    def aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended(self):
+    def aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended(self, data_xing_inventory):
         general_info_road_speed_posted = self.view.spinBox_general_info_road_speed_posted.value()
         road_geometry_road_general_approach_grade_n_or_e_approach = self.view.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.value()
         road_geometry_road_general_approach_grade_s_or_w_approach = self.view.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.value()
@@ -1358,7 +1357,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
     #TODO
     #Calculate aawd_warrant_gcr_lookup_road_classification
-    def aawd_warrant_gcr_lookup_road_classification(self):
+    def aawd_warrant_gcr_lookup_road_classification(self, data_xing_inventory):
         general_info_road_classification = self.view.comboBox_general_info_road_classification.currentText()
         general_info_road_classification.split()
 
@@ -1374,7 +1373,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr
-    def aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr(self):
+    def aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr(self, data_xing_inventory):
         general_info_road_speed_design = self.view.spinBox_general_info_road_speed_design.value()
 
         if general_info_road_speed_design == '':
@@ -1391,14 +1390,14 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     
     # INTERCONNECTION OF TRAFFIC SIGNALS (GCS SECTION 19)
     #Calculate preemption_of_traffic_signals_lookup_proximity_condition
-    def preemption_of_traffic_signals_lookup_proximity_condition(self):
-        location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.value()
-        location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach = self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.value()
+    def preemption_of_traffic_signals_lookup_proximity_condition(self, data_xing_inventory):
+        location_of_crossing_nearest_intersection_signalized_n_or_e_approach = self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach.value()
+        location_of_crossing_nearest_intersection_signalized_s_or_w_approach = self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach.value()
 
-        if location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach == 0.00 and location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach == 0.00:
+        if location_of_crossing_nearest_intersection_signalized_n_or_e_approach == 0.00 and location_of_crossing_nearest_intersection_signalized_s_or_w_approach == 0.00:
             result = 'No Value'
             self.view.label_preemption_of_traffic_signals_lookup_proximity_condition.setText(result)
-        elif (location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach > 0.00 and location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach <30.00) or (location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach > 0.00 and location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach < 30.00):
+        elif (location_of_crossing_nearest_intersection_signalized_n_or_e_approach > 0.00 and location_of_crossing_nearest_intersection_signalized_n_or_e_approach <30.00) or (location_of_crossing_nearest_intersection_signalized_s_or_w_approach > 0.00 and location_of_crossing_nearest_intersection_signalized_s_or_w_approach < 30.00):
             result = 'Yes'
             self.view.label_preemption_of_traffic_signals_lookup_proximity_condition.setText(result)
         else:
@@ -1407,9 +1406,9 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         return result
 
     #Calculate preemption_of_traffic_signals_lookup_required
-    def preemption_of_traffic_signals_lookup_required(self):
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
-        preemption_of_traffic_signals_lookup_proximity_condition = self.preemption_of_traffic_signals_lookup_proximity_condition()
+    def preemption_of_traffic_signals_lookup_required(self, data_xing_inventory):
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
+        preemption_of_traffic_signals_lookup_proximity_condition = self.preemption_of_traffic_signals_lookup_proximity_condition(data_xing_inventory)
 
         if general_info_rail_railway_design_speed == 0 or preemption_of_traffic_signals_lookup_proximity_condition == 'No Value':
             result = 'No Value'
@@ -1426,12 +1425,12 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     #Group Labels
     #TODO
     #Calculate areas_without_train_whistling_lookup_gcs_9_2
-    def areas_without_train_whistling_lookup_gcs_9_2(self):
-        gates_gcws_warrant_public_9_2_1_a = self.gates_gcws_warrant_public_9_2_1_a()
-        gates_gcws_warrant_public_9_2_1_b = self.gates_gcws_warrant_public_9_2_1_b()
-        gates_gcws_warrant_public_9_2_1_c = self.gates_gcws_warrant_public_9_2_1_c()
-        gates_gcws_warrant_public_9_2_1_d = self.gates_gcws_warrant_public_9_2_1_d()
-        gates_gcws_warrant_public_9_2_1_e = self.gates_gcws_warrant_public_9_2_1_e()
+    def areas_without_train_whistling_lookup_gcs_9_2(self, data_xing_inventory):
+        gates_gcws_warrant_public_9_2_1_a = self.gates_gcws_warrant_public_9_2_1_a(data_xing_inventory)
+        gates_gcws_warrant_public_9_2_1_b = self.gates_gcws_warrant_public_9_2_1_b(data_xing_inventory)
+        gates_gcws_warrant_public_9_2_1_c = self.gates_gcws_warrant_public_9_2_1_c(data_xing_inventory)
+        gates_gcws_warrant_public_9_2_1_d = self.gates_gcws_warrant_public_9_2_1_d(data_xing_inventory)
+        gates_gcws_warrant_public_9_2_1_e = self.gates_gcws_warrant_public_9_2_1_e(data_xing_inventory)
         gcws_observe_gates_n_or_e_approach = self.view.comboBox_gcws_observe_gates_n_or_e_approach.currentText()
         gcws_observe_gates_s_or_w_approach = self.view.comboBox_gcws_observe_gates_s_or_w_approach.currentText()
 
@@ -1449,29 +1448,29 @@ class ModelCrossingAssessmentCA(qtc.QObject):
             self.view.label_areas_without_train_whistling_lookup_gcs_9_2.setText(result)
         return result
 
-    #Calculate areas_without_train_whistling_requirements_lookup_table_d1_criteria
-    def areas_without_train_whistling_requirements_lookup_table_d1_criteria(self):
-        general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total()
-        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed()
+    #Calculate areas_without_train_whistling_lookup_table_d1_criteria
+    def areas_without_train_whistling_lookup_table_d1_criteria(self, data_xing_inventory):
+        general_info_rail_no_tracks_total = self.general_info_rail_no_tracks_total(data_xing_inventory)
+        general_info_rail_railway_design_speed = self.general_info_rail_railway_design_speed(data_xing_inventory)
 
         if general_info_rail_no_tracks_total == 'No Value' or general_info_rail_railway_design_speed == 'No Value':
             result = 'No Value'
-            self.view.label_areas_without_train_whistling_requirements_lookup_table_d1_criteria.setText(result)
+            self.view.label_areas_without_train_whistling_lookup_table_d1_criteria.setText(result)
         elif (general_info_rail_no_tracks_total == 1 and general_info_rail_railway_design_speed > 0 and general_info_rail_railway_design_speed <= 50) or (general_info_rail_no_tracks_total >= 2 and general_info_rail_railway_design_speed > 0 and general_info_rail_railway_design_speed <= 15):
             result = 'FLB'
-            self.view.label_areas_without_train_whistling_requirements_lookup_table_d1_criteria.setText(result)
+            self.view.label_areas_without_train_whistling_lookup_table_d1_criteria.setText(result)
         elif (general_info_rail_no_tracks_total == 1 and general_info_rail_railway_design_speed > 50) or (general_info_rail_no_tracks_total >= 2 and general_info_rail_railway_design_speed > 15):
             result = 'FLBG'
-            self.view.label_areas_without_train_whistling_requirements_lookup_table_d1_criteria.setText(result) 
+            self.view.label_areas_without_train_whistling_lookup_table_d1_criteria.setText(result) 
         else:
             result = 'NULL RESULT'
-            self.view.label_areas_without_train_whistling_requirements_lookup_table_d1_criteria.setText(result)
+            self.view.label_areas_without_train_whistling_lookup_table_d1_criteria.setText(result)
         return result
 
     #TODO
     #Calculate areas_without_train_whistling_requirements_observe_table_D1
-    def areas_without_train_whistling_requirements_observe_table_D1(self):
-        areas_without_train_whistling_requirements_lookup_table_d1_criteria = self.areas_without_train_whistling_requirements_lookup_table_d1_criteria()
+    def areas_without_train_whistling_requirements_observe_table_D1(self, data_xing_inventory):
+        areas_without_train_whistling_requirements_lookup_table_d1_criteria = self.areas_without_train_whistling_lookup_table_d1_criteria(data_xing_inventory)
         gcws_observe_gates_n_or_e_approach = self.view.comboBox_gcws_observe_gates_n_or_e_approach.currentText()
         gcws_observe_gates_s_or_w_approach = self.view.comboBox_gcws_observe_gates_s_or_w_approach.currentText()
         gcws_observe_light_units_n_or_e_approach = self.view.comboBox_gcws_observe_light_units_n_or_e_approach.currentText()
@@ -1479,17 +1478,17 @@ class ModelCrossingAssessmentCA(qtc.QObject):
 
         if gcws_observe_gates_n_or_e_approach == '' or gcws_observe_gates_s_or_w_approach == '' or gcws_observe_light_units_n_or_e_approach == '' or gcws_observe_light_units_s_or_w_approach == '' or areas_without_train_whistling_requirements_lookup_table_d1_criteria == 'No Value':
             result = 'No Value'
-            self.view.label_areas_without_train_whistling_requirements_observe_table_D1.setText(result)
+            self.view.label_areas_without_train_whistling_observe_table_D1.setText(result)
         elif ((gcws_observe_gates_n_or_e_approach == 'Yes' and gcws_observe_gates_s_or_w_approach == 'Yes') and areas_without_train_whistling_requirements_lookup_table_d1_criteria == 'FLBG'):
             result = 'Yes'
-            self.view.label_areas_without_train_whistling_requirements_observe_table_D1.setText(result)
+            self.view.label_areas_without_train_whistling_observe_table_D1.setText(result)
         elif ((gcws_observe_gates_n_or_e_approach == 'No' or gcws_observe_gates_s_or_w_approach == 'No') and areas_without_train_whistling_requirements_lookup_table_d1_criteria == 'FLBG'):
             result = 'No'
-            self.view.label_areas_without_train_whistling_requirements_observe_table_D1.setText(result)
+            self.view.label_areas_without_train_whistling_observe_table_D1.setText(result)
         elif (gcws_observe_light_units_n_or_e_approach == 'Yes' and gcws_observe_light_units_s_or_w_approach == 'Yes' and areas_without_train_whistling_requirements_lookup_table_d1_criteria == 'FLB'):
             result = 'Yes'
-            self.view.label_areas_without_train_whistling_requirements_observe_table_D1.setText(result)
+            self.view.label_areas_without_train_whistling_observe_table_D1.setText(result)
         else:
             result = 'No'
-            self.view.label_areas_without_train_whistling_requirements_observe_table_D1.setText(result)
+            self.view.label_areas_without_train_whistling_observe_table_D1.setText(result)
         return result

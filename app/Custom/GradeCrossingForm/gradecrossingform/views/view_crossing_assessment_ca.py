@@ -23,15 +23,213 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.setGeometry(100, 100, 300, 400)
         self.setWindowTitle('Crossing Assessment Form (Canada)')
         self.formWidgets()
-        self.map_fields()
         self.show()
    
-    
     def on_change(self):
-        data = {
-            'inspection_details_assessment_team': self.textEdit_inspection_details_assessment_team.toPlainText()
+        data_xing_inventory = {
+            'inspection_details_assessment_team': self.textEdit_inspection_details_assessment_team.toPlainText(),
+            'inspection_details_date_assessment': self.datetimeEdit_inspection_details_date_assessment.dateTime(),
+            'inspection_details_crossing_location': self.lineEdit_inspection_details_crossing_location.text(),
+            'inspection_details_location_number': self.lineEdit_inspection_details_location_number.text(), 
+            'inspection_details_municipality': self.lineEdit_inspection_details_municipality.text(),
+            'inspection_details_road_name': self.lineEdit_inspection_details_road_name.text(),
+            'inspection_details_road_number': self.lineEdit_inspection_details_road_number.text(),
+            'inspection_details_spur_name': self.lineEdit_inspection_details_spur_name.text(),
+            'inspection_details_latitude': self.doubleSpinBox_inspection_details_latitude.value(),        
+            'inspection_details_longitude': self.doubleSpinBox_inspection_details_longitude.value(),
+            'inspection_details_spur_mile': self.doubleSpinBox_inspection_details_spur_mile.value(),
+            'inspection_details_subdivision_mile': self.doubleSpinBox_inspection_details_subdivision_mile.value(),
+            'inspection_details_gcws_type': self.comboBox_inspection_details_gcws_type.currentText(),
+            'inspection_details_grade_crossing_type': self.comboBox_inspection_details_grade_crossing_type.currentText(),
+            'inspection_details_province': self.comboBox_inspection_details_province.currentText(),
+            #TODO create and add railway authority list 
+            'inspection_details_railway_authority': self.comboBox_inspection_details_railway_authority.currentText(),
+            'inspection_details_reason_for_assessment': self.comboBox_inspection_details_reason_for_assessment.currentText(),
+            #TODO create and add road authority list 
+            'comboBox_inspection_details_road_authority': self.comboBox_inspection_details_road_authority.currentText(),
+            #TODO create and add subdivision list
+            'inspection_details_subdivision_name': self.comboBox_inspection_details_subdivision_name.currentText(), 
+            'inspection_details_track_type': self.comboBox_inspection_details_track_type.currentText(),
+            'collision_history_comments': self.textEdit_collision_history_comments.toPlainText(),
+            'collision_history_fatal_injury': self.spinBox_collision_history_fatal_injury.value(),
+            'collision_history_fatalities': self.spinBox_collision_history_fatalities.value(),
+            'collision_history_personal_injuries': self.spinBox_collision_history_personal_injuries.value(),
+            'collision_history_personal_injury': self.spinBox_collision_history_personal_injury.value(),
+            'collision_history_property_damage': self.spinBox_collision_history_property_damage.value(),
+            'collision_history_total_5_year_period': self.label_collision_history_total_5_year_period.text(),
+            'collision_history_risk_index_initial': self.label_collision_history_risk_index_initial.text(),
+            'collision_history_risk_index_final': self.label_collision_history_risk_index_final.text(),
+            'general_info_comments': self.textEdit_general_info_comments.toPlainText(),
+            'general_info_observe_special_buildings': self.lineEdit_general_info_observe_special_buildings.text(),
+            'general_info_road_other_users': self.lineEdit_general_info_road_other_users.text(),
+            'general_info_rail_max_railway_operating_speed_freight': self.spinBox_general_info_rail_max_railway_operating_speed_freight.value(),
+            'general_info_rail_max_railway_operating_speed_passenger': self.spinBox_general_info_rail_max_railway_operating_speed_passenger.value(),
+            'general_info_rail_no_tracks_main': self.spinBox_general_info_rail_no_tracks_main.value(),
+            'general_info_rail_no_tracks_other': self.spinBox_general_info_rail_no_tracks_other.value(),
+            'general_info_rail_no_trains_per_day_freight': self.spinBox_general_info_rail_no_trains_per_day_freight.value(),
+            'general_info_rail_no_trains_per_day_passengers': self.spinBox_general_info_rail_no_trains_per_day_passengers.value(),
+            'general_info_road_aadt_current': self.spinBox_general_info_road_aadt_current.value(),
+            'general_info_road_aadt_forecast': self.spinBox_general_info_road_aadt_forecast.value(),
+            'general_info_road_aadt_year_current': self.spinBox_general_info_road_aadt_year_current.value(),
+            'general_info_road_aadt_year_forecasted': self.spinBox_general_info_road_aadt_year_forecasted.value(),
+            'general_info_road_cyclist_per_day': self.spinBox_general_info_road_cyclist_per_day.value(),
+            'general_info_road_no_traffic_lanes_bidirectional': self.spinBox_general_info_road_no_traffic_lanes_bidirectional.value(),
+            'general_info_road_no_traffic_lanes_northbound_or_eastbound': self.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound.value(),
+            'general_info_road_no_traffic_lanes_southbound_or_westbound': self.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound.value(),
+            'general_info_road_other_users_daily_users': self.spinBox_general_info_road_other_users_daily_users.value(),
+            'general_info_road_pedestrians_per_day': self.spinBox_general_info_road_pedestrians_per_day.value(),
+            'general_info_road_speed_design': self.spinBox_general_info_road_speed_design.value(),
+            'general_info_road_speed_posted': self.spinBox_general_info_road_speed_posted.value(),
+            'general_info_observe_roadway_illumination': self.comboBox_general_info_observe_roadway_illumination.currentText(),
+            'general_info_observe_surrounding_land_use': self.comboBox_general_info_observe_surrounding_land_use.currentText(),
+            'general_info_rail_train_switching': self.comboBox_general_info_rail_train_switching.currentText(),
+            'general_info_road_assistive_pedestrian_devices': self.comboBox_general_info_road_assistive_pedestrian_devices.currentText(),
+            'general_info_road_classification': self.comboBox_general_info_road_classification.currentText(),
+            'general_info_road_dangerous_goods_route': self.comboBox_general_info_road_dangerous_goods_route.currentText(),
+            'general_info_road_school_bus_route': self.comboBox_general_info_road_school_bus_route.currentText(),
+            'general_info_road_seasonal_volume_fluctuations': self.comboBox_general_info_road_seasonal_volume_fluctuations.currentText(),
+            'general_info_road_sidewalks': self.comboBox_general_info_road_sidewalks.currentText(),
+            'general_info_road_sidewalk_island_circuit': self.comboBox_general_info_road_sidewalk_island_circuit.currentText(),
+            'general_info_rail_no_tracks_total': self.label_general_info_rail_no_tracks_total.text(),
+            'general_info_rail_no_trains_per_day_total': self.label_general_info_rail_no_trains_per_day_total.text(),
+            'general_info_rail_railway_design_speed': self.label_general_info_rail_railway_design_speed.text(),
+            'general_info_road_no_traffic_lanes_total': self.label_general_info_road_no_traffic_lanes_total.text(),
+            'design_observe_k_factor_other': self.textEdit_design_observe_k_factor_other.toPlainText(),
+            'design_comments': self.textEdit_design_comments.toPlainText(),
+            'design_measure_adjacent_track_clearance_distance': self.doubleSpinBox_design_measure_adjacent_track_clearance_distance.value(),
+            'design_measure_adjacent_track_separation_distance': self.doubleSpinBox_design_measure_adjacent_track_separation_distance.value(),
+            'design_measure_clearance_distance_pedestrian': self.doubleSpinBox_design_measure_clearance_distance_pedestrian.value(),
+            'design_measure_clearance_distance_pedestrian_gate_arm_stop': self.doubleSpinBox_design_measure_clearance_distance_pedestrian_gate_arm_stop.value(),
+            'design_measure_clearance_distance_vehicle': self.doubleSpinBox_design_measure_clearance_distance_vehicle.value(),
+            'design_road_max_approach_grade_within_s': self.doubleSpinBox_design_road_max_approach_grade_within_s.value(),
+            'design_observe_k_factor_road_surface_condition': self.comboBox_design_observe_k_factor_road_surface_condition.currentText(),
+            'design_observe_k_factor_crossing_surface_condition': self.comboBox_design_observe_k_factor_crossing_surface_condition.currentText(),
+            'design_observe_k_factor_superelevation': self.comboBox_design_observe_k_factor_superelevation.currentText(),
+            'design_observe_k_factor_crossing_nearby_intersection': self.comboBox_design_observe_k_factor_crossing_nearby_intersection.currentText(),
+            'design_observe_k_factor_vehicle_restrictions': self.comboBox_design_observe_k_factor_vehicle_restrictions.currentText(),
+            'design_observe_k_factor_pavement_marking_condition': self.comboBox_design_observe_k_factor_pavement_marking_condition.currentText(),
+            'design_observe_field_acceleration_times_exceed_td': self.comboBox_design_observe_field_acceleration_times_exceed_td.currentText(),
+            'design_road_design_vehicle_type': self.comboBox_design_road_design_vehicle_type.currentText(),
+            'design_calculate_adjacent_track_clearance_time': self.label_design_calculate_adjacent_track_clearance_time.text(),
+            'design_calculate_clearance_time_pedestrian_design_check': self.label_design_calculate_clearance_time_pedestrian_design_check.text(),
+            'design_calculate_clearance_time_vehicle_design_check': self.label_design_calculate_clearance_time_vehicle_design_check.text(),
+            'design_calculate_clearance_time_gate_arm_pedestrian': self.label_design_calculate_clearance_time_gate_arm_pedestrian.text(),
+            'design_calculate_clearance_time_gate_arm_vehicle_ssd': self.label_design_calculate_clearance_time_gate_arm_vehicle_ssd.text(),
+            'design_calculate_clearance_time_gate_arm_vehicle_stop': self.label_design_calculate_clearance_time_gate_arm_vehicle_stop.text(),
+            'design_calculate_clearance_time_gate_arm_vehicle_recommended': self.label_design_calculate_clearance_time_gate_arm_vehicle_recommended.text(),
+            'design_calculate_vehicle_departure_time': self.label_design_calculate_vehicle_departure_time.text(),
+            'design_calculate_vehicle_departure_time_grade_adjusted': self.label_design_calculate_vehicle_departure_time_grade_adjusted.text(),
+            'design_calculate_vehicle_departure_time_gate_arm_clearance': self.label_design_calculate_vehicle_departure_time_gate_arm_clearance.text(),
+            'design_calculate_vehicle_departure_time_gate_arm_clearance_grade_adjusted': self.label_design_calculate_vehicle_departure_time_gate_arm_clearance_grade_adjusted.text(),
+            'design_calculate_vehicle_travel_distance': self.label_design_calculate_vehicle_travel_distance.texxt(),
+            'design_input_reaction_time': self.label_design_input_reaction_time.text(),
+            'design_lookup_design_vehicle_class': self.label_design_lookup_design_vehicle_class.text(),
+            'design_lookup_design_vehicle_length': self.label_design_lookup_design_vehicle_length.text(),
+            'design_lookup_grade_adjustment_factor': self.label_design_lookup_grade_adjustment_factor.text(),
+            'design_measure_clearance_distance_gate_arm_ssd': self.label_design_measure_clearance_distance_gate_arm_ssd.text(),
+            'design_measure_clearance_distance_gate_arm_stop': self.label_design_measure_clearance_distance_gate_arm_stop.text(),
+            'location_of_crossing_comments': self.textEdit_location_of_crossing_comments.toPlainText(),
+            'location_of_crossing_nearest_intersection_other_n_or_e_approach': self.doubleSpinBox_location_of_crossing_nearest_intersection_other_n_or_e_approach.value(),
+            'location_of_crossing_nearest_intersection_other_s_of_w_approach': self.doubleSpinBox_location_of_crossing_nearest_intersection_other_s_of_w_approach.value(),
+            'location_of_crossing_nearest_intersection_signalized_n_or_e_approach': self.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach.value(),
+            'location_of_crossing_nearest_intersection_signalized_s_or_w_approach': self.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach.value(),
+            'location_of_crossing_nearest_intersection_stop_n_or_e_approach': self.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach.value(),
+            'location_of_crossing_nearest_intersection_stop_s_or_w_approach': self.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach.value(),
+            'location_of_crossing_observe_nearby_pedestrian_crosswalk': self.comboBox_location_of_crossing_observe_nearby_pedestrian_crosswalk.currentText(),
+            'location_of_crossing_queue_condition': self.comboBox_location_of_crossing_queue_condition.currentText(),
+            'location_of_crossing_visibility_of_warning_lights': self.comboBox_location_of_crossing_visibility_of_warning_lights.currentText(),
+            'crossing_surface_comments': self.textEdit_crossing_surface_comments.toPlainText(),
+            'crossing_surface_measure_crossing_surface_extension_n_or_e_approach': self.doubleSpinBox_crossing_surface_measure_crossing_surface_extension_n_or_e_approach.value(),
+            'crossing_surface_measure_crossing_surface_extension_s_or_w_approach': self.doubleSpinBox_crossing_surface_measure_crossing_surface_extension_s_or_w_approach.value(),
+            'crossing_surface_measure_crossing_surface_width': self.doubleSpinBox_crossing_surface_measure_crossing_surface_width.value(),
+            'crossing_surface_measure_distance_between_signal_mast_and_sidewalk_n_or_e_approach': self.doubleSpinBox_crossing_surface_measure_distance_between_signal_mast_and_sidewalk_n_or_e_approach.value(),
+            'crossing_surface_measure_distance_between_signal_mast_and_sidewalk_s_or_w_approach': self.doubleSpinBox_crossing_surface_measure_distance_between_signal_mast_and_sidewalk_s_or_w_approach.value(),
+            'crossing_surface_measure_distance_between_travel_lane_and_sidewalk_n_or_e_approach': self.doubleSpinBox_crossing_surface_measure_distance_between_travel_lane_and_sidewalk_n_or_e_approach.value(),
+            'crossing_surface_measure_distance_between_travel_lane_and_sidewalk_s_or_w_approach': self.doubleSpinBox_crossing_surface_measure_distance_between_travel_lane_and_sidewalk_s_or_w_approach.value(),
+            'crossing_surface_measure_elevation_top_of_rail_above_road_surface': self.doubleSpinBox_crossing_surface_measure_elevation_top_of_rail_above_road_surface.value(),
+            'crossing_surface_measure_elevation_top_of_rail_below_road_surface': self.doubleSpinBox_crossing_surface_measure_elevation_top_of_rail_below_road_surface.value(),
+            'crossing_surface_measure_flangeway_depth': self.doubleSpinBox_crossing_surface_measure_flangeway_depth.value(),
+            'crossing_surface_measure_flangeway_width': self.doubleSpinBox_crossing_surface_measure_flangeway_width.value(),
+            'crossing_surface_measure_road_surface_median_width': self.doubleSpinBox_crossing_surface_measure_road_surface_median_width.value(),
+            'crossing_surface_measure_road_surface_shoulder_n_or_e_approach': self.doubleSpinBox_crossing_surface_measure_road_surface_shoulder_n_or_e_approach.value(),
+            'crossing_surface_measure_road_surface_shoulder_s_or_w_approach': self.doubleSpinBox_crossing_surface_measure_road_surface_shoulder_s_or_w_approach.value(),
+            'crossing_surface_measure_road_surface_travel_lanes_width_n_or_e_approach': self.doubleSpinBox_crossing_surface_measure_road_surface_travel_lanes_width_n_or_e_approach.value(),
+            'crossing_surface_measure_road_surface_travel_lanes_width_s_or_w_approach': self.doubleSpinBox_crossing_surface_measure_road_surface_travel_lanes_width_s_or_w_approach.value(),
+            'crossing_surface_measure_side_grinding_depth': self.doubleSpinBox_crossing_surface_measure_side_grinding_depth.value(),
+            'crossing_surface_measure_side_grinding_width': self.doubleSpinBox_crossing_surface_measure_side_grinding_width.value(),
+            'crossing_surface_measure_sidewalk_extension_n_or_e_approach': self.doubleSpinBox_crossing_surface_measure_sidewalk_extension_n_or_e_approach.value(),
+            'crossing_surface_measure_sidewalk_extension_s_or_w_approach': self.doubleSpinBox_crossing_surface_measure_sidewalk_extension_s_or_w_approach.value(),
+            'crossing_surface_measure_sidewalk_width_n_or_e_approach': self.doubleSpinBox_crossing_surface_measure_sidewalk_width_n_or_e_approach.value(),
+            'crossing_surface_measure_sidewalk_width_s_or_w_approach': self.doubleSpinBox_crossing_surface_measure_sidewalk_width_s_or_w_approach.value(),
+            'crossing_surface_observe_crossing_smoothness': self.comboBox_crossing_surface_observe_crossing_smoothness.currentText(),
+            'crossing_surface_observe_crossing_surface_condition': self.comboBox_crossing_surface_observe_crossing_surface_condition.currentText(),
+            'crossing_surface_observe_material': self.comboBox_crossing_surface_observe_material.currentText(),
+            'crossing_surface_observe_road_approach_surface_condition': self.comboBox_crossing_surface_observe_road_approach_surface_condition.currentText().currentText(),
+            'crossing_surface_observe_road_approach_surface_type': self.comboBox_crossing_surface_observe_road_approach_surface_type.currentText(),
+            'road_geometry_comments': self.textEdit_road_geometry_comments.toPlainText(),
+            'road_geometry_road_crossing_angle': self.spinBox_road_geometry_road_crossing_angle.value(),
+            'road_geometry_measure_railway_cross_slope': self.doubleSpinBox_road_geometry_measure_railway_cross_slope.value(),
+            'road_geometry_measure_slope_between_8m_and_18m_nearest_rail_n_or_e_approach': self.doubleSpinBox_road_geometry_measure_slope_between_8m_and_18m_nearest_rail_n_or_e_approach.value(),
+            'road_geometry_measure_slope_between_8m_and_18m_nearest_rail_s_or_w_approach': self.doubleSpinBox_road_geometry_measure_slope_between_8m_and_18m_nearest_rail_s_or_w_approach.value(),
+            'road_geometry_measure_slope_within_5m_nearest_rail_at_sidewalk_n_or_e_approach': self.doubleSpinBox_road_geometry_measure_slope_within_5m_nearest_rail_at_sidewalk_n_or_e_approach.value(),
+            'road_geometry_measure_slope_within_5m_nearest_rail_at_sidewalk_s_or_w_approach': self.doubleSpinBox_road_geometry_measure_slope_within_5m_nearest_rail_at_sidewalk_s_or_w_approach.value(),
+            'road_geometry_measure_slope_within_8m_nearest_rail_n_or_e_approach': self.doubleSpinBox_road_geometry_measure_slope_within_8m_nearest_rail_n_or_e_approach.value(),
+            'road_geometry_measure_slope_within_8m_nearest_rail_s_or_w_approach': self.doubleSpinBox_road_geometry_measure_slope_within_8m_nearest_rail_s_or_w_approach.value(),
+            'road_geometry_rail_superelevation_rate': self.doubleSpinBox_road_geometry_rail_superelevation_rate.value(),
+            'road_geometry_road_general_approach_grade_n_or_e_approach': self.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.value(),
+            'road_geometry_road_general_approach_grade_s_or_w_approach': self.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.value(),
+            'road_geometry_observe_lane_width_crossing_vs_approach_n_or_e_approach': self.comboBox_road_geometry_observe_lane_width_crossing_vs_approach_n_or_e_approach.currentText(),
+            'road_geometry_observe_lane_width_crossing_vs_approach_s_or_w_approach': self.comboBox_road_geometry_observe_lane_width_crossing_vs_approach_s_or_w_approach.currentText(),
+            'road_geometry_observe_low_bed_truck_condition': self.comboBox_road_geometry_observe_low_bed_truck_condition.currentText(),
+            'road_geometry_observe_smooth_alignment_within_ssd_n_or_e_approach': self.comboBox_road_geometry_observe_smooth_alignment_within_ssd_n_or_e_approach.currentText(),
+            'road_geometry_observe_smooth_alignment_within_ssd_s_or_w_approach': self.comboBox_road_geometry_observe_smooth_alignment_within_ssd_s_or_w_approach.currentText(),
+            'road_geometry_rail_superelevation': self.comboBox_road_geometry_rail_superelevation.currentText(),
+            'road_geometry_lookup_gradient_difference': self.label_road_geometry_lookup_gradient_difference.text(),
+            'sightlines_comments': self.textEdit_sightlines_comments.toPlainText(),
+            'sightlines_measure_dssd_actual_n_or_e_approach_left': self.doubleSpinBox_sightlines_measure_dssd_actual_n_or_e_approach_left.value(),
+            'sightlines_measure_dssd_actual_n_or_e_approach_right': self.doubleSpinBox_sightlines_measure_dssd_actual_n_or_e_approach_right.value(),
+            'sightlines_measure_dssd_actual_s_or_w_approach_left': self.doubleSpinBox_sightlines_measure_dssd_actual_s_or_w_approach_left.value(),
+            'sightlines_measure_dssd_actual_s_or_w_approach_right': self.doubleSpinBox_sightlines_measure_dssd_actual_s_or_w_approach_right.value(),
+            'sightlines_measure_dstopped_actual_n_or_e_approach_driver_left': self.doubleSpinBox_sightlines_measure_dstopped_actual_n_or_e_approach_driver_left.value(),
+            'sightlines_measure_dstopped_actual_n_or_e_approach_driver_right': self.doubleSpinBox_sightlines_measure_dstopped_actual_n_or_e_approach_driver_right.value(),
+            'sightlines_measure_dstopped_actual_s_or_w_approach_driver_left': self.doubleSpinBox_sightlines_measure_dstopped_actual_s_or_w_approach_driver_left.value(),
+            'sightlines_measure_dstopped_actual_s_or_w_approach_driver_right': self.doubleSpinBox_sightlines_measure_dstopped_actual_s_or_w_approach_driver_right.value(),
+            'sightlines_measure_ssd_actual_n_or_e_approach': self.doubleSpinBox_sightlines_measure_ssd_actual_n_or_e_approach.value(),
+            'sightlines_measure_ssd_actual_s_or_w_approach': self.doubleSpinBox_sightlines_measure_ssd_actual_s_or_w_approach.value(),
+            'sightlines_observe_sightline_obstructions': self.comboBox_sightlines_observe_sightline_obstructions.currentText(),
+            'sightlines_calculate_dssd_vehicle_min_ft': self.label_sightlines_calculate_dssd_vehicle_min_ft.text(),
+            'sightlines_calculate_dssd_vehicle_min_m': self.label_sightlines_calculate_dssd_vehicle_min_m.text(),
+            'sightlines_calculate_dstopped_pedestrian_min_ft': self.label_sightlines_calculate_dstopped_pedestrian_min_ft.text(),
+            'sightlines_calculate_dstopped_pedestrian_min_m': self.label_sightlines_calculate_dstopped_pedestrian_min_m.text(),
+            'sightlines_calculate_dstopped_vehicle_min_ft': self.label_sightlines_calculate_dstopped_vehicle_min_ft.text(),
+            'sightlines_calculate_dstopped_vehicle_min_m': self.label_sightlines_calculate_dstopped_vehicle_min_m.text(),
+            'sightlines_lookup_existing_active_crossing': self.label_sightlines_lookup_existing_active_crossing.text(),
+            'sightlines_lookup_existing_active_crossing_with_gates': self.label_sightlines_lookup_existing_active_crossing_with_gates.text(),
+            'sightlines_lookup_ssd_minimum_n_or_e_approach': self.label_sightlines_lookup_ssd_minimum_n_or_e_approach.text(),
+            'sightlines_lookup_ssd_minimum_s_or_w_approach': self.label_sightlines_lookup_ssd_minimum_s_or_w_approach.text(),
+            'signs_and_markings_rr_xing_ahead_n_or_e_approach_distance_from_rail': self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_distance_from_rail.value(),
+            'signs_and_markings_rr_xing_ahead_n_or_e_approach_distance_from_road': self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_distance_from_road.value(),
+            'signs_and_markings_rr_xing_ahead_n_or_e_approach_height': self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_height.value(),
+            'signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_rail': self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_rail.value(),
+            'signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_road': self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_road.value(),
+            'signs_and_markings_rr_xing_ahead_s_or_w_approach_height': self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_height.value(),
+            'signs_and_markings_stop_n_or_e_approach_height': self.doubleSpinBox_signs_and_markings_stop_n_or_e_approach_height.value(),
+            'signs_and_markings_stop_n_or_e_approach_location_from_rail': self.doubleSpinBox_signs_and_markings_stop_n_or_e_approach_location_from_rail.value(),
+            'signs_and_markings_stop_n_or_e_approach_location_from_road': self.doubleSpinBox_signs_and_markings_stop_n_or_e_approach_location_from_road.value(),
+            'signs_and_markings_stop_s_or_w_approach_height': self.doubleSpinBox_signs_and_markings_stop_s_or_w_approach_height.value(),
+            'signs_and_markings_stop_s_or_w_approach_location_from_rail': self.doubleSpinBox_signs_and_markings_stop_s_or_w_approach_location_from_rail.value(),
+            'signs_and_markings_stop_s_or_w_approach_location_from_road': self.doubleSpinBox_signs_and_markings_stop_s_or_w_approach_location_from_road.value(),
+            'signs_and_markings_stop_sign_ahead_n_or_e_approach_height': self.doubleSpinBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_height.value(),
+            'signs_and_markings_stop_sign_ahead_n_or_e_approach_location_from_rail': self.doubleSpinBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_location_from_rail.value(),
+            'signs_and_markings_stop_sign_ahead_n_or_e_approach_location_from_road': self.doubleSpinBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_location_from_road.value(),
+            'signs_and_markings_stop_sign_ahead_s_or_w_approach_height': self.doubleSpinBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_height.value(),
+            'signs_and_markings_stop_sign_ahead_s_or_w_approach_location_from_rail': self.doubleSpinBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_location_from_rail.value(),
+            'signs_and_markings_stop_sign_ahead_s_or_w_approach_location_from_road': self.doubleSpinBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_location_from_road.value(),
+            'signs_and_markings_advisory_speed_n_or_e_approach_present':self.comboBox_signs_and_markings_advisory_speed_n_or_e_approach_present.currentText(),
+            'signs_and_markings_advisory_speed_n_or_e_approach_with_wa_18_20':self.comboBox_signs_and_markings_advisory_speed_n_or_e_approach_with_wa_18_20.currentText(),
+            'signs_and_markings_advisory_speed_s_or_w_approach_present': self.comboBox_signs_and_markings_advisory_speed_s_or_w_approach_present.currentText(),
         }
-        self.changed.emit(data)
+        self.changed.emit(data_xing_inventory)
 
     def formWidgets(self):
         """
@@ -84,17 +282,15 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
                 
         # INSPECTION DETAILS
         #Group TextBoxes
-        self.textEdit_inspection_details_assessment_team = qtw.QTextEdit(textChanged=self.on_change)
+        self.textEdit_inspection_details_assessment_team = qtw.QTextEdit()
         
-        '''
         #Group DatePicker
-        self.datetimeEdit_inspection_details_date_assessment = qtw.QDatetimeEdit(
+        self.datetimeEdit_inspection_details_date_assessment = qtw.QDateTimeEdit(
             self,
             date=datetime.date.today(),
             calendarPopup=True,
-            displayFormat='yyyy-MM-dd'
+            displayFormat='yyyy-MM-dd HH:mm'
         )
-        '''
 
         #Group LineEdits
         self.lineEdit_inspection_details_crossing_location = qtw.QLineEdit()  
@@ -147,7 +343,7 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.textEdit_collision_history_comments = qtw.QTextEdit()
 
         #Group SpinBox
-        self.spinBox_collision_history_fatal_injury = qtw.QSpinBox()
+        self.spinBox_collision_history_fatal_injury = qtw.QSpinBox(valueChanged=self.on_change)
         self.spinBox_collision_history_fatal_injury.setRange(0, 999999)
         
         self.spinBox_collision_history_fatalities = qtw.QSpinBox() 
@@ -156,10 +352,10 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.spinBox_collision_history_personal_injuries = qtw.QSpinBox() 
         self.spinBox_collision_history_personal_injuries.setRange(0, 999999)
         
-        self.spinBox_collision_history_personal_injury = qtw.QSpinBox() 
+        self.spinBox_collision_history_personal_injury = qtw.QSpinBox(valueChanged=self.on_change) 
         self.spinBox_collision_history_personal_injury.setRange(0, 999999)
 
-        self.spinBox_collision_history_property_damage = qtw.QSpinBox()
+        self.spinBox_collision_history_property_damage = qtw.QSpinBox(valueChanged=self.on_change)
         self.spinBox_collision_history_property_damage.setRange(0, 999999)
 
         #Group Labels 
@@ -339,36 +535,36 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
 
         # LOCATION OF GRADE CROSSING (GCS SECTION 11)
         #Group TextEdits
-        self.textEdit_location_of_grade_crossing_comments = qtw.QTextEdit()
+        self.textEdit_location_of_crossing_comments = qtw.QTextEdit()
 
         #Group DoubleSpinBox
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_other_n_or_e_approach = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_other_n_or_e_approach.setRange(0, 999999)
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_other_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_other_n_or_e_approach.setRange(0, 999999)
 
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_other_s_of_w_approach = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_other_s_of_w_approach.setRange(0, 999999)
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_other_s_of_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_other_s_of_w_approach.setRange(0, 999999)
 
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.setRange(0, 999999)
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.setRange(0, 999999)
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.setRange(0, 999999)
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.setRange(0, 999999)
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach.setRange(0, 999999)
 
         #group ComboBoxes
-        self.comboBox_location_of_grade_crossing_observe_nearby_pedestrian_crosswalk = qtw.QComboBox()
-        self.comboBox_location_of_grade_crossing_observe_nearby_pedestrian_crosswalk.addItems(list_yes_no)
+        self.comboBox_location_of_crossing_observe_nearby_pedestrian_crosswalk = qtw.QComboBox()
+        self.comboBox_location_of_crossing_observe_nearby_pedestrian_crosswalk.addItems(list_yes_no)
 
-        self.comboBox_location_of_grade_crossing_queue_condition = qtw.QComboBox()
-        self.comboBox_location_of_grade_crossing_queue_condition.addItems(list_yes_no)
+        self.comboBox_location_of_crossing_queue_condition = qtw.QComboBox()
+        self.comboBox_location_of_crossing_queue_condition.addItems(list_yes_no)
 
-        self.comboBox_location_of_grade_crossing_visibility_of_warning_lights = qtw.QComboBox()
-        self.comboBox_location_of_grade_crossing_visibility_of_warning_lights.addItems(list_yes_no)
+        self.comboBox_location_of_crossing_visibility_of_warning_lights = qtw.QComboBox()
+        self.comboBox_location_of_crossing_visibility_of_warning_lights.addItems(list_yes_no)
         
         # GRADE CROSSING SURFACE (GCS SECTION 5)
         #Group TextEdits
@@ -379,7 +575,7 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.doubleSpinBox_crossing_surface_measure_crossing_surface_extension_n_or_e_approach.setRange(0, 999999)
         
         self.doubleSpinBox_crossing_surface_measure_crossing_surface_extension_s_or_w_approach = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_crossing_surface_measure_crossing_surface_extension_n_or_e_approach.setRange(0, 999999)
+        self.doubleSpinBox_crossing_surface_measure_crossing_surface_extension_s_or_w_approach.setRange(0, 999999)
 
         self.doubleSpinBox_crossing_surface_measure_crossing_surface_width = qtw.QDoubleSpinBox() 
         self.doubleSpinBox_crossing_surface_measure_crossing_surface_width.setRange(0, 999999)
@@ -574,31 +770,31 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         #Group TextEdits
         #DELETE self.textEdit_signs_and_markings_advisory_speed_comments = pass
         #DELETE self.textEdit_signs_and_markings_comments = pass
-        #DELETE self.textEdit_signs_and_markings_emergency_notification_comments = pass
+        #DELETE self.textEdit_signs_and_markings_ens_comments = pass
         #DELETE self.textEdit_signs_and_markings_number_of_tracks_comments = pass
-        #DELETE self.textEdit_signs_and_markings_railway_crossing_ahead_comments = pass
+        #DELETE self.textEdit_signs_and_markings_rr_xing_ahead_comments = pass
         #DELETE self.textEdit_signs_and_markings_railway_crossing_comments = pass
         #DELETE self.textEdit_signs_and_markings_stop_comments = pass
         #DELETE self.textEdit_signs_and_markings_stop_sign_ahead_comments = pass
 
         #Group DoubleSpinBox
-        self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_n_or_e_approach_distance_from_rail = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_n_or_e_approach_distance_from_rail.setRange(0, 999999)
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_distance_from_rail = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_distance_from_rail.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_n_or_e_approach_distance_from_road = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_n_or_e_approach_distance_from_road.setRange(0, 999999)
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_distance_from_road = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_distance_from_road.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_n_or_e_approach_height = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_n_or_e_approach_height.setRange(0, 999999)
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_height = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_height.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_s_or_w_approach_distance_from_rail = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_s_or_w_approach_distance_from_rail.setRange(0, 999999)
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_rail = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_rail.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_s_or_w_approach_distance_from_road = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_s_or_w_approach_distance_from_road.setRange(0, 999999)
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_road = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_road.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_s_or_w_approach_height = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_s_or_w_approach_height.setRange(0, 999999)
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_height = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_height.setRange(0, 999999)
 
         self.doubleSpinBox_signs_and_markings_stop_n_or_e_approach_height = qtw.QDoubleSpinBox() 
         self.doubleSpinBox_signs_and_markings_stop_n_or_e_approach_height.setRange(0, 999999)
@@ -652,29 +848,29 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.comboBox_signs_and_markings_dividing_lines_present = qtw.QComboBox()
         self.comboBox_signs_and_markings_dividing_lines_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_condition = qtw.QComboBox()
-        self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_condition.addItems(list_condition)
+        self.comboBox_signs_and_markings_ens_n_or_e_approach_condition = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_n_or_e_approach_condition.addItems(list_condition)
 
-        self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_legible = qtw.QComboBox()
-        self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_legible.addItems(list_yes_no_na)
+        self.comboBox_signs_and_markings_ens_n_or_e_approach_legible = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_n_or_e_approach_legible.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_orientation = qtw.QComboBox()
-        self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_orientation.addItems(list_yes_no_na)
+        self.comboBox_signs_and_markings_ens_n_or_e_approach_orientation = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_n_or_e_approach_orientation.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_present = qtw.QComboBox()
-        self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_present.addItems(list_yes_no)
+        self.comboBox_signs_and_markings_ens_n_or_e_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_n_or_e_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_emergency_notification_s_or_w_approach_condition = qtw.QComboBox()
-        self.comboBox_signs_and_markings_emergency_notification_s_or_w_approach_condition.addItems(list_condition)
+        self.comboBox_signs_and_markings_ens_s_or_w_approach_condition = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_s_or_w_approach_condition.addItems(list_condition)
 
-        self.comboBox_signs_and_markings_emergency_notification_s_or_w_approach_legible = qtw.QComboBox()
-        self.comboBox_signs_and_markings_emergency_notification_s_or_w_approach_legible.addItems(list_yes_no_na)
+        self.comboBox_signs_and_markings_ens_s_or_w_approach_legible = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_s_or_w_approach_legible.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_emergency_notification_s_or_w_approach_orientation = qtw.QComboBox()
-        self.comboBox_signs_and_markings_emergency_notification_s_or_w_approach_orientation.addItems(list_yes_no_na)
+        self.comboBox_signs_and_markings_ens_s_or_w_approach_orientation = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_s_or_w_approach_orientation.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_emergency_notification_s_or_w_approach_present = qtw.QComboBox()
-        self.comboBox_signs_and_markings_emergency_notification_s_or_w_approach_present.addItems(list_yes_no)
+        self.comboBox_signs_and_markings_ens_s_or_w_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_s_or_w_approach_present.addItems(list_yes_no)
 
         self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_1b = qtw.QComboBox()
         self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_1b.addItems(list_yes_no_na)
@@ -703,17 +899,17 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.comboBox_signs_and_markings_posted_speed_s_or_w_approach_present = qtw.QComboBox()
         self.comboBox_signs_and_markings_posted_speed_s_or_w_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_railway_crossing_ahead_n_or_e_approach_orientation = qtw.QComboBox()
-        self.comboBox_signs_and_markings_railway_crossing_ahead_n_or_e_approach_orientation.addItems(list_yes_no_na)
+        self.comboBox_signs_and_markings_rr_xing_ahead_or_e_approach_orientation = qtw.QComboBox()
+        self.comboBox_signs_and_markings_rr_xing_ahead_or_e_approach_orientation.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_railway_crossing_ahead_n_or_e_approach_present = qtw.QComboBox()
-        self.comboBox_signs_and_markings_railway_crossing_ahead_n_or_e_approach_present.addItems(list_yes_no)
+        self.comboBox_signs_and_markings_rr_xing_ahead_or_e_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_rr_xing_ahead_or_e_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_railway_crossing_ahead_s_or_w_approach_orientation = qtw.QComboBox()
-        self.comboBox_signs_and_markings_railway_crossing_ahead_s_or_w_approach_orientation.addItems(list_yes_no_na)
+        self.comboBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_orientation = qtw.QComboBox()
+        self.comboBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_orientation.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_railway_crossing_ahead_s_or_w_approach_present = qtw.QComboBox()
-        self.comboBox_signs_and_markings_railway_crossing_ahead_s_or_w_approach_present.addItems(list_yes_no)
+        self.comboBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_present.addItems(list_yes_no)
 
         self.comboBox_signs_and_markings_railway_crossing_n_or_e_approach_per_fig_8_1a = qtw.QComboBox()
         self.comboBox_signs_and_markings_railway_crossing_n_or_e_approach_per_fig_8_1a.addItems(list_yes_no)
@@ -1215,7 +1411,7 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         toolbox.setStyleSheet(styleSheet)
         
         # layout container widgets - INSPECTION DETAILS
-        #TODO form_layout_inspection_details.addRow('Date of Assessment:', self.label_inspection_details_date_assessment)
+        form_layout_inspection_details.addRow('Date of Assessment:', self.datetimeEdit_inspection_details_date_assessment)
         form_layout_inspection_details.addRow('Assessment Team Members & Affiliations:', self.textEdit_inspection_details_assessment_team)
         form_layout_inspection_details.addRow('Reason for Assessment:', self.comboBox_inspection_details_reason_for_assessment)
         form_layout_inspection_details.addRow('Railway Authority:', self.comboBox_inspection_details_railway_authority)
@@ -1335,18 +1531,18 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
 
         # layout container widgets - LOCATION OF GRADE CROSSING (GCS SECTION 11)
         form_layout_location_of_crossing.addRow(qtw.QLabel('D (Intersection with Stop Sign)'))
-        form_layout_location_of_crossing.addRow('N or E Road Approach (m):', self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach)
-        form_layout_location_of_crossing.addRow('S or W Road Approach (m):', self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach)
+        form_layout_location_of_crossing.addRow('N or E Road Approach (m):', self.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach)
+        form_layout_location_of_crossing.addRow('S or W Road Approach (m):', self.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach)
         form_layout_location_of_crossing.addRow(qtw.QLabel('D (Signalized Intersection)'))
-        form_layout_location_of_crossing.addRow('N or E Road Approach (m):', self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach)
-        form_layout_location_of_crossing.addRow('S or W Road Approach (m):', self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach)
+        form_layout_location_of_crossing.addRow('N or E Road Approach (m):', self.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach)
+        form_layout_location_of_crossing.addRow('S or W Road Approach (m):', self.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach)
         form_layout_location_of_crossing.addRow(qtw.QLabel('D (Other Intersection / Driveway / Crosswalk)'))
-        form_layout_location_of_crossing.addRow('N or E Road Approach (m):', self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_other_n_or_e_approach)
-        form_layout_location_of_crossing.addRow('S or W Road Approach (m):', self.doubleSpinBox_location_of_grade_crossing_nearest_intersection_other_s_of_w_approach)        
-        form_layout_location_of_crossing.addRow('Is D insufficient such that road vehicles might queue onto the tracks?:', self.comboBox_location_of_grade_crossing_queue_condition)
-        form_layout_location_of_crossing.addRow('Is D insufficient such that road vehicles turning from a side street might not see warning devices for the crossing?:', self.comboBox_location_of_grade_crossing_visibility_of_warning_lights)
-        form_layout_location_of_crossing.addRow('Are there pedestrian crossings on either road approach that could cause vehicles to queue back to the tracks?:', self.comboBox_location_of_grade_crossing_observe_nearby_pedestrian_crosswalk)
-        form_layout_location_of_crossing.addRow('Location of Grade Crossing Comments:', self.textEdit_location_of_grade_crossing_comments)
+        form_layout_location_of_crossing.addRow('N or E Road Approach (m):', self.doubleSpinBox_location_of_crossing_nearest_intersection_other_n_or_e_approach)
+        form_layout_location_of_crossing.addRow('S or W Road Approach (m):', self.doubleSpinBox_location_of_crossing_nearest_intersection_other_s_of_w_approach)        
+        form_layout_location_of_crossing.addRow('Is D insufficient such that road vehicles might queue onto the tracks?:', self.comboBox_location_of_crossing_queue_condition)
+        form_layout_location_of_crossing.addRow('Is D insufficient such that road vehicles turning from a side street might not see warning devices for the crossing?:', self.comboBox_location_of_crossing_visibility_of_warning_lights)
+        form_layout_location_of_crossing.addRow('Are there pedestrian crossings on either road approach that could cause vehicles to queue back to the tracks?:', self.comboBox_location_of_crossing_observe_nearby_pedestrian_crosswalk)
+        form_layout_location_of_crossing.addRow('Location of Grade Crossing Comments:', self.textEdit_location_of_crossing_comments)
 
         # layout container widgets - GRADE CROSSING SURFACE (GCS SECTION 5)
         form_layout_crossing_surface.addRow('Is the crossing smooth enough to allow road vehicles, pedestrians, cyclists, and other road users to cross at their normal speed without consequence? Comments below.', self.comboBox_crossing_surface_observe_crossing_smoothness)
@@ -1452,15 +1648,15 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_advisory_speed_s_or_w_approach_with_wa_18_20)
         #DELETE form_layout_signs_and_pavement_markings.addRow('', self.label_signs_and_markings_comments)
         form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_dividing_lines_present)
-        #DELETE form_layout_signs_and_pavement_markings.addRow('', self.label_signs_and_markings_emergency_notification_comments
-        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_condition)
-        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_legible)
-        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_orientation)
-        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_emergency_notification_n_or_e_approach_present)
-        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_emergency_notification_s_or_w_approach_condition)
-        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_emergency_notification_s_or_w_approach_legible)
-        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_emergency_notification_s_or_w_approach_orientation)
-        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_emergency_notification_s_or_w_approach_present)
+        #DELETE form_layout_signs_and_pavement_markings.addRow('', self.label_signs_and_markings_ens_comments
+        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_ens_n_or_e_approach_condition)
+        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_ens_n_or_e_approach_legible)
+        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_ens_n_or_e_approach_orientation)
+        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_ens_n_or_e_approach_present)
+        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_ens_s_or_w_approach_condition)
+        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_ens_s_or_w_approach_legible)
+        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_ens_s_or_w_approach_orientation)
+        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_ens_s_or_w_approach_present)
         #DELETE form_layout_signs_and_pavement_markings.addRow('', self.label_signs_and_markings_number_of_tracks_comments)
         form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_1b)
         form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_3c)
@@ -1471,17 +1667,17 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_per_mutcd)
         form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_posted_speed_n_or_e_approach_present)
         form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_posted_speed_s_or_w_approach_present)
-        #DELETE form_layout_signs_and_pavement_markings.addRow('', self.label_signs_and_markings_railway_crossing_ahead_comments)
-        form_layout_signs_and_pavement_markings.addRow('', self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_n_or_e_approach_distance_from_rail)
-        form_layout_signs_and_pavement_markings.addRow('', self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_n_or_e_approach_distance_from_road)
-        form_layout_signs_and_pavement_markings.addRow('', self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_n_or_e_approach_height)
-        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_railway_crossing_ahead_n_or_e_approach_orientation)
-        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_railway_crossing_ahead_n_or_e_approach_present)
-        form_layout_signs_and_pavement_markings.addRow('', self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_s_or_w_approach_distance_from_rail)
-        form_layout_signs_and_pavement_markings.addRow('', self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_s_or_w_approach_distance_from_road)
-        form_layout_signs_and_pavement_markings.addRow('', self.doubleSpinBox_signs_and_markings_railway_crossing_ahead_s_or_w_approach_height)
-        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_railway_crossing_ahead_s_or_w_approach_orientation)
-        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_railway_crossing_ahead_s_or_w_approach_present)
+        #DELETE form_layout_signs_and_pavement_markings.addRow('', self.label_signs_and_markings_rr_xing_ahead_comments)
+        form_layout_signs_and_pavement_markings.addRow('', self.doubleSpinBox_signs_and_markings_rr_xing_ahead_or_e_approach_distance_from_rail)
+        form_layout_signs_and_pavement_markings.addRow('', self.doubleSpinBox_signs_and_markings_rr_xing_ahead_or_e_approach_distance_from_road)
+        form_layout_signs_and_pavement_markings.addRow('', self.doubleSpinBox_signs_and_markings_rr_xing_ahead_or_e_approach_height)
+        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_rr_xing_ahead_or_e_approach_orientation)
+        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_rr_xing_ahead_or_e_approach_present)
+        form_layout_signs_and_pavement_markings.addRow('', self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_rail)
+        form_layout_signs_and_pavement_markings.addRow('', self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_road)
+        form_layout_signs_and_pavement_markings.addRow('', self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_height)
+        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_orientation)
+        form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_present)
         #DELETE form_layout_signs_and_pavement_markings.addRow('', self.label_signs_and_markings_railway_crossing_comments)
         form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_railway_crossing_n_or_e_approach_per_fig_8_1a)
         form_layout_signs_and_pavement_markings.addRow('', self.comboBox_signs_and_markings_railway_crossing_n_or_e_approach_present)

@@ -20,7 +20,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         collision_history_fatal_injury = self.view.spinBox_collision_history_fatal_injury.value()
         collision_history_personal_injury = self.view.spinBox_collision_history_personal_injury.value()
         collision_history_property_damage = self.view.spinBox_collision_history_property_damage.value()
-        
+        print(data)
         result = sum([collision_history_fatal_injury, collision_history_personal_injury, collision_history_property_damage])
         self.view.label_collision_history_total_5_year_period.setNum(result)
         return result
