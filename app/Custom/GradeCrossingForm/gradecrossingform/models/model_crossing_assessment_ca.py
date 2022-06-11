@@ -1,4 +1,3 @@
-from msilib import data_xing_inventorysizemask
 import sys
 import datetime
 import math
