@@ -378,7 +378,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     #Calculate design_lookup_design_vehicle_class
     def design_lookup_design_vehicle_class(self, data_xing_inventory):
         design_road_design_vehicle_type = self.view.comboBox_design_road_design_vehicle_type.currentText()
-        df_table_4_1_general_vehicles = pd.read_csv(r'resources\\railway_data_xing_inventory\\track_and_roadway\\custom\\table_4_1_general_vehicles.csv')
+        df_table_4_1_general_vehicles = pd.read_csv(r'resources\\railway_data\\track_and_roadway\\custom\\table_4_1_general_vehicles.csv')
 
         if design_road_design_vehicle_type == '':
             result = 'No Value'
@@ -391,7 +391,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     #Calculate design_lookup_design_vehicle_length
     def design_lookup_design_vehicle_length(self, data_xing_inventory):
         design_road_design_vehicle_type = self.view.comboBox_design_road_design_vehicle_type.currentText()
-        df_table_4_1_general_vehicles = pd.read_csv(r'resources\\railway_data_xing_inventory\\track_and_roadway\\custom\\table_4_1_general_vehicles.csv')
+        df_table_4_1_general_vehicles = pd.read_csv(r'resources\\railway_data\\track_and_roadway\\custom\\table_4_1_general_vehicles.csv')
         
         if design_road_design_vehicle_type == '':
             result = 'No Value'
@@ -408,7 +408,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     def design_lookup_grade_adjustment_factor(self, data_xing_inventory):
         design_road_max_approach_grade_within_s = self.view.doubleSpinBox_design_road_max_approach_grade_within_s.value()
         design_lookup_design_vehicle_class = self.design_lookup_design_vehicle_class(data_xing_inventory)
-        df_table_4_6_ratio_of_acceleration_times_on_road_grades = pd.read_csv(r'resources\\railway_data_xing_inventory\\track_and_roadway\\custom\\table_4_6_ratio_of_acceleration_times_on_road_grades.csv')
+        df_table_4_6_ratio_of_acceleration_times_on_road_grades = pd.read_csv(r'resources\\railway_data\\track_and_roadway\\custom\\table_4_6_ratio_of_acceleration_times_on_road_grades.csv')
 
         if design_lookup_design_vehicle_class == 'No Value':
             result = 'No Value'
@@ -437,7 +437,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
     #Calculate road_geometry_lookup_gradient_difference
     def road_geometry_lookup_gradient_difference(self, data_xing_inventory):
         general_info_road_classification = self.view.comboBox_general_info_road_classification.currentText()
-        table_6_1_difference_in_gradient = pd.read_csv(r'resources\\railway_data_xing_inventory\\track_and_roadway\\custom\\table_6_1_difference_in_gradient.csv')
+        table_6_1_difference_in_gradient = pd.read_csv(r'resources\\railway_data\\track_and_roadway\\custom\\table_6_1_difference_in_gradient.csv')
 
         if general_info_road_classification == '':
             result = 'No Value'
@@ -590,7 +590,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         general_info_road_speed_design = self.view.spinBox_general_info_road_speed_design.value()
         road_geometry_road_general_approach_grade_n_or_e_approach = self.view.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.value()
         design_lookup_design_vehicle_class = self.design_lookup_design_vehicle_class(data_xing_inventory)
-        df_table_4_5_SSD_m_passenger_car_class = pd.read_csv(r'resources\\railway_data_xing_inventory\\track_and_roadway\\custom\\table_4_5_SSD_m_passenger_car_class.csv')
+        df_table_4_5_SSD_m_passenger_car_class = pd.read_csv(r'resources\\railway_data\\track_and_roadway\\custom\\table_4_5_SSD_m_passenger_car_class.csv')
 
         road_geometry_road_general_approach_grade_n_or_e_approach = round(road_geometry_road_general_approach_grade_n_or_e_approach/100.0, 0)
 
@@ -645,7 +645,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         general_info_road_speed_design = self.view.spinBox_general_info_road_speed_design.value()
         road_geometry_road_general_approach_grade_s_or_w_approach = self.view.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.value()
         design_lookup_design_vehicle_class = self.design_lookup_design_vehicle_class(data_xing_inventory)
-        df_table_4_5_SSD_m_passenger_car_class = pd.read_csv(r'resources\\railway_data_xing_inventory\\track_and_roadway\\custom\\table_4_5_SSD_m_passenger_car_class.csv')
+        df_table_4_5_SSD_m_passenger_car_class = pd.read_csv(r'resources\\railway_data\\track_and_roadway\\custom\\table_4_5_SSD_m_passenger_car_class.csv')
 
         road_geometry_road_general_approach_grade_s_or_w_approach = round(road_geometry_road_general_approach_grade_s_or_w_approach/100.0, 0)
 

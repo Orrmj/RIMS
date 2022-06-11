@@ -374,6 +374,33 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
             'aawd_warrant_gcr_observe_environmental_condition': self.comboBox_aawd_warrant_gcr_observe_environmental_condition.currentText(),
             'aawd_warrant_gcr_observe_sightline_obstruction': self.comboBox_aawd_warrant_gcr_observe_sightline_obstruction.currentText(),
             'aawd_warrant_mutcd_lookup_significant_road_downgrade': self.comboBox_aawd_warrant_mutcd_lookup_significant_road_downgrade,
+            'aawd_calculate_advance_activation_time_design_n_or_e_approach': self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach.text(),
+            'aawd_calculate_advance_activation_time_design_s_or_w_approach': self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach.text(),
+            'aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended': self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended.text(),
+            'aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended': self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended.text(),
+            'aawd_warrant_gcr_lookup_road_classification': self.label_aawd_warrant_gcr_lookup_road_classification.text(),
+            'aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr': self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr.text(),
+            'preemption_of_traffic_signals_comments': self.textEdit_preemption_of_traffic_signals_comments.toPlainText(),
+            'preemption_of_traffic_signals_road_preemption_warning_time_actual': self.spinBox_preemption_of_traffic_signals_road_preemption_warning_time_actual.value(),
+            'preemption_of_traffic_signals_road_preemption_warning_time_design': self.spinBox_preemption_of_traffic_signals_road_preemption_warning_time_design.value(),
+            'preemption_of_traffic_signals_observe_consideration_of_Longer_vehicles': self.comboBox_preemption_of_traffic_signals_observe_consideration_of_Longer_vehicles.currentText(),
+            'preemption_of_traffic_signals_observe_known_queuing_issues': self.comboBox_preemption_of_traffic_signals_observe_known_queuing_issues.currentText(),
+            'preemption_of_traffic_signals_observe_pedestrian_accommodation': self.comboBox_preemption_of_traffic_signals_observe_pedestrian_accommodation.currentText(),
+            'preemption_of_traffic_signals_observe_queuing_condition': self.comboBox_preemption_of_traffic_signals_observe_queuing_condition.currentText(),
+            'preemption_of_traffic_signals_observe_supplemental_signage': self.comboBox_preemption_of_traffic_signals_observe_supplemental_signage.currentText(),
+            'preemption_of_traffic_signals_observe_traffic_clearance_time_adequate': self.comboBox_preemption_of_traffic_signals_observe_traffic_clearance_time_adequate.currentText(),
+            'preemption_of_traffic_signals_observe_unintended_queuing_by_traffic_signals': self.comboBox_preemption_of_traffic_signals_observe_unintended_queuing_by_traffic_signals.currentText(),
+            'preemption_of_traffic_signals_road_or_rail_crossing_preemption_type': self.comboBox_preemption_of_traffic_signals_road_or_rail_crossing_preemption_type.currentText(),
+            'preemption_of_traffic_signals_lookup_proximity_condition': self.label_preemption_of_traffic_signals_lookup_proximity_condition.text(),
+            'areas_without_train_whistling_comments': self.textEdit_areas_without_train_whistling_comments.toPlainText(),
+            'areas_without_train_whistling_lookup_gcs_12_to_16': self.comboBox_areas_without_train_whistling_lookup_gcs_12_to_16.currentText(),
+            'areas_without_train_whistling_observe_for_stop_and_proceed': self.comboBox_areas_without_train_whistling_observe_for_stop_and_proceed.currentText(),
+            'areas_without_train_whistling_observe_trespassing_area': self.comboBox_areas_without_train_whistling_observe_trespassing_area.currentText(),
+            'areas_without_train_whistling_rail_anti_whistling_zone': self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone.currentText(),
+            'areas_without_train_whistling_rail_anti_whistling_zone_24_hrs': self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone_24_hrs.currentText(),
+            'areas_without_train_whistling_lookup_gcs_9_2': self.label_areas_without_train_whistling_lookup_gcs_9_2.text(),
+            'areas_without_train_whistling_lookup_table_d1_criteria': self.label_areas_without_train_whistling_lookup_table_d1_criteria.text(),
+            'areas_without_train_whistling_observe_table_D1': self.label_areas_without_train_whistling_observe_table_D1.text()
         }
         self.changed.emit(data_xing_inventory)
 
@@ -439,12 +466,12 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         )
 
         #Group LineEdits
-        self.lineEdit_inspection_details_crossing_location = qtw.QLineEdit()  
-        self.lineEdit_inspection_details_location_number = qtw.QLineEdit() 
-        self.lineEdit_inspection_details_municipality = qtw.QLineEdit() 
-        self.lineEdit_inspection_details_road_name = qtw.QLineEdit() 
-        self.lineEdit_inspection_details_road_number = qtw.QLineEdit() 
-        self.lineEdit_inspection_details_spur_name = qtw.QLineEdit() 
+        self.lineEdit_inspection_details_crossing_location = qtw.QLineEdit(textChanged=self.on_change)  
+        self.lineEdit_inspection_details_location_number = qtw.QLineEdit(textChanged=self.on_change) 
+        self.lineEdit_inspection_details_municipality = qtw.QLineEdit(textChanged=self.on_change) 
+        self.lineEdit_inspection_details_road_name = qtw.QLineEdit(textChanged=self.on_change) 
+        self.lineEdit_inspection_details_road_number = qtw.QLineEdit(textChanged=self.on_change) 
+        self.lineEdit_inspection_details_spur_name = qtw.QLineEdit(textChanged=self.on_change) 
 
         #Group DoubleSpinBox
         self.doubleSpinBox_inspection_details_latitude = qtw.QDoubleSpinBox ()
@@ -514,8 +541,8 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.textEdit_general_info_comments = qtw.QTextEdit()
 
         #Group LineEdits
-        self.lineEdit_general_info_observe_special_buildings = qtw.QLineEdit() 
-        self.lineEdit_general_info_road_other_users = qtw.QLineEdit() 
+        self.lineEdit_general_info_observe_special_buildings = qtw.QLineEdit(textChanged=self.on_change) 
+        self.lineEdit_general_info_road_other_users = qtw.QLineEdit(textChanged=self.on_change) 
 
         #Group SpinBox
         self.spinBox_general_info_rail_max_railway_operating_speed_freight = qtw.QSpinBox()
