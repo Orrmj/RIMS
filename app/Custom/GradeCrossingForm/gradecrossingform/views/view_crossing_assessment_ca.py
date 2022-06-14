@@ -10,7 +10,7 @@ from PyQt5 import QtCore as qtc
 
 class ViewCrossingAssessmentCA(qtw.QWidget):
     
-    changed = qtc.pyqtSignal(dict)
+    form_changed = qtc.pyqtSignal(dict)
 
     def __init__(self):
         super().__init__()
@@ -25,7 +25,7 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.formWidgets()
         self.show()
    
-    def on_change(self):
+    def on_form_change(self):
         data_xing_inventory = {
             'inspection_details_assessment_team': self.textEdit_inspection_details_assessment_team.toPlainText(),
             'inspection_details_date_assessment': self.datetimeEdit_inspection_details_date_assessment.dateTime(),
@@ -402,7 +402,7 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
             'areas_without_train_whistling_lookup_table_d1_criteria': self.label_areas_without_train_whistling_lookup_table_d1_criteria.text(),
             'areas_without_train_whistling_observe_table_D1': self.label_areas_without_train_whistling_observe_table_D1.text()
         }
-        self.changed.emit(data_xing_inventory)
+        self.form_changed.emit(data_xing_inventory)
 
     def formWidgets(self):
         """
@@ -466,49 +466,49 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         )
 
         #Group LineEdits
-        self.lineEdit_inspection_details_crossing_location = qtw.QLineEdit(textChanged=self.on_change)  
-        self.lineEdit_inspection_details_location_number = qtw.QLineEdit(textChanged=self.on_change) 
-        self.lineEdit_inspection_details_municipality = qtw.QLineEdit(textChanged=self.on_change) 
-        self.lineEdit_inspection_details_road_name = qtw.QLineEdit(textChanged=self.on_change) 
-        self.lineEdit_inspection_details_road_number = qtw.QLineEdit(textChanged=self.on_change) 
-        self.lineEdit_inspection_details_spur_name = qtw.QLineEdit(textChanged=self.on_change) 
+        self.lineEdit_inspection_details_crossing_location = qtw.QLineEdit(textChanged=self.on_form_change)  
+        self.lineEdit_inspection_details_location_number = qtw.QLineEdit(textChanged=self.on_form_change) 
+        self.lineEdit_inspection_details_municipality = qtw.QLineEdit(textChanged=self.on_form_change) 
+        self.lineEdit_inspection_details_road_name = qtw.QLineEdit(textChanged=self.on_form_change) 
+        self.lineEdit_inspection_details_road_number = qtw.QLineEdit(textChanged=self.on_form_change) 
+        self.lineEdit_inspection_details_spur_name = qtw.QLineEdit(textChanged=self.on_form_change) 
 
         #Group DoubleSpinBox
-        self.doubleSpinBox_inspection_details_latitude = qtw.QDoubleSpinBox ()
+        self.doubleSpinBox_inspection_details_latitude = qtw.QDoubleSpinBox(valueChanged=self.on_form_change)
         self.doubleSpinBox_inspection_details_latitude.setRange(-999999, 999999)
         
-        self.doubleSpinBox_inspection_details_longitude = qtw.QDoubleSpinBox ()
+        self.doubleSpinBox_inspection_details_longitude = qtw.QDoubleSpinBox(valueChanged=self.on_form_change)
         self.doubleSpinBox_inspection_details_longitude.setRange(-999999, 999999)
          
-        self.doubleSpinBox_inspection_details_spur_mile = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_inspection_details_spur_mile = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_inspection_details_spur_mile.setRange(0, 999999)
 
-        self.doubleSpinBox_inspection_details_subdivision_mile = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_inspection_details_subdivision_mile = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_inspection_details_subdivision_mile.setRange(0, 999999)
 
         #Group ComboBoxes
-        self.comboBox_inspection_details_gcws_type = qtw.QComboBox()
+        self.comboBox_inspection_details_gcws_type = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_inspection_details_gcws_type.addItems(list_inspection_details_gcws_type)
 
-        self.comboBox_inspection_details_grade_crossing_type = qtw.QComboBox()
+        self.comboBox_inspection_details_grade_crossing_type = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_inspection_details_grade_crossing_type.addItems(list_inspection_details_grade_crossing_type)
 
-        self.comboBox_inspection_details_province = qtw.QComboBox()
+        self.comboBox_inspection_details_province = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_inspection_details_province.addItems(list_inspection_details_province)
 
-        self.comboBox_inspection_details_railway_authority = qtw.QComboBox()
+        self.comboBox_inspection_details_railway_authority = qtw.QComboBox(currentTextChanged=self.on_form_change)
         #TODO create and add railway authority list 
 
-        self.comboBox_inspection_details_reason_for_assessment = qtw.QComboBox()
+        self.comboBox_inspection_details_reason_for_assessment = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_inspection_details_reason_for_assessment.addItems(list_inspection_details_reason_for_assessment)
         
-        self.comboBox_inspection_details_road_authority = qtw.QComboBox()
+        self.comboBox_inspection_details_road_authority = qtw.QComboBox(currentTextChanged=self.on_form_change)
         #TODO create and add road authority list 
 
-        self.comboBox_inspection_details_subdivision_name = qtw.QComboBox()
+        self.comboBox_inspection_details_subdivision_name = qtw.QComboBox(currentTextChanged=self.on_form_change)
         #TODO create and add subdivision list 
 
-        self.comboBox_inspection_details_track_type = qtw.QComboBox()
+        self.comboBox_inspection_details_track_type = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_inspection_details_track_type.addItems(list_inspection_details_track_type)
 
         # COLLISION HISTORY (5 YEAR PERIOD)
@@ -516,125 +516,125 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.textEdit_collision_history_comments = qtw.QTextEdit()
 
         #Group SpinBox
-        self.spinBox_collision_history_fatal_injury = qtw.QSpinBox(valueChanged=self.on_change)
+        self.spinBox_collision_history_fatal_injury = qtw.QSpinBox(valueChanged=self.on_form_change)
         self.spinBox_collision_history_fatal_injury.setRange(0, 999999)
         
-        self.spinBox_collision_history_fatalities = qtw.QSpinBox() 
+        self.spinBox_collision_history_fatalities = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_collision_history_fatalities.setRange(0, 999999)
 
-        self.spinBox_collision_history_personal_injuries = qtw.QSpinBox() 
+        self.spinBox_collision_history_personal_injuries = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_collision_history_personal_injuries.setRange(0, 999999)
         
-        self.spinBox_collision_history_personal_injury = qtw.QSpinBox(valueChanged=self.on_change) 
+        self.spinBox_collision_history_personal_injury = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_collision_history_personal_injury.setRange(0, 999999)
 
-        self.spinBox_collision_history_property_damage = qtw.QSpinBox(valueChanged=self.on_change)
+        self.spinBox_collision_history_property_damage = qtw.QSpinBox(valueChanged=self.on_form_change)
         self.spinBox_collision_history_property_damage.setRange(0, 999999)
 
         #Group Labels 
-        self.label_collision_history_total_5_year_period = qtw.QLabel('No Value')
-        self.label_collision_history_risk_index_initial = qtw.QLabel('No Value')
-        self.label_collision_history_risk_index_final = qtw.QLabel('No Value')
+        self.label_collision_history_total_5_year_period = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_collision_history_risk_index_initial = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_collision_history_risk_index_final = qtw.QLabel('No Value', textChanged=self.on_form_change)
 
         # GENERAL INFORMATION
         #Group TextEdits
         self.textEdit_general_info_comments = qtw.QTextEdit()
 
         #Group LineEdits
-        self.lineEdit_general_info_observe_special_buildings = qtw.QLineEdit(textChanged=self.on_change) 
-        self.lineEdit_general_info_road_other_users = qtw.QLineEdit(textChanged=self.on_change) 
+        self.lineEdit_general_info_observe_special_buildings = qtw.QLineEdit(textChanged=self.on_form_change) 
+        self.lineEdit_general_info_road_other_users = qtw.QLineEdit(textChanged=self.on_form_change) 
 
         #Group SpinBox
-        self.spinBox_general_info_rail_max_railway_operating_speed_freight = qtw.QSpinBox()
+        self.spinBox_general_info_rail_max_railway_operating_speed_freight = qtw.QSpinBox(valueChanged=self.on_form_change)
         self.spinBox_general_info_rail_max_railway_operating_speed_freight.setRange(0, 999999)
  
-        self.spinBox_general_info_rail_max_railway_operating_speed_passenger = qtw.QSpinBox() 
+        self.spinBox_general_info_rail_max_railway_operating_speed_passenger = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_general_info_rail_max_railway_operating_speed_passenger.setRange(0, 999999)
 
-        self.spinBox_general_info_rail_no_tracks_main = qtw.QSpinBox() 
+        self.spinBox_general_info_rail_no_tracks_main = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_general_info_rail_no_tracks_main.setRange(0, 999999)
 
-        self.spinBox_general_info_rail_no_tracks_other = qtw.QSpinBox()
+        self.spinBox_general_info_rail_no_tracks_other = qtw.QSpinBox(valueChanged=self.on_form_change)
         self.spinBox_general_info_rail_no_tracks_other.setRange(0, 999999)
 
-        self.spinBox_general_info_rail_no_trains_per_day_freight = qtw.QSpinBox() 
+        self.spinBox_general_info_rail_no_trains_per_day_freight = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_general_info_rail_no_trains_per_day_freight.setRange(0, 999999)
 
-        self.spinBox_general_info_rail_no_trains_per_day_passengers = qtw.QSpinBox() 
+        self.spinBox_general_info_rail_no_trains_per_day_passengers = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_general_info_rail_no_trains_per_day_passengers.setRange(0, 999999)
 
-        self.spinBox_general_info_road_aadt_current = qtw.QSpinBox()
+        self.spinBox_general_info_road_aadt_current = qtw.QSpinBox(valueChanged=self.on_form_change)
         self.spinBox_general_info_road_aadt_current.setRange(0, 999999)
 
-        self.spinBox_general_info_road_aadt_forecast = qtw.QSpinBox() 
+        self.spinBox_general_info_road_aadt_forecast = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_general_info_road_aadt_forecast.setRange(0, 999999)
 
-        self.spinBox_general_info_road_aadt_year_current = qtw.QSpinBox() 
+        self.spinBox_general_info_road_aadt_year_current = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_general_info_road_aadt_year_current.setRange(0, 999999)
 
-        self.spinBox_general_info_road_aadt_year_forecasted = qtw.QSpinBox() 
+        self.spinBox_general_info_road_aadt_year_forecasted = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_general_info_road_aadt_year_forecasted.setRange(0, 999999)
 
-        self.spinBox_general_info_road_cyclist_per_day = qtw.QSpinBox()
+        self.spinBox_general_info_road_cyclist_per_day = qtw.QSpinBox(valueChanged=self.on_form_change)
         self.spinBox_general_info_road_cyclist_per_day.setRange(0, 999999)
 
-        self.spinBox_general_info_road_no_traffic_lanes_bidirectional = qtw.QSpinBox() 
+        self.spinBox_general_info_road_no_traffic_lanes_bidirectional = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_general_info_road_no_traffic_lanes_bidirectional.setRange(0, 100)
 
-        self.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound = qtw.QSpinBox() 
+        self.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound.setRange(0, 100)
 
-        self.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound = qtw.QSpinBox()
+        self.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound = qtw.QSpinBox(valueChanged=self.on_form_change)
         self.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound.setRange(0, 100)
 
-        self.spinBox_general_info_road_other_users_daily_users = qtw.QSpinBox() 
+        self.spinBox_general_info_road_other_users_daily_users = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_general_info_road_other_users_daily_users.setRange(0, 999999)
 
-        self.spinBox_general_info_road_pedestrians_per_day = qtw.QSpinBox() 
+        self.spinBox_general_info_road_pedestrians_per_day = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_general_info_road_pedestrians_per_day.setRange(0, 999999)
 
-        self.spinBox_general_info_road_speed_design = qtw.QSpinBox() 
+        self.spinBox_general_info_road_speed_design = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_general_info_road_speed_design.setRange(0, 200)
 
-        self.spinBox_general_info_road_speed_posted = qtw.QSpinBox() 
+        self.spinBox_general_info_road_speed_posted = qtw.QSpinBox(valueChanged=self.on_form_change) 
         self.spinBox_general_info_road_speed_posted.setRange(0, 200)
 
         #Group ComboBoxes
-        self.comboBox_general_info_observe_roadway_illumination = qtw.QComboBox()
+        self.comboBox_general_info_observe_roadway_illumination = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_general_info_observe_roadway_illumination.addItems(list_yes_no)
 
-        self.comboBox_general_info_observe_surrounding_land_use = qtw.QComboBox()
+        self.comboBox_general_info_observe_surrounding_land_use = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_general_info_observe_surrounding_land_use.addItems(list_general_info_observe_surrounding_land_use)
 
-        self.comboBox_general_info_rail_train_switching = qtw.QComboBox()
+        self.comboBox_general_info_rail_train_switching = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_general_info_rail_train_switching.addItems(list_yes_no)
         
-        self.comboBox_general_info_road_assistive_pedestrian_devices = qtw.QComboBox()
+        self.comboBox_general_info_road_assistive_pedestrian_devices = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_general_info_road_assistive_pedestrian_devices.addItems(list_yes_no)
 
-        self.comboBox_general_info_road_classification = qtw.QComboBox()
+        self.comboBox_general_info_road_classification = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_general_info_road_classification.addItems(list_general_info_road_classification)
         
-        self.comboBox_general_info_road_dangerous_goods_route = qtw.QComboBox()
+        self.comboBox_general_info_road_dangerous_goods_route = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_general_info_road_dangerous_goods_route.addItems(list_yes_no)
 
-        self.comboBox_general_info_road_school_bus_route = qtw.QComboBox()
+        self.comboBox_general_info_road_school_bus_route = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_general_info_road_school_bus_route.addItems(list_yes_no)
 
-        self.comboBox_general_info_road_seasonal_volume_fluctuations = qtw.QComboBox()
+        self.comboBox_general_info_road_seasonal_volume_fluctuations = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_general_info_road_seasonal_volume_fluctuations.addItems(list_yes_no)
 
-        self.comboBox_general_info_road_sidewalks = qtw.QComboBox()
+        self.comboBox_general_info_road_sidewalks = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_general_info_road_sidewalks.addItems(list_yes_no)
 
-        self.comboBox_general_info_road_sidewalk_island_circuit = qtw.QComboBox()
+        self.comboBox_general_info_road_sidewalk_island_circuit = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_general_info_road_sidewalk_island_circuit.addItems(list_yes_no)
 
         #Group Labels
-        self.label_general_info_rail_no_tracks_total = qtw.QLabel('No Value')
-        self.label_general_info_rail_no_trains_per_day_total = qtw.QLabel('No Value')
-        self.label_general_info_rail_railway_design_speed = qtw.QLabel('No Value')
-        self.label_general_info_road_no_traffic_lanes_total = qtw.QLabel('No Value')
+        self.label_general_info_rail_no_tracks_total = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_general_info_rail_no_trains_per_day_total = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_general_info_rail_railway_design_speed = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_general_info_road_no_traffic_lanes_total = qtw.QLabel('No Value', textChanged=self.on_form_change)
 
         # DESIGN CONSIDERATIONS (GCS SECTION 10)
         #Group TextEdits
@@ -642,101 +642,100 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.textEdit_design_comments = qtw.QTextEdit()
 
         #Group DoubleSpinBox
-        self.doubleSpinBox_design_measure_adjacent_track_clearance_distance = qtw.QDoubleSpinBox()
+        self.doubleSpinBox_design_measure_adjacent_track_clearance_distance = qtw.QDoubleSpinBox(valueChanged=self.on_form_change)
         self.doubleSpinBox_design_measure_adjacent_track_clearance_distance.setRange(0, 999999)
 
-        self.doubleSpinBox_design_measure_adjacent_track_separation_distance = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_design_measure_adjacent_track_separation_distance = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_design_measure_adjacent_track_separation_distance.setRange(0, 999999)
 
-        self.doubleSpinBox_design_measure_clearance_distance_pedestrian = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_design_measure_clearance_distance_pedestrian = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_design_measure_clearance_distance_pedestrian.setRange(0, 999999)
 
-        self.doubleSpinBox_design_measure_clearance_distance_pedestrian_gate_arm_stop = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_design_measure_clearance_distance_pedestrian_gate_arm_stop = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_design_measure_clearance_distance_pedestrian.setRange(0, 999999)
 
-        self.doubleSpinBox_design_measure_clearance_distance_vehicle = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_design_measure_clearance_distance_vehicle = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_design_measure_clearance_distance_vehicle.setRange(0, 50)
 
-        self.doubleSpinBox_design_road_max_approach_grade_within_s = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_design_road_max_approach_grade_within_s = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_design_road_max_approach_grade_within_s.setRange(-999999, 999999)        
 
         #Group ComboBoxes
-        self.comboBox_design_observe_k_factor_road_surface_condition = qtw.QComboBox()
+        self.comboBox_design_observe_k_factor_road_surface_condition = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_design_observe_k_factor_road_surface_condition.addItems(list_yes_no)
 		
-        self.comboBox_design_observe_k_factor_crossing_surface_condition = qtw.QComboBox()		
+        self.comboBox_design_observe_k_factor_crossing_surface_condition = qtw.QComboBox(currentTextChanged=self.on_form_change)		
         self.comboBox_design_observe_k_factor_crossing_surface_condition.addItems(list_yes_no)
 
-        self.comboBox_design_observe_k_factor_superelevation = qtw.QComboBox()
+        self.comboBox_design_observe_k_factor_superelevation = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_design_observe_k_factor_superelevation.addItems(list_yes_no)
 
-        self.comboBox_design_observe_k_factor_crossing_nearby_intersection = qtw.QComboBox()
+        self.comboBox_design_observe_k_factor_crossing_nearby_intersection = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_design_observe_k_factor_crossing_nearby_intersection.addItems(list_yes_no)
         
-        self.comboBox_design_observe_k_factor_vehicle_restrictions = qtw.QComboBox()
+        self.comboBox_design_observe_k_factor_vehicle_restrictions = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_design_observe_k_factor_vehicle_restrictions.addItems(list_yes_no)
 
-        self.comboBox_design_observe_k_factor_pavement_marking_condition = qtw.QComboBox()
+        self.comboBox_design_observe_k_factor_pavement_marking_condition = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_design_observe_k_factor_pavement_marking_condition.addItems(list_yes_no)
         
-        self.comboBox_design_observe_field_acceleration_times_exceed_td = qtw.QComboBox()
+        self.comboBox_design_observe_field_acceleration_times_exceed_td = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_design_observe_field_acceleration_times_exceed_td.addItems(list_yes_no)
 
-        self.comboBox_design_road_design_vehicle_type = qtw.QComboBox()
+        self.comboBox_design_road_design_vehicle_type = qtw.QComboBox(addItems=list_design_road_design_vehicle_type)
         self.comboBox_design_road_design_vehicle_type.addItems(list_design_road_design_vehicle_type)
 
         #Group Labels
-        self.label_design_calculate_adjacent_track_clearance_time = qtw.QLabel('No Value')
-        self.label_design_calculate_clearance_time_pedestrian_design_check = qtw.QLabel('No Value')
-        self.label_design_calculate_clearance_time_vehicle_design_check = qtw.QLabel('No Value')
-        self.label_design_calculate_clearance_time_gate_arm_pedestrian = qtw.QLabel('No Value')
-        self.label_design_calculate_clearance_time_gate_arm_vehicle_ssd = qtw.QLabel('No Value')
-        self.label_design_calculate_clearance_time_gate_arm_vehicle_stop = qtw.QLabel('No Value')
-        self.label_design_calculate_clearance_time_gate_arm_vehicle_recommended = qtw.QLabel('No Value')
-        self.label_design_calculate_vehicle_departure_time = qtw.QLabel('No Value')
-        self.label_design_calculate_vehicle_departure_time_grade_adjusted = qtw.QLabel('No Value')
-        self.label_design_calculate_vehicle_departure_time_gate_arm_clearance = qtw.QLabel('No Value')
-        self.label_design_calculate_vehicle_departure_time_gate_arm_clearance_grade_adjusted = qtw.QLabel('No Value')
-        self.label_design_calculate_vehicle_travel_distance = qtw.QLabel('No Value')
-        self.label_design_input_reaction_time = qtw.QLabel()
-        self.label_design_input_reaction_time.setNum(2)
-        self.label_design_lookup_design_vehicle_class = qtw.QLabel('No Value')
-        self.label_design_lookup_design_vehicle_length = qtw.QLabel('No Value')
-        self.label_design_lookup_grade_adjustment_factor = qtw.QLabel('No Value')
-        self.label_design_measure_clearance_distance_gate_arm_ssd = qtw.QLabel('No Value')
-        self.label_design_measure_clearance_distance_gate_arm_stop = qtw.QLabel('No Value')
+        self.label_design_calculate_adjacent_track_clearance_time = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_calculate_clearance_time_pedestrian_design_check = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_calculate_clearance_time_vehicle_design_check = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_calculate_clearance_time_gate_arm_pedestrian = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_calculate_clearance_time_gate_arm_vehicle_ssd = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_calculate_clearance_time_gate_arm_vehicle_stop = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_calculate_clearance_time_gate_arm_vehicle_recommended = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_calculate_vehicle_departure_time = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_calculate_vehicle_departure_time_grade_adjusted = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_calculate_vehicle_departure_time_gate_arm_clearance = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_calculate_vehicle_departure_time_gate_arm_clearance_grade_adjusted = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_calculate_vehicle_travel_distance = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_input_reaction_time = qtw.QLabel(setNum=2)
+        self.label_design_lookup_design_vehicle_class = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_lookup_design_vehicle_length = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_lookup_grade_adjustment_factor = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_measure_clearance_distance_gate_arm_ssd = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_measure_clearance_distance_gate_arm_stop = qtw.QLabel('No Value', textChanged=self.on_form_change)
 
         # LOCATION OF GRADE CROSSING (GCS SECTION 11)
         #Group TextEdits
         self.textEdit_location_of_crossing_comments = qtw.QTextEdit()
 
         #Group DoubleSpinBox
-        self.doubleSpinBox_location_of_crossing_nearest_intersection_other_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_other_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_location_of_crossing_nearest_intersection_other_n_or_e_approach.setRange(0, 999999)
 
-        self.doubleSpinBox_location_of_crossing_nearest_intersection_other_s_of_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_other_s_of_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_location_of_crossing_nearest_intersection_other_s_of_w_approach.setRange(0, 999999)
 
-        self.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach.setRange(0, 999999)
 
         #group ComboBoxes
-        self.comboBox_location_of_crossing_observe_nearby_pedestrian_crosswalk = qtw.QComboBox()
+        self.comboBox_location_of_crossing_observe_nearby_pedestrian_crosswalk = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_location_of_crossing_observe_nearby_pedestrian_crosswalk.addItems(list_yes_no)
 
-        self.comboBox_location_of_crossing_queue_condition = qtw.QComboBox()
+        self.comboBox_location_of_crossing_queue_condition = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_location_of_crossing_queue_condition.addItems(list_yes_no)
 
-        self.comboBox_location_of_crossing_visibility_of_warning_lights = qtw.QComboBox()
+        self.comboBox_location_of_crossing_visibility_of_warning_lights = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_location_of_crossing_visibility_of_warning_lights.addItems(list_yes_no)
         
         # GRADE CROSSING SURFACE (GCS SECTION 5)
@@ -744,86 +743,86 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.textEdit_crossing_surface_comments = qtw.QTextEdit()
 
         #Group DoubleSpinBox
-        self.doubleSpinBox_crossing_surface_measure_crossing_surface_extension_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_crossing_surface_extension_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_crossing_surface_extension_n_or_e_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_crossing_surface_extension_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_crossing_surface_extension_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_crossing_surface_extension_s_or_w_approach.setRange(0, 999999)
 
-        self.doubleSpinBox_crossing_surface_measure_crossing_surface_width = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_crossing_surface_width = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_crossing_surface_width.setRange(0, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_distance_between_signal_mast_and_sidewalk_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_distance_between_signal_mast_and_sidewalk_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_distance_between_signal_mast_and_sidewalk_n_or_e_approach.setRange(-999999, 999999)
 
-        self.doubleSpinBox_crossing_surface_measure_distance_between_signal_mast_and_sidewalk_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_distance_between_signal_mast_and_sidewalk_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_distance_between_signal_mast_and_sidewalk_s_or_w_approach.setRange(-999999, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_distance_between_travel_lane_and_sidewalk_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_distance_between_travel_lane_and_sidewalk_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_distance_between_travel_lane_and_sidewalk_n_or_e_approach.setRange(-999999, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_distance_between_travel_lane_and_sidewalk_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_distance_between_travel_lane_and_sidewalk_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_distance_between_travel_lane_and_sidewalk_s_or_w_approach.setRange(-999999, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_elevation_top_of_rail_above_road_surface = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_elevation_top_of_rail_above_road_surface = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_elevation_top_of_rail_above_road_surface.setRange(-999999, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_elevation_top_of_rail_below_road_surface = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_elevation_top_of_rail_below_road_surface = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_elevation_top_of_rail_below_road_surface.setRange(-999999, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_flangeway_depth = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_flangeway_depth = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_flangeway_depth.setRange(-999999, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_flangeway_width = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_flangeway_width = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_flangeway_width.setRange(-999999, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_road_surface_median_width = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_road_surface_median_width = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_road_surface_median_width.setRange(0, 999999)
 
-        self.doubleSpinBox_crossing_surface_measure_road_surface_shoulder_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_road_surface_shoulder_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_road_surface_shoulder_n_or_e_approach.setRange(0, 999999)
 
-        self.doubleSpinBox_crossing_surface_measure_road_surface_shoulder_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_road_surface_shoulder_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_road_surface_shoulder_s_or_w_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_road_surface_travel_lanes_width_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_road_surface_travel_lanes_width_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_road_surface_travel_lanes_width_n_or_e_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_road_surface_travel_lanes_width_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_road_surface_travel_lanes_width_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_road_surface_travel_lanes_width_s_or_w_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_side_grinding_depth = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_side_grinding_depth = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_side_grinding_depth.setRange(-999999, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_side_grinding_width = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_side_grinding_width = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_side_grinding_width.setRange(-999999, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_sidewalk_extension_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_sidewalk_extension_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_sidewalk_extension_n_or_e_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_sidewalk_extension_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_sidewalk_extension_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_sidewalk_extension_s_or_w_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_sidewalk_width_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_sidewalk_width_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_sidewalk_width_n_or_e_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_crossing_surface_measure_sidewalk_width_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_crossing_surface_measure_sidewalk_width_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_crossing_surface_measure_sidewalk_width_s_or_w_approach.setRange(0, 999999)
 
         #Group ComboBoxes
-        self.comboBox_crossing_surface_observe_crossing_smoothness = qtw.QComboBox()
+        self.comboBox_crossing_surface_observe_crossing_smoothness = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_crossing_surface_observe_crossing_smoothness.addItems(list_yes_no)
 
-        self.comboBox_crossing_surface_observe_crossing_surface_condition = qtw.QComboBox()
+        self.comboBox_crossing_surface_observe_crossing_surface_condition = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_crossing_surface_observe_crossing_smoothness.addItems(list_condition)
 
-        self.comboBox_crossing_surface_observe_material = qtw.QComboBox()
+        self.comboBox_crossing_surface_observe_material = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_crossing_surface_observe_material.addItems(list_crossing_surface_observe_material)
 
-        self.comboBox_crossing_surface_observe_road_approach_surface_condition = qtw.QComboBox()
+        self.comboBox_crossing_surface_observe_road_approach_surface_condition = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_crossing_surface_observe_road_approach_surface_condition.addItems(list_condition)
 
-        self.comboBox_crossing_surface_observe_road_approach_surface_type = qtw.QComboBox()
+        self.comboBox_crossing_surface_observe_road_approach_surface_type = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_crossing_surface_observe_road_approach_surface_type.addItems(list_crossing_surface_observe_road_approach_surface_type)
 
         # ROAD GEOMETRY (GCS SECTION 6)
@@ -831,113 +830,113 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.textEdit_road_geometry_comments = qtw.QTextEdit()
 
         #Group SpinBox
-        self.spinBox_road_geometry_road_crossing_angle = qtw.QSpinBox() 
+        self.spinBox_road_geometry_road_crossing_angle = qtw.QSpinBox(valueChanged=self.on_form_change) 
 
         #Group DoubleSpinBox
-        self.doubleSpinBox_road_geometry_measure_railway_cross_slope = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_road_geometry_measure_railway_cross_slope = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_road_geometry_measure_railway_cross_slope.setRange(-999999, 999999)
 
-        self.doubleSpinBox_road_geometry_measure_slope_between_8m_and_18m_nearest_rail_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_road_geometry_measure_slope_between_8m_and_18m_nearest_rail_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_road_geometry_measure_slope_between_8m_and_18m_nearest_rail_n_or_e_approach.setRange(-999999, 999999)
         
-        self.doubleSpinBox_road_geometry_measure_slope_between_8m_and_18m_nearest_rail_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_road_geometry_measure_slope_between_8m_and_18m_nearest_rail_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_road_geometry_measure_slope_between_8m_and_18m_nearest_rail_s_or_w_approach.setRange(-999999, 999999)
         
-        self.doubleSpinBox_road_geometry_measure_slope_within_5m_nearest_rail_at_sidewalk_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_road_geometry_measure_slope_within_5m_nearest_rail_at_sidewalk_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_road_geometry_measure_slope_within_5m_nearest_rail_at_sidewalk_n_or_e_approach.setRange(-999999, 999999)
         
-        self.doubleSpinBox_road_geometry_measure_slope_within_5m_nearest_rail_at_sidewalk_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_road_geometry_measure_slope_within_5m_nearest_rail_at_sidewalk_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_road_geometry_measure_slope_within_5m_nearest_rail_at_sidewalk_s_or_w_approach.setRange(-999999, 999999)
         
-        self.doubleSpinBox_road_geometry_measure_slope_within_8m_nearest_rail_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_road_geometry_measure_slope_within_8m_nearest_rail_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_road_geometry_measure_slope_within_8m_nearest_rail_n_or_e_approach.setRange(-999999, 999999)
         
-        self.doubleSpinBox_road_geometry_measure_slope_within_8m_nearest_rail_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_road_geometry_measure_slope_within_8m_nearest_rail_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_road_geometry_measure_slope_within_8m_nearest_rail_s_or_w_approach.setRange(-999999, 999999)
         
-        self.doubleSpinBox_road_geometry_rail_superelevation_rate = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_road_geometry_rail_superelevation_rate = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_road_geometry_rail_superelevation_rate.setRange(-999999, 999999)
         
-        self.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_road_geometry_road_general_approach_grade_n_or_e_approach.setRange(-999999, 999999)
         
-        self.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_road_geometry_road_general_approach_grade_s_or_w_approach.setRange(-999999, 999999)
 
         #Group ComboBoxes
-        self.comboBox_road_geometry_observe_lane_width_crossing_vs_approach_n_or_e_approach = qtw.QComboBox()
+        self.comboBox_road_geometry_observe_lane_width_crossing_vs_approach_n_or_e_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_road_geometry_observe_lane_width_crossing_vs_approach_n_or_e_approach.addItems(list_yes_no)
 
-        self.comboBox_road_geometry_observe_lane_width_crossing_vs_approach_s_or_w_approach = qtw.QComboBox()
+        self.comboBox_road_geometry_observe_lane_width_crossing_vs_approach_s_or_w_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_road_geometry_observe_lane_width_crossing_vs_approach_s_or_w_approach.addItems(list_yes_no)
 
-        self.comboBox_road_geometry_observe_low_bed_truck_condition = qtw.QComboBox()
+        self.comboBox_road_geometry_observe_low_bed_truck_condition = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_road_geometry_observe_low_bed_truck_condition.addItems(list_yes_no)
 
-        self.comboBox_road_geometry_observe_smooth_alignment_within_ssd_n_or_e_approach = qtw.QComboBox()
+        self.comboBox_road_geometry_observe_smooth_alignment_within_ssd_n_or_e_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_road_geometry_observe_smooth_alignment_within_ssd_n_or_e_approach.addItems(list_yes_no)
 
-        self.comboBox_road_geometry_observe_smooth_alignment_within_ssd_s_or_w_approach = qtw.QComboBox()
+        self.comboBox_road_geometry_observe_smooth_alignment_within_ssd_s_or_w_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_road_geometry_observe_smooth_alignment_within_ssd_s_or_w_approach.addItems(list_yes_no)
        
-        self.comboBox_road_geometry_rail_superelevation = qtw.QComboBox() 
+        self.comboBox_road_geometry_rail_superelevation = qtw.QComboBox(currentTextChanged=self.on_form_change) 
         self.comboBox_road_geometry_rail_superelevation.addItems(list_yes_no)
 
         #Group Labels
-        self.label_road_geometry_lookup_gradient_difference = qtw.QLabel('No Value')
-        #TBD self.label_road_geometry_observe_gradient_difference_n_or_e_approach = qtw.QLabel('No Value')
-        #TBD self.label_road_geometry_observe_gradient_difference_s_or_w_approach = qtw.QLabel('No Value')
+        self.label_road_geometry_lookup_gradient_difference = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        #TBD self.label_road_geometry_observe_gradient_difference_n_or_e_approach = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        #TBD self.label_road_geometry_observe_gradient_difference_s_or_w_approach = qtw.QLabel('No Value', textChanged=self.on_form_change)
         
         # SIGHTLINES (GCS SECTION 7)
         #Group TextEdits
         self.textEdit_sightlines_comments = qtw.QTextEdit()
         
         #Group DoubleSpinBox
-        self.doubleSpinBox_sightlines_measure_dssd_actual_n_or_e_approach_left = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_sightlines_measure_dssd_actual_n_or_e_approach_left = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_sightlines_measure_dssd_actual_n_or_e_approach_left.setRange(0, 999999)
 
-        self.doubleSpinBox_sightlines_measure_dssd_actual_n_or_e_approach_right = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_sightlines_measure_dssd_actual_n_or_e_approach_right = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_sightlines_measure_dssd_actual_n_or_e_approach_right.setRange(0, 999999)
 
-        self.doubleSpinBox_sightlines_measure_dssd_actual_s_or_w_approach_left = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_sightlines_measure_dssd_actual_s_or_w_approach_left = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_sightlines_measure_dssd_actual_s_or_w_approach_left.setRange(0, 999999)
 
-        self.doubleSpinBox_sightlines_measure_dssd_actual_s_or_w_approach_right = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_sightlines_measure_dssd_actual_s_or_w_approach_right = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_sightlines_measure_dssd_actual_s_or_w_approach_right.setRange(0, 999999)
 
-        self.doubleSpinBox_sightlines_measure_dstopped_actual_n_or_e_approach_driver_left = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_sightlines_measure_dstopped_actual_n_or_e_approach_driver_left = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_sightlines_measure_dstopped_actual_n_or_e_approach_driver_left.setRange(0, 999999)
 
-        self.doubleSpinBox_sightlines_measure_dstopped_actual_n_or_e_approach_driver_right = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_sightlines_measure_dstopped_actual_n_or_e_approach_driver_right = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_sightlines_measure_dstopped_actual_n_or_e_approach_driver_right.setRange(0, 999999)
 
-        self.doubleSpinBox_sightlines_measure_dstopped_actual_s_or_w_approach_driver_left = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_sightlines_measure_dstopped_actual_s_or_w_approach_driver_left = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_sightlines_measure_dstopped_actual_s_or_w_approach_driver_left.setRange(0, 999999)
 
-        self.doubleSpinBox_sightlines_measure_dstopped_actual_s_or_w_approach_driver_right = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_sightlines_measure_dstopped_actual_s_or_w_approach_driver_right = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_sightlines_measure_dstopped_actual_s_or_w_approach_driver_right.setRange(0, 999999)
 
-        self.doubleSpinBox_sightlines_measure_ssd_actual_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_sightlines_measure_ssd_actual_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_sightlines_measure_ssd_actual_n_or_e_approach.setRange(0, 999999)
 
-        self.doubleSpinBox_sightlines_measure_ssd_actual_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_sightlines_measure_ssd_actual_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_sightlines_measure_ssd_actual_s_or_w_approach.setRange(0, 999999)
 
         #Group ComboBoxes
-        self.comboBox_sightlines_observe_sightline_obstructions = qtw.QComboBox()
+        self.comboBox_sightlines_observe_sightline_obstructions = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_sightlines_observe_sightline_obstructions.addItems(list_yes_no)
 
         #Group Labels
-        self.label_sightlines_calculate_dssd_vehicle_min_ft = qtw.QLabel('No Value')
-        self.label_sightlines_calculate_dssd_vehicle_min_m = qtw.QLabel('No Value')
-        self.label_sightlines_calculate_dstopped_pedestrian_min_ft = qtw.QLabel('No Value')
-        self.label_sightlines_calculate_dstopped_pedestrian_min_m = qtw.QLabel('No Value')
-        self.label_sightlines_calculate_dstopped_vehicle_min_ft = qtw.QLabel('No Value')
-        self.label_sightlines_calculate_dstopped_vehicle_min_m = qtw.QLabel('No Value')
-        self.label_sightlines_lookup_existing_active_crossing = qtw.QLabel('No Value')
-        self.label_sightlines_lookup_existing_active_crossing_with_gates = qtw.QLabel('No Value')
-        self.label_sightlines_lookup_ssd_minimum_n_or_e_approach = qtw.QLabel('No Value')
-        self.label_sightlines_lookup_ssd_minimum_s_or_w_approach = qtw.QLabel('No Value')
+        self.label_sightlines_calculate_dssd_vehicle_min_ft = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_sightlines_calculate_dssd_vehicle_min_m = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_sightlines_calculate_dstopped_pedestrian_min_ft = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_sightlines_calculate_dstopped_pedestrian_min_m = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_sightlines_calculate_dstopped_vehicle_min_ft = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_sightlines_calculate_dstopped_vehicle_min_m = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_sightlines_lookup_existing_active_crossing = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_sightlines_lookup_existing_active_crossing_with_gates = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_sightlines_lookup_ssd_minimum_n_or_e_approach = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_sightlines_lookup_ssd_minimum_s_or_w_approach = qtw.QLabel('No Value', textChanged=self.on_form_change)
 
         # SIGNS AND PAVEMENT MARKINGS (GCS SECTION 8)
         #Group TextEdits
@@ -951,176 +950,176 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         #DELETE self.textEdit_signs_and_markings_stop_sign_ahead_comments = pass
 
         #Group DoubleSpinBox
-        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_distance_from_rail = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_distance_from_rail = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_distance_from_rail.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_distance_from_road = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_distance_from_road = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_distance_from_road.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_height = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_height = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_height.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_rail = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_rail = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_rail.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_road = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_road = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_distance_from_road.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_height = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_height = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_height.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_stop_n_or_e_approach_height = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_stop_n_or_e_approach_height = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_stop_n_or_e_approach_height.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_stop_n_or_e_approach_location_from_rail = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_stop_n_or_e_approach_location_from_rail = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_stop_n_or_e_approach_location_from_rail.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_stop_n_or_e_approach_location_from_road = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_stop_n_or_e_approach_location_from_road = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_stop_n_or_e_approach_location_from_road.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_stop_s_or_w_approach_height = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_stop_s_or_w_approach_height = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_stop_s_or_w_approach_height.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_stop_s_or_w_approach_location_from_rail = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_stop_s_or_w_approach_location_from_rail = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_stop_s_or_w_approach_location_from_rail.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_stop_s_or_w_approach_location_from_road = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_stop_s_or_w_approach_location_from_road = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_stop_s_or_w_approach_location_from_road.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_height = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_height = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_height.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_location_from_rail = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_location_from_rail = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_location_from_rail.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_location_from_road = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_location_from_road = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_location_from_road.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_height = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_height = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_height.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_location_from_rail = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_location_from_rail = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_location_from_rail.setRange(0, 999999)
 
-        self.doubleSpinBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_location_from_road = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_location_from_road = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_location_from_road.setRange(0, 999999)
         
         #Group ComboBoxes
-        self.comboBox_signs_and_markings_advisory_speed_n_or_e_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_advisory_speed_n_or_e_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_advisory_speed_n_or_e_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_advisory_speed_s_or_w_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_advisory_speed_s_or_w_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_advisory_speed_s_or_w_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_advisory_speed_with_wa_18_20_n_or_e_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_advisory_speed_with_wa_18_20_n_or_e_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_advisory_speed_with_wa_18_20_n_or_e_approach_present.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_advisory_speed_with_wa_18_20_s_or_w_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_advisory_speed_with_wa_18_20_s_or_w_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_advisory_speed_with_wa_18_20_s_or_w_approach_present.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_dividing_lines_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_dividing_lines_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_dividing_lines_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_ens_n_or_e_approach_condition = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_n_or_e_approach_condition = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_ens_n_or_e_approach_condition.addItems(list_condition)
 
-        self.comboBox_signs_and_markings_ens_n_or_e_approach_legible = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_n_or_e_approach_legible = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_ens_n_or_e_approach_legible.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_ens_n_or_e_approach_orientation = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_n_or_e_approach_orientation = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_ens_n_or_e_approach_orientation.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_ens_n_or_e_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_n_or_e_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_ens_n_or_e_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_ens_s_or_w_approach_condition = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_s_or_w_approach_condition = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_ens_s_or_w_approach_condition.addItems(list_condition)
 
-        self.comboBox_signs_and_markings_ens_s_or_w_approach_legible = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_s_or_w_approach_legible = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_ens_s_or_w_approach_legible.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_ens_s_or_w_approach_orientation = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_s_or_w_approach_orientation = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_ens_s_or_w_approach_orientation.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_ens_s_or_w_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_ens_s_or_w_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_ens_s_or_w_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_1b = qtw.QComboBox()
+        self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_1b = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_1b.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_3c = qtw.QComboBox()
+        self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_3c = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_3c.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_number_of_tracks_s_or_w_approach_per_fig_8_1b = qtw.QComboBox()
+        self.comboBox_signs_and_markings_number_of_tracks_s_or_w_approach_per_fig_8_1b = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_number_of_tracks_s_or_w_approach_per_fig_8_1b.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_number_of_tracks_s_or_w_approach_per_fig_8_3c = qtw.QComboBox()
+        self.comboBox_signs_and_markings_number_of_tracks_s_or_w_approach_per_fig_8_3c = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_number_of_tracks_s_or_w_approach_per_fig_8_3c.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_number_of_tracks_s_or_w_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_number_of_tracks_s_or_w_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_number_of_tracks_s_or_w_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_per_mutcd = qtw.QComboBox()
+        self.comboBox_signs_and_markings_per_mutcd = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_per_mutcd.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_posted_speed_n_or_e_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_posted_speed_n_or_e_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_posted_speed_n_or_e_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_posted_speed_s_or_w_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_posted_speed_s_or_w_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_posted_speed_s_or_w_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_orientation = qtw.QComboBox()
+        self.comboBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_orientation = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_orientation.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_orientation = qtw.QComboBox()
+        self.comboBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_orientation = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_orientation.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_railway_crossing_n_or_e_approach_per_fig_8_1a = qtw.QComboBox()
+        self.comboBox_signs_and_markings_railway_crossing_n_or_e_approach_per_fig_8_1a = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_railway_crossing_n_or_e_approach_per_fig_8_1a.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_railway_crossing_n_or_e_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_railway_crossing_n_or_e_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_railway_crossing_n_or_e_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_railway_crossing_s_or_w_approach_per_fig_8_1a = qtw.QComboBox()
+        self.comboBox_signs_and_markings_railway_crossing_s_or_w_approach_per_fig_8_1a = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_railway_crossing_s_or_w_approach_per_fig_8_1a.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_railway_crossing_s_or_w_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_railway_crossing_s_or_w_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_railway_crossing_s_or_w_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_sidewalks_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_sidewalks_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_sidewalks_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_stop_n_or_e_approach_per_fig_8_4 = qtw.QComboBox()
+        self.comboBox_signs_and_markings_stop_n_or_e_approach_per_fig_8_4 = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_stop_n_or_e_approach_per_fig_8_4.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_stop_n_or_e_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_stop_n_or_e_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_stop_n_or_e_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_stop_n_or_e_approach_same_post = qtw.QComboBox()
+        self.comboBox_signs_and_markings_stop_n_or_e_approach_same_post = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_stop_n_or_e_approach_same_post.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_stop_s_or_w_approach_per_fig_8_4 = qtw.QComboBox()
+        self.comboBox_signs_and_markings_stop_s_or_w_approach_per_fig_8_4 = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_stop_s_or_w_approach_per_fig_8_4.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_stop_s_or_w_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_stop_s_or_w_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_stop_s_or_w_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_stop_s_or_w_approach_same_post = qtw.QComboBox()
+        self.comboBox_signs_and_markings_stop_s_or_w_approach_same_post = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_stop_s_or_w_approach_same_post.addItems(list_yes_no_na)
 
-        self.comboBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_present.addItems(list_yes_no)
 
-        self.comboBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_present = qtw.QComboBox()
+        self.comboBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_present = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_present.addItems(list_yes_no)
 
         # GRADE CROSSING WARNING SYSTEM WARRANTS (GCS SECTION 9)
@@ -1128,206 +1127,206 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.textEdit_gcws_warrants_comments = qtw.QTextEdit()
         
         # Group Labels
-        self.label_gcws_warrant_private_9_3 = qtw.QLabel('No Value')
-        self.label_gcws_warrant_private_9_3_1 = qtw.QLabel('No Value')
-        self.label_gcws_warrant_private_9_3_2_a = qtw.QLabel('No Value')
-        self.label_gcws_warrant_private_9_3_2_b = qtw.QLabel('No Value')
-        self.label_gcws_warrant_private_9_3_2_c = qtw.QLabel('No Value')
-        self.label_gcws_warrant_public_9_1 = qtw.QLabel('No Value')
-        self.label_gcws_warrant_public_9_1_a = qtw.QLabel('No Value')
-        self.label_gcws_warrant_public_9_1_b = qtw.QLabel('No Value')
-        self.label_gcws_warrant_public_9_1_c = qtw.QLabel('No Value')
-        self.label_gcws_warrant_public_9_1_d_i = qtw.QLabel('No Value')
-        self.label_gcws_warrant_public_9_1_d_ii = qtw.QLabel('No Value')
-        self.label_gcws_warrant_public_9_1_d_iii = qtw.QLabel('No Value')
-        self.label_gcws_warrant_sidewalk_9_5 = qtw.QLabel('No Value')
-        self.label_gates_gcws_warrant_private_9_4_1_a = qtw.QLabel('No Value')
-        self.label_gates_gcws_warrant_private_9_4_1_b = qtw.QLabel('No Value')
-        self.label_gates_gcws_warrant_private_9_4_1_c = qtw.QLabel('No Value')
-        self.label_gates_gcws_warrant_public_9_2_1_a = qtw.QLabel('No Value')
-        self.label_gates_gcws_warrant_public_9_2_1_b = qtw.QLabel('No Value')
-        self.label_gates_gcws_warrant_public_9_2_1_c = qtw.QLabel('No Value')
-        self.label_gates_gcws_warrant_public_9_2_1_d = qtw.QLabel('No Value')
-        self.label_gates_gcws_warrant_public_9_2_1_e = qtw.QLabel('No Value')
-        self.label_gates_gcws_warrant_sidewalk_9_6 = qtw.QLabel('No Value')
+        self.label_gcws_warrant_private_9_3 = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_warrant_private_9_3_1 = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_warrant_private_9_3_2_a = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_warrant_private_9_3_2_b = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_warrant_private_9_3_2_c = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_warrant_public_9_1 = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_warrant_public_9_1_a = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_warrant_public_9_1_b = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_warrant_public_9_1_c = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_warrant_public_9_1_d_i = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_warrant_public_9_1_d_ii = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_warrant_public_9_1_d_iii = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_warrant_sidewalk_9_5 = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gates_gcws_warrant_private_9_4_1_a = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gates_gcws_warrant_private_9_4_1_b = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gates_gcws_warrant_private_9_4_1_c = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gates_gcws_warrant_public_9_2_1_a = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gates_gcws_warrant_public_9_2_1_b = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gates_gcws_warrant_public_9_2_1_c = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gates_gcws_warrant_public_9_2_1_d = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gates_gcws_warrant_public_9_2_1_e = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gates_gcws_warrant_sidewalk_9_6 = qtw.QLabel('No Value', textChanged=self.on_form_change)
 
         # GRADE CROSSING WARNING SYSTEMS (GCS SECTION 12-16)
         #Group TextEdits
         self.textEdit_gcws_comments = qtw.QTextEdit()
         
         #Group SpinBox
-        self.spinBox_gcws_rail_design_warning_time_preemption = qtw.QSpinBox()
+        self.spinBox_gcws_rail_design_warning_time_preemption = qtw.QSpinBox(valueChanged=self.on_form_change)
         self.spinBox_gcws_rail_design_warning_time_preemption.setRange(0, 999999)
         
         #Group DoubleSpinBox
-        self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_distance_from_rail = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_distance_from_rail = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_distance_from_rail.setRange(0, 999999)
         
-        self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_distance_from_road = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_distance_from_road = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_distance_from_road.setRange(0, 999999)
         
-        self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_distance_top_of_foundation = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_distance_top_of_foundation = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_distance_top_of_foundation.setRange(0, 999999)
         
-        self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_slope_from_foundation = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_slope_from_foundation = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_slope_from_foundation.setRange(0, 999999)
         
-        self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_distance_from_rail = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_distance_from_rail = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_distance_from_rail.setRange(0, 999999)
         
-        self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_distance_from_road = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_distance_from_road = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_distance_from_road.setRange(0, 999999)
         
-        self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_distance_top_of_foundation = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_distance_top_of_foundation = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_distance_top_of_foundation.setRange(0, 999999)
         
-        self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_slope_from_foundation = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_slope_from_foundation = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_slope_from_foundation.setRange(0, 999999)
         
-        self.doubleSpinBox_gcws_rail_crossing_warning_time_actual = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_gcws_rail_crossing_warning_time_actual = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_gcws_rail_crossing_warning_time_actual.setRange(0, 999999)
         
         #Group ComboBox
-        self.comboBox_gcws_observe_bell_if_sidewalk = qtw.QComboBox()
+        self.comboBox_gcws_observe_bell_if_sidewalk = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_bell_if_sidewalk.addItems(list_yes_no)
 
-        self.comboBox_gcws_observe_bells_condition = qtw.QComboBox()
+        self.comboBox_gcws_observe_bells_condition = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_bells_condition.addItems(list_condition)
 
-        self.comboBox_gcws_observe_bells_n_or_e_approach = qtw.QComboBox()
+        self.comboBox_gcws_observe_bells_n_or_e_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_bells_n_or_e_approach.addItems(list_yes_no)
 
-        self.comboBox_gcws_observe_bells_s_or_w_approach = qtw.QComboBox()
+        self.comboBox_gcws_observe_bells_s_or_w_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_bells_s_or_w_approach.addItems(list_yes_no)
 
-        self.comboBox_gcws_observe_cantilever_lights_condition = qtw.QComboBox()
+        self.comboBox_gcws_observe_cantilever_lights_condition = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_cantilever_lights_condition.addItems(list_condition)
 
-        self.comboBox_gcws_observe_cantilever_lights_n_or_e_approach = qtw.QComboBox()
+        self.comboBox_gcws_observe_cantilever_lights_n_or_e_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_cantilever_lights_n_or_e_approach.addItems(list_yes_no)
 
-        self.comboBox_gcws_observe_cantilever_lights_s_or_w_approach = qtw.QComboBox()
+        self.comboBox_gcws_observe_cantilever_lights_s_or_w_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_cantilever_lights_s_or_w_approach.addItems(list_yes_no)
 
-        self.comboBox_gcws_observe_gates_condition = qtw.QComboBox()
+        self.comboBox_gcws_observe_gates_condition = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_gates_condition.addItems(list_condition)
 
-        self.comboBox_gcws_observe_gates_n_or_e_approach = qtw.QComboBox()
+        self.comboBox_gcws_observe_gates_n_or_e_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_gates_n_or_e_approach.addItems(list_yes_no)
 
-        self.comboBox_gcws_observe_gates_s_or_w_approach = qtw.QComboBox()
+        self.comboBox_gcws_observe_gates_s_or_w_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_gates_s_or_w_approach.addItems(list_yes_no)
 
-        self.comboBox_gcws_observe_gcws_limited_use_with_walk_light_assembly = qtw.QComboBox()
+        self.comboBox_gcws_observe_gcws_limited_use_with_walk_light_assembly = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_gcws_limited_use_with_walk_light_assembly.addItems(list_yes_no_na)
 
-        self.comboBox_gcws_observe_gcws_limited_use_without_walk_light_assembly = qtw.QComboBox()
+        self.comboBox_gcws_observe_gcws_limited_use_without_walk_light_assembly = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_gcws_limited_use_without_walk_light_assembly.addItems(list_yes_no_na)
 
-        self.comboBox_gcws_observe_light_units_condition = qtw.QComboBox()
+        self.comboBox_gcws_observe_light_units_condition = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_light_units_condition.addItems(list_condition)
 
-        self.comboBox_gcws_observe_light_units_n_or_e_approach = qtw.QComboBox()
+        self.comboBox_gcws_observe_light_units_n_or_e_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_light_units_n_or_e_approach.addItems(list_yes_no)
 
-        self.comboBox_gcws_observe_light_units_s_or_w_approach = qtw.QComboBox()
+        self.comboBox_gcws_observe_light_units_s_or_w_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_light_units_s_or_w_approach.addItems(list_yes_no)
 
-        self.comboBox_gcws_observe_warning_time_consistency = qtw.QComboBox()
+        self.comboBox_gcws_observe_warning_time_consistency = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_warning_time_consistency.addItems(list_yes_no_na)
         
-        self.comboBox_gcws_observe_warning_time_consistency_reduced_speed = qtw.QComboBox()
+        self.comboBox_gcws_observe_warning_time_consistency_reduced_speed = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_observe_warning_time_consistency_reduced_speed.addItems(list_yes_no_na)
 
-        self.comboBox_gcws_rail_cut_out_circuit_requirements = qtw.QComboBox()
+        self.comboBox_gcws_rail_cut_out_circuit_requirements = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_rail_cut_out_circuit_requirements.addItems(list_yes_no_na)
 
-        self.comboBox_gcws_rail_directional_stick_circuit_requirements = qtw.QComboBox()
+        self.comboBox_gcws_rail_directional_stick_circuit_requirements = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_rail_directional_stick_circuit_requirements.addItems(list_yes_no_na)
 
-        self.comboBox_gcws_rail_self_diagnostic = qtw.QComboBox()
+        self.comboBox_gcws_rail_self_diagnostic = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gcws_rail_self_diagnostic.addItems(list_yes_no_na)
 
         #Group Labels
-        self.label_gcws_rail_design_approach_warning_time = qtw.QLabel('No Value')
-        self.label_gcws_rail_design_warning_time_ssd = qtw.QLabel('No Value')
-        self.label_gcws_rail_design_warning_time_adjacent_crossing = qtw.QLabel('No Value')
-        self.label_gcws_rail_design_warning_time_clearance_distance = qtw.QLabel('No Value')
-        self.label_gcws_rail_design_warning_time_departure_time_pedestrian = qtw.QLabel('No Value')
-        self.label_gcws_rail_design_warning_time_departure_time_vehicle = qtw.QLabel('No Value')
-        self.label_gcws_rail_design_warning_time_gate_arm_clearance = qtw.QLabel('No Value')
-        self.label_gcws_rail_design_warning_time_ssd = qtw.QLabel('No Value')
+        self.label_gcws_rail_design_approach_warning_time = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_rail_design_warning_time_ssd = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_rail_design_warning_time_adjacent_crossing = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_rail_design_warning_time_clearance_distance = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_rail_design_warning_time_departure_time_pedestrian = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_rail_design_warning_time_departure_time_vehicle = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_rail_design_warning_time_gate_arm_clearance = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_rail_design_warning_time_ssd = qtw.QLabel('No Value', textChanged=self.on_form_change)
 
         # FLASHING LIGHT UNITS (GCS SECTION 13 & 14)
         #Group TextEdits
         self.textEdit_light_units_comments = qtw.QTextEdit()
 
         #Group DoubleSpinBox
-        self.doubleSpinBox_light_units_measure_cantilever_distance_from_rail_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_light_units_measure_cantilever_distance_from_rail_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_light_units_measure_cantilever_distance_from_rail_n_or_e_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_light_units_measure_cantilever_distance_from_rail_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_light_units_measure_cantilever_distance_from_rail_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_light_units_measure_cantilever_distance_from_rail_s_or_w_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_light_units_measure_cantilever_distance_from_road_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_light_units_measure_cantilever_distance_from_road_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_light_units_measure_cantilever_distance_from_road_n_or_e_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_light_units_measure_cantilever_distance_from_road_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_light_units_measure_cantilever_distance_from_road_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_light_units_measure_cantilever_distance_from_road_s_or_w_approach.setRange(0, 999999)
 
-        self.doubleSpinBox_light_units_measure_cantilever_dl_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_light_units_measure_cantilever_dl_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_light_units_measure_cantilever_dl_n_or_e_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_light_units_measure_cantilever_dl_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_light_units_measure_cantilever_dl_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_light_units_measure_cantilever_dl_s_or_w_approach.setRange(0, 999999)
 
-        self.doubleSpinBox_light_units_measure_cantilever_dr_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_light_units_measure_cantilever_dr_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_light_units_measure_cantilever_dr_n_or_e_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_light_units_measure_cantilever_dr_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_light_units_measure_cantilever_dr_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_light_units_measure_cantilever_dr_s_or_w_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_light_units_measure_cantilever_height_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_light_units_measure_cantilever_height_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_light_units_measure_cantilever_height_n_or_e_approach.setRange(0, 999999)
                         
-        self.doubleSpinBox_light_units_measure_cantilever_height_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_light_units_measure_cantilever_height_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_light_units_measure_cantilever_height_s_or_w_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_light_units_measure_mast_height_n_or_e_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_light_units_measure_mast_height_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_light_units_measure_mast_height_n_or_e_approach.setRange(0, 999999)
         
-        self.doubleSpinBox_light_units_measure_mast_height_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_light_units_measure_mast_height_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_light_units_measure_mast_height_s_or_w_approach.setRange(0, 999999)
         
         #Group ComboBoxes
-        self.comboBox_light_units_observe_cantilevers_per_fig_12_3 = qtw.QComboBox()
+        self.comboBox_light_units_observe_cantilevers_per_fig_12_3 = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_light_units_observe_cantilevers_per_fig_12_3.addItems(list_yes_no_na)
 
-        self.comboBox_light_units_observe_per_fig_12_1 = qtw.QComboBox()
+        self.comboBox_light_units_observe_per_fig_12_1 = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_light_units_observe_per_fig_12_1.addItems(list_yes_no_na)
 
-        self.comboBox_light_units_observe_supplemental_intersection_n_or_e_approach = qtw.QComboBox()
+        self.comboBox_light_units_observe_supplemental_intersection_n_or_e_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_light_units_observe_supplemental_intersection_n_or_e_approach.addItems(list_yes_no_na)
 
-        self.comboBox_light_units_observe_supplemental_intersection_s_or_w_approach = qtw.QComboBox()
+        self.comboBox_light_units_observe_supplemental_intersection_s_or_w_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_light_units_observe_supplemental_intersection_s_or_w_approach.addItems(list_yes_no_na)
 
-        self.comboBox_light_units_observe_supplemental_sidewalk_n_or_e_approach = qtw.QComboBox()
+        self.comboBox_light_units_observe_supplemental_sidewalk_n_or_e_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_light_units_observe_supplemental_sidewalk_n_or_e_approach.addItems(list_yes_no_na)
 
-        self.comboBox_light_units_observe_supplemental_sidewalk_s_or_w_approach = qtw.QComboBox()
+        self.comboBox_light_units_observe_supplemental_sidewalk_s_or_w_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_light_units_observe_supplemental_sidewalk_s_or_w_approach.addItems(list_yes_no_na)
 
-        self.comboBox_light_units_observe_visibility_back_lights_n_or_e_approach = qtw.QComboBox()
+        self.comboBox_light_units_observe_visibility_back_lights_n_or_e_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_light_units_observe_visibility_back_lights_n_or_e_approach.addItems(list_yes_no_na)
 
-        self.comboBox_light_units_observe_visibility_back_lights_s_or_w_approach = qtw.QComboBox()
+        self.comboBox_light_units_observe_visibility_back_lights_s_or_w_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_light_units_observe_visibility_back_lights_s_or_w_approach.addItems(list_yes_no_na)
 
-        self.comboBox_light_units_observe_visibility_front_lights_n_or_e_approach = qtw.QComboBox()
+        self.comboBox_light_units_observe_visibility_front_lights_n_or_e_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_light_units_observe_visibility_front_lights_n_or_e_approach.addItems(list_yes_no_na)
 
-        self.comboBox_light_units_observe_visibility_front_lights_s_or_w_approach = qtw.QComboBox()
+        self.comboBox_light_units_observe_visibility_front_lights_s_or_w_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_light_units_observe_visibility_front_lights_s_or_w_approach.addItems(list_yes_no_na)
 
         # GATES FOR GRADE CROSSING WARNING SYSTEMS (GCS SECTION 10, 12, 15)
@@ -1335,45 +1334,45 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.textEdit_gates_gcws_comments = qtw.QTextEdit()
 
         #Group DoubleSpinBox
-        self.doubleSpinBox_gates_gcws_measure_gate_ascent_time = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_gates_gcws_measure_gate_ascent_time = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_gates_gcws_measure_gate_ascent_time.setRange(0, 999999)
         
-        self.doubleSpinBox_gates_gcws_measure_gate_descent_time = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_gates_gcws_measure_gate_descent_time = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_gates_gcws_measure_gate_descent_time.setRange(0, 999999)
         
-        self.doubleSpinBox_gates_gcws_rail_gate_arm_delay_time_design = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_gates_gcws_rail_gate_arm_delay_time_design = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_gates_gcws_rail_gate_arm_delay_time_design.setRange(0, 999999)
         
-        self.doubleSpinBox_gates_gcws_rail_gate_arm_descent_time_design = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_gates_gcws_rail_gate_arm_descent_time_design = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_gates_gcws_rail_gate_arm_descent_time_design.setRange(0, 999999)
         
-        self.doubleSpinBox_gates_gcws_rail_inner_gate_arm_delay_time_design = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_gates_gcws_rail_inner_gate_arm_delay_time_design = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_gates_gcws_rail_inner_gate_arm_delay_time_design.setRange(0, 999999)
         
         #Group DoubleSpinBox
-        self.doubleSpinBox_gates_gcws_measure_distance_between_gate_end_and_road_cl_n_or_e_approach = qtw.QDoubleSpinBox() 
-        self.doubleSpinBox_gates_gcws_measure_distance_between_gate_end_and_road_cl_s_or_w_approach = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_gates_gcws_measure_distance_between_gate_end_and_road_cl_n_or_e_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
+        self.doubleSpinBox_gates_gcws_measure_distance_between_gate_end_and_road_cl_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
 
         #Group Labels
-        self.label_gates_gcws_calculate_inner_gate_arm_delay_time_recommended = qtw.QLabel('No Value')
+        self.label_gates_gcws_calculate_inner_gate_arm_delay_time_recommended = qtw.QLabel('No Value', textChanged=self.on_form_change)
 
         #Group ComboBoxes
-        self.comboBox_gates_gcws_observe_gate_arm_rest = qtw.QComboBox()
+        self.comboBox_gates_gcws_observe_gate_arm_rest = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gates_gcws_observe_gate_arm_rest.addItems(list_yes_no_na)
 
-        self.comboBox_gates_gcws_observe_gate_ascent_time = qtw.QComboBox()
+        self.comboBox_gates_gcws_observe_gate_ascent_time = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gates_gcws_observe_gate_ascent_time.addItems(list_yes_no_na)
 
-        self.comboBox_gates_gcws_observe_gate_descent_time = qtw.QComboBox()
+        self.comboBox_gates_gcws_observe_gate_descent_time = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gates_gcws_observe_gate_descent_time.addItems(list_yes_no_na)
 
-        self.comboBox_gates_gcws_observe_gate_strips_n_or_e_approach = qtw.QComboBox()
+        self.comboBox_gates_gcws_observe_gate_strips_n_or_e_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gates_gcws_observe_gate_strips_n_or_e_approach.addItems(list_yes_no_na)
 
-        self.comboBox_gates_gcws_observe_gate_strips_s_or_w_approach = qtw.QComboBox()
+        self.comboBox_gates_gcws_observe_gate_strips_s_or_w_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gates_gcws_observe_gate_strips_s_or_w_approach.addItems(list_yes_no_na)
 
-        self.comboBox_gates_gcws_observe_per_fig_12_2 = qtw.QComboBox()
+        self.comboBox_gates_gcws_observe_per_fig_12_2 = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_gates_gcws_observe_per_fig_12_2.addItems(list_yes_no_na)
 
         # PREPARE TO STOP AT RAILWAY CROSSING SIGN (GCS SECTION 18)
@@ -1381,113 +1380,113 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.textEdit_aawd_comments = qtw.QTextEdit()
 
         #Group SpinBox
-        self.spinBox_aawd_rail_advance_activation_time_actual_n_or_e_approach = qtw.QSpinBox()
+        self.spinBox_aawd_rail_advance_activation_time_actual_n_or_e_approach = qtw.QSpinBox(valueChanged=self.on_form_change)
         self.spinBox_aawd_rail_advance_activation_time_actual_n_or_e_approach.setRange(0, 999999)
         
-        self.spinBox_aawd_rail_advance_activation_time_actual_s_or_w_approach = qtw.QSpinBox()
+        self.spinBox_aawd_rail_advance_activation_time_actual_s_or_w_approach = qtw.QSpinBox(valueChanged=self.on_form_change)
         self.spinBox_aawd_rail_advance_activation_time_actual_s_or_w_approach.setRange(0, 999999)
 
         #Group DoubleSpinBox
-        self.doubleSpinBox_aawd_measure_distance_sign_and_stop_n_or_e_approach_actual = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_aawd_measure_distance_sign_and_stop_n_or_e_approach_actual = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_aawd_measure_distance_sign_and_stop_n_or_e_approach_actual.setRange(0, 999999)
 
-        self.doubleSpinBox_aawd_measure_distance_sign_and_stop_s_or_w_approach_actual = qtw.QDoubleSpinBox() 
+        self.doubleSpinBox_aawd_measure_distance_sign_and_stop_s_or_w_approach_actual = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
         self.doubleSpinBox_aawd_measure_distance_sign_and_stop_s_or_w_approach_actual.setRange(0, 999999)
 
         #Group ComboBoxes
-        self.comboBox_aawd_observe_present_n_or_e_approach = qtw.QComboBox()
+        self.comboBox_aawd_observe_present_n_or_e_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_aawd_observe_present_n_or_e_approach.addItems(list_yes_no)
 
-        self.comboBox_aawd_observe_present_s_or_w_approach = qtw.QComboBox()
+        self.comboBox_aawd_observe_present_s_or_w_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_aawd_observe_present_s_or_w_approach.addItems(list_yes_no)
 
-        self.comboBox_aawd_road_aawd_sufficient_activation_time_n_or_e_approach = qtw.QComboBox()
+        self.comboBox_aawd_road_aawd_sufficient_activation_time_n_or_e_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_aawd_road_aawd_sufficient_activation_time_n_or_e_approach.addItems(list_yes_no_na)
 
-        self.comboBox_aawd_road_aawd_sufficient_activation_time_s_or_w_approach = qtw.QComboBox()
+        self.comboBox_aawd_road_aawd_sufficient_activation_time_s_or_w_approach = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_aawd_road_aawd_sufficient_activation_time_s_or_w_approach.addItems(list_yes_no_na)
 
-        self.comboBox_aawd_warrant_gcr_observe_environmental_condition = qtw.QComboBox()
+        self.comboBox_aawd_warrant_gcr_observe_environmental_condition = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_aawd_warrant_gcr_observe_environmental_condition.addItems(list_yes_no_na)
 
-        self.comboBox_aawd_warrant_gcr_observe_sightline_obstruction = qtw.QComboBox()
+        self.comboBox_aawd_warrant_gcr_observe_sightline_obstruction = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_aawd_warrant_gcr_observe_sightline_obstruction.addItems(list_yes_no_na)
 
-        self.comboBox_aawd_warrant_mutcd_lookup_significant_road_downgrade = qtw.QComboBox()
+        self.comboBox_aawd_warrant_mutcd_lookup_significant_road_downgrade = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_aawd_warrant_mutcd_lookup_significant_road_downgrade.addItems(list_yes_no_na)
 
         #Group Labels
-        self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach = qtw.QLabel('No Value')
-        self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach = qtw.QLabel('No Value')
-        self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended = qtw.QLabel('No Value')
-        self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended = qtw.QLabel('No Value')
-        self.label_aawd_warrant_gcr_lookup_road_classification = qtw.QLabel('No Value')
-        self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr = qtw.QLabel('No Value')
+        self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_aawd_warrant_gcr_lookup_road_classification = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr = qtw.QLabel('No Value', textChanged=self.on_form_change)
         
         # INTERCONNECTION OF TRAFFIC SIGNALS (GCS SECTION 19)
         #Group TextEdits
         self.textEdit_preemption_of_traffic_signals_comments = qtw.QTextEdit()
     
         #Group SpinBox
-        self.spinBox_preemption_of_traffic_signals_road_preemption_warning_time_actual = qtw.QSpinBox() 
-        self.spinBox_preemption_of_traffic_signals_road_preemption_warning_time_design = qtw.QSpinBox() 
+        self.spinBox_preemption_of_traffic_signals_road_preemption_warning_time_actual = qtw.QSpinBox(valueChanged=self.on_form_change) 
+        self.spinBox_preemption_of_traffic_signals_road_preemption_warning_time_design = qtw.QSpinBox(valueChanged=self.on_form_change) 
 
         #Group CombBoxes
-        self.comboBox_preemption_of_traffic_signals_observe_consideration_of_Longer_vehicles = qtw.QComboBox()
+        self.comboBox_preemption_of_traffic_signals_observe_consideration_of_Longer_vehicles = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_preemption_of_traffic_signals_observe_consideration_of_Longer_vehicles.addItems(list_yes_no)
 
-        self.comboBox_preemption_of_traffic_signals_observe_known_queuing_issues = qtw.QComboBox()
+        self.comboBox_preemption_of_traffic_signals_observe_known_queuing_issues = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_preemption_of_traffic_signals_observe_known_queuing_issues.addItems(list_yes_no)
 
-        self.comboBox_preemption_of_traffic_signals_observe_pedestrian_accommodation = qtw.QComboBox()
+        self.comboBox_preemption_of_traffic_signals_observe_pedestrian_accommodation = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_preemption_of_traffic_signals_observe_pedestrian_accommodation.addItems(list_yes_no_na)
 
-        self.comboBox_preemption_of_traffic_signals_observe_queuing_condition = qtw.QComboBox()
+        self.comboBox_preemption_of_traffic_signals_observe_queuing_condition = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_preemption_of_traffic_signals_observe_queuing_condition.addItems(list_yes_no)
 
-        self.comboBox_preemption_of_traffic_signals_observe_supplemental_signage = qtw.QComboBox()
+        self.comboBox_preemption_of_traffic_signals_observe_supplemental_signage = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_preemption_of_traffic_signals_observe_supplemental_signage.addItems(list_yes_no_na)
 
-        self.comboBox_preemption_of_traffic_signals_observe_traffic_clearance_time_adequate = qtw.QComboBox()
+        self.comboBox_preemption_of_traffic_signals_observe_traffic_clearance_time_adequate = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_preemption_of_traffic_signals_observe_traffic_clearance_time_adequate.addItems(list_yes_no_na)
 
-        self.comboBox_preemption_of_traffic_signals_observe_unintended_queuing_by_traffic_signals = qtw.QComboBox()
+        self.comboBox_preemption_of_traffic_signals_observe_unintended_queuing_by_traffic_signals = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_preemption_of_traffic_signals_observe_unintended_queuing_by_traffic_signals.addItems(list_yes_no_na)
 
-        self.comboBox_preemption_of_traffic_signals_road_or_rail_crossing_preemption_type = qtw.QComboBox()
+        self.comboBox_preemption_of_traffic_signals_road_or_rail_crossing_preemption_type = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_preemption_of_traffic_signals_road_or_rail_crossing_preemption_type.addItems(list_preemption_of_traffic_signals_road_or_rail_crossing_preemption_type)
 
         #Group DatePicker
         #TODO self.label_preemption_of_traffic_signals_road_date_Last_preemption_check = pass
 
         #Group Labels
-        self.label_preemption_of_traffic_signals_lookup_proximity_condition = qtw.QLabel('No Value')
-        self.label_preemption_of_traffic_signals_lookup_required = qtw.QLabel('No Value')
+        self.label_preemption_of_traffic_signals_lookup_proximity_condition = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_preemption_of_traffic_signals_lookup_required = qtw.QLabel('No Value', textChanged=self.on_form_change)
 
         # WHISTLE CESSATION (GCS SECTION Appendix D)
         #Group TextEdits
         self.textEdit_areas_without_train_whistling_comments = qtw.QTextEdit()
 
         #Group ComboBoxes
-        self.comboBox_areas_without_train_whistling_lookup_gcs_12_to_16 = qtw.QComboBox()
+        self.comboBox_areas_without_train_whistling_lookup_gcs_12_to_16 = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_areas_without_train_whistling_lookup_gcs_12_to_16.addItems(list_yes_no_na)
 
-        self.comboBox_areas_without_train_whistling_observe_for_stop_and_proceed = qtw.QComboBox()
+        self.comboBox_areas_without_train_whistling_observe_for_stop_and_proceed = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_areas_without_train_whistling_observe_for_stop_and_proceed.addItems(list_yes_no_na)
 
-        self.comboBox_areas_without_train_whistling_observe_trespassing_area = qtw.QComboBox()
+        self.comboBox_areas_without_train_whistling_observe_trespassing_area = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_areas_without_train_whistling_observe_trespassing_area.addItems(list_yes_no)
 
-        self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone = qtw.QComboBox()
+        self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone.addItems(list_yes_no)
 
-        self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone_24_hrs = qtw.QComboBox()
+        self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone_24_hrs = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone_24_hrs.addItems(list_yes_no)        
 
         #Group Labels
-        self.label_areas_without_train_whistling_lookup_gcs_9_2 = qtw.QLabel('No Value')
-        self.label_areas_without_train_whistling_lookup_table_d1_criteria = qtw.QLabel('No Value')
-        self.label_areas_without_train_whistling_observe_table_D1 = qtw.QLabel('No Value')
+        self.label_areas_without_train_whistling_lookup_gcs_9_2 = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_areas_without_train_whistling_lookup_table_d1_criteria = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_areas_without_train_whistling_observe_table_D1 = qtw.QLabel('No Value', textChanged=self.on_form_change)
         
         ##################
         # Layout Objects #

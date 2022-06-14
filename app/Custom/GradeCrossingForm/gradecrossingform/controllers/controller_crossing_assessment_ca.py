@@ -14,119 +14,12 @@ class ControllerCrossingAssessmentCA(qtw.QWidget):
         self.view = ViewCrossingAssessmentCA()
         self.model = ModelCrossingAssessmentCA(self.view)
 
-        self.connect_and_emit_trigger()
+        self.connect_view_model()
         #self.map_fields_to_sql()
 
-    def connect_and_emit_trigger(self):
-        self.view.changed.connect(self.model.collision_history_total_5_year_period)        
-        self.view.changed.connect(self.model.collision_history_risk_index_initial)
-        self.view.changed.connect(self.model.collision_history_risk_index_final)
-        self.view.changed.connect(self.model.general_info_rail_no_tracks_total)
-        self.view.changed.connect(self.model.general_info_rail_no_trains_per_day_total)
-        self.view.changed.connect(self.model.general_info_road_no_traffic_lanes_total)
-        self.view.changed.connect(self.model.general_info_rail_railway_design_speed)
-        self.view.changed.connect(self.model.design_calculate_adjacent_track_clearance_time)
-        self.view.changed.connect(self.model.design_calculate_clearance_time_pedestrian_design_check)
-        self.view.changed.connect(self.model.design_calculate_clearance_time_vehicle_design_check)
+    def connect_view_model(self):
+        self.view.changed.connect(self.model.on_change_crossingassessmentca)
         
-        #TODO 
-        #self.view.label_design_measure_clearance_distance_gate_arm_ssd = qtw.QLabel('no Value')
-        
-        self.view.changed.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_ssd)
-        self.view.changed.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_stop)
-        self.view.changed.connect(self.model.design_calculate_clearance_time_gate_arm_vehicle_recommended)
-        self.view.changed.connect(self.model.design_calculate_vehicle_departure_time)
-        self.view.changed.connect(self.model.design_calculate_vehicle_departure_time_grade_adjusted)
-        self.view.changed.connect(self.model.design_calculate_vehicle_departure_time_gate_arm_clearance)
-        
-        #TODO
-        #connect signals and slots - design_calculate_vehicle_departure_time_gate_arm_clearance_grade_adjusted
-        self.view.changed.connect(self.model.design_calculate_vehicle_departure_time_gate_arm_clearance_grade_adjusted)
-        self.view.changed.connect(self.model.design_lookup_design_vehicle_class)
-        self.view.changed.connect(self.model.design_lookup_design_vehicle_length)
-        self.view.changed.connect(self.model.design_lookup_grade_adjustment_factor)
-
-        #TODO
-        #connect signals and slots - design_measure_clearance_distance_gate_arm_stop
-
-        self.view.changed.connect(self.model.road_geometry_lookup_gradient_difference)
-        self.view.changed.connect(self.model.sightlines_lookup_existing_active_crossing)        
-        self.view.changed.connect(self.model.sightlines_lookup_existing_active_crossing_with_gates)
-        self.view.changed.connect(self.model.sightlines_calculate_dstopped_pedestrian_min_ft)        
-        self.view.changed.connect(self.model.sightlines_calculate_dstopped_pedestrian_min_m)
-        self.view.changed.connect(self.model.sightlines_calculate_dstopped_vehicle_min_ft)
-        self.view.changed.connect(self.model.sightlines_calculate_dstopped_vehicle_min_m)
-        self.view.changed.connect(self.model.sightlines_lookup_ssd_minimum_n_or_e_approach)
-        self.view.changed.connect(self.model.sightlines_lookup_ssd_minimum_s_or_w_approach)
-        self.view.changed.connect(self.model.sightlines_calculate_dssd_vehicle_min_ft)
-        self.view.changed.connect(self.model.sightlines_calculate_dssd_vehicle_min_m)
-        self.view.changed.connect(self.model.gcws_warrant_private_9_3_1)
-        self.view.changed.connect(self.model.gcws_warrant_private_9_3_2_a)
-        self.view.changed.connect(self.model.gcws_warrant_private_9_3_2_b)
-        self.view.changed.connect(self.model.gcws_warrant_private_9_3_2_c)
-        
-        #TODO
-        #connect signals and slots - gcws_warrant_public_9_1
-        # .valueChanged.connect(self.gcws_warrant_public_9_1)
-
-        self.view.changed.connect(self.model.gcws_warrant_public_9_1_a)
-        self.view.changed.connect(self.model.gcws_warrant_public_9_1_b)
-        self.view.changed.connect(self.model.gcws_warrant_public_9_1_c)
-        self.view.changed.connect(self.model.gcws_warrant_public_9_1_d_i)
-        self.view.changed.connect(self.model.gcws_warrant_public_9_1_d_ii)
-        self.view.changed.connect(self.model.gcws_warrant_public_9_1_d_iii)
-        
-        #connect signals and slots - gcws_warrant_sidewalk_9_5
-        #TODO add design vehcile pedestrian
-        self.view.changed.connect(self.model.gcws_warrant_sidewalk_9_5)
-        self.view.changed.connect(self.model.gates_gcws_warrant_private_9_4_1_a)
-        self.view.changed.connect(self.model.gates_gcws_warrant_private_9_4_1_b)
-        self.view.changed.connect(self.model.gates_gcws_warrant_private_9_4_1_c)
-        self.view.changed.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
-        self.view.changed.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
-        self.view.changed.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
-        self.view.changed.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
-        self.view.changed.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
-        self.view.changed.connect(self.model.gates_gcws_warrant_sidewalk_9_6)
-
-        #grade CROSSING warnING systEMS (GCS seCTION 12-16)
-        #TODO
-        #connect signals and slots - gcws_rail_design_warning_time_adjacent_crossing
-        # .valueChanged.connect(self.gcws_rail_design_warning_time_adjacent_crossing)
-        
-        #TODO includes pedestrian clearance
-        self.view.changed.connect(self.model.gcws_rail_design_warning_time_clearance_distance)        
-        self.view.changed.connect(self.model.gcws_rail_design_warning_time_departure_time_vehicle)
-        self.view.changed.connect(self.model.gcws_rail_design_warning_time_departure_time_pedestrian)
-        self.view.changed.connect(self.model.gcws_rail_design_warning_time_gate_arm_clearance)
- 
-        #TODO Remove pedestrian clearance distance
-        # self.view.doubleSpinBox_design_measure_clearance_distance_pedestrian.valueChanged.connect(self.model.gcws_rail_design_warning_time_gate_arm_clearance('doubleSpinBox_design_measure_clearance_distance_pedestrian', val))
-        self.view.changed.connect(self.model.gcws_rail_design_warning_time_gate_arm_clearance)
-        
-        #TODO
-        #connect signals and slots - gcws_rail_design_warning_time_preemption
-        # .valueChanged.connect(self.gcws_rail_design_warning_time_preemption)
-        
-        self.view.changed.connect(self.model.gcws_rail_design_warning_time_ssd)
-
-        #TODO
-        # connect signals and slots - gcws_rail_design_approach_warning_time
-        # .valueChanged.connect(self.gcws_rail_design_approach_warning_time)
-        
-        self.view.changed.connect(self.model.gates_gcws_calculate_inner_gate_arm_delay_time_recommended)
-        self.view.changed.connect(self.model.aawd_calculate_advance_activation_time_design_n_or_e_approach)
-        self.view.changed.connect(self.model.aawd_calculate_advance_activation_time_design_s_or_w_approach)
-        self.view.changed.connect(self.model.aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended)
-        self.view.changed.connect(self.model.aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended)
-        self.view.changed.connect(self.model.aawd_warrant_gcr_lookup_road_classification)
-        self.view.changed.connect(self.model.aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr)
-        self.view.changed.connect(self.model.preemption_of_traffic_signals_lookup_proximity_condition)
-        self.view.changed.connect(self.model.preemption_of_traffic_signals_lookup_required)
-        self.view.changed.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
-        self.view.changed.connect(self.model.areas_without_train_whistling_lookup_table_d1_criteria)
-        self.view.changed.connect(self.model.areas_without_train_whistling_requirements_observe_table_D1)
-
     def map_fields_to_sql(self):
     # Map the crossing fields
         self.mapper = qtw.QdataWidgetMapper(self)

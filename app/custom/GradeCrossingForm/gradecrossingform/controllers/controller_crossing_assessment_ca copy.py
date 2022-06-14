@@ -5,17 +5,17 @@ from PyQt5 import QtSql as qts
 
 from gradecrossingform.models.model_crossing_assessment_ca import ModelCrossingAssessmentCA
 from gradecrossingform.views.view_crossing_assessment_ca import ViewCrossingAssessmentCA
-from GradeCrossingForm.db.db_crossing_assessment_ca import DBCrossingAssessmentCA
+#from GradeCrossingForm.db.db_crossing_assessment_ca import DBCrossingAssessmentCA
 
-class controllerCrossingassessmentCA(qtw.QWidget):
+class ControllerCrossingAssessmentCA(qtw.QWidget):
     def __init__(self):
         super().__init__() # create default constructor for QWidget
-        self.db = DBCrossingAssessmentCA()
+        #self.db = DBCrossingAssessmentCA()
         self.view = ViewCrossingAssessmentCA()
         self.model = ModelCrossingAssessmentCA(self.view)
 
         self.connect_and_emit_trigger()
-        self.map_fields_to_sql()
+        #self.map_fields_to_sql()
 
     def connect_and_emit_trigger(self):
         #connecting a signal to python callables
@@ -749,16 +749,16 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         Connect input variable signals to gcws_warrant_public_9_1_d_ii method slot.
         required input variables:
             comboBox_inspection_details_grade_crossing_type
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach
             spinBox_general_info_rail_max_railway_operating_speed_freight
             spinBox_general_info_rail_max_railway_operating_speed_passenger
         Related methods:
             general_info_rail_railway_design_speed
         '''
         self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.gcws_warrant_public_9_1_d_ii)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gcws_warrant_public_9_1_d_ii)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gcws_warrant_public_9_1_d_ii)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gcws_warrant_public_9_1_d_ii)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gcws_warrant_public_9_1_d_ii)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gcws_warrant_public_9_1_d_ii)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gcws_warrant_public_9_1_d_ii)        
         
@@ -767,16 +767,16 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         Connect input variable signals to gcws_warrant_public_9_1_d_iii method slot.
         required input variables:
             comboBox_inspection_details_grade_crossing_type
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach
             spinBox_general_info_rail_max_railway_operating_speed_freight
             spinBox_general_info_rail_max_railway_operating_speed_passenger
         Related methods:
             general_info_rail_railway_design_speed
         '''
         self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.gcws_warrant_public_9_1_d_iii)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gcws_warrant_public_9_1_d_iii)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gcws_warrant_public_9_1_d_iii)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gcws_warrant_public_9_1_d_iii)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gcws_warrant_public_9_1_d_iii)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gcws_warrant_public_9_1_d_iii)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gcws_warrant_public_9_1_d_iii)        
         
@@ -914,10 +914,10 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             gcws Public warrants
             comboBox_general_info_road_sidewalks
             comboBox_inspection_details_grade_crossing_type
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach
             spinBox_general_info_rail_max_railway_operating_speed_freight
             spinBox_general_info_rail_max_railway_operating_speed_passenger
             spinBox_general_info_rail_no_tracks_main
@@ -940,10 +940,10 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         '''
         self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
         self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
         self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_a)
@@ -960,10 +960,10 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             gcws Public warrants
             comboBox_general_info_road_sidewalks
             comboBox_inspection_details_grade_crossing_type
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach
             spinBox_general_info_rail_max_railway_operating_speed_freight
             spinBox_general_info_rail_max_railway_operating_speed_passenger
             spinBox_general_info_rail_no_tracks_main
@@ -986,10 +986,10 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         '''
         self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
         self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
         self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_b)
@@ -1006,10 +1006,10 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             gcws Public warrants
             comboBox_general_info_road_sidewalks
             comboBox_inspection_details_grade_crossing_type
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach
             spinBox_general_info_rail_max_railway_operating_speed_freight
             spinBox_general_info_rail_max_railway_operating_speed_passenger
             spinBox_general_info_rail_no_tracks_main
@@ -1032,10 +1032,10 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         '''
         self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
         self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
         self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_c)
@@ -1052,10 +1052,10 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             gcws Public warrants
             comboBox_general_info_road_sidewalks
             comboBox_inspection_details_grade_crossing_type
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach
             spinBox_general_info_rail_max_railway_operating_speed_freight
             spinBox_general_info_rail_max_railway_operating_speed_passenger
             spinBox_general_info_rail_no_tracks_main
@@ -1078,10 +1078,10 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         '''
         self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
         self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
         self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_d)
@@ -1098,10 +1098,10 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             gcws Public warrants
             comboBox_general_info_road_sidewalks
             comboBox_inspection_details_grade_crossing_type
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach
             spinBox_general_info_rail_max_railway_operating_speed_freight
             spinBox_general_info_rail_max_railway_operating_speed_passenger
             spinBox_general_info_rail_no_tracks_main
@@ -1124,10 +1124,10 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         '''
         self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
         self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
         self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.gates_gcws_warrant_public_9_2_1_e)
@@ -1389,13 +1389,13 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         '''
         Connect input variable signals to preemption_of_traffic_signals_lookup_proximity_condition method slot.
         required input variables:
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach
         required methods:
             none
         '''
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.preemption_of_traffic_signals_lookup_proximity_condition)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.preemption_of_traffic_signals_lookup_proximity_condition)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.preemption_of_traffic_signals_lookup_proximity_condition)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.preemption_of_traffic_signals_lookup_proximity_condition)
 
         #connect signals and slots - preemption_of_traffic_signals_lookup_required
         '''
@@ -1403,16 +1403,16 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         required input variables:
             spinBox_general_info_rail_max_railway_operating_speed_freight 
             spinBox_general_info_rail_max_railway_operating_speed_passenger
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach
         required methods:
             preemption_of_traffic_signals_lookup_proximity_condition
             general_info_rail_railway_design_speed
         '''
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.preemption_of_traffic_signals_lookup_required)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.preemption_of_traffic_signals_lookup_required)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.preemption_of_traffic_signals_lookup_required)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.preemption_of_traffic_signals_lookup_required)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.preemption_of_traffic_signals_lookup_required)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.preemption_of_traffic_signals_lookup_required)
 
         # whistLE CESSATION (GCS seCTION Appendix D)
         #TODO
@@ -1425,10 +1425,10 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             gcws Public warrants
             comboBox_general_info_road_sidewalks
             comboBox_inspection_details_grade_crossing_type
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach
-            doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach
+            doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach
             spinBox_general_info_rail_max_railway_operating_speed_freight
             spinBox_general_info_rail_max_railway_operating_speed_passenger
             spinBox_general_info_rail_no_tracks_main
@@ -1452,10 +1452,10 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         self.view.comboBox_gcws_observe_gates_s_or_w_approach.currentTextChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
         self.view.comboBox_general_info_road_sidewalks.currentTextChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
         self.view.comboBox_inspection_details_grade_crossing_type.currentTextChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
-        self.view.doubleSpinBox_location_of_grade_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_n_or_e_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_signalized_s_or_w_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_n_or_e_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
+        self.view.doubleSpinBox_location_of_crossing_nearest_intersection_stop_s_or_w_approach.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
         self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
         self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.areas_without_train_whistling_lookup_gcs_9_2)
@@ -1476,10 +1476,10 @@ class controllerCrossingassessmentCA(qtw.QWidget):
             general_info_rail_no_tracks_total
             general_info_rail_railway_design_speed
         '''
-        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.areas_without_train_whistling_requirements_lookup_table_d1_criteria)
-        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.areas_without_train_whistling_requirements_lookup_table_d1_criteria)
-        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.areas_without_train_whistling_requirements_lookup_table_d1_criteria)
-        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.areas_without_train_whistling_requirements_lookup_table_d1_criteria)
+        self.view.spinBox_general_info_rail_no_tracks_main.valueChanged.connect(self.model.areas_without_train_whistling_lookup_table_d1_criteria)
+        self.view.spinBox_general_info_rail_no_tracks_other.valueChanged.connect(self.model.areas_without_train_whistling_lookup_table_d1_criteria)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_freight.valueChanged.connect(self.model.areas_without_train_whistling_lookup_table_d1_criteria)
+        self.view.spinBox_general_info_rail_max_railway_operating_speed_passenger.valueChanged.connect(self.model.areas_without_train_whistling_lookup_table_d1_criteria)
 
         #connect signals and slots - areas_without_train_whistling_requirements_observe_table_d1
         '''
@@ -2384,27 +2384,27 @@ class controllerCrossingassessmentCA(qtw.QWidget):
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('location_of_grade_crossing_nearest_intersection_other_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('location_of_crossing_nearest_intersection_other_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('location_of_grade_crossing_nearest_intersection_other_s_of_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('location_of_crossing_nearest_intersection_other_s_of_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('location_of_grade_crossing_nearest_intersection_signalized_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('location_of_crossing_nearest_intersection_signalized_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('location_of_grade_crossing_nearest_intersection_signalized_s_of_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('location_of_crossing_nearest_intersection_signalized_s_of_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('location_of_grade_crossing_nearest_intersection_stop_n_or_e_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('location_of_crossing_nearest_intersection_stop_n_or_e_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
-            self.db.db_model_crossing_assessment_ca.fieldIndex('location_of_grade_crossing_nearest_intersection_stop_s_of_w_approach')
+            self.db.db_model_crossing_assessment_ca.fieldIndex('location_of_crossing_nearest_intersection_stop_s_of_w_approach')
         )
         self.mapper.addMapping(
             self.view.temp,
