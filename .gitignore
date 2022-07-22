@@ -1,7 +1,8 @@
 # Ignore folder types
-**\resources
-**\program_files
 **\app\3rd_party_open\odoo
+**\installation_pkgs
+**\program_files
+**\resources
 
 # Ignore file types
 *.1
@@ -78,6 +79,7 @@
 *.gid
 *.gif
 *.gml
+*.gz
 *.h
 *.hex
 *.hjt
@@ -93,6 +95,7 @@
 *.in
 *.ini
 *.iotpatch
+*.iso
 *.jar
 *.jfm
 *.jpeg
@@ -130,6 +133,7 @@
 *.mp4
 *.ms1
 *.msg
+*.msi
 *.ncf
 *.nfl
 *.nsi
@@ -197,6 +201,7 @@
 *.template
 *.terms
 *.tex
+*.tgz
 *.tif
 *.tm
 *.tpz
@@ -228,5 +233,6 @@
 *.xpm
 *.xsd
 *.xsl
+*.xz
 *.zip
 app/3rd_party_open/odoo/

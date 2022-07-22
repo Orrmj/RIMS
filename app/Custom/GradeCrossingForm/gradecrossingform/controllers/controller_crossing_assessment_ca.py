@@ -18,7 +18,7 @@ class ControllerCrossingAssessmentCA(qtw.QWidget):
         #self.map_fields_to_sql()
 
     def connect_view_model(self):
-        self.view.changed.connect(self.model.on_change_crossingassessmentca)
+        self.view.form_changed.connect(self.model.on_change_crossingassessmentca)
         
     def map_fields_to_sql(self):
     # Map the crossing fields

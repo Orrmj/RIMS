@@ -27,81 +27,6 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
    
     def on_form_change(self):
         data_xing_inventory = {
-            'inspection_details_assessment_team': self.textEdit_inspection_details_assessment_team.toPlainText(),
-            'inspection_details_date_assessment': self.datetimeEdit_inspection_details_date_assessment.dateTime(),
-            'inspection_details_crossing_location': self.lineEdit_inspection_details_crossing_location.text(),
-            'inspection_details_location_number': self.lineEdit_inspection_details_location_number.text(), 
-            'inspection_details_municipality': self.lineEdit_inspection_details_municipality.text(),
-            'inspection_details_road_name': self.lineEdit_inspection_details_road_name.text(),
-            'inspection_details_road_number': self.lineEdit_inspection_details_road_number.text(),
-            'inspection_details_spur_name': self.lineEdit_inspection_details_spur_name.text(),
-            'inspection_details_latitude': self.doubleSpinBox_inspection_details_latitude.value(),        
-            'inspection_details_longitude': self.doubleSpinBox_inspection_details_longitude.value(),
-            'inspection_details_spur_mile': self.doubleSpinBox_inspection_details_spur_mile.value(),
-            'inspection_details_subdivision_mile': self.doubleSpinBox_inspection_details_subdivision_mile.value(),
-            'inspection_details_gcws_type': self.comboBox_inspection_details_gcws_type.currentText(),
-            'inspection_details_grade_crossing_type': self.comboBox_inspection_details_grade_crossing_type.currentText(),
-            'inspection_details_province': self.comboBox_inspection_details_province.currentText(),
-            #TODO create and add railway authority list 
-            'inspection_details_railway_authority': self.comboBox_inspection_details_railway_authority.currentText(),
-            'inspection_details_reason_for_assessment': self.comboBox_inspection_details_reason_for_assessment.currentText(),
-            #TODO create and add road authority list 
-            'comboBox_inspection_details_road_authority': self.comboBox_inspection_details_road_authority.currentText(),
-            #TODO create and add subdivision list
-            'inspection_details_subdivision_name': self.comboBox_inspection_details_subdivision_name.currentText(), 
-            'inspection_details_track_type': self.comboBox_inspection_details_track_type.currentText(),
-            'collision_history_comments': self.textEdit_collision_history_comments.toPlainText(),
-            'collision_history_fatal_injury': self.spinBox_collision_history_fatal_injury.value(),
-            'collision_history_fatalities': self.spinBox_collision_history_fatalities.value(),
-            'collision_history_personal_injuries': self.spinBox_collision_history_personal_injuries.value(),
-            'collision_history_personal_injury': self.spinBox_collision_history_personal_injury.value(),
-            'collision_history_property_damage': self.spinBox_collision_history_property_damage.value(),
-            'collision_history_total_5_year_period': self.label_collision_history_total_5_year_period.text(),
-            'collision_history_risk_index_initial': self.label_collision_history_risk_index_initial.text(),
-            'collision_history_risk_index_final': self.label_collision_history_risk_index_final.text(),
-            'general_info_comments': self.textEdit_general_info_comments.toPlainText(),
-            'general_info_observe_special_buildings': self.lineEdit_general_info_observe_special_buildings.text(),
-            'general_info_road_other_users': self.lineEdit_general_info_road_other_users.text(),
-            'general_info_rail_max_railway_operating_speed_freight': self.spinBox_general_info_rail_max_railway_operating_speed_freight.value(),
-            'general_info_rail_max_railway_operating_speed_passenger': self.spinBox_general_info_rail_max_railway_operating_speed_passenger.value(),
-            'general_info_rail_no_tracks_main': self.spinBox_general_info_rail_no_tracks_main.value(),
-            'general_info_rail_no_tracks_other': self.spinBox_general_info_rail_no_tracks_other.value(),
-            'general_info_rail_no_trains_per_day_freight': self.spinBox_general_info_rail_no_trains_per_day_freight.value(),
-            'general_info_rail_no_trains_per_day_passengers': self.spinBox_general_info_rail_no_trains_per_day_passengers.value(),
-            'general_info_road_aadt_current': self.spinBox_general_info_road_aadt_current.value(),
-            'general_info_road_aadt_forecast': self.spinBox_general_info_road_aadt_forecast.value(),
-            'general_info_road_aadt_year_current': self.spinBox_general_info_road_aadt_year_current.value(),
-            'general_info_road_aadt_year_forecasted': self.spinBox_general_info_road_aadt_year_forecasted.value(),
-            'general_info_road_cyclist_per_day': self.spinBox_general_info_road_cyclist_per_day.value(),
-            'general_info_road_no_traffic_lanes_bidirectional': self.spinBox_general_info_road_no_traffic_lanes_bidirectional.value(),
-            'general_info_road_no_traffic_lanes_northbound_or_eastbound': self.spinBox_general_info_road_no_traffic_lanes_northbound_or_eastbound.value(),
-            'general_info_road_no_traffic_lanes_southbound_or_westbound': self.spinBox_general_info_road_no_traffic_lanes_southbound_or_westbound.value(),
-            'general_info_road_other_users_daily_users': self.spinBox_general_info_road_other_users_daily_users.value(),
-            'general_info_road_pedestrians_per_day': self.spinBox_general_info_road_pedestrians_per_day.value(),
-            'general_info_road_speed_design': self.spinBox_general_info_road_speed_design.value(),
-            'general_info_road_speed_posted': self.spinBox_general_info_road_speed_posted.value(),
-            'general_info_observe_roadway_illumination': self.comboBox_general_info_observe_roadway_illumination.currentText(),
-            'general_info_observe_surrounding_land_use': self.comboBox_general_info_observe_surrounding_land_use.currentText(),
-            'general_info_rail_train_switching': self.comboBox_general_info_rail_train_switching.currentText(),
-            'general_info_road_assistive_pedestrian_devices': self.comboBox_general_info_road_assistive_pedestrian_devices.currentText(),
-            'general_info_road_classification': self.comboBox_general_info_road_classification.currentText(),
-            'general_info_road_dangerous_goods_route': self.comboBox_general_info_road_dangerous_goods_route.currentText(),
-            'general_info_road_school_bus_route': self.comboBox_general_info_road_school_bus_route.currentText(),
-            'general_info_road_seasonal_volume_fluctuations': self.comboBox_general_info_road_seasonal_volume_fluctuations.currentText(),
-            'general_info_road_sidewalks': self.comboBox_general_info_road_sidewalks.currentText(),
-            'general_info_road_sidewalk_island_circuit': self.comboBox_general_info_road_sidewalk_island_circuit.currentText(),
-            'general_info_rail_no_tracks_total': self.label_general_info_rail_no_tracks_total.text(),
-            'general_info_rail_no_trains_per_day_total': self.label_general_info_rail_no_trains_per_day_total.text(),
-            'general_info_rail_railway_design_speed': self.label_general_info_rail_railway_design_speed.text(),
-            'general_info_road_no_traffic_lanes_total': self.label_general_info_road_no_traffic_lanes_total.text(),
-            'design_observe_k_factor_other': self.textEdit_design_observe_k_factor_other.toPlainText(),
-            'design_comments': self.textEdit_design_comments.toPlainText(),
-            'design_measure_adjacent_track_clearance_distance': self.doubleSpinBox_design_measure_adjacent_track_clearance_distance.value(),
-            'design_measure_adjacent_track_separation_distance': self.doubleSpinBox_design_measure_adjacent_track_separation_distance.value(),
-            'design_measure_clearance_distance_pedestrian': self.doubleSpinBox_design_measure_clearance_distance_pedestrian.value(),
-            'design_measure_clearance_distance_pedestrian_gate_arm_stop': self.doubleSpinBox_design_measure_clearance_distance_pedestrian_gate_arm_stop.value(),
-            'design_measure_clearance_distance_vehicle': self.doubleSpinBox_design_measure_clearance_distance_vehicle.value(),
-            'design_road_max_approach_grade_within_s': self.doubleSpinBox_design_road_max_approach_grade_within_s.value(),
             'design_observe_k_factor_road_surface_condition': self.comboBox_design_observe_k_factor_road_surface_condition.currentText(),
             'design_observe_k_factor_crossing_surface_condition': self.comboBox_design_observe_k_factor_crossing_surface_condition.currentText(),
             'design_observe_k_factor_superelevation': self.comboBox_design_observe_k_factor_superelevation.currentText(),
@@ -237,170 +162,7 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
             'signs_and_markings_ens_s_or_w_approach_condition': self.comboBox_signs_and_markings_ens_s_or_w_approach_condition.currentText(),
             'signs_and_markings_ens_s_or_w_approach_legible': self.comboBox_signs_and_markings_ens_s_or_w_approach_legible.currentText(),
             'signs_and_markings_ens_s_or_w_approach_orientation': self.comboBox_signs_and_markings_ens_s_or_w_approach_orientation.currentText(),
-            'signs_and_markings_ens_s_or_w_approach_present': self.comboBox_signs_and_markings_ens_s_or_w_approach_present.currentText(),
-            'signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_1b': self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_1b.currentText(),
-            'signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_3c': self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_per_fig_8_3c.currentText(),
-            'signs_and_markings_number_of_tracks_n_or_e_approach_present': self.comboBox_signs_and_markings_number_of_tracks_n_or_e_approach_present.currentText(),
-            'signs_and_markings_number_of_tracks_s_or_w_approach_per_fig_8_1b': self.comboBox_signs_and_markings_number_of_tracks_s_or_w_approach_per_fig_8_1b.currentText(),
-            'signs_and_markings_number_of_tracks_s_or_w_approach_per_fig_8_3c': self.comboBox_signs_and_markings_number_of_tracks_s_or_w_approach_per_fig_8_3c.currentText(),
-            'signs_and_markings_number_of_tracks_s_or_w_approach_present': self.comboBox_signs_and_markings_number_of_tracks_s_or_w_approach_present.currentText(),
-            'signs_and_markings_per_mutcd': self.comboBox_signs_and_markings_per_mutcd.currentText(),
-            'signs_and_markings_posted_speed_n_or_e_approach_present': self.comboBox_signs_and_markings_posted_speed_n_or_e_approach_present.currentText(),
-            'signs_and_markings_posted_speed_s_or_w_approach_present': self.comboBox_signs_and_markings_posted_speed_s_or_w_approach_present.currentText(),
-            'signs_and_markings_rr_xing_ahead_n_or_e_approach_orientation': self.comboBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_orientation.currentText(),
-            'signs_and_markings_rr_xing_ahead_n_or_e_approach_present': self.comboBox_signs_and_markings_rr_xing_ahead_n_or_e_approach_present.currentText(),
-            'signs_and_markings_rr_xing_ahead_s_or_w_approach_orientation': self.comboBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_orientation.currentText(),
-            'signs_and_markings_rr_xing_ahead_s_or_w_approach_present': self.comboBox_signs_and_markings_rr_xing_ahead_s_or_w_approach_present.currentText(),
-            'signs_and_markings_railway_crossing_n_or_e_approach_per_fig_8_1a': self.comboBox_signs_and_markings_railway_crossing_n_or_e_approach_per_fig_8_1a.currentText(),
-            'signs_and_markings_railway_crossing_n_or_e_approach_present': self.comboBox_signs_and_markings_railway_crossing_n_or_e_approach_present.currentText(),
-            'signs_and_markings_railway_crossing_s_or_w_approach_per_fig_8_1a': self.comboBox_signs_and_markings_railway_crossing_s_or_w_approach_per_fig_8_1a.currentText(),
-            'signs_and_markings_railway_crossing_s_or_w_approach_present': self.comboBox_signs_and_markings_railway_crossing_s_or_w_approach_present.currentText(),
-            'signs_and_markings_sidewalks_present': self.comboBox_signs_and_markings_sidewalks_present.currentText(),
-            'signs_and_markings_stop_n_or_e_approach_per_fig_8_4': self.comboBox_signs_and_markings_stop_n_or_e_approach_per_fig_8_4.currentText(),
-            'signs_and_markings_stop_n_or_e_approach_present': self.comboBox_signs_and_markings_stop_n_or_e_approach_present.currentText(),
-            'signs_and_markings_stop_n_or_e_approach_same_post': self.comboBox_signs_and_markings_stop_n_or_e_approach_same_post.currentText(),
-            'signs_and_markings_stop_s_or_w_approach_per_fig_8_4': self.comboBox_signs_and_markings_stop_s_or_w_approach_per_fig_8_4.currentText(),
-            'signs_and_markings_stop_s_or_w_approach_present': self.comboBox_signs_and_markings_stop_s_or_w_approach_present.currentText(),
-            'signs_and_markings_stop_s_or_w_approach_same_post': self.comboBox_signs_and_markings_stop_s_or_w_approach_same_post.currentText(),
-            'signs_and_markings_stop_sign_ahead_n_or_e_approach_present': self.comboBox_signs_and_markings_stop_sign_ahead_n_or_e_approach_present.currentText(),
-            'signs_and_markings_stop_sign_ahead_s_or_w_approach_present': self.comboBox_signs_and_markings_stop_sign_ahead_s_or_w_approach_present.currentText(),
-            'gcws_warrants_comments': self.textEdit_gcws_warrants_comments.toPlainText(),
-            'gcws_warrant_private_9_3': self.label_gcws_warrant_private_9_3.text(),
-            'gcws_warrant_private_9_3_1': self.label_gcws_warrant_private_9_3_1.text(),
-            'gcws_warrant_private_9_3_2_a': self.label_gcws_warrant_private_9_3_2_a.text(),
-            'gcws_warrant_private_9_3_2_b': self.label_gcws_warrant_private_9_3_2_b.text(),
-            'gcws_warrant_private_9_3_2_c': self.label_gcws_warrant_private_9_3_2_c.text(),
-            'gcws_warrant_public_9_1': self.label_gcws_warrant_public_9_1.text(),
-            'gcws_warrant_public_9_1_a': self.label_gcws_warrant_public_9_1_a.text(),
-            'gcws_warrant_public_9_1_b': self.label_gcws_warrant_public_9_1_b.text(),
-            'gcws_warrant_public_9_1_c': self.label_gcws_warrant_public_9_1_c.text(),
-            'gcws_warrant_public_9_1_d_ii': self.label_gcws_warrant_public_9_1_d_i.text(),
-            'gcws_warrant_public_9_1_d_iii': self.label_gcws_warrant_public_9_1_d_iii.text(),
-            'gcws_warrant_sidewalk_9_5': self.label_gcws_warrant_sidewalk_9_5.text(),
-            'gates_gcws_warrant_private_9_4_1_a': self.label_gates_gcws_warrant_private_9_4_1_a.text(),
-            'gates_gcws_warrant_private_9_4_1_b': self.label_gates_gcws_warrant_private_9_4_1_b.text(),
-            'gates_gcws_warrant_private_9_4_1_c': self.label_gates_gcws_warrant_private_9_4_1_c.text(),
-            'gates_gcws_warrant_public_9_2_1_a': self.label_gates_gcws_warrant_public_9_2_1_a.text(),
-            'gates_gcws_warrant_public_9_2_1_b': self.label_gates_gcws_warrant_public_9_2_1_b.text(),
-            'gates_gcws_warrant_public_9_2_1_c': self.label_gates_gcws_warrant_public_9_2_1_c.text(),
-            'gates_gcws_warrant_public_9_2_1_d': self.label_gates_gcws_warrant_public_9_2_1_d.text(),
-            'gates_gcws_warrant_public_9_2_1_e': self.label_gates_gcws_warrant_public_9_2_1_e.text(),
-            'gates_gcws_warrant_sidewalk_9_6': self.label_gates_gcws_warrant_sidewalk_9_6.text(),
-            'gcws_comments': self.textEdit_gcws_comments.toPlainText(),
-            'gcws_rail_design_warning_time_preemption': self.spinBox_gcws_rail_design_warning_time_preemption.value(),
-            'gcws_measure_warning_device_n_or_e_approach_distance_from_rail': self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_distance_from_rail.value(),
-            'gcws_measure_warning_device_n_or_e_approach_distance_from_road': self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_distance_from_road.value(),
-            'gcws_measure_warning_device_n_or_e_approach_distance_top_of_foundation': self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_distance_top_of_foundation.value(),
-            'gcws_measure_warning_device_n_or_e_approach_slope_from_foundation': self.doubleSpinBox_gcws_measure_warning_device_n_or_e_approach_slope_from_foundation.value(),
-            'gcws_measure_warning_device_s_or_w_approach_distance_from_rail': self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_distance_from_rail.value(),
-            'gcws_measure_warning_device_s_or_w_approach_distance_from_road': self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_distance_from_road.value(),
-            'gcws_measure_warning_device_s_or_w_approach_distance_top_of_foundation': self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_distance_top_of_foundation.value(),
-            'gcws_measure_warning_device_s_or_w_approach_slope_from_foundation': self.doubleSpinBox_gcws_measure_warning_device_s_or_w_approach_slope_from_foundation.value(),
-            'gcws_rail_crossing_warning_time_actual': self.doubleSpinBox_gcws_rail_crossing_warning_time_actual.value(),
-            'gcws_observe_bell_if_sidewalk': self.comboBox_gcws_observe_bell_if_sidewalk.currentText(),
-            'gcws_observe_bells_condition': self.comboBox_gcws_observe_bells_condition.currentText(),
-            'gcws_observe_bells_n_or_e_approach': self.comboBox_gcws_observe_bells_n_or_e_approach.currentText(),
-            'gcws_observe_bells_s_or_w_approach': self.comboBox_gcws_observe_bells_s_or_w_approach.currentText(),
-            'gcws_observe_cantilever_lights_condition': self.comboBox_gcws_observe_cantilever_lights_condition.currentText(),
-            'gcws_observe_cantilever_lights_n_or_e_approach': self.comboBox_gcws_observe_cantilever_lights_n_or_e_approach.currentText(),
-            'gcws_observe_cantilever_lights_s_or_w_approach': self.comboBox_gcws_observe_cantilever_lights_s_or_w_approach.currentText(),
-            'gcws_observe_gates_condition': self.comboBox_gcws_observe_gates_condition.currentText(),
-            'gcws_observe_gates_n_or_e_approach': self.comboBox_gcws_observe_gates_n_or_e_approach.currentText(),
-            'gcws_observe_gates_s_or_w_approach': self.comboBox_gcws_observe_gates_s_or_w_approach.currentText(),
-            'gcws_observe_gcws_limited_use_with_walk_light_assembly': self.comboBox_gcws_observe_gcws_limited_use_with_walk_light_assembly.currentText(),
-            'gcws_observe_gcws_limited_use_without_walk_light_assembly': self.comboBox_gcws_observe_gcws_limited_use_without_walk_light_assembly.currentText(),
-            'gcws_observe_light_units_condition': self.comboBox_gcws_observe_light_units_condition.currentText(),
-            'gcws_observe_light_units_n_or_e_approach': self.comboBox_gcws_observe_light_units_n_or_e_approach.currentText(),
-            'gcws_observe_light_units_s_or_w_approach': self.comboBox_gcws_observe_light_units_s_or_w_approach.currentText(),
-            'gcws_observe_warning_time_consistency': self.comboBox_gcws_observe_warning_time_consistency.currentText(),
-            'gcws_observe_warning_time_consistency_reduced_speed': self.comboBox_gcws_observe_warning_time_consistency_reduced_speed.currentText(),
-            'gcws_rail_cut_out_circuit_requirements': self.comboBox_gcws_rail_cut_out_circuit_requirements.currentText(),
-            'gcws_rail_directional_stick_circuit_requirements': self.comboBox_gcws_rail_directional_stick_circuit_requirements.currentText(),
-            'gcws_rail_self_diagnostic': self.comboBox_gcws_rail_self_diagnostic.currentText(),
-            'gcws_rail_design_approach_warning_time': self.label_gcws_rail_design_approach_warning_time.text(),
-            'gcws_rail_design_warning_time_ssd': self.label_gcws_rail_design_warning_time_ssd.text(),
-            'gcws_rail_design_warning_time_adjacent_crossing': self.label_gcws_rail_design_warning_time_adjacent_crossing.text(),
-            'gcws_rail_design_warning_time_clearance_distance': self.label_gcws_rail_design_warning_time_clearance_distance.text(),
-            'gcws_rail_design_warning_time_departure_time_pedestrian': self.label_gcws_rail_design_warning_time_departure_time_pedestrian.text(),
-            'gcws_rail_design_warning_time_departure_time_vehicle': self.label_gcws_rail_design_warning_time_departure_time_vehicle.text(),
-            'gcws_rail_design_warning_time_gate_arm_clearance': self.label_gcws_rail_design_warning_time_gate_arm_clearance.text(),
-            'gcws_rail_design_warning_time_ssd': self.label_gcws_rail_design_warning_time_ssd.text(),
-            'light_units_comments': self.textEdit_light_units_comments.toPlainText(),
-            'light_units_measure_cantilever_distance_from_rail_n_or_e_approach': self.doubleSpinBox_light_units_measure_cantilever_distance_from_rail_n_or_e_approach.value(),
-            'light_units_measure_cantilever_distance_from_rail_s_or_w_approach': self.doubleSpinBox_light_units_measure_cantilever_distance_from_rail_s_or_w_approach.value(),
-            'light_units_measure_cantilever_distance_from_road_n_or_e_approach': self.doubleSpinBox_light_units_measure_cantilever_distance_from_road_n_or_e_approach.value(),
-            'light_units_measure_cantilever_distance_from_road_s_or_w_approach': self.doubleSpinBox_light_units_measure_cantilever_distance_from_road_s_or_w_approach.value(),
-            'light_units_measure_cantilever_dl_n_or_e_approach': self.doubleSpinBox_light_units_measure_cantilever_dl_n_or_e_approach.value(),
-            'light_units_measure_cantilever_dl_s_or_w_approach': self.doubleSpinBox_light_units_measure_cantilever_dl_s_or_w_approach.value(),
-            'light_units_measure_cantilever_dr_n_or_e_approach': self.doubleSpinBox_light_units_measure_cantilever_dr_n_or_e_approach.value(),
-            'light_units_measure_cantilever_dr_s_or_w_approach': self.doubleSpinBox_light_units_measure_cantilever_dr_s_or_w_approach.value(),
-            'light_units_measure_cantilever_height_n_or_e_approach': self.doubleSpinBox_light_units_measure_cantilever_height_n_or_e_approach.value(),
-            'light_units_measure_cantilever_height_s_or_w_approach': self.doubleSpinBox_light_units_measure_cantilever_height_s_or_w_approach.value(),
-            'light_units_measure_mast_height_n_or_e_approach': self.doubleSpinBox_light_units_measure_mast_height_n_or_e_approach.value(),
-            'light_units_measure_mast_height_s_or_w_approach': self.doubleSpinBox_light_units_measure_mast_height_s_or_w_approach.value(),
-            'light_units_observe_cantilevers_per_fig_12_3': self.comboBox_light_units_observe_cantilevers_per_fig_12_3.currentText(),
-            'light_units_observe_per_fig_12_1': self.comboBox_light_units_observe_per_fig_12_1.currentText(),
-            'light_units_observe_supplemental_intersection_n_or_e_approach': self.comboBox_light_units_observe_supplemental_intersection_n_or_e_approach.currentText(),
-            'light_units_observe_supplemental_intersection_s_or_w_approach': self.comboBox_light_units_observe_supplemental_intersection_s_or_w_approach.currentText(),
-            'light_units_observe_supplemental_sidewalk_n_or_e_approach': self.comboBox_light_units_observe_supplemental_sidewalk_n_or_e_approach.currentText(),
-            'light_units_observe_supplemental_sidewalk_s_or_w_approach': self.comboBox_light_units_observe_supplemental_sidewalk_s_or_w_approach.currentText(),
-            'light_units_observe_visibility_back_lights_n_or_e_approach': self.comboBox_light_units_observe_visibility_back_lights_n_or_e_approach.currentText(),
-            'light_units_observe_visibility_back_lights_s_or_w_approach': self.comboBox_light_units_observe_visibility_back_lights_s_or_w_approach.currentText(),
-            'light_units_observe_visibility_front_lights_n_or_e_approach': self.comboBox_light_units_observe_visibility_front_lights_n_or_e_approach.currentText(),
-            'light_units_observe_visibility_front_lights_s_or_w_approach': self.comboBox_light_units_observe_visibility_front_lights_s_or_w_approach.currentText(),
-            'gates_gcws_comments': self.textEdit_gates_gcws_comments.toPlainText(),
-            'gates_gcws_measure_gate_ascent_time': self.doubleSpinBox_gates_gcws_measure_gate_ascent_time.value(),
-            'gates_gcws_measure_gate_descent_time': self.doubleSpinBox_gates_gcws_measure_gate_descent_time.value(),
-            'gates_gcws_rail_gate_arm_delay_time_design': self.doubleSpinBox_gates_gcws_rail_gate_arm_delay_time_design.value(),
-            'gates_gcws_rail_gate_arm_descent_time_design': self.doubleSpinBox_gates_gcws_rail_gate_arm_descent_time_design.value(),
-            'gates_gcws_rail_inner_gate_arm_delay_time_design': self.doubleSpinBox_gates_gcws_rail_inner_gate_arm_delay_time_design.value(),
-            'gates_gcws_measure_distance_between_gate_end_and_road_cl_n_or_e_approach': self.doubleSpinBox_gates_gcws_measure_distance_between_gate_end_and_road_cl_n_or_e_approach.value(),
-            'gates_gcws_calculate_inner_gate_arm_delay_time_recommended': self.label_gates_gcws_calculate_inner_gate_arm_delay_time_recommended.text(),
-            'gates_gcws_observe_gate_arm_rest': self.comboBox_gates_gcws_observe_gate_arm_rest.currentText(),
-            'gates_gcws_observe_gate_ascent_time': self.comboBox_gates_gcws_observe_gate_ascent_time.currentText(),
-            'gates_gcws_observe_gate_descent_time': self.comboBox_gates_gcws_observe_gate_descent_time.currentText(),
-            'gates_gcws_observe_gate_strips_n_or_e_approach': self.comboBox_gates_gcws_observe_gate_strips_n_or_e_approach.currentText(),
-            'gates_gcws_observe_gate_strips_s_or_w_approach': self.comboBox_gates_gcws_observe_gate_strips_s_or_w_approach.currentText(),
-            'gates_gcws_observe_per_fig_12_2': self.comboBox_gates_gcws_observe_per_fig_12_2.currentText(),
-            'aawd_comments': self.textEdit_aawd_comments.toPlainText(),
-            'aawd_rail_advance_activation_time_actual_n_or_e_approach': self.spinBox_aawd_rail_advance_activation_time_actual_n_or_e_approach.value(),
-            'aawd_rail_advance_activation_time_actual_s_or_w_approach': self.spinBox_aawd_rail_advance_activation_time_actual_s_or_w_approach.value(),
-            'aawd_measure_distance_sign_and_stop_n_or_e_approach_actual': self.doubleSpinBox_aawd_measure_distance_sign_and_stop_n_or_e_approach_actual.value(),
-            'aawd_measure_distance_sign_and_stop_s_or_w_approach_actual': self.doubleSpinBox_aawd_measure_distance_sign_and_stop_s_or_w_approach_actual.value(),
-            'aawd_observe_present_n_or_e_approach': self.comboBox_aawd_observe_present_n_or_e_approach.currentText(),
-            'aawd_observe_present_s_or_w_approach': self.comboBox_aawd_observe_present_s_or_w_approach.currentText(),
-            'aawd_road_aawd_sufficient_activation_time_n_or_e_approach': self.comboBox_aawd_road_aawd_sufficient_activation_time_n_or_e_approach.currentText(),
-            'aawd_road_aawd_sufficient_activation_time_s_or_w_approach': self.comboBox_aawd_road_aawd_sufficient_activation_time_s_or_w_approach.currentText(),
-            'aawd_warrant_gcr_observe_environmental_condition': self.comboBox_aawd_warrant_gcr_observe_environmental_condition.currentText(),
-            'aawd_warrant_gcr_observe_sightline_obstruction': self.comboBox_aawd_warrant_gcr_observe_sightline_obstruction.currentText(),
-            'aawd_warrant_mutcd_lookup_significant_road_downgrade': self.comboBox_aawd_warrant_mutcd_lookup_significant_road_downgrade,
-            'aawd_calculate_advance_activation_time_design_n_or_e_approach': self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach.text(),
-            'aawd_calculate_advance_activation_time_design_s_or_w_approach': self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach.text(),
-            'aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended': self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended.text(),
-            'aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended': self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended.text(),
-            'aawd_warrant_gcr_lookup_road_classification': self.label_aawd_warrant_gcr_lookup_road_classification.text(),
-            'aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr': self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr.text(),
-            'preemption_of_traffic_signals_comments': self.textEdit_preemption_of_traffic_signals_comments.toPlainText(),
-            'preemption_of_traffic_signals_road_preemption_warning_time_actual': self.spinBox_preemption_of_traffic_signals_road_preemption_warning_time_actual.value(),
-            'preemption_of_traffic_signals_road_preemption_warning_time_design': self.spinBox_preemption_of_traffic_signals_road_preemption_warning_time_design.value(),
-            'preemption_of_traffic_signals_observe_consideration_of_Longer_vehicles': self.comboBox_preemption_of_traffic_signals_observe_consideration_of_Longer_vehicles.currentText(),
-            'preemption_of_traffic_signals_observe_known_queuing_issues': self.comboBox_preemption_of_traffic_signals_observe_known_queuing_issues.currentText(),
-            'preemption_of_traffic_signals_observe_pedestrian_accommodation': self.comboBox_preemption_of_traffic_signals_observe_pedestrian_accommodation.currentText(),
-            'preemption_of_traffic_signals_observe_queuing_condition': self.comboBox_preemption_of_traffic_signals_observe_queuing_condition.currentText(),
-            'preemption_of_traffic_signals_observe_supplemental_signage': self.comboBox_preemption_of_traffic_signals_observe_supplemental_signage.currentText(),
-            'preemption_of_traffic_signals_observe_traffic_clearance_time_adequate': self.comboBox_preemption_of_traffic_signals_observe_traffic_clearance_time_adequate.currentText(),
-            'preemption_of_traffic_signals_observe_unintended_queuing_by_traffic_signals': self.comboBox_preemption_of_traffic_signals_observe_unintended_queuing_by_traffic_signals.currentText(),
-            'preemption_of_traffic_signals_road_or_rail_crossing_preemption_type': self.comboBox_preemption_of_traffic_signals_road_or_rail_crossing_preemption_type.currentText(),
-            'preemption_of_traffic_signals_lookup_proximity_condition': self.label_preemption_of_traffic_signals_lookup_proximity_condition.text(),
-            'areas_without_train_whistling_comments': self.textEdit_areas_without_train_whistling_comments.toPlainText(),
-            'areas_without_train_whistling_lookup_gcs_12_to_16': self.comboBox_areas_without_train_whistling_lookup_gcs_12_to_16.currentText(),
-            'areas_without_train_whistling_observe_for_stop_and_proceed': self.comboBox_areas_without_train_whistling_observe_for_stop_and_proceed.currentText(),
-            'areas_without_train_whistling_observe_trespassing_area': self.comboBox_areas_without_train_whistling_observe_trespassing_area.currentText(),
-            'areas_without_train_whistling_rail_anti_whistling_zone': self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone.currentText(),
-            'areas_without_train_whistling_rail_anti_whistling_zone_24_hrs': self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone_24_hrs.currentText(),
-            'areas_without_train_whistling_lookup_gcs_9_2': self.label_areas_without_train_whistling_lookup_gcs_9_2.text(),
-            'areas_without_train_whistling_lookup_table_d1_criteria': self.label_areas_without_train_whistling_lookup_table_d1_criteria.text(),
-            'areas_without_train_whistling_observe_table_D1': self.label_areas_without_train_whistling_observe_table_D1.text()
+            'signs_and_markings_ens_s_or_w_approach_present': self.comboBox_signs_and_markings_ens_s_or_w_approach_present.currentText()
         }
         self.form_changed.emit(data_xing_inventory)
 
@@ -487,28 +249,28 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.doubleSpinBox_inspection_details_subdivision_mile.setRange(0, 999999)
 
         #Group ComboBoxes
-        self.comboBox_inspection_details_gcws_type = qtw.QComboBox(currentTextChanged=self.on_form_change)
+        self.comboBox_inspection_details_gcws_type = qtw.QComboBox(currentIndexChanged=self.on_form_change)
         self.comboBox_inspection_details_gcws_type.addItems(list_inspection_details_gcws_type)
 
-        self.comboBox_inspection_details_grade_crossing_type = qtw.QComboBox(currentTextChanged=self.on_form_change)
+        self.comboBox_inspection_details_grade_crossing_type = qtw.QComboBox()
         self.comboBox_inspection_details_grade_crossing_type.addItems(list_inspection_details_grade_crossing_type)
 
-        self.comboBox_inspection_details_province = qtw.QComboBox(currentTextChanged=self.on_form_change)
+        self.comboBox_inspection_details_province = qtw.QComboBox(currentIndexChanged=self.on_form_change)
         self.comboBox_inspection_details_province.addItems(list_inspection_details_province)
 
-        self.comboBox_inspection_details_railway_authority = qtw.QComboBox(currentTextChanged=self.on_form_change)
+        self.comboBox_inspection_details_railway_authority = qtw.QComboBox(currentIndexChanged=self.on_form_change)
         #TODO create and add railway authority list 
 
-        self.comboBox_inspection_details_reason_for_assessment = qtw.QComboBox(currentTextChanged=self.on_form_change)
+        self.comboBox_inspection_details_reason_for_assessment = qtw.QComboBox(currentIndexChanged=self.on_form_change)
         self.comboBox_inspection_details_reason_for_assessment.addItems(list_inspection_details_reason_for_assessment)
         
-        self.comboBox_inspection_details_road_authority = qtw.QComboBox(currentTextChanged=self.on_form_change)
+        self.comboBox_inspection_details_road_authority = qtw.QComboBox(currentIndexChanged=self.on_form_change)
         #TODO create and add road authority list 
 
-        self.comboBox_inspection_details_subdivision_name = qtw.QComboBox(currentTextChanged=self.on_form_change)
+        self.comboBox_inspection_details_subdivision_name = qtw.QComboBox(currentIndexChanged=self.on_form_change)
         #TODO create and add subdivision list 
 
-        self.comboBox_inspection_details_track_type = qtw.QComboBox(currentTextChanged=self.on_form_change)
+        self.comboBox_inspection_details_track_type = qtw.QComboBox(currentIndexChanged=self.on_form_change)
         self.comboBox_inspection_details_track_type.addItems(list_inspection_details_track_type)
 
         # COLLISION HISTORY (5 YEAR PERIOD)
@@ -517,6 +279,7 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
 
         #Group SpinBox
         self.spinBox_collision_history_fatal_injury = qtw.QSpinBox(valueChanged=self.on_form_change)
+        
         self.spinBox_collision_history_fatal_injury.setRange(0, 999999)
         
         self.spinBox_collision_history_fatalities = qtw.QSpinBox(valueChanged=self.on_form_change) 
@@ -532,9 +295,9 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.spinBox_collision_history_property_damage.setRange(0, 999999)
 
         #Group Labels 
-        self.label_collision_history_total_5_year_period = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_collision_history_risk_index_initial = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_collision_history_risk_index_final = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_collision_history_total_5_year_period = qtw.QLabel('No Value')
+        self.label_collision_history_risk_index_initial = qtw.QLabel('No Value')
+        self.label_collision_history_risk_index_final = qtw.QLabel('No Value')
 
         # GENERAL INFORMATION
         #Group TextEdits
@@ -631,10 +394,10 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.comboBox_general_info_road_sidewalk_island_circuit.addItems(list_yes_no)
 
         #Group Labels
-        self.label_general_info_rail_no_tracks_total = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_general_info_rail_no_trains_per_day_total = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_general_info_rail_railway_design_speed = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_general_info_road_no_traffic_lanes_total = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_general_info_rail_no_tracks_total = qtw.QLabel('No Value')
+        self.label_general_info_rail_no_trains_per_day_total = qtw.QLabel('No Value')
+        self.label_general_info_rail_railway_design_speed = qtw.QLabel('No Value')
+        self.label_general_info_road_no_traffic_lanes_total = qtw.QLabel('No Value')
 
         # DESIGN CONSIDERATIONS (GCS SECTION 10)
         #Group TextEdits
@@ -682,28 +445,28 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.comboBox_design_observe_field_acceleration_times_exceed_td = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_design_observe_field_acceleration_times_exceed_td.addItems(list_yes_no)
 
-        self.comboBox_design_road_design_vehicle_type = qtw.QComboBox(addItems=list_design_road_design_vehicle_type)
+        self.comboBox_design_road_design_vehicle_type = qtw.QComboBox(currentTextChanged=self.on_form_change)
         self.comboBox_design_road_design_vehicle_type.addItems(list_design_road_design_vehicle_type)
 
         #Group Labels
-        self.label_design_calculate_adjacent_track_clearance_time = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_calculate_clearance_time_pedestrian_design_check = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_calculate_clearance_time_vehicle_design_check = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_calculate_clearance_time_gate_arm_pedestrian = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_calculate_clearance_time_gate_arm_vehicle_ssd = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_calculate_clearance_time_gate_arm_vehicle_stop = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_calculate_clearance_time_gate_arm_vehicle_recommended = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_calculate_vehicle_departure_time = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_calculate_vehicle_departure_time_grade_adjusted = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_calculate_vehicle_departure_time_gate_arm_clearance = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_calculate_vehicle_departure_time_gate_arm_clearance_grade_adjusted = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_calculate_vehicle_travel_distance = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_input_reaction_time = qtw.QLabel(setNum=2)
-        self.label_design_lookup_design_vehicle_class = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_lookup_design_vehicle_length = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_lookup_grade_adjustment_factor = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_measure_clearance_distance_gate_arm_ssd = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_design_measure_clearance_distance_gate_arm_stop = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_design_calculate_adjacent_track_clearance_time = qtw.QLabel('No Value')
+        self.label_design_calculate_clearance_time_pedestrian_design_check = qtw.QLabel('No Value')
+        self.label_design_calculate_clearance_time_vehicle_design_check = qtw.QLabel('No Value')
+        self.label_design_calculate_clearance_time_gate_arm_pedestrian = qtw.QLabel('No Value')
+        self.label_design_calculate_clearance_time_gate_arm_vehicle_ssd = qtw.QLabel('No Value')
+        self.label_design_calculate_clearance_time_gate_arm_vehicle_stop = qtw.QLabel('No Value')
+        self.label_design_calculate_clearance_time_gate_arm_vehicle_recommended = qtw.QLabel('No Value')
+        self.label_design_calculate_vehicle_departure_time = qtw.QLabel('No Value')
+        self.label_design_calculate_vehicle_departure_time_grade_adjusted = qtw.QLabel('No Value')
+        self.label_design_calculate_vehicle_departure_time_gate_arm_clearance = qtw.QLabel('No Value')
+        self.label_design_calculate_vehicle_departure_time_gate_arm_clearance_grade_adjusted = qtw.QLabel('No Value')
+        self.label_design_calculate_vehicle_travel_distance = qtw.QLabel('No Value')
+        self.label_design_input_reaction_time = qtw.QLabel().setNum(2)
+        self.label_design_lookup_design_vehicle_class = qtw.QLabel('No Value')
+        self.label_design_lookup_design_vehicle_length = qtw.QLabel('No Value')
+        self.label_design_lookup_grade_adjustment_factor = qtw.QLabel('No Value')
+        self.label_design_measure_clearance_distance_gate_arm_ssd = qtw.QLabel('No Value')
+        self.label_design_measure_clearance_distance_gate_arm_stop = qtw.QLabel('No Value')
 
         # LOCATION OF GRADE CROSSING (GCS SECTION 11)
         #Group TextEdits
@@ -883,9 +646,9 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.comboBox_road_geometry_rail_superelevation.addItems(list_yes_no)
 
         #Group Labels
-        self.label_road_geometry_lookup_gradient_difference = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        #TBD self.label_road_geometry_observe_gradient_difference_n_or_e_approach = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        #TBD self.label_road_geometry_observe_gradient_difference_s_or_w_approach = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_road_geometry_lookup_gradient_difference = qtw.QLabel('No Value')
+        #TBD self.label_road_geometry_observe_gradient_difference_n_or_e_approach = qtw.QLabel('No Value')
+        #TBD self.label_road_geometry_observe_gradient_difference_s_or_w_approach = qtw.QLabel('No Value')
         
         # SIGHTLINES (GCS SECTION 7)
         #Group TextEdits
@@ -927,16 +690,16 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.comboBox_sightlines_observe_sightline_obstructions.addItems(list_yes_no)
 
         #Group Labels
-        self.label_sightlines_calculate_dssd_vehicle_min_ft = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_sightlines_calculate_dssd_vehicle_min_m = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_sightlines_calculate_dstopped_pedestrian_min_ft = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_sightlines_calculate_dstopped_pedestrian_min_m = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_sightlines_calculate_dstopped_vehicle_min_ft = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_sightlines_calculate_dstopped_vehicle_min_m = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_sightlines_lookup_existing_active_crossing = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_sightlines_lookup_existing_active_crossing_with_gates = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_sightlines_lookup_ssd_minimum_n_or_e_approach = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_sightlines_lookup_ssd_minimum_s_or_w_approach = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_sightlines_calculate_dssd_vehicle_min_ft = qtw.QLabel('No Value')
+        self.label_sightlines_calculate_dssd_vehicle_min_m = qtw.QLabel('No Value')
+        self.label_sightlines_calculate_dstopped_pedestrian_min_ft = qtw.QLabel('No Value')
+        self.label_sightlines_calculate_dstopped_pedestrian_min_m = qtw.QLabel('No Value')
+        self.label_sightlines_calculate_dstopped_vehicle_min_ft = qtw.QLabel('No Value')
+        self.label_sightlines_calculate_dstopped_vehicle_min_m = qtw.QLabel('No Value')
+        self.label_sightlines_lookup_existing_active_crossing = qtw.QLabel('No Value')
+        self.label_sightlines_lookup_existing_active_crossing_with_gates = qtw.QLabel('No Value')
+        self.label_sightlines_lookup_ssd_minimum_n_or_e_approach = qtw.QLabel('No Value')
+        self.label_sightlines_lookup_ssd_minimum_s_or_w_approach = qtw.QLabel('No Value')
 
         # SIGNS AND PAVEMENT MARKINGS (GCS SECTION 8)
         #Group TextEdits
@@ -1127,28 +890,28 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.textEdit_gcws_warrants_comments = qtw.QTextEdit()
         
         # Group Labels
-        self.label_gcws_warrant_private_9_3 = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_warrant_private_9_3_1 = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_warrant_private_9_3_2_a = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_warrant_private_9_3_2_b = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_warrant_private_9_3_2_c = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_warrant_public_9_1 = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_warrant_public_9_1_a = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_warrant_public_9_1_b = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_warrant_public_9_1_c = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_warrant_public_9_1_d_i = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_warrant_public_9_1_d_ii = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_warrant_public_9_1_d_iii = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_warrant_sidewalk_9_5 = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gates_gcws_warrant_private_9_4_1_a = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gates_gcws_warrant_private_9_4_1_b = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gates_gcws_warrant_private_9_4_1_c = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gates_gcws_warrant_public_9_2_1_a = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gates_gcws_warrant_public_9_2_1_b = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gates_gcws_warrant_public_9_2_1_c = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gates_gcws_warrant_public_9_2_1_d = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gates_gcws_warrant_public_9_2_1_e = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gates_gcws_warrant_sidewalk_9_6 = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_warrant_private_9_3 = qtw.QLabel('No Value')
+        self.label_gcws_warrant_private_9_3_1 = qtw.QLabel('No Value')
+        self.label_gcws_warrant_private_9_3_2_a = qtw.QLabel('No Value')
+        self.label_gcws_warrant_private_9_3_2_b = qtw.QLabel('No Value')
+        self.label_gcws_warrant_private_9_3_2_c = qtw.QLabel('No Value')
+        self.label_gcws_warrant_public_9_1 = qtw.QLabel('No Value')
+        self.label_gcws_warrant_public_9_1_a = qtw.QLabel('No Value')
+        self.label_gcws_warrant_public_9_1_b = qtw.QLabel('No Value')
+        self.label_gcws_warrant_public_9_1_c = qtw.QLabel('No Value')
+        self.label_gcws_warrant_public_9_1_d_i = qtw.QLabel('No Value')
+        self.label_gcws_warrant_public_9_1_d_ii = qtw.QLabel('No Value')
+        self.label_gcws_warrant_public_9_1_d_iii = qtw.QLabel('No Value')
+        self.label_gcws_warrant_sidewalk_9_5 = qtw.QLabel('No Value')
+        self.label_gates_gcws_warrant_private_9_4_1_a = qtw.QLabel('No Value')
+        self.label_gates_gcws_warrant_private_9_4_1_b = qtw.QLabel('No Value')
+        self.label_gates_gcws_warrant_private_9_4_1_c = qtw.QLabel('No Value')
+        self.label_gates_gcws_warrant_public_9_2_1_a = qtw.QLabel('No Value')
+        self.label_gates_gcws_warrant_public_9_2_1_b = qtw.QLabel('No Value')
+        self.label_gates_gcws_warrant_public_9_2_1_c = qtw.QLabel('No Value')
+        self.label_gates_gcws_warrant_public_9_2_1_d = qtw.QLabel('No Value')
+        self.label_gates_gcws_warrant_public_9_2_1_e = qtw.QLabel('No Value')
+        self.label_gates_gcws_warrant_sidewalk_9_6 = qtw.QLabel('No Value')
 
         # GRADE CROSSING WARNING SYSTEMS (GCS SECTION 12-16)
         #Group TextEdits
@@ -1248,14 +1011,14 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.comboBox_gcws_rail_self_diagnostic.addItems(list_yes_no_na)
 
         #Group Labels
-        self.label_gcws_rail_design_approach_warning_time = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_rail_design_warning_time_ssd = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_rail_design_warning_time_adjacent_crossing = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_rail_design_warning_time_clearance_distance = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_rail_design_warning_time_departure_time_pedestrian = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_rail_design_warning_time_departure_time_vehicle = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_rail_design_warning_time_gate_arm_clearance = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_gcws_rail_design_warning_time_ssd = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gcws_rail_design_approach_warning_time = qtw.QLabel('No Value')
+        self.label_gcws_rail_design_warning_time_ssd = qtw.QLabel('No Value')
+        self.label_gcws_rail_design_warning_time_adjacent_crossing = qtw.QLabel('No Value')
+        self.label_gcws_rail_design_warning_time_clearance_distance = qtw.QLabel('No Value')
+        self.label_gcws_rail_design_warning_time_departure_time_pedestrian = qtw.QLabel('No Value')
+        self.label_gcws_rail_design_warning_time_departure_time_vehicle = qtw.QLabel('No Value')
+        self.label_gcws_rail_design_warning_time_gate_arm_clearance = qtw.QLabel('No Value')
+        self.label_gcws_rail_design_warning_time_ssd = qtw.QLabel('No Value')
 
         # FLASHING LIGHT UNITS (GCS SECTION 13 & 14)
         #Group TextEdits
@@ -1354,7 +1117,7 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.doubleSpinBox_gates_gcws_measure_distance_between_gate_end_and_road_cl_s_or_w_approach = qtw.QDoubleSpinBox(valueChanged=self.on_form_change) 
 
         #Group Labels
-        self.label_gates_gcws_calculate_inner_gate_arm_delay_time_recommended = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_gates_gcws_calculate_inner_gate_arm_delay_time_recommended = qtw.QLabel('No Value')
 
         #Group ComboBoxes
         self.comboBox_gates_gcws_observe_gate_arm_rest = qtw.QComboBox(currentTextChanged=self.on_form_change)
@@ -1416,12 +1179,12 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.comboBox_aawd_warrant_mutcd_lookup_significant_road_downgrade.addItems(list_yes_no_na)
 
         #Group Labels
-        self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_aawd_warrant_gcr_lookup_road_classification = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_aawd_calculate_advance_activation_time_design_n_or_e_approach = qtw.QLabel('No Value')
+        self.label_aawd_calculate_advance_activation_time_design_s_or_w_approach = qtw.QLabel('No Value')
+        self.label_aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended = qtw.QLabel('No Value')
+        self.label_aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended = qtw.QLabel('No Value')
+        self.label_aawd_warrant_gcr_lookup_road_classification = qtw.QLabel('No Value')
+        self.label_aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr = qtw.QLabel('No Value')
         
         # INTERCONNECTION OF TRAFFIC SIGNALS (GCS SECTION 19)
         #Group TextEdits
@@ -1460,8 +1223,8 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         #TODO self.label_preemption_of_traffic_signals_road_date_Last_preemption_check = pass
 
         #Group Labels
-        self.label_preemption_of_traffic_signals_lookup_proximity_condition = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_preemption_of_traffic_signals_lookup_required = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_preemption_of_traffic_signals_lookup_proximity_condition = qtw.QLabel('No Value')
+        self.label_preemption_of_traffic_signals_lookup_required = qtw.QLabel('No Value')
 
         # WHISTLE CESSATION (GCS SECTION Appendix D)
         #Group TextEdits
@@ -1484,9 +1247,9 @@ class ViewCrossingAssessmentCA(qtw.QWidget):
         self.comboBox_areas_without_train_whistling_rail_anti_whistling_zone_24_hrs.addItems(list_yes_no)        
 
         #Group Labels
-        self.label_areas_without_train_whistling_lookup_gcs_9_2 = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_areas_without_train_whistling_lookup_table_d1_criteria = qtw.QLabel('No Value', textChanged=self.on_form_change)
-        self.label_areas_without_train_whistling_observe_table_D1 = qtw.QLabel('No Value', textChanged=self.on_form_change)
+        self.label_areas_without_train_whistling_lookup_gcs_9_2 = qtw.QLabel('No Value')
+        self.label_areas_without_train_whistling_lookup_table_d1_criteria = qtw.QLabel('No Value')
+        self.label_areas_without_train_whistling_observe_table_D1 = qtw.QLabel('No Value')
         
         ##################
         # Layout Objects #

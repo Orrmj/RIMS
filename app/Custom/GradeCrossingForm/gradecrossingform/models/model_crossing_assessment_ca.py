@@ -16,89 +16,100 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         self.view = view
     
     def on_change_crossingassessmentca(self, data_xing_inventory):
+
+        print(data_xing_inventory)
+        for item in data_xing_inventory.items():
+            print(item, type(item))
+
         self.collision_history_total_5_year_period(data_xing_inventory)
-        self.collision_history_risk_index_initial(self, data_xing_inventory)
-        self.collision_history_risk_index_final(self, data_xing_inventory)
-        self.general_info_rail_no_tracks_total(self, data_xing_inventory)
-        self.general_info_rail_no_trains_per_day_total(self, data_xing_inventory)
-        self.general_info_road_no_traffic_lanes_total(self, data_xing_inventory)
-        self.general_info_rail_railway_design_speed(self, data_xing_inventory)
-        self.design_calculate_adjacent_track_clearance_time(self, data_xing_inventory)
-        self.design_calculate_clearance_time_pedestrian_design_check(self, data_xing_inventory)
-        self.design_calculate_clearance_time_vehicle_design_check(self, data_xing_inventory)
-        self.design_calculate_clearance_time_gate_arm_pedestrian(self, data_xing_inventory)
-        self.design_calculate_clearance_time_gate_arm_vehicle_ssd(self, data_xing_inventory)
-        self.design_calculate_clearance_time_gate_arm_vehicle_stop(self, data_xing_inventory)
-        self.design_calculate_clearance_time_gate_arm_vehicle_recommended(self, data_xing_inventory)
-        self.design_calculate_vehicle_departure_time(self, data_xing_inventory)
-        self.design_calculate_vehicle_departure_time_grade_adjusted(self, data_xing_inventory)
-        self.design_calculate_vehicle_departure_time_gate_arm_clearance(self, data_xing_inventory)
-        self.design_calculate_vehicle_departure_time_gate_arm_clearance_grade_adjusted(self, data_xing_inventory)
-        self.design_calculate_vehicle_travel_distance(self, data_xing_inventory)
-        self.design_lookup_design_vehicle_class(self, data_xing_inventory)
-        self.design_lookup_design_vehicle_length(self, data_xing_inventory)
-        self.design_lookup_grade_adjustment_factor(self, data_xing_inventory)
-        self.road_geometry_lookup_gradient_difference(self, data_xing_inventory)
-        self.sightlines_lookup_existing_active_crossing(self, data_xing_inventory)
-        self.sightlines_lookup_existing_active_crossing_with_gates(self, data_xing_inventory)
-        self.sightlines_calculate_dssd_vehicle_min_ft(self, data_xing_inventory)
-        self.sightlines_calculate_dssd_vehicle_min_m(self, data_xing_inventory)        
-        self.sightlines_calculate_dstopped_pedestrian_min_ft(self, data_xing_inventory)
-        self.sightlines_calculate_dstopped_pedestrian_min_m(self, data_xing_inventory)
-        self.sightlines_calculate_dstopped_vehicle_min_ft(self, data_xing_inventory)
-        self.sightlines_calculate_dstopped_vehicle_min_m(self, data_xing_inventory)
-        self.sightlines_lookup_ssd_minimum_n_or_e_approach(self, data_xing_inventory)
-        self.sightlines_lookup_ssd_minimum_s_or_w_approach(self, data_xing_inventory)
-        self.gcws_warrant_private_9_3(self, data_xing_inventory)
-        self.gcws_warrant_private_9_3_1(self, data_xing_inventory)
-        self.gcws_warrant_private_9_3_2_a(self, data_xing_inventory)
-        self.gcws_warrant_private_9_3_2_b(self, data_xing_inventory)
-        self.gcws_warrant_private_9_3_2_c(self, data_xing_inventory)
-        self.gcws_warrant_public_9_1(self, data_xing_inventory)
-        self.gcws_warrant_public_9_1_a(self, data_xing_inventory)
-        self.gcws_warrant_public_9_1_b(self, data_xing_inventory)
-        self.gcws_warrant_public_9_1_c(self, data_xing_inventory)
-        self.gcws_warrant_public_9_1_d_i(self, data_xing_inventory)
-        self.gcws_warrant_public_9_1_d_ii(self, data_xing_inventory)
-        self.gcws_warrant_public_9_1_d_iii(self, data_xing_inventory)
-        self.gcws_warrant_sidewalk_9_5(self, data_xing_inventory)
-        self.gates_gcws_warrant_private_9_4_1_a(self, data_xing_inventory)
-        self.gates_gcws_warrant_private_9_4_1_b(self, data_xing_inventory)
-        self.gates_gcws_warrant_private_9_4_1_c(self, data_xing_inventory)
-        self.gates_gcws_warrant_public_9_2_1_a(self, data_xing_inventory)
-        self.gates_gcws_warrant_public_9_2_1_b(self, data_xing_inventory)
-        self.gates_gcws_warrant_public_9_2_1_c(self, data_xing_inventory)
-        self.gates_gcws_warrant_public_9_2_1_d(self, data_xing_inventory)
-        self.gates_gcws_warrant_public_9_2_1_e(self, data_xing_inventory)
-        self.gates_gcws_warrant_sidewalk_9_6(self, data_xing_inventory)
-        self.gcws_rail_design_warning_time_clearance_distance(self, data_xing_inventory)
-        self.gcws_rail_design_warning_time_departure_time_vehicle(self, data_xing_inventory)
-        self.gcws_rail_design_warning_time_departure_time_pedestrian(self, data_xing_inventory)
-        self.gcws_rail_design_warning_time_gate_arm_clearance(self, data_xing_inventory)
-        self.gcws_rail_design_warning_time_ssd(self, data_xing_inventory)
-        self.gcws_rail_design_warning_time_adjacent_crossing(self, data_xing_inventory)
-        self.gcws_rail_design_approach_warning_time(self, data_xing_inventory)
-        self.gates_gcws_calculate_inner_gate_arm_delay_time_recommended(self, data_xing_inventory)
-        self.aawd_calculate_advance_activation_time_design_n_or_e_approach(self, data_xing_inventory)
-        self.aawd_calculate_advance_activation_time_design_s_or_w_approach(self, data_xing_inventory)
-        self.aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended(self, data_xing_inventory)
-        self.aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended(self, data_xing_inventory)
-        self.aawd_warrant_gcr_lookup_road_classification(self, data_xing_inventory)
-        self.aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr(self, data_xing_inventory)
-        self.preemption_of_traffic_signals_lookup_proximity_condition(self, data_xing_inventory)
-        self.preemption_of_traffic_signals_lookup_required(self, data_xing_inventory)
-        self.areas_without_train_whistling_lookup_gcs_9_2(self, data_xing_inventory)
-        self.whistling_lookup_table_d1_criteria(self, data_xing_inventory)
-        self.areas_without_train_whistling_requirements_observe_table_D1(self, data_xing_inventory)
+        self.collision_history_risk_index_initial(data_xing_inventory)
+        self.collision_history_risk_index_final(data_xing_inventory)
+        self.general_info_rail_no_tracks_total(data_xing_inventory)
+        self.general_info_rail_no_trains_per_day_total(data_xing_inventory)
+        self.general_info_road_no_traffic_lanes_total(data_xing_inventory)
+        self.general_info_rail_railway_design_speed(data_xing_inventory)
+        self.design_calculate_adjacent_track_clearance_time(data_xing_inventory)
+        self.design_calculate_clearance_time_pedestrian_design_check(data_xing_inventory)
+        self.design_calculate_clearance_time_vehicle_design_check(data_xing_inventory)
+        self.design_calculate_clearance_time_gate_arm_pedestrian(data_xing_inventory)
+        self.design_calculate_clearance_time_gate_arm_vehicle_ssd(data_xing_inventory)
+        self.design_calculate_clearance_time_gate_arm_vehicle_stop(data_xing_inventory)
+        self.design_calculate_clearance_time_gate_arm_vehicle_recommended(data_xing_inventory)
+        self.design_calculate_vehicle_departure_time(data_xing_inventory)
+        self.design_calculate_vehicle_departure_time_grade_adjusted(data_xing_inventory)
+        self.design_calculate_vehicle_departure_time_gate_arm_clearance(data_xing_inventory)
+        self.design_calculate_vehicle_departure_time_gate_arm_clearance_grade_adjusted(data_xing_inventory)
+        self.design_calculate_vehicle_travel_distance(data_xing_inventory)
+        self.design_lookup_design_vehicle_class(data_xing_inventory)
+        self.design_lookup_design_vehicle_length(data_xing_inventory)
+        self.design_lookup_grade_adjustment_factor(data_xing_inventory)
+        self.road_geometry_lookup_gradient_difference(data_xing_inventory)
+        self.sightlines_lookup_existing_active_crossing(data_xing_inventory)
+        self.sightlines_lookup_existing_active_crossing_with_gates(data_xing_inventory)
+        self.sightlines_calculate_dssd_vehicle_min_ft(data_xing_inventory)
+        self.sightlines_calculate_dssd_vehicle_min_m(data_xing_inventory)        
+        self.sightlines_calculate_dstopped_pedestrian_min_ft(data_xing_inventory)
+        self.sightlines_calculate_dstopped_pedestrian_min_m(data_xing_inventory)
+        self.sightlines_calculate_dstopped_vehicle_min_ft(data_xing_inventory)
+        self.sightlines_calculate_dstopped_vehicle_min_m(data_xing_inventory)
+        self.sightlines_lookup_ssd_minimum_n_or_e_approach(data_xing_inventory)
+        self.sightlines_lookup_ssd_minimum_s_or_w_approach(data_xing_inventory)
+        self.gcws_warrant_private_9_3(data_xing_inventory)
+        self.gcws_warrant_private_9_3_1(data_xing_inventory)
+        self.gcws_warrant_private_9_3_2_a(data_xing_inventory)
+        self.gcws_warrant_private_9_3_2_b(data_xing_inventory)
+        self.gcws_warrant_private_9_3_2_c(data_xing_inventory)
+        self.gcws_warrant_public_9_1(data_xing_inventory)
+        self.gcws_warrant_public_9_1_a(data_xing_inventory)
+        self.gcws_warrant_public_9_1_b(data_xing_inventory)
+        self.gcws_warrant_public_9_1_c(data_xing_inventory)
+        self.gcws_warrant_public_9_1_d_i(data_xing_inventory)
+        self.gcws_warrant_public_9_1_d_ii(data_xing_inventory)
+        self.gcws_warrant_public_9_1_d_iii(data_xing_inventory)
+        self.gcws_warrant_sidewalk_9_5(data_xing_inventory)
+        self.gates_gcws_warrant_private_9_4_1_a(data_xing_inventory)
+        self.gates_gcws_warrant_private_9_4_1_b(data_xing_inventory)
+        self.gates_gcws_warrant_private_9_4_1_c(data_xing_inventory)
+        self.gates_gcws_warrant_public_9_2_1_a(data_xing_inventory)
+        self.gates_gcws_warrant_public_9_2_1_b(data_xing_inventory)
+        self.gates_gcws_warrant_public_9_2_1_c(data_xing_inventory)
+        self.gates_gcws_warrant_public_9_2_1_d(data_xing_inventory)
+        self.gates_gcws_warrant_public_9_2_1_e(data_xing_inventory)
+        self.gates_gcws_warrant_sidewalk_9_6(data_xing_inventory)
+        self.gcws_rail_design_warning_time_clearance_distance(data_xing_inventory)
+        self.gcws_rail_design_warning_time_departure_time_vehicle(data_xing_inventory)
+        self.gcws_rail_design_warning_time_departure_time_pedestrian(data_xing_inventory)
+        self.gcws_rail_design_warning_time_gate_arm_clearance(data_xing_inventory)
+        self.gcws_rail_design_warning_time_ssd(data_xing_inventory)
+        self.gcws_rail_design_warning_time_adjacent_crossing(data_xing_inventory)
+        self.gcws_rail_design_approach_warning_time(data_xing_inventory)
+        self.gates_gcws_calculate_inner_gate_arm_delay_time_recommended(data_xing_inventory)
+        self.aawd_calculate_advance_activation_time_design_n_or_e_approach(data_xing_inventory)
+        self.aawd_calculate_advance_activation_time_design_s_or_w_approach(data_xing_inventory)
+        self.aawd_calculate_distance_sign_and_stop_n_or_e_approach_recommended(data_xing_inventory)
+        self.aawd_calculate_distance_sign_and_stop_s_or_w_approach_recommended(data_xing_inventory)
+        self.aawd_warrant_gcr_lookup_road_classification(data_xing_inventory)
+        self.aawd_warrant_mutcd_lookup_road_speed_limit_greater_than_90_km_per_hr(data_xing_inventory)
+        self.preemption_of_traffic_signals_lookup_proximity_condition(data_xing_inventory)
+        self.preemption_of_traffic_signals_lookup_required(data_xing_inventory)
+        self.areas_without_train_whistling_lookup_gcs_9_2(data_xing_inventory)
+        self.whistling_lookup_table_d1_criteria(data_xing_inventory)
+        self.areas_without_train_whistling_requirements_observe_table_D1(data_xing_inventory)
 
     #Calculate collision_history_total_5_year_period
     def collision_history_total_5_year_period(self, data_xing_inventory):       
         collision_history_fatal_injury = data_xing_inventory.get('collision_history_fatal_injury')
         collision_history_personal_injury = data_xing_inventory.get('collision_history_personal_injury')
         collision_history_property_damage = data_xing_inventory.get('collision_history_property_damage')
-        print(data_xing_inventory)
-        result = sum([collision_history_fatal_injury, collision_history_personal_injury, collision_history_property_damage])
-        self.view.label_collision_history_total_5_year_period.setNum(result)
+        
+        if isinstance(collision_history_fatal_injury, type(None)) or isinstance(collision_history_personal_injury, type(None)) or isinstance(collision_history_property_damage, type(None)):
+            result = 'No Value'
+            self.view.label_collision_history_total_5_year_period.setText(result)
+            data_xing_inventory['collision_history_total_5_year_period'] = result
+        else:
+            result = sum([collision_history_fatal_injury, collision_history_personal_injury, collision_history_property_damage])
+            self.view.label_collision_history_total_5_year_period.setNum(result)
+            data_xing_inventory['collision_history_total_5_year_period'] = result
         return result
     
 
@@ -108,7 +119,6 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         inspection_details_gcws_type = data_xing_inventory.get('inspection_details_gcws_type')
         gcws_observe_gates_n_or_e_approach = data_xing_inventory.get('gcws_observe_gates_n_or_e_approach')
         gcws_observe_gates_s_or_w_approach = data_xing_inventory.get('gcws_observe_gates_s_or_w_approach')
-
         crossing_surface_observe_road_approach_surface_type = data_xing_inventory.get('crossing_surface_observe_road_approach_surface_type')
         general_info_road_classification = data_xing_inventory.get('general_info_road_classification')
  
@@ -120,9 +130,12 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         hl = self.general_info_road_no_traffic_lanes_total(data_xing_inventory) # hl = number of highway lanes
         
         # hp = highway paved, yes = 1.0, no = 2.0
-        split_general_info_road_classification = general_info_road_classification.split()
+        if not(isinstance(general_info_road_classification, type(None))):
+            split_general_info_road_classification = general_info_road_classification.split()
+        else:
+            split_general_info_road_classification = None
 
-        if not split_general_info_road_classification:
+        if isinstance(split_general_info_road_classification, type(None)):
             hp = 'No Value'
         elif split_general_info_road_classification[1] == 'Freeway' and crossing_surface_observe_road_approach_surface_type == 'Asphalt':
             hp = 1.0
@@ -145,26 +158,31 @@ class ModelCrossingAssessmentCA(qtc.QObject):
             ('Private Road', 5),
             ('Pedestrian Crossing', 5)
             ])
-        if general_info_road_classification == '':
+        if isinstance(general_info_road_classification, type(None)):
             ht = 'No Value'
         else:
             ht = dict_general_info_road_classification[general_info_road_classification]       
 
-        if inspection_details_gcws_type == '' or general_info_road_classification == '' or crossing_surface_observe_road_approach_surface_type == '' or gcws_observe_gates_n_or_e_approach == '' or gcws_observe_gates_s_or_w_approach == '' or general_info_rail_no_tracks_total == 'No Value' or mt == 'No Value' or c == 0 or t == 'No Value' or d == 'No Value' or ms == 'No Value' or hl == 'No Value' or hp == 'No Value' or ht == 'No Value':            
+        if isinstance(inspection_details_gcws_type, type(None)) or isinstance(general_info_road_classification, type(None)) or isinstance(crossing_surface_observe_road_approach_surface_type, type(None)) or isinstance(gcws_observe_gates_n_or_e_approach, type(None)) or isinstance(gcws_observe_gates_s_or_w_approach, type(None)) or general_info_rail_no_tracks_total == 'No Value' or mt == 'No Value' or isinstance(c, type(None)) or t == 'No Value' or d == 'No Value' or ms == 'No Value' or hl == 'No Value' or hp == 'No Value' or ht == 'No Value':            
             result = 'No Value'
             self.view.label_collision_history_risk_index_initial.setText(result)
+            data_xing_inventory['collision_history_risk_index_initial'] = result
         elif inspection_details_gcws_type == 'Passive':
             result = round(0.002268 * math.pow(((c * t + 0.2)/0.2), 0.3334) * math.exp(0.2094 * mt) * math.pow(((d + 0.2)/0.2), 0.1336) * math.exp(-0.616 * (hp - 1)) * math.exp(0.0077 * ms) * math.exp(-0.1000 * (ht - 1)) * 1, 5)
             self.view.label_collision_history_risk_index_initial.setNum(result)
+            data_xing_inventory['collision_history_risk_index_initial'] = result
         elif inspection_details_gcws_type == 'Active' and (gcws_observe_gates_n_or_e_approach != 'Yes' or gcws_observe_gates_s_or_w_approach != 'Yes') and (gcws_observe_gates_n_or_e_approach != '' or gcws_observe_gates_s_or_w_approach != ''):
             result = round(0.003646 * math.pow(((c * t + 0.2)/0.2), 0.2953) * math.exp(0.1088 * mt) * math.pow(((d + 0.2)/0.2), 0.047) * 1 * 1 * 1 * math.exp(0.1380 * (hl - 1)), 5)
             self.view.label_collision_history_risk_index_initial.setNum(result)
+            data_xing_inventory['collision_history_risk_index_initial'] = result
         elif inspection_details_gcws_type == 'Active' and (gcws_observe_gates_n_or_e_approach == 'Yes' or gcws_observe_gates_s_or_w_approach == 'Yes'):
             result = round(0.001088 * math.pow(((c * t + 0.2)/0.2), 0.3116) * math.exp(0.2912 * mt) * 1 * 1 * 1 * 1 * math.exp(0.1036 * (hl - 1)) ,5)
             self.view.label_collision_history_risk_index_initial.setNum(result)
+            data_xing_inventory['collision_history_risk_index_initial'] = result
         else:
             result = 'No Value'
             self.view.label_collision_history_risk_index_initial.setText(result)
+            data_xing_inventory['collision_history_risk_index_initial'] = result
         return result
     
     #Calculate collision_history_risk_index_final
@@ -175,6 +193,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         if collision_history_risk_index_initial == 'No Value':
             result = 'No Value'
             self.view.label_collision_history_risk_index_final.setText(result)
+            data_xing_inventory['collision_history_risk_index_final'] = result
         else:
             result = round(
                 sum([ 
@@ -183,6 +202,7 @@ class ModelCrossingAssessmentCA(qtc.QObject):
                 ]),
                 5)
             self.view.label_collision_history_risk_index_final.setNum(result)
+            data_xing_inventory['collision_history_risk_index_final'] = result
         return result
 
     #Calculate general_info_rail_no_tracks_total
@@ -190,12 +210,14 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         general_info_rail_no_tracks_main = data_xing_inventory.get('general_info_rail_no_tracks_main')
         general_info_rail_no_tracks_other = data_xing_inventory.get('general_info_rail_no_tracks_other')
         
-        if general_info_rail_no_tracks_main == 0 and general_info_rail_no_tracks_other == 0:
+        if isinstance(general_info_rail_no_tracks_main, type(None)) or isinstance(general_info_rail_no_tracks_other, type(None)):
             result = 'No Value'
             self.view.label_general_info_rail_no_tracks_total.setText(result)
+            data_xing_inventory['general_info_rail_no_tracks_total'] = result
         else:
             result = sum([general_info_rail_no_tracks_main, general_info_rail_no_tracks_other])
             self.view.label_general_info_rail_no_tracks_total.setNum(result)
+            data_xing_inventory['general_info_rail_no_tracks_total'] = result
         return result
 
     #Calculate general_info_rail_no_trains_per_day_total
@@ -203,12 +225,14 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         general_info_rail_no_trains_per_day_freight = data_xing_inventory.get('general_info_rail_no_trains_per_day_freight')
         general_info_rail_no_trains_per_day_passengers = data_xing_inventory.get('general_info_rail_no_trains_per_day_passengers')
         
-        if general_info_rail_no_trains_per_day_freight == 0 and general_info_rail_no_trains_per_day_passengers == 0:
+        if isinstance(general_info_rail_no_trains_per_day_freight, type(None)) or isinstance(general_info_rail_no_trains_per_day_passengers, type(None)):
             result = 'No Value'
-            self.view.label_general_info_rail_no_trains_per_day_total.setText(result)    
+            self.view.label_general_info_rail_no_trains_per_day_total.setText(result)
+            data_xing_inventory['general_info_rail_no_trains_per_day_total'] = result
         else:
             result = sum([general_info_rail_no_trains_per_day_freight, general_info_rail_no_trains_per_day_passengers])
             self.view.label_general_info_rail_no_trains_per_day_total.setNum(result)
+            data_xing_inventory['general_info_rail_no_trains_per_day_total'] = result
         return result
 
     #Calculate general_info_road_no_traffic_lanes_total
@@ -217,12 +241,14 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         general_info_road_no_traffic_lanes_northbound_or_eastbound = data_xing_inventory.get('general_info_road_no_traffic_lanes_northbound_or_eastbound')
         general_info_road_no_traffic_lanes_southbound_or_westbound = data_xing_inventory.get('general_info_road_no_traffic_lanes_southbound_or_westbound')       
         
-        if general_info_road_no_traffic_lanes_bidirectional == 0 and general_info_road_no_traffic_lanes_northbound_or_eastbound == 0 and general_info_road_no_traffic_lanes_southbound_or_westbound == 0:
+        if isinstance(general_info_road_no_traffic_lanes_bidirectional, type(None)) or isinstance(general_info_road_no_traffic_lanes_northbound_or_eastbound, type(None)) or isinstance(general_info_road_no_traffic_lanes_southbound_or_westbound, type(None)):
             result = 'No Value'
             self.view.label_general_info_road_no_traffic_lanes_total.setText(result)
+            data_xing_inventory['general_info_road_no_traffic_lanes_total'] = result
         else:
             result = sum([general_info_road_no_traffic_lanes_bidirectional, general_info_road_no_traffic_lanes_northbound_or_eastbound, general_info_road_no_traffic_lanes_southbound_or_westbound])
             self.view.label_general_info_road_no_traffic_lanes_total.setNum(result)
+            data_xing_inventory['general_info_road_no_traffic_lanes_total'] = result
         return result
 
     #Calculate general_info_rail_railway_design_speed
@@ -230,12 +256,14 @@ class ModelCrossingAssessmentCA(qtc.QObject):
         general_info_rail_max_railway_operating_speed_freight = data_xing_inventory.get('general_info_rail_max_railway_operating_speed_freight')
         general_info_rail_max_railway_operating_speed_passenger = data_xing_inventory.get('general_info_rail_max_railway_operating_speed_passenger')        
         
-        if general_info_rail_max_railway_operating_speed_freight == 0 and general_info_rail_max_railway_operating_speed_passenger == 0:
+        if isinstance(general_info_rail_max_railway_operating_speed_freight, type(None)) or isinstance(general_info_rail_max_railway_operating_speed_passenger, type(None)):
             result = 'No Value'
             self.view.label_general_info_rail_railway_design_speed.setText(result)
+            data_xing_inventory['general_info_rail_railway_design_speed'] = result
         else:
             result = max((general_info_rail_max_railway_operating_speed_freight, general_info_rail_max_railway_operating_speed_passenger))
             self.view.label_general_info_rail_railway_design_speed.setNum(result)
+            data_xing_inventory['general_info_rail_railway_design_speed'] = result
         return result
 
     # DESIGN CONSIDERATIONS (GCS SECTION 10)
