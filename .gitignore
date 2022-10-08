@@ -1,5 +1,6 @@
 # Ignore folder types
-**\app\3rd_party_open\odoo
+**\app\3rd_party_open\
+**\app
 **\installation_pkgs
 **\program_files
 **\resources
