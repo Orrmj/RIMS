@@ -5,7 +5,7 @@
 **\resources
 
 # Exceptions
-!\resources\standards_guidelines\operations\industry\rkb\environment\html\rail_knowledge_bank_env_noise_1_50.htm
+!resources\standards_guidelines\operations\industry\rkb\environment\html\rail_knowledge_bank_env_noise_1_50.htm
 
 # Ignore file types
 *.1
