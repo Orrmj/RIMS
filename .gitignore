@@ -4,6 +4,9 @@
 **\program_files
 **\resources
 
+# Exceptions
+!E:\ProgrammingProjects\GitHubMyRepos\RIMS\resources\standards_guidelines\operations\industry\rkb\environment\html\rail_knowledge_bank_env_noise_1_50.htm
+
 # Ignore file types
 *.1
 *.a
