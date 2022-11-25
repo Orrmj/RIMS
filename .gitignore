@@ -2,10 +2,19 @@
 **\app
 **\installation_pkgs
 **\program_files
-**\resources
+**\resources/data/**
+**\resources/forms_templates/**
+**\resources/suppliers/**
+**\resources/regulatory/**
+**\resources/standards_guidelines/**/*.*
+**\resources/standards_guidelines/**/railway/**
+**\resources/standards_guidelines/**/industry/arema/**
+**\resources/standards_guidelines/**/industry/cenelec/**
+**\resources/standards_guidelines/**/industry/nasa
+**\resources/standards_guidelines/**/industry/tac
 
 # Exceptions
-!resources\standards_guidelines\operations\industry\rkb\environment\html\rail_knowledge_bank_env_noise_1_50.htm
+!**\resources/standards_guidelines/**/*.htm
 
 # Ignore file types
 *.1
@@ -34,7 +43,9 @@
 *.cdc
 *.cdl
 *.cfg
+*.cgx
 *.chm
+*.cit
 *.cpg
 *.cpp
 *.conf
@@ -52,12 +63,19 @@
 *.db
 *.dbf
 *.dbmdl
+*.dcl
 *.dfdebian
 *.dffedora
+*.dfm
 *.dfr
 *.dfsrc
+*.dgn
+*.dl
+*.dl1
+*.dl2
 *.dll
 *.doc
+*.docm
 *.docs
 *.docx
 *.dot
@@ -72,6 +90,7 @@
 *.eps
 *.epub
 *.eqr
+*.err
 *.ex
 *.EX_
 *.exe
@@ -79,6 +98,7 @@
 *.fs
 *.fsc
 *.gen
+*.deojson
 *.gid
 *.gif
 *.gml
@@ -87,7 +107,7 @@
 *.hex
 *.hjt
 *.htc
-*.htm
+#*.htm
 *.html
 *.ico
 *.icc
@@ -108,6 +128,7 @@
 *.key
 *.kml
 *.kmz
+*.laz
 *.lin
 *.ler
 *.lib
@@ -125,18 +146,26 @@
 *.lst
 *.local
 *.log
+*.lsp
 *.mailmap
 *.mask
 *.mb1
 *.md
 *.mdb
 *.mdf
+*.mdl
 *.mef
+*.mkv
+*.mnl
+*.mns
 *.mp3
 *.mp4
 *.ms1
 *.msg
 *.msi
+*.mys
+*.mxd
+*.nc
 *.ncf
 *.nfl
 *.nsi
@@ -147,6 +176,8 @@
 *.p7m
 *.p12
 *.p65
+*.pac
+*.pcp
 *.pdf
 *.pdx
 *.pem
@@ -172,9 +203,11 @@
 *.python
 *.pyw
 *.pxd
+*.qmd
 *.rar
 *.rc
 *.rcf
+*.ref
 *.rng
 *.rpt
 *.rst
@@ -189,10 +222,12 @@
 *.scss
 *.service
 *.servicename
+*.ses
 *.sh
 *.shp
 *.shx
 *.sfd
+*.slb
 *.sln
 *.sql
 *.sqlproj
@@ -228,6 +263,7 @@
 *.xbm
 *.xcm
 *.xls
+*xlsm
 *.xlsx
 *.xlt
 *.xltm
