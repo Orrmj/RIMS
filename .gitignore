@@ -1,5 +1,6 @@
 # Ignore folder types
-**\app
+**\app/**
+**\app/3rd_party_open/odoo/
 **\installation_pkgs
 **\program_files
 **\resources/data/**
@@ -108,7 +109,7 @@
 *.hjt
 *.htc
 #*.htm
-*.html
+#*.html
 *.ico
 *.icc
 *.icns
@@ -274,4 +275,3 @@
 *.xsl
 *.xz
 *.zip
-app/3rd_party_open/odoo/
