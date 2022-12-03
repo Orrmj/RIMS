@@ -4,18 +4,18 @@
 **\installation_pkgs
 **\program_files
 **\resources/data/**
-**\resources/forms_templates/**
-**\resources/suppliers/**
+**\resources/form_template/**
+**\resources/supplier/**
 **\resources/regulatory/**
-**\resources/standards_guidelines/**/*.*
-**\resources/standards_guidelines/**/railway/**
-**\resources/standards_guidelines/**/industry/arema/**
-**\resources/standards_guidelines/**/industry/cenelec/**
-**\resources/standards_guidelines/**/industry/nasa
-**\resources/standards_guidelines/**/industry/tac
+**\resources/standard_guideline/**/*.*
+**\resources/standard_guideline/**/railway/**
+**\resources/standard_guideline/**/industry/arema/**
+**\resources/standard_guideline/**/industry/cenelec/**
+**\resources/standard_guideline/**/industry/nasa
+**\resources/standard_guideline/**/industry/tac
 
 # Exceptions
-!**\resources/standards_guidelines/**/*.htm
+!**\resources/standard_guideline/**/*.htm
 
 # Ignore file types
 *.1
