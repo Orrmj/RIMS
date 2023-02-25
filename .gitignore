@@ -1,21 +1,25 @@
 # Ignore folder types
-**\app/**
-**\app/3rd_party_open/odoo/
-**\installation_pkgs
-**\program_files
-**\resources/data/**
-**\resources/form_template/**
-**\resources/supplier/**
-**\resources/regulatory/**
-**\resources/standard_guideline/**/*.*
-**\resources/standard_guideline/**/railway/**
-**\resources/standard_guideline/**/industry/arema/**
-**\resources/standard_guideline/**/industry/cenelec/**
-**\resources/standard_guideline/**/industry/nasa
-**\resources/standard_guideline/**/industry/tac
+**/app/**
+**/app/3rd_party_open/odoo/
+**/installation_pkgs/**
+**/program_files/**
+**/resources/artifact_record/**
+**/resources/data/**
+**/resources/form_template/**
+**/resources/specification/**
+**/resources/std_dwg/**
+**/resources/supplier/**
+**/resources/regulatory/**
+**/resources/report_research/**
+**/resources/standard_guideline/**/*.*
+**/resources/standard_guideline/**/railway/**
+**/resources/standard_guideline/**/industry/arema/**
+**/resources/standard_guideline/**/industry/cenelec/**
+**/resources/standard_guideline/**/industry/nasa
+**/resources/standard_guideline/**/industry/tac
 
 # Exceptions
-!**\resources/standard_guideline/**/*.htm
+#!**\resources/standard_guideline/**/*.htm
 
 # Ignore file types
 *.1
